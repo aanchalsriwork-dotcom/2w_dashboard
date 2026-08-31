@@ -7,7 +7,7 @@ from db_connect import get_connection
 from fetchers import get_countries
 
 
-ind_code = "004"
+ind_code = "EXCHANGE_RATE"
 # Indicator code for exchange rates
 # API key for the ExchangeRate API is stored in an environment variable. 
 # The load_dotenv() function loads environment variables from a .env file into the program's environment, allowing access to the API key without hardcoding it into the script.
