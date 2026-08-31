@@ -1,4 +1,4 @@
-name: macro-data-refresh
+name: Exchangerate-data-refresh
 
 on:
   # Run automatically every 5 minutes
@@ -25,7 +25,7 @@ jobs:
       - run: pip install requests psycopg2-binary
 
       # Run the macro data pipeline
-      - run: python pipeline/load_macro.py
+      - run: python pipeline/exchangerate.py
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           EXCHANGERATE_API_KEY: ${{ secrets.EXCHANGERATE_API_KEY }}
