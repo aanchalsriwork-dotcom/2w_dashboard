@@ -6,6 +6,7 @@ try:
 except:
     print("Database connection failed")
 
+
 # Fetches country names from DB and returns a list of dictionaries with country code and name
 def get_countries(conn):
     # Create a cursor object : tool used to send SQL commands to db
@@ -13,7 +14,9 @@ def get_countries(conn):
     # Execute runs the query and cursor now holds the result set.
     cur.execute("SELECT wb_code, country FROM country;")
     # Retrieve rows produced by the query from cursor object
-    rows = cur.fetchall()  #returns a list of tuples, each tuple is a row in the result set
+    rows = (
+        cur.fetchall()
+    )  # returns a list of tuples, each tuple is a row in the result set
     cur.close()
     # Loop through the rows and create a list of dictionaries with column names as keys and row values as values
     return [{"code": r[0], "name": r[1]} for r in rows]
@@ -54,10 +57,9 @@ def get_countries(conn):
             "country": r[1],
             "wb_code": r[2],
             "currency_name": r[3],
-            "currency_code": r[4]
+            "currency_code": r[4],
         }
 
         countries.append(country)
 
     return countries
-
