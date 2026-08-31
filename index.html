@@ -1,4 +1,4 @@
-﻿C:\Users\91931\2w_dashboard\2Wdashboard_CurrentVersion.html<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,7 @@
 <title>OEM Market Intelligence — Global 2W Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0f172a;
@@ -35,8 +35,10 @@
     --teal-soft: rgba(13,157,143,0.10);
     --blue: #2f5fdb;
     --blue-soft: rgba(47,95,219,0.10);
+    --logo-dark: #0c1120;
+    --logo-blue: #12428f;
     --font-head: 'Poppins', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-body: 'Poppins', sans-serif;
     --radius: 10px;
     --radius-lg: 14px;
     --sidebar: 264px;
@@ -49,12 +51,16 @@
 
   /* SIDEBAR */
   #sidebar { width: var(--sidebar); min-width: var(--sidebar); background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; }
-  .sidebar-header { padding: 20px 18px 16px; background: var(--navy); border-bottom: 1px solid var(--navy); }
-  .sidebar-logo { font-family: var(--font-head); font-size: 16px; font-weight: 600; color: #ffffff; letter-spacing: -0.2px; display: flex; align-items: center; gap: 8px; }
-  .sidebar-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); flex-shrink: 0; }
-  .sidebar-sub { font-size: 10.5px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 0.6px; text-transform: uppercase; }
+  .sidebar-header { padding: 22px 18px 18px; background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .sidebar-logo { font-family: var(--font-head); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; }
+  .sidebar-logo .logo-wheel { color: var(--logo-dark); }
+  .sidebar-logo .logo-flux { color: var(--logo-blue); }
+  .sidebar-sub { font-size: 10.5px; color: var(--text3); margin-top: 5px; letter-spacing: 0.6px; text-transform: uppercase; font-weight: 500; }
   .nav-section { padding: 10px 0; border-bottom: 1px solid var(--border); }
   .nav-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); padding: 10px 18px 6px; font-weight: 600; }
+  .market-explorer-head { padding: 14px 18px 10px; }
+  .market-explorer-title { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: -0.1px; }
+  .market-explorer-sub { font-size: 11.5px; color: var(--text3); margin-top: 2px; }
   .main-tab { display: flex; align-items: center; gap: 9px; padding: 9px 18px; cursor: pointer; transition: background var(--transition); border-left: 2px solid transparent; }
   .main-tab:hover { background: var(--bg3); }
   .main-tab.active { background: var(--accent-soft); border-left-color: var(--accent); }
@@ -76,11 +82,12 @@
   .region-toggle.open { transform: rotate(90deg); }
   .country-list { display: none; padding: 2px 0 6px; }
   .country-list.open { display: block; }
-  .country-item { display: flex; align-items: center; gap: 8px; padding: 6px 18px 6px 32px; cursor: pointer; transition: background var(--transition); border-left: 2px solid transparent; }
+  .country-item { display: flex; align-items: center; gap: 10px; padding: 7px 18px 7px 32px; cursor: pointer; transition: background var(--transition); border-left: 2px solid transparent; }
   .country-item:hover { background: var(--bg3); }
   .country-item.active { background: var(--accent-soft); border-left-color: var(--accent); }
   .country-item.active .country-name { color: var(--accent2); font-weight: 500; }
   .flag { font-size: 14px; }
+  .flag-img { border-radius: 3px; vertical-align: middle; box-shadow: 0 0 0 1px rgba(15,23,42,0.08); flex-shrink: 0; }
   .country-name { font-size: 12.5px; color: var(--text2); }
   #sidebar::-webkit-scrollbar { width: 3px; }
   #sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
@@ -250,6 +257,30 @@
   .welcome-title { font-family: var(--font-head); font-size: 20px; color: var(--text2); margin-bottom: 8px; }
   .welcome-sub { font-size: 13px; color: var(--text3); max-width: 340px; line-height: 1.6; }
 
+  /* ===== GLOBAL OVERVIEW ===== */
+  .ov-kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+  .ov-kpi-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px 20px; box-shadow: var(--shadow-sm); transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); }
+  .ov-kpi-card:hover { border-color: var(--border2); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .ov-kpi-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; background: var(--accent-soft); margin-bottom: 14px; }
+  .ov-kpi-label { font-size: 12.5px; color: var(--text2); font-weight: 500; margin-bottom: 6px; }
+  .ov-kpi-value { font-family: var(--font-head); font-size: 23px; font-weight: 700; color: var(--text); line-height: 1.15; }
+  .ov-kpi-date { font-size: 11px; color: var(--text3); margin-top: 10px; }
+  .ov-kpi-change { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; margin-top: 3px; }
+  .ov-kpi-change.up { color: var(--green); }
+  .ov-kpi-change.down { color: var(--red); }
+  .ov-kpi-change .note { color: var(--text3); font-weight: 400; margin-left: 2px; }
+  .ov-kpi-subline { font-size: 12px; color: var(--text2); margin-top: 2px; }
+
+  .vbar-chart-wrap { display: flex; gap: 8px; }
+  .vbar-yaxis { display: flex; flex-direction: column; justify-content: space-between; height: 200px; font-size: 10px; color: var(--text3); text-align: right; width: 32px; flex-shrink: 0; }
+  .vbar-plot { flex: 1; min-width: 0; }
+  .vbar-bars-row { display: flex; align-items: flex-end; gap: 8px; height: 200px; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); padding-left: 8px; }
+  .vbar-col-fill { flex: 1; display: flex; justify-content: center; align-items: flex-end; height: 100%; }
+  .vbar-fill { width: 60%; border-radius: 4px 4px 0 0; background: var(--accent); }
+  .vbar-fill.current { background: var(--navy); }
+  .vbar-labels-row { display: flex; gap: 8px; padding-left: 8px; margin-top: 8px; }
+  .vbar-label-col { flex: 1; text-align: center; font-size: 10px; color: var(--text3); white-space: nowrap; }
+
   /* Brand & Model Sales */
   .brand-filter-row { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
   .brand-select { padding: 6px 12px; background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; color: var(--text2); font-size: 12px; font-family: var(--font-body); cursor: pointer; outline: none; }
@@ -265,7 +296,7 @@
   .social-meta-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
 
   @media (max-width: 900px) {
-    .kpi-grid, .kpi-grid-extra { grid-template-columns: repeat(3,1fr); }
+    .kpi-grid, .kpi-grid-extra, .ov-kpi-grid { grid-template-columns: repeat(3,1fr); }
     .section-row.cols-3 { grid-template-columns: 1fr; }
     .section-row.cols-2 { grid-template-columns: 1fr; }
     .platform-grid { grid-template-columns: repeat(3,1fr); }
@@ -326,15 +357,21 @@
 <!-- SIDEBAR -->
 <div id="sidebar">
   <div class="sidebar-header">
-    <div class="sidebar-logo">
-      <div class="dot"></div>
-      2 Wheeler Market Dashboard
-    </div>
-    <div class="sidebar-sub">Global Two-Wheeler Intelligence</div>
+    <div class="sidebar-logo"><span class="logo-wheel">Wheel</span><span class="logo-flux">Flux</span></div>
+    <div class="sidebar-sub">Global 2W Market Intelligence</div>
   </div>
 
   <div class="nav-section">
-    <div class="nav-label">Countries</div>
+    <div class="main-tab active" id="tab-global-overview" onclick="showGlobalOverview(event)">
+      <span class="tab-icon">🌐</span><span class="tab-name">Global Overview</span>
+    </div>
+  </div>
+
+  <div class="nav-section" style="border-bottom:none;">
+    <div class="market-explorer-head">
+      <div class="market-explorer-title">Market Explorer</div>
+      <div class="market-explorer-sub">Select a region or country</div>
+    </div>
     <div id="country-nav"><!-- populated by buildCountryNav() --></div>
   </div>
 
@@ -347,7 +384,7 @@
       <div class="breadcrumb">
         <span>2W Dashboard</span>
         <span class="sep">›</span>
-        <span class="current" id="breadcrumb-current">Select a country</span>
+        <span class="current" id="breadcrumb-current">Global Overview</span>
       </div>
     </div>
     <div class="topbar-right">
@@ -356,12 +393,114 @@
   </div>
 
   <div id="content">
-    <!-- WELCOME -->
-    <div id="panel-welcome" class="panel active">
-      <div class="welcome-state">
-        <div class="welcome-icon">🌎</div>
-        <div class="welcome-title">Select a market</div>
-        <div class="welcome-sub">Choose a country from the sidebar to view the Country Overview, Brand & Model Sales, News, and Social Benchmarking tabs.</div>
+    <!-- GLOBAL OVERVIEW (default view) -->
+    <div id="panel-global-overview" class="panel active">
+      <div class="page-head">
+        <div>
+          <div class="page-title">Global Overview</div>
+          <div class="page-sub">Key two-wheeler market indicators and sales overview across 85+ countries.</div>
+        </div>
+      </div>
+
+      <div class="ov-kpi-grid">
+        <div class="ov-kpi-card">
+          <div class="ov-kpi-icon">🛵</div>
+          <div class="ov-kpi-label">Total 2W Sales</div>
+          <div class="ov-kpi-value">15.7M</div>
+          <div class="ov-kpi-date">May 2024</div>
+          <div class="ov-kpi-change up">▲ 8.6% <span class="note">vs Apr 2024</span></div>
+        </div>
+        <div class="ov-kpi-card">
+          <div class="ov-kpi-icon">📈</div>
+          <div class="ov-kpi-label">YoY Growth</div>
+          <div class="ov-kpi-value">12.4%</div>
+          <div class="ov-kpi-date">May 2024</div>
+          <div class="ov-kpi-change up">▲ 2.1 pp <span class="note">vs May 2023</span></div>
+        </div>
+        <div class="ov-kpi-card">
+          <div class="ov-kpi-icon">🏆</div>
+          <div class="ov-kpi-label">Top Market</div>
+          <div class="ov-kpi-value">India</div>
+          <div class="ov-kpi-subline">3.9M Sales</div>
+          <div class="ov-kpi-subline">24.8% Share</div>
+        </div>
+        <div class="ov-kpi-card">
+          <div class="ov-kpi-icon">⚡</div>
+          <div class="ov-kpi-label">Electric 2W Share</div>
+          <div class="ov-kpi-value">18.6%</div>
+          <div class="ov-kpi-date">May 2024</div>
+          <div class="ov-kpi-change up">▲ 3.3 pp <span class="note">vs Apr 2024</span></div>
+        </div>
+      </div>
+
+      <div class="section-row cols-32">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Monthly 2W Sales Trend (Global)</div>
+            <span class="tag blue">Sales (Units)</span>
+          </div>
+          <div class="vbar-chart-wrap">
+            <div class="vbar-yaxis"><span>20M</span><span>15M</span><span>10M</span><span>5M</span><span>0</span></div>
+            <div class="vbar-plot">
+              <div class="vbar-bars-row">
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:62%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:67%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:73%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:75%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:79%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:65%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:79%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:64%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:80%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:77%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill" style="height:85%"></div></div>
+                <div class="vbar-col-fill"><div class="vbar-fill current" style="height:78%"></div></div>
+              </div>
+              <div class="vbar-labels-row">
+                <div class="vbar-label-col">Jun 23</div>
+                <div class="vbar-label-col">Jul 23</div>
+                <div class="vbar-label-col">Aug 23</div>
+                <div class="vbar-label-col">Sep 23</div>
+                <div class="vbar-label-col">Oct 23</div>
+                <div class="vbar-label-col">Nov 23</div>
+                <div class="vbar-label-col">Dec 23</div>
+                <div class="vbar-label-col">Jan 24</div>
+                <div class="vbar-label-col">Feb 24</div>
+                <div class="vbar-label-col">Mar 24</div>
+                <div class="vbar-label-col">Apr 24</div>
+                <div class="vbar-label-col">May 24</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Top 5 Markets by Sales</div>
+            <span class="tag amber">May 2024</span>
+          </div>
+          <div class="donut-wrap">
+            <svg class="donut-svg" width="120" height="120" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#eef1f7" stroke-width="14"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#0f172a" stroke-width="14" stroke-dasharray="59.2 179.6" stroke-linecap="butt" transform="rotate(-90 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#1d4ed8" stroke-width="14" stroke-dasharray="48.0 190.8" stroke-linecap="butt" transform="rotate(-0.7 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#2f5fdb" stroke-width="14" stroke-dasharray="27.5 211.3" stroke-linecap="butt" transform="rotate(71.6 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#7fa4f0" stroke-width="14" stroke-dasharray="17.2 221.6" stroke-linecap="butt" transform="rotate(113 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#b9c9f2" stroke-width="14" stroke-dasharray="13.4 225.4" stroke-linecap="butt" transform="rotate(139 50 50)"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="#dfe3ee" stroke-width="14" stroke-dasharray="73.5 165.2" stroke-linecap="butt" transform="rotate(159.1 50 50)"/>
+              <text x="50" y="46" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="700">15.7M</text>
+              <text x="50" y="58" text-anchor="middle" fill="#8992a8" font-size="7">Total Sales</text>
+              <text x="50" y="66" text-anchor="middle" fill="#8992a8" font-size="7">May 2024</text>
+            </svg>
+            <div class="donut-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:#0f172a"></div>India — <span>24.8%</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#1d4ed8"></div>China — <span>20.1%</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#2f5fdb"></div>Indonesia — <span>11.5%</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#7fa4f0"></div>Vietnam — <span>7.2%</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#b9c9f2"></div>Brazil — <span>5.6%</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#dfe3ee"></div>Others — <span>30.8%</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -712,22 +851,37 @@ function slugifyRegion(region) {
   return region.toLowerCase().replace(/\s+/g, '-');
 }
 
+// flagcdn.com only serves a fixed set of preset pixel sizes (not arbitrary WxH).
+const FLAGCDN_PRESET_WIDTHS = [20, 24, 32, 40, 48, 60, 64, 80, 96, 120, 128, 160, 240, 320, 480, 640, 960, 1280, 1600];
+
+function nearestFlagcdnWidth(target) {
+  return FLAGCDN_PRESET_WIDTHS.reduce(function(best, w) {
+    return Math.abs(w - target) < Math.abs(best - target) ? w : best;
+  }, FLAGCDN_PRESET_WIDTHS[0]);
+}
+
 function flagImgTag(code, name, size) {
-  const w = size || 20;
+  const w = size || 22;
   const h = Math.round(w * 0.75);
-  return '<img src="https://flagcdn.com/' + w + 'x' + h + '/' + code + '.png" width="' + w + '" height="' + h + '" style="border-radius:2px;vertical-align:middle;margin-right:6px;" alt="' + name + '">';
+  // Fetch at ~2x the display resolution (snapped to a valid flagcdn preset) and scale
+  // down via width/height attributes for a crisper, less "dull" render.
+  const srcW = nearestFlagcdnWidth(w * 2);
+  const srcH = Math.round(srcW * 0.75);
+  return '<img src="https://flagcdn.com/' + srcW + 'x' + srcH + '/' + code + '.png" width="' + w + '" height="' + h + '" class="flag-img" alt="' + name + '">';
 }
 
 // Builds the sidebar Countries tree from countryDirectory, grouped by region.
+// Regions are shown in this fixed display order (not split into continents).
+const REGION_DISPLAY_ORDER = ['ASEAN', 'Other Asia', 'Europe', 'Africa I', 'Africa II', 'LATAM', 'Middle East', 'North America'];
+
 function buildCountryNav(defaultOpenRegion) {
-  const regionOrder = [];
   const byRegion = {};
   countryDirectory.forEach(function(c) {
-    if (!byRegion[c.region]) { byRegion[c.region] = []; regionOrder.push(c.region); }
+    if (!byRegion[c.region]) byRegion[c.region] = [];
     byRegion[c.region].push(c);
   });
   let html = '';
-  regionOrder.forEach(function(region) {
+  REGION_DISPLAY_ORDER.filter(function(region) { return byRegion[region]; }).forEach(function(region) {
     const slug = slugifyRegion(region);
     const isOpen = region === defaultOpenRegion;
     html += '<div class="region-group">'
@@ -738,7 +892,7 @@ function buildCountryNav(defaultOpenRegion) {
       + '<div class="country-list' + (isOpen ? ' open' : '') + '" id="list-' + slug + '">'
       + byRegion[region].map(function(c) {
           return '<div class="country-item" data-country="' + c.country + '" onclick="selectCountry(\'' + c.country + '\',\'' + region + '\',event)">'
-            + flagImgTag(c.code, c.country, 20)
+            + flagImgTag(c.code, c.country, 22)
             + '<span class="country-name">' + c.country + '</span></div>';
         }).join('')
       + '</div>'
@@ -1400,6 +1554,16 @@ function selectCountry(country, region, e) {
 
   showPanel('country');
   switchSubTab(currentSubTab);
+}
+
+function showGlobalOverview(e) {
+  if (e) e.stopPropagation();
+  document.querySelectorAll('.country-item').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.main-tab').forEach(el => el.classList.remove('active'));
+  const tab = document.getElementById('tab-global-overview');
+  if (tab) tab.classList.add('active');
+  document.getElementById('breadcrumb-current').textContent = 'Global Overview';
+  showPanel('global-overview');
 }
 
 // ===================== PANELS =====================
@@ -2814,9 +2978,9 @@ function renderRegulatoryOverview() {
 }
 
 // ===================== INIT =====================
-buildCountryNav('LATAM');
-// Auto-open Brazil on load
-selectCountry('Brazil', 'LATAM', null);
+buildCountryNav();
+// Default view is the Global Overview (no country pre-selected)
+showGlobalOverview();
 </script>
 </body>
 </html>
