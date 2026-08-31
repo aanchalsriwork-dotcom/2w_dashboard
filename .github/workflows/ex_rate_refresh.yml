@@ -22,7 +22,7 @@ jobs:
           python-version: "3.12"
 
       # Install required Python packages
-      - run: pip install requests psycopg2-binary
+      - run: pip install requests psycopg2-binary python-dotenv
 
       # Run the macro data pipeline
       - run: python exchangerate.py
