@@ -25,7 +25,7 @@ jobs:
       - run: pip install requests psycopg2-binary
 
       # Run the macro data pipeline
-      - run: python pipeline/exchangerate.py
+      - run: python exchangerate.py
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           EXCHANGERATE_API_KEY: ${{ secrets.EXCHANGERATE_API_KEY }}
