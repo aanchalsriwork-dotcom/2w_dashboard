@@ -1,0 +1,31 @@
+name: macro-data-refresh
+
+on:
+  # Run automatically every 5 minutes
+  schedule:
+    - cron: "*/5 * * * *"
+
+  # Allow manual runs from GitHub
+  workflow_dispatch: {}
+
+jobs:
+  fetch-and-load:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Download the GitHub repository
+      - uses: actions/checkout@v4
+
+      # Set up Python
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Install required Python packages
+      - run: pip install requests psycopg2-binary
+
+      # Run the macro data pipeline
+      - run: python pipeline/load_macro.py
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          EXCHANGERATE_API_KEY: ${{ secrets.EXCHANGERATE_API_KEY }}
