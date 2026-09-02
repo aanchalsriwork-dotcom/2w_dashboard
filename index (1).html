@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OEM Market Intelligence � Global 2W Dashboard</title>
+<title>OEM Market Intelligence — Global 2W Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -501,7 +501,7 @@
     <div class="topbar-left">
       <div class="breadcrumb">
         <span>2W Dashboard</span>
-        <span class="sep">�</span>
+        <span class="sep">›</span>
         <span class="current" id="breadcrumb-current">Global Overview</span>
       </div>
     </div>
@@ -561,7 +561,7 @@
       <div id="sub-news" class="sub-panel">
         <div class="page-head" style="margin-bottom:14px;">
           <div>
-            <div style="font-size:15px;font-family:var(--font-head);font-weight:600;color:var(--text);">2025�2026 LATAM 2W Industry News</div>
+            <div style="font-size:15px;font-family:var(--font-head);font-weight:600;color:var(--text);">2025–2026 LATAM 2W Industry News</div>
             <div class="page-sub" id="news-country-sub">Headlines for selected country</div>
           </div>
           <div class="chip" onclick="renderCountryNews()">?? Refresh</div>
@@ -582,7 +582,7 @@
         <div class="page-head" style="margin-bottom:14px;">
           <div>
             <div style="font-size:15px;font-family:var(--font-head);font-weight:600;color:var(--text);">Social Media Benchmarking</div>
-            <div class="page-sub" id="social-country-sub">Top brands � followers &amp; 2026 campaigns</div>
+            <div class="page-sub" id="social-country-sub">Top brands — followers &amp; 2026 campaigns</div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
             <div class="chip" style="background:var(--green-soft);border-color:var(--green);color:var(--green);">? Verified May 2026</div>
@@ -598,7 +598,7 @@
         <div class="page-head" style="margin-bottom:18px;">
           <div>
             <div class="page-title" id="reg-title">Regulatory Overview</div>
-            <div class="page-sub" id="reg-sub">EV policy � compliance standards � trade policy � 2025�2026</div>
+            <div class="page-sub" id="reg-sub">EV policy — compliance standards — trade policy — 2025–2026</div>
           </div>
         </div>
         <div id="reg-content"></div>
@@ -610,7 +610,7 @@
       <div class="page-head">
         <div>
           <div class="page-title">LATAM News & Intelligence</div>
-          <div class="page-sub">2025�2026 LATAM 2W industry headlines</div>
+          <div class="page-sub">2025–2026 LATAM 2W industry headlines</div>
         </div>
         <div class="chip" onclick="renderGlobalNews()">?? Refresh</div>
       </div>
@@ -629,7 +629,7 @@
     <div id="panel-global-social" class="panel">
       <div class="page-head">
         <div>
-          <div class="page-title">Social Benchmarking � LATAM</div>
+          <div class="page-title">Social Benchmarking — LATAM</div>
           <div class="page-sub">Country-wise top brands: followers, engagement, campaigns, events</div>
         </div>
         <div class="chip">Updated Daily</div>
@@ -651,7 +651,7 @@
 <script src="https://unpkg.com/lucide@1.38.0/dist/umd/lucide.js"></script>
 <script>
 // ===================== COUNTRY DIRECTORY (from flag_codes.xlsx) =====================
-// Hardcoded region/country/flag-code map � no runtime CSV fetch needed.
+// Hardcoded region/country/flag-code map — no runtime CSV fetch needed.
 const countryDirectory = [
   { region: 'LATAM', country: 'Argentina', code: 'ar' },
   { region: 'LATAM', country: 'Bolivia', code: 'bo' },
@@ -828,7 +828,7 @@ function renderOverviewContent(containerId, data) {
     const extra = k.sublines
       ? k.sublines.map(function(s) { return '<div class="ov-kpi-subline">' + s + '</div>'; }).join('')
       : '<div class="ov-kpi-date">' + k.date + '</div>'
-        + '<div class="ov-kpi-change ' + k.changeDir + '">' + (k.changeDir === 'down' ? '?' : '?') + ' ' + k.changeText + ' <span class="note">' + k.note + '</span></div>';
+        + '<div class="ov-kpi-change ' + k.changeDir + '">' + (k.changeDir === 'down' ? '▼' : '▲') + ' ' + k.changeText + ' <span class="note">' + k.note + '</span></div>';
     return '<div class="ov-kpi-card">'
       + '<div class="ov-kpi-top">'
         + '<div class="ov-kpi-icon"><i data-lucide="' + k.icon + '" style="width:26px;height:26px"></i></div>'
@@ -862,7 +862,7 @@ function renderOverviewContent(containerId, data) {
   }).join('');
   const legendHtml = data.topMarkets.map(function(t, i) {
     const color = DONUT_PALETTE[i % DONUT_PALETTE.length];
-    return '<div class="legend-item"><div class="legend-dot" style="background:' + color + '"></div>' + t.name + ' � <span>' + t.pct.toFixed(1) + '%</span></div>';
+    return '<div class="legend-item"><div class="legend-dot" style="background:' + color + '"></div>' + t.name + ' <span>' + t.pct.toFixed(1) + '%</span></div>';
   }).join('');
 
   el.innerHTML =
@@ -1012,11 +1012,11 @@ const latamData = {
   Brazil: {
     gdp: '$2.17T', gdpGrowth: '? 2.9% YoY', gdpChg: 'up',
     market2w: '1.28M units', market2wChg: '? 6.4% vs 2024', m2wDir: 'up',
-    cagr: '7.2%', cagrNote: 'CAGR forecast 2025�2030', cagrDir: 'up',
+    cagr: '7.2%', cagrNote: 'CAGR forecast 2025–2030', cagrDir: 'up',
     revenue: '$2.6B', revenueChg: '? 8.1% YoY', revDir: 'up',
     population: '216M', populationChg: '? 0.7% YoY',
     inflation: '4.8%', inflationChg: '? 0.3pts vs 2024', inflationDir: 'down',
-    fuelPrice: 'R$6.39/L', fuelChg: 'Gasoline � ? 3.2% YoY', fuelDir: 'down',
+    fuelPrice: 'R$6.39/L', fuelChg: 'Gasoline — ▼ 3.2% YoY', fuelDir: 'down',
     penetration: '6.1', penetrationChg: 'per 100 population',
     dealerCount: '5,200+', dealerChg: '? 320 vs 2024', dealerDir: 'up',
     evShare: '3.8%', evChg: '? 1.4pts YoY', evDir: 'up',
@@ -1048,11 +1048,11 @@ const latamData = {
   Colombia: {
     gdp: '$363B', gdpGrowth: '? 1.8% YoY', gdpChg: 'up',
     market2w: '280K units', market2wChg: '? 4.2% vs 2024', m2wDir: 'up',
-    cagr: '5.8%', cagrNote: 'CAGR forecast 2025�2030', cagrDir: 'up',
+    cagr: '5.8%', cagrNote: 'CAGR forecast 2025–2030', cagrDir: 'up',
     revenue: '$640M', revenueChg: '? 6.5% YoY', revDir: 'up',
     population: '52M', populationChg: '? 0.9% YoY',
     inflation: '6.3%', inflationChg: '? 0.8pts vs 2024', inflationDir: 'down',
-    fuelPrice: 'COP 15,200/L', fuelChg: 'Gasoline � ? 4.1% YoY', fuelDir: 'down',
+    fuelPrice: 'COP 15,200/L', fuelChg: 'Gasoline — ▼ 4.1% YoY', fuelDir: 'down',
     penetration: '5.4', penetrationChg: 'per 100 population',
     dealerCount: '1,380+', dealerChg: '? 55 vs 2024', dealerDir: 'up',
     evShare: '2.1%', evChg: '? 0.9pts YoY', evDir: 'up',
@@ -1082,11 +1082,11 @@ const latamData = {
   Argentina: {
     gdp: '$640B', gdpGrowth: '? 1.2% YoY', gdpChg: 'down',
     market2w: '380K units', market2wChg: '? 3.1% vs 2024', m2wDir: 'down',
-    cagr: '4.2%', cagrNote: 'CAGR forecast 2025�2030', cagrDir: 'up',
+    cagr: '4.2%', cagrNote: 'CAGR forecast 2025–2030', cagrDir: 'up',
     revenue: '$810M', revenueChg: '? 1.8% YoY', revDir: 'up',
     population: '46M', populationChg: '? 0.8% YoY',
     inflation: '84.5%', inflationChg: '? 47pts vs 2024', inflationDir: 'down',
-    fuelPrice: 'ARS 1,240/L', fuelChg: 'Gasoline � ? 62% YoY', fuelDir: 'down',
+    fuelPrice: 'ARS 1,240/L', fuelChg: 'Gasoline — ▼ 62% YoY', fuelDir: 'down',
     penetration: '8.2', penetrationChg: 'per 100 population',
     dealerCount: '1,720+', dealerChg: '? 30 vs 2024', dealerDir: 'down',
     evShare: '1.4%', evChg: '? 0.5pts YoY', evDir: 'up',
@@ -1116,11 +1116,11 @@ const latamData = {
   Chile: {
     gdp: '$317B', gdpGrowth: '? 2.4% YoY', gdpChg: 'up',
     market2w: '320K units', market2wChg: '? 5.1% vs 2024', m2wDir: 'up',
-    cagr: '6.1%', cagrNote: 'CAGR forecast 2025�2030', cagrDir: 'up',
+    cagr: '6.1%', cagrNote: 'CAGR forecast 2025–2030', cagrDir: 'up',
     revenue: '$920M', revenueChg: '? 7.3% YoY', revDir: 'up',
     population: '19.6M', populationChg: '? 0.6% YoY',
     inflation: '3.7%', inflationChg: '? 0.5pts vs 2024', inflationDir: 'down',
-    fuelPrice: 'CLP 1,080/L', fuelChg: 'Gasoline � ? 1.8% YoY', fuelDir: 'down',
+    fuelPrice: 'CLP 1,080/L', fuelChg: 'Gasoline — ▼ 1.8% YoY', fuelDir: 'down',
     penetration: '16.2', penetrationChg: 'per 100 population',
     dealerCount: '840+', dealerChg: '? 42 vs 2024', dealerDir: 'up',
     evShare: '4.6%', evChg: '? 2.1pts YoY', evDir: 'up',
@@ -1150,11 +1150,11 @@ const latamData = {
   Peru: {
     gdp: '$249B', gdpGrowth: '? 3.1% YoY', gdpChg: 'up',
     market2w: '220K units', market2wChg: '? 3.8% vs 2024', m2wDir: 'up',
-    cagr: '5.3%', cagrNote: 'CAGR forecast 2025�2030', cagrDir: 'up',
+    cagr: '5.3%', cagrNote: 'CAGR forecast 2025–2030', cagrDir: 'up',
     revenue: '$380M', revenueChg: '? 5.2% YoY', revDir: 'up',
     population: '33.4M', populationChg: '? 1.1% YoY',
     inflation: '2.9%', inflationChg: '? 0.4pts vs 2024', inflationDir: 'down',
-    fuelPrice: 'S/. 7.10/L', fuelChg: 'Gasoline � ? 2.5% YoY', fuelDir: 'down',
+    fuelPrice: 'S/. 7.10/L', fuelChg: 'Gasoline — ▼ 2.5% YoY', fuelDir: 'down',
     penetration: '6.4', penetrationChg: 'per 100 population',
     dealerCount: '820+', dealerChg: '? 28 vs 2024', dealerDir: 'up',
     evShare: '1.2%', evChg: '? 0.4pts YoY', evDir: 'up',
@@ -1666,7 +1666,7 @@ const socialLatam = {
      ]},
   ],
   Peru: [
-    {name:'Honda Per�',seg:'Two-Wheeler',color:'#f5a623',bg:'rgba(245,166,35,0.12)',
+    {name:'Honda Perú',seg:'Two-Wheeler',color:'#f5a623',bg:'rgba(245,166,35,0.12)',
      ig:{f:'825K',url:'https://www.instagram.com/hondamotosperuoficial/'},
      yt:{f:'312K',url:'https://www.youtube.com/@hondamotosperuoficial2855'},
      fb:{f:'1.52M',url:'https://www.facebook.com/HondaDelPeru/'},
@@ -1677,7 +1677,7 @@ const socialLatam = {
        {tag:'#Tornado150PE',url:'https://www.instagram.com/explore/tags/Tornado150PE/'},
        {tag:'#HondaLimaMoto',url:'https://www.instagram.com/explore/tags/HondaLimaMoto/'},
      ]},
-    {name:'Yamaha Per�',seg:'Two-Wheeler',color:'#22c97a',bg:'rgba(34,201,122,0.12)',
+    {name:'Yamaha Perú',seg:'Two-Wheeler',color:'#22c97a',bg:'rgba(34,201,122,0.12)',
      ig:{f:'558K',url:'https://www.instagram.com/yamahamotorperu/'},
      yt:{f:'218K',url:'https://www.youtube.com/user/yamahamotorperu'},
      fb:{f:'1.08M',url:'https://www.facebook.com/yamahamotorperu/'},
@@ -1688,7 +1688,7 @@ const socialLatam = {
        {tag:'#FZS150PE',url:'https://www.instagram.com/explore/tags/FZS150PE/'},
        {tag:'#YamahaUrbanPE',url:'https://www.instagram.com/explore/tags/YamahaUrbanPE/'},
      ]},
-    {name:'Bajaj Per�',seg:'Two-Wheeler',color:'#9b6dff',bg:'rgba(155,109,255,0.12)',
+    {name:'Bajaj Perú',seg:'Two-Wheeler',color:'#9b6dff',bg:'rgba(155,109,255,0.12)',
      ig:{f:'368K',url:'https://www.instagram.com/bajajperuoficial/'},
      yt:{f:'142K',url:'https://www.youtube.com/@bajajperu'},
      fb:{f:'NA',url:'NA'},
@@ -1720,7 +1720,7 @@ const globalEvents = [
 
 const platformEngagement = [
   {platform:'Instagram',avg:'5.4%',leader:'BMW Motorrad CL'},
-  {platform:'YouTube',avg:'7.8%',leader:'Bajaj Per�'},
+  {platform:'YouTube',avg:'7.8%',leader:'Bajaj Perú'},
   {platform:'Facebook',avg:'2.6%',leader:'AKT Motos'},
   {platform:'X (Twitter)',avg:'1.4%',leader:'Honda Chile'},
   {platform:'LinkedIn',avg:'4.9%',leader:'BMW Motorrad CL'},
@@ -1771,7 +1771,7 @@ function selectCountry(country, region, e) {
     const initial = document.querySelector('.country-item[data-country="' + country + '"]');
     if (initial) initial.classList.add('active');
   }
-  document.getElementById('breadcrumb-current').textContent = (region || 'Global') + ' � ' + country;
+  document.getElementById('breadcrumb-current').textContent = (region || 'Global') + ' › ' + country;
   setViewMode('country');
 
   // Sync the country filter dropdown in Brand & Sales tab
@@ -1916,7 +1916,7 @@ function renderCountryOverview() {
       + '</div>'
       + '<div class="ov-kpi-value">' + k.value + '</div>'
       + '<div class="ov-kpi-date">' + k.date + '</div>'
-      + '<div class="ov-kpi-change ' + k.changeDir + '">' + (k.changeDir === 'down' ? '?' : '?') + ' ' + k.changeText + ' <span class="note">' + k.note + '</span></div>'
+      + '<div class="ov-kpi-change ' + k.changeDir + '">' + (k.changeDir === 'down' ? '▼' : '▲') + ' ' + k.changeText + ' <span class="note">' + k.note + '</span></div>'
       + '</div>';
   }).join('');
 
@@ -1937,8 +1937,8 @@ function renderCountryOverview() {
     + '<div class="scorecard-grid">'
       + scItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Global Market Share', sc.globalShare, 'vs Apr 2024 <span class="' + sc.globalShareDir + '">? ' + sc.globalShareChg + '</span>')
       + scItem('var(--green-soft)', 'var(--green)', 'map', 'Regional Market Share', sc.regionalShare, 'vs Apr 2024 <span class="' + sc.regionalShareDir + '">? ' + sc.regionalShareChg + '</span>')
-      + scItem('var(--blue-soft)', 'var(--accent2)', 'trophy', 'Rank (Global)', sc.rankGlobal + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankGlobalTotal + '</span>', 'vs Apr 2024 �')
-      + scItem('var(--green-soft)', 'var(--green)', 'trophy', 'Rank (Regional)', sc.rankRegional + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankRegionalTotal + '</span>', 'vs Apr 2024 �')
+      + scItem('var(--blue-soft)', 'var(--accent2)', 'trophy', 'Rank (Global)', sc.rankGlobal + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankGlobalTotal + '</span>', 'vs Apr 2024')
+      + scItem('var(--green-soft)', 'var(--green)', 'trophy', 'Rank (Regional)', sc.rankRegional + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankRegionalTotal + '</span>', 'vs Apr 2024')
       + scItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Growth vs Global', '<span style="color:' + (vsGlobalPp>=0?'var(--green)':'var(--red)') + '">' + fmtPp(vsGlobalPp) + '</span>', currentCountry + ': ' + sc.ownGrowth.toFixed(1) + '%&nbsp;&nbsp;|&nbsp;&nbsp;Global: ' + GLOBAL_AVG_GROWTH.toFixed(1) + '%')
       + scItem('var(--green-soft)', 'var(--green)', 'map', 'Growth vs Regional', '<span style="color:' + (vsRegionalPp>=0?'var(--green)':'var(--red)') + '">' + fmtPp(vsRegionalPp) + '</span>', currentCountry + ': ' + sc.ownGrowth.toFixed(1) + '%&nbsp;&nbsp;|&nbsp;&nbsp;Regional: ' + LATAM_AVG_GROWTH.toFixed(1) + '%')
     + '</div>'
@@ -2062,7 +2062,7 @@ function applyAppsScript() {
   const input = document.getElementById('apps-script-url-input');
   if (input) APPS_SCRIPT_URL = input.value.trim();
   if (!APPS_SCRIPT_URL) {
-    setSheetStatus('? Please paste your Apps Script URL first', 'var(--amber)');
+    setSheetStatus('⚠ Please paste your Apps Script URL first', 'var(--amber)');
     return;
   }
   liveSheetData = null;
@@ -2073,7 +2073,7 @@ function applySheetId() {
   const input = document.getElementById('sheet-id-input');
   if (input) SHEET_ID = input.value.trim();
   if (!SHEET_ID) {
-    setSheetStatus('? Please paste your Sheet ID first', 'var(--amber)');
+    setSheetStatus('⚠ Please paste your Sheet ID first', 'var(--amber)');
     return;
   }
   liveSheetData = null;
@@ -2153,12 +2153,12 @@ async function runDebug() {
   log(`Country tab: "${country}"`);
   log('-'.repeat(50));
 
-  if (!id) { log('? No Sheet ID set.', 'var(--red)'); return; }
+  if (!id) { log('✗ No Sheet ID set.', 'var(--red)'); return; }
 
   const scriptUrl = APPS_SCRIPT_URL ||
     (document.getElementById('apps-script-url-input') || {}).value?.trim();
 
-  log(`Apps Script URL: ${scriptUrl ? scriptUrl.slice(0,60) + '�' : '(none set)'}`,
+  log(`Apps Script URL: ${scriptUrl ? scriptUrl.slice(0,60) + '…' : '(none set)'}`,
     scriptUrl ? 'var(--green)' : 'var(--amber)');
   log('-'.repeat(50));
 
@@ -2168,7 +2168,7 @@ async function runDebug() {
 
   // Test Apps Script first
   if (scriptUrl) {
-    log('\nTrying Apps Script URL�', 'var(--text3)');
+    log('\nTrying Apps Script URL…', 'var(--text3)');
     try {
       const url = scriptUrl + (scriptUrl.includes('?') ? '&' : '?') + 'sheet=' + encodeURIComponent(country);
       const r = await raceTimeout(fetch(url), 15000);
@@ -2178,15 +2178,15 @@ async function runDebug() {
       if (!Array.isArray(data)) throw new Error('Not an array: ' + JSON.stringify(data).slice(0,80));
       log(`  ? Got ${data.length} rows!`, 'var(--green)');
       if (data.length) log(`  Keys: ${Object.keys(data[0]).join(', ')}`, 'var(--green)');
-      log('\n? Apps Script works! Reloading data now�', 'var(--green)');
+      log('\n✓ Apps Script works! Reloading data now…', 'var(--green)');
       loadSheetData();
       return;
     } catch(e) {
       log(`  ? Error: ${e.message}`, 'var(--red)');
-      log('  ? Check: deployed as Web app with "Anyone" access, and try re-deploying.', 'var(--amber)');
+      log('  ⚠ Check: deployed as Web app with "Anyone" access, and try re-deploying.', 'var(--amber)');
     }
   } else {
-    log('\n? No Apps Script URL set � paste it above and click Apply.', 'var(--amber)');
+    log('\n⚠ No Apps Script URL set — paste it above and click Apply.', 'var(--amber)');
   }
 
   const urls = [
@@ -2209,7 +2209,7 @@ async function runDebug() {
   }
 
   for (const u of urls) {
-    log(`\nTrying ${u.label}�`, 'var(--text3)');
+    log(`\nTrying ${u.label}…`, 'var(--text3)');
     try {
       let text = '';
       if (u.type === 'direct') {
@@ -2237,15 +2237,15 @@ async function runDebug() {
       log(`  response (first 120 chars): "${preview}"`);
 
       if (!text.trim()) {
-        log('  ? Empty response', 'var(--red)');
+        log('  ✗ Empty response', 'var(--red)');
       } else if (text.trim().startsWith('<!')) {
-        log('  ? Got HTML page (not CSV) � sheet not published or tab name wrong', 'var(--red)');
+        log('  ✗ Got HTML page (not CSV) — sheet not published or tab name wrong', 'var(--red)');
       } else if (text.trim() === '[]' || text.trim() === '{}') {
-        log('  ? Got empty JSON � proxy returned nothing', 'var(--red)');
+        log('  ✗ Got empty JSON — proxy returned nothing', 'var(--red)');
       } else {
-        log('  ? Looks like CSV! Rows: ' + text.trim().split('\n').length, 'var(--green)');
+        log('  ✓ Looks like CSV! Rows: ' + text.trim().split('\n').length, 'var(--green)');
         log(`  Headers: ${text.trim().split('\n')[0]}`, 'var(--green)');
-        log('\n? This method works � reloading data now�', 'var(--green)');
+        log('\n✓ This method works — reloading data now…', 'var(--green)');
         loadSheetData();
         return;
       }
@@ -2254,11 +2254,11 @@ async function runDebug() {
     }
   }
 
-  log('\n? ALL methods failed. Please check:', 'var(--red)');
-  log('  � File ? Share ? Publish to web ? CSV ? Publish (each tab)', 'var(--amber)');
-  log('  � Share ? Anyone with the link ? Viewer', 'var(--amber)');
-  log('  � Tab name is exactly: ' + country + ' (case-sensitive)', 'var(--amber)');
-  log('  � Sheet ID is correct (from the URL between /d/ and /edit)', 'var(--amber)');
+  log('\n✗ ALL methods failed. Please check:', 'var(--red)');
+  log('  • File → Share → Publish to web → CSV → Publish (each tab)', 'var(--amber)');
+  log('  • Share → Anyone with the link → Viewer', 'var(--amber)');
+  log('  • Tab name is exactly: ' + country + ' (case-sensitive)', 'var(--amber)');
+  log('  • Sheet ID is correct (from the URL between /d/ and /edit)', 'var(--amber)');
 }
 
 // ===================== LIVE SYNC VIA CLAUDE CHAT =====================
@@ -2280,7 +2280,7 @@ function syncFromGoogleDrive() {
     document.head.appendChild(s);
   }
   icon.style.animation = 'spin 0.8s linear infinite';
-  btn.childNodes[1].textContent = ' Requesting update�';
+  btn.childNodes[1].textContent = ' Requesting update…';
 
   // Send prompt to Claude in this chat to re-sync
   if (typeof sendPrompt === 'function') {
@@ -2305,13 +2305,13 @@ function syncFromGoogleDrive() {
 
 async function loadSheetData() {
   const country = currentCountry;
-  setSheetStatus('? Fetching ' + country + ' data�', 'var(--text3)');
+  setSheetStatus('⏳ Fetching ' + country + ' data…', 'var(--text3)');
 
   const tbody = document.getElementById('brand-tbody');
   if (tbody) tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:32px;">
     <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
       <div style="width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite"></div>
-      Fetching ${country} data from Google Sheets�
+      Fetching ${country} data from Google Sheets…
     </div></td></tr>`;
   if (!document.getElementById('spin-style')) {
     const s = document.createElement('style'); s.id = 'spin-style';
@@ -2323,7 +2323,7 @@ async function loadSheetData() {
     (document.getElementById('apps-script-url-input') || {}).value?.trim();
 
   if (!scriptUrl) {
-    setSheetStatus('? Paste your Apps Script URL above and click Apply', 'var(--amber)');
+    setSheetStatus('⚠ Paste your Apps Script URL above and click Apply', 'var(--amber)');
     liveSheetData = null; renderBrandIntelligence(); return;
   }
 
@@ -2334,9 +2334,9 @@ async function loadSheetData() {
   let jsonRows = null;
 
   try {
-    // Apps Script: fetch JSON directly � no CORS, no proxies needed
+    // Apps Script: fetch JSON directly — no CORS, no proxies needed
     const url = scriptUrl + (scriptUrl.includes('?') ? '&' : '?') + 'sheet=' + encodeURIComponent(country);
-    setSheetStatus('? Calling Apps Script for ' + country + '�', 'var(--text3)');
+    setSheetStatus('⏳ Calling Apps Script for ' + country + '…', 'var(--text3)');
     const r = await raceTimeout(fetch(url), 15000);
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const data = await r.json();
@@ -2345,12 +2345,12 @@ async function loadSheetData() {
     jsonRows = data;
   } catch(e) {
     console.error('Apps Script fetch failed:', e.message);
-    setSheetStatus('? Apps Script failed: ' + e.message + ' � Check the URL is correct and deployed as "Anyone" access.', 'var(--red)');
+    setSheetStatus('✗ Apps Script failed: ' + e.message + ' — Check the URL is correct and deployed as "Anyone" access.', 'var(--red)');
     liveSheetData = null; renderBrandIntelligence(); return;
   }
 
   if (!jsonRows || jsonRows.length === 0) {
-    setSheetStatus('? No data returned for "' + country + '" � check the tab name in your sheet matches exactly.', 'var(--amber)');
+    setSheetStatus('⚠ No data returned for "' + country + '" — check the tab name in your sheet matches exactly.', 'var(--amber)');
     liveSheetData = null; renderBrandIntelligence(); return;
   }
 
@@ -2372,11 +2372,11 @@ async function loadSheetData() {
   })).filter(r => r.brand);
 
   if (!liveSheetData.length) {
-    setSheetStatus('? Data fetched but no valid rows found � check column headers: Brand, Model, CC, Category, Sales 2024, Sales 2025', 'var(--amber)');
+    setSheetStatus('⚠ Data fetched but no valid rows found — check column headers: Brand, Model, CC, Category, Sales 2024, Sales 2025', 'var(--amber)');
     liveSheetData = null; renderBrandIntelligence(); return;
   }
 
-  setSheetStatus('? ' + liveSheetData.length + ' rows loaded for ' + country, 'var(--green)');
+  setSheetStatus('✓ ' + liveSheetData.length + ' rows loaded for ' + country, 'var(--green)');
 
   // Sync filters from live data
   const cfEl = document.getElementById('brand-country-filter');
@@ -2398,7 +2398,7 @@ async function loadSheetData() {
 // Open the Google Sheet, jumping to the Chile tab if Chile is selected
 function openSheet() {
   const country = document.getElementById('brand-country-filter').value;
-  // Base spreadsheet URL � extracted from the Apps Script deployment URL (same spreadsheet)
+  // Base spreadsheet URL — extracted from the Apps Script deployment URL (same spreadsheet)
   // Apps Script URL pattern: .../macros/s/{SCRIPT_ID}/exec
   // We open the Apps Script editor or the sheet; since we only have the exec URL,
   // we open a targeted URL using gid if Chile is selected, otherwise the plain sheet.
@@ -2464,7 +2464,7 @@ function brandBadge(name, size) {
   return '<span class="brand-badge" style="width:' + size + 'px;height:' + size + 'px;background:' + brandColor(name) + ';font-size:' + Math.round(size * 0.38) + 'px;">' + brandInitials(name) + '</span>';
 }
 
-// Deterministic small dummy MoM growth (%) � real data is only tracked annually (sales2024 vs sales2025).
+// Deterministic small dummy MoM growth (%) — real data is only tracked annually (sales2024 vs sales2025).
 function genMomGrowth(seed) {
   return Math.round((Math.sin(seed * 0.9) * 4 + 2.5) * 10) / 10;
 }
@@ -2518,7 +2518,7 @@ function aggregateBrandIntelFromRows(rows) {
 function biKpiEmptyCard(icon, label, amber) {
   return '<div class="bi-kpi-card"><div class="bi-kpi-icon' + (amber ? ' amber' : '') + '"><i data-lucide="' + icon + '" style="width:20px;height:20px"></i></div>'
     + '<div class="bi-kpi-body"><div class="bi-kpi-label">' + label + '</div>'
-    + '<div class="bi-kpi-value" style="color:var(--text3);">�</div>'
+    + '<div class="bi-kpi-value" style="color:var(--text3);">—</div>'
     + '<div class="bi-kpi-row"><span class="bi-muted">No data available</span></div>'
     + '</div></div>';
 }
@@ -2538,18 +2538,18 @@ function biKpiCards(agg, hasData) {
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="bike" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">Total Market Sales</div>'
       + '<div class="bi-kpi-value">' + formatUnits(agg.totalSales2025) + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">May 2024</span><span class="' + (mom >= 0 ? 'up' : 'down') + '">' + (mom >= 0 ? '?' : '?') + ' ' + Math.abs(mom).toFixed(1) + '% MoM</span></div>'
-      + '<div class="bi-kpi-row" style="justify-content:flex-end;"><span class="' + (agg.overallYoY >= 0 ? 'up' : 'down') + '">' + (agg.overallYoY >= 0 ? '?' : '?') + ' ' + Math.abs(agg.overallYoY).toFixed(1) + '% YoY</span></div>'
+      + '<div class="bi-kpi-row"><span class="bi-muted">May 2024</span><span class="' + (mom >= 0 ? 'up' : 'down') + '">' + (mom >= 0 ? '▲' : '▼') + ' ' + Math.abs(mom).toFixed(1) + '% MoM</span></div>'
+      + '<div class="bi-kpi-row" style="justify-content:flex-end;"><span class="' + (agg.overallYoY >= 0 ? 'up' : 'down') + '">' + (agg.overallYoY >= 0 ? '▲' : '▼') + ' ' + Math.abs(agg.overallYoY).toFixed(1) + '% YoY</span></div>'
       + '</div></div>'
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="crown" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">#1 Brand</div>'
       + '<div class="bi-kpi-value" title="' + tb.brand + '">' + tb.brand + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">' + tb.share.toFixed(1) + '% Market Share</span><span class="' + (tb.yoy >= 0 ? 'up' : 'down') + '">' + (tb.yoy >= 0 ? '?' : '?') + ' ' + Math.abs(tb.yoy).toFixed(1) + '% YoY</span></div>'
+      + '<div class="bi-kpi-row"><span class="bi-muted">' + tb.share.toFixed(1) + '% Market Share</span><span class="' + (tb.yoy >= 0 ? 'up' : 'down') + '">' + (tb.yoy >= 0 ? '▲' : '▼') + ' ' + Math.abs(tb.yoy).toFixed(1) + '% YoY</span></div>'
       + '</div></div>'
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon amber"><i data-lucide="star" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">#1 Model</div>'
       + '<div class="bi-kpi-value" title="' + tm.model + '">' + tm.model + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">' + formatUnits(tm.sales2025) + ' Units</span><span class="' + ((tm.yoy || 0) >= 0 ? 'up' : 'down') + '">' + ((tm.yoy || 0) >= 0 ? '?' : '?') + ' ' + Math.abs(tm.yoy || 0).toFixed(1) + '% YoY</span></div>'
+      + '<div class="bi-kpi-row"><span class="bi-muted">' + formatUnits(tm.sales2025) + ' Units</span><span class="' + ((tm.yoy || 0) >= 0 ? 'up' : 'down') + '">' + ((tm.yoy || 0) >= 0 ? '▲' : '▼') + ' ' + Math.abs(tm.yoy || 0).toFixed(1) + '% YoY</span></div>'
       + '</div></div>'
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="layers" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">Active Models</div>'
@@ -2562,7 +2562,7 @@ function biKpiCards(agg, hasData) {
 function brandRankRow(rank, name, sales, maxSales, share, yoy, isOthers) {
   const pct = maxSales ? Math.max(4, Math.round(sales / maxSales * 100)) : 0;
   const badge = isOthers
-    ? '<span class="brand-badge" style="width:22px;height:22px;background:var(--text3);font-size:10px;">�</span>'
+    ? '<span class="brand-badge" style="width:22px;height:22px;background:var(--text3);font-size:10px;">—</span>'
     : brandBadge(name, 22);
   return '<tr>'
     + '<td>' + rank + '</td>'
@@ -2625,7 +2625,7 @@ function biModelTableCard(agg, hasData) {
         + '<td>' + (i + 1) + '</td>'
         + '<td><div class="rank-cell">' + brandBadge(r.brand, 20) + '<span>' + r.brand + '</span></div></td>'
         + '<td style="font-weight:600;color:var(--text);">' + r.model + '</td>'
-        + '<td><span class="tag purple" style="font-size:10px;">' + (r.category || '�') + '</span></td>'
+        + '<td><span class="tag purple" style="font-size:10px;">' + (r.category || '—') + '</span></td>'
         + '<td class="num">' + formatUnits(r.sales2025) + '</td>'
         + '<td class="' + (mom >= 0 ? 'up' : 'down') + '">' + (mom >= 0 ? '? ' : '? ') + Math.abs(mom).toFixed(1) + '%</td>'
         + '<td class="' + ((r.yoy || 0) >= 0 ? 'up' : 'down') + '">' + ((r.yoy || 0) >= 0 ? '? ' : '? ') + Math.abs(r.yoy || 0).toFixed(1) + '%</td>'
@@ -2675,7 +2675,7 @@ function biBrandContributionCard(agg, hasData) {
     return c;
   }).join('');
   const legend = slices.map(function(s, i) {
-    return '<div class="legend-item"><div class="legend-dot" style="background:' + DONUT_PALETTE[i % DONUT_PALETTE.length] + '"></div>' + s.name + ' � <span>' + s.pct.toFixed(1) + '%</span></div>';
+    return '<div class="legend-item"><div class="legend-dot" style="background:' + DONUT_PALETTE[i % DONUT_PALETTE.length] + '"></div>' + s.name + ' <span>' + s.pct.toFixed(1) + '%</span></div>';
   }).join('');
 
   return '<div class="card bc-donut-card">'
@@ -2788,7 +2788,7 @@ function renderBrandIntelligence() {
       + '<div class="bi-header-flag">' + flagImg + '</div>'
       + '<div>'
         + '<div class="bi-header-title">Brand &amp; Model Intelligence</div>'
-        + '<div class="bi-header-meta">' + currentCountry + ' &nbsp;�&nbsp; May 2024</div>'
+        + '<div class="bi-header-meta">' + currentCountry + ' &nbsp;•&nbsp; May 2024</div>'
       + '</div>'
     + '</div>'
     + '<div class="bi-header-desc">Track brand and model level performance with monthly sales, growth trends and competitive insights.</div>'
@@ -2814,7 +2814,7 @@ function renderBrandIntelligence() {
 // ===================== COUNTRY NEWS =====================
 function renderCountryNews() {
   const items = latamNews[currentCountry] || [];
-  document.getElementById('news-country-sub').textContent = '2025�2026 headlines for ' + currentCountry + ' 2W market';
+  document.getElementById('news-country-sub').textContent = '2025–2026 headlines for ' + currentCountry + ' 2W market';
   renderNewsGrid(items, currentNewsFilter, 'country-news-grid');
 }
 
@@ -2840,12 +2840,12 @@ function filterGlobalNews(cat, btn) {
 function parseNewsDate(d){return new Date(d).getTime()||0;}
 
 // -------------------------------------------------------------
-//  2W NEWS URL RESOLVER  � Claude web_search picks best article
+//  2W NEWS URL RESOLVER  — Claude web_search picks best article
 // -------------------------------------------------------------
 const _newsUrlCache = {};   // key ? resolved url string
 
 async function resolveNewsUrl(cardId, n) {
-  // URL is baked into n.url � just apply it directly, no API call needed
+  // URL is baked into n.url — just apply it directly, no API call needed
   const btn  = document.querySelector(`[data-card-id="${cardId}"] .news-arrow-btn`);
   const card = document.querySelector(`[data-card-id="${cardId}"]`);
   if (n.url) _applyResolvedUrl(btn, card, n.url);
@@ -2863,7 +2863,7 @@ function _applyResolvedUrl(btn, card, url) {
 }
 
 // -------------------------------------------------------------
-//  NEWS IMAGE RESOLVER  � fetches OG image from article URL
+//  NEWS IMAGE RESOLVER  — fetches OG image from article URL
 // -------------------------------------------------------------
 const _newsImgCache = {};
 
@@ -2974,11 +2974,11 @@ function renderNewsGrid(items, filter, gridId) {
     btn.addEventListener('click', function(e){ e.stopPropagation(); window.open(this.getAttribute('data-url'),'_blank','noopener'); });
   });
 
-  // Staggered async resolution � Claude call per card, 400ms apart
+  // Staggered async resolution — Claude call per card, 400ms apart
   el.querySelectorAll('.news-card[data-card-id]').forEach((card, i) => {
     const n = filtered[i];
     if (!n) return;
-    // Card body click � uses live _resolvedUrl if available, then data-url, then fallback
+    // Card body click — uses live _resolvedUrl if available, then data-url, then fallback
     card.addEventListener('click', function(e) {
       if (e.target.closest('.news-arrow-btn')) return;
       const btn = this.querySelector('.news-arrow-btn');
@@ -2998,7 +2998,7 @@ function openSearch(headline) {
 // ===================== COUNTRY SOCIAL =====================
 function renderCountrySocial() {
   var oems = socialLatam[currentCountry] || [];
-  document.getElementById('social-country-sub').textContent = 'Top brands in ' + currentCountry + ' � followers & 2026 campaigns';
+  document.getElementById('social-country-sub').textContent = 'Top brands in ' + currentCountry + ' — followers & 2026 campaigns';
   if (!oems.length) {
     document.getElementById('social-oem-cards').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:24px 0;">No social benchmarking data available for ' + currentCountry + ' yet.</div>';
     return;
@@ -3049,7 +3049,7 @@ function platformCell(name, followers, url) {
   return wrapStart
     + '<div class="platform-icon">' + icon + '</div>'
     + '<div class="platform-name">' + name + '</div>'
-    + '<div class="platform-count">' + (hasLink ? followers : '�') + '</div>'
+    + '<div class="platform-count">' + (hasLink ? followers : '—') + '</div>'
     + wrapEnd;
 }
 
@@ -3068,7 +3068,7 @@ function renderGlobalSocial(country) {
         <div class="oem-name-row">
           <div>
             <div class="oem-title" style="color:${o.color}">${o.name}</div>
-            <div class="oem-segment">${o.seg} � ${c}</div>
+            <div class="oem-segment">${o.seg} — ${c}</div>
           </div>
         </div>
         <div class="platform-grid">
@@ -3093,7 +3093,7 @@ function renderGlobalSocial(country) {
           <div class="timeline-dot" style="border-color:${c.color};color:${c.color}">?</div>
           <div class="timeline-body">
             <div class="timeline-title">${c.name}</div>
-            <div class="timeline-meta">${c.brand} � ${c.country} � ${c.platform} � <span style="color:${c.color}">${c.status}</span></div>
+            <div class="timeline-meta">${c.brand} — ${c.country} — ${c.platform} — <span style="color:${c.color}">${c.status}</span></div>
           </div>
         </div>`).join('')}</div>
     </div>
@@ -3104,7 +3104,7 @@ function renderGlobalSocial(country) {
           <div class="timeline-dot" style="border-color:${e.color};color:${e.color}">?</div>
           <div class="timeline-body">
             <div class="timeline-title">${e.event}</div>
-            <div class="timeline-meta">${e.platform} � ${e.country} � ${e.date}</div>
+            <div class="timeline-meta">${e.platform} — ${e.country} — ${e.date}</div>
           </div>
         </div>`).join('')}</div>
     </div>
@@ -3140,205 +3140,205 @@ const macroData = {
     economic: [
       {label:'GDP Growth Rate',       value:'2.9%',              trend:'up',     note:'IMF WEO Apr 2025'},
       {label:'GDP Per Capita',        value:'$10,046',           trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'4.8%',              trend:'down',   note:'Annual IPCA � IBGE'},
+      {label:'Inflation Rate (CPI)',  value:'4.8%',              trend:'down',   note:'Annual IPCA — IBGE'},
       {label:'Consumer Confidence',   value:'98.4 pts',          trend:'up',     note:'FGV Consumer Conf. Index'},
     ],
     purchasing: [
       {label:'Avg Household Income',  value:'R$3,200/mo',        trend:'up',     note:'IBGE PNAD 2025 est.'},
-      {label:'Unemployment Rate',     value:'6.8%',              trend:'down',   note:'IBGE PNAD Cont�nua'},
+      {label:'Unemployment Rate',     value:'6.8%',              trend:'down',   note:'IBGE PNAD Contínua'},
       {label:'Wage Growth',           value:'+5.2% real',        trend:'up',     note:'Real Wage YoY'},
     ],
     financing: [
-      {label:'Central Bank Rate',     value:'14.75%',            trend:'up',     note:'SELIC � BCB May 2025'},
+      {label:'Central Bank Rate',     value:'14.75%',            trend:'up',     note:'SELIC — BCB May 2025'},
       {label:'Auto Loan APR',         value:'~24.5%',            trend:'neutral',note:'Avg Consumer Financing'},
       {label:'Consumer Credit Growth',value:'+8.4%',             trend:'up',     note:'BCB Credit YoY'},
     ],
     fuel: [
-      {label:'Petrol / Gasoline',     value:'R$6.39/L',          trend:'up',     note:'National Avg � Petrobras'},
-      {label:'Diesel Price',          value:'R$6.20/L',          trend:'up',     note:'B10 Blend � ANP'},
+      {label:'Petrol / Gasoline',     value:'R$6.39/L',          trend:'up',     note:'National Avg — Petrobras'},
+      {label:'Diesel Price',          value:'R$6.20/L',          trend:'up',     note:'B10 Blend — ANP'},
       {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
     ],
     mobility: [
-      {label:'Total Population',      value:'216M',              trend:'up',     note:'Growth rate: 0.7% p.a. � IBGE'},
-      {label:'Urbanization Rate',     value:'87.8%',             trend:'up',     note:'Urban Population � IBGE 2025'},
-      {label:'Population Density',    value:'25 /km�',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'69.2%',             trend:'neutral',note:'Ages 15�64 � IBGE'},
+      {label:'Total Population',      value:'216M',              trend:'up',     note:'Growth rate: 0.7% p.a. — IBGE'},
+      {label:'Urbanization Rate',     value:'87.8%',             trend:'up',     note:'Urban Population — IBGE 2025'},
+      {label:'Population Density',    value:'25 /km²',           trend:'neutral',note:'National Average'},
+      {label:'Working Age Pop.',      value:'69.2%',             trend:'neutral',note:'Ages 15–64 — IBGE'},
     ],
     ev: [
       {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'Minha Moto Programme'},
       {label:'EV Subsidy Amount',     value:'R$2,000/unit',      trend:'up',     note:'Low-income buyers'},
-      {label:'EV Charging Stations',  value:'4,200+',            trend:'up',     note:'Public Stations � ABVE'},
-      {label:'Electricity Price',     value:'R$0.75/kWh',        trend:'up',     note:'Residential Avg � ANEEL'},
-      {label:'EV Penetration',        value:'3.8%',              trend:'up',     note:'% of 2W Sales � ABRACICLO'},
+      {label:'EV Charging Stations',  value:'4,200+',            trend:'up',     note:'Public Stations — ABVE'},
+      {label:'Electricity Price',     value:'R$0.75/kWh',        trend:'up',     note:'Residential Avg — ANEEL'},
+      {label:'EV Penetration',        value:'3.8%',              trend:'up',     note:'% of 2W Sales — ABRACICLO'},
     ],
     trade: [
       {label:'Exchange Rate vs USD',  value:'R$5.12 / USD',      trend:'down',   note:'BRL spot May 2025'},
       {label:'Manufacturing PMI',     value:'53.1',              trend:'up',     note:'S&P Global Brazil PMI'},
-      {label:'Import Duties (2W)',    value:'35% CBU � 2% CKD',  trend:'neutral',note:'MDIC tariff schedule'},
+      {label:'Import Duties (2W)',    value:'35% CBU — 2% CKD',  trend:'neutral',note:'MDIC tariff schedule'},
     ],
   },
   Colombia: {
     economic: [
       {label:'GDP Growth Rate',       value:'1.8%',              trend:'up',     note:'IMF WEO Apr 2025'},
       {label:'GDP Per Capita',        value:'$6,981',            trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'6.3%',              trend:'down',   note:'Annual CPI � DANE'},
+      {label:'Inflation Rate (CPI)',  value:'6.3%',              trend:'down',   note:'Annual CPI — DANE'},
       {label:'Consumer Confidence',   value:'-18 pts',           trend:'up',     note:'Fedesarrollo ICE Index'},
     ],
     purchasing: [
       {label:'Avg Household Income',  value:'COP 2.4M/mo',       trend:'up',     note:'DANE GEIH 2025 est.'},
       {label:'Unemployment Rate',     value:'9.7%',              trend:'down',   note:'DANE National Rate'},
-      {label:'Wage Growth',           value:'+8.1% nominal',     trend:'up',     note:'Nominal Wage YoY � DANE'},
+      {label:'Wage Growth',           value:'+8.1% nominal',     trend:'up',     note:'Nominal Wage YoY — DANE'},
     ],
     financing: [
-      {label:'Central Bank Rate',     value:'10.25%',            trend:'down',   note:'Banco de la Rep�blica'},
+      {label:'Central Bank Rate',     value:'10.25%',            trend:'down',   note:'Banco de la República'},
       {label:'Auto Loan APR',         value:'~22.8%',            trend:'neutral',note:'Avg Consumer APR'},
       {label:'Consumer Credit Growth',value:'+4.2%',             trend:'up',     note:'Banrep Credit YoY'},
     ],
     fuel: [
-      {label:'Petrol / Gasoline',     value:'COP 15,200/L',      trend:'up',     note:'National Avg � MinMinas'},
+      {label:'Petrol / Gasoline',     value:'COP 15,200/L',      trend:'up',     note:'National Avg — MinMinas'},
       {label:'Diesel Price',          value:'COP 10,700/L',      trend:'up',     note:'Subsidised Rate'},
       {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
     ],
     mobility: [
-      {label:'Total Population',      value:'52M',               trend:'up',     note:'Growth rate: 0.9% p.a. � DANE'},
-      {label:'Urbanization Rate',     value:'81.4%',             trend:'up',     note:'Urban Population � World Bank 2025'},
-      {label:'Population Density',    value:'46 /km�',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'67.1%',             trend:'neutral',note:'Ages 15�64 � DANE'},
+      {label:'Total Population',      value:'52M',               trend:'up',     note:'Growth rate: 0.9% p.a. — DANE'},
+      {label:'Urbanization Rate',     value:'81.4%',             trend:'up',     note:'Urban Population — World Bank 2025'},
+      {label:'Population Density',    value:'46 /km²',           trend:'neutral',note:'National Average'},
+      {label:'Working Age Pop.',      value:'67.1%',             trend:'neutral',note:'Ages 15–64 — DANE'},
     ],
     ev: [
       {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'Fleet Rebate Programme'},
       {label:'EV Subsidy Amount',     value:'COP 4M/unit',       trend:'up',     note:'Fleet purchases (10+ units)'},
-      {label:'EV Charging Stations',  value:'850+',              trend:'up',     note:'Public Stations � ANDEMOS'},
-      {label:'Electricity Price',     value:'COP 680/kWh',       trend:'up',     note:'Residential � CREG'},
-      {label:'EV Penetration',        value:'2.1%',              trend:'up',     note:'% of 2W Sales � ANDI'},
+      {label:'EV Charging Stations',  value:'850+',              trend:'up',     note:'Public Stations — ANDEMOS'},
+      {label:'Electricity Price',     value:'COP 680/kWh',       trend:'up',     note:'Residential — CREG'},
+      {label:'EV Penetration',        value:'2.1%',              trend:'up',     note:'% of 2W Sales — ANDI'},
     ],
     trade: [
       {label:'Exchange Rate vs USD',  value:'COP 4,050 / USD',   trend:'down',   note:'COP spot May 2025'},
       {label:'Manufacturing PMI',     value:'49.8',              trend:'down',   note:'S&P Global Colombia PMI'},
-      {label:'Import Duties (2W)',    value:'35% CBU � 5% CKD',  trend:'neutral',note:'DIAN tariff schedule'},
+      {label:'Import Duties (2W)',    value:'35% CBU — 5% CKD',  trend:'neutral',note:'DIAN tariff schedule'},
     ],
   },
   Argentina: {
     economic: [
       {label:'GDP Growth Rate',       value:'-1.2%',             trend:'down',   note:'IMF WEO Apr 2025'},
       {label:'GDP Per Capita',        value:'$13,913',           trend:'down',   note:'Nominal USD (official FX)'},
-      {label:'Inflation Rate (CPI)',  value:'84.5%',             trend:'down',   note:'Annual CPI � INDEC (easing)'},
+      {label:'Inflation Rate (CPI)',  value:'84.5%',             trend:'down',   note:'Annual CPI — INDEC (easing)'},
       {label:'Consumer Confidence',   value:'38.2 pts',          trend:'up',     note:'UTDT Consumer Conf. Index'},
     ],
     purchasing: [
-      {label:'Avg Household Income',  value:'ARS 890K/mo',       trend:'up',     note:'Nominal � INDEC EPH'},
+      {label:'Avg Household Income',  value:'ARS 890K/mo',       trend:'up',     note:'Nominal — INDEC EPH'},
       {label:'Unemployment Rate',     value:'7.8%',              trend:'neutral',note:'INDEC EPH Q1 2025'},
       {label:'Wage Growth',           value:'+95% nominal',      trend:'neutral',note:'Nominal YoY (real: negative)'},
     ],
     financing: [
       {label:'Central Bank Rate',     value:'35%',               trend:'down',   note:'BCRA Policy Rate (annual)'},
       {label:'Auto Loan APR',         value:'~72% nominal',      trend:'down',   note:'Avg Consumer APR'},
-      {label:'Consumer Credit Growth',value:'+95% nominal',      trend:'neutral',note:'Nominal YoY � BCRA'},
+      {label:'Consumer Credit Growth',value:'+95% nominal',      trend:'neutral',note:'Nominal YoY — BCRA'},
     ],
     fuel: [
-      {label:'Petrol / Gasoline',     value:'ARS 1,240/L',       trend:'up',     note:'Premium � National Avg'},
+      {label:'Petrol / Gasoline',     value:'ARS 1,240/L',       trend:'up',     note:'Premium — National Avg'},
       {label:'Diesel Price',          value:'ARS 1,350/L',       trend:'up',     note:'Gasoil Grade'},
       {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
     ],
     mobility: [
-      {label:'Total Population',      value:'46M',               trend:'neutral',note:'Growth rate: 0.8% p.a. � INDEC'},
-      {label:'Urbanization Rate',     value:'92.4%',             trend:'up',     note:'Urban Population � INDEC 2025'},
-      {label:'Population Density',    value:'16 /km�',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'62.3%',             trend:'neutral',note:'Ages 15�64 � INDEC'},
+      {label:'Total Population',      value:'46M',               trend:'neutral',note:'Growth rate: 0.8% p.a. — INDEC'},
+      {label:'Urbanization Rate',     value:'92.4%',             trend:'up',     note:'Urban Population — INDEC 2025'},
+      {label:'Population Density',    value:'16 /km²',           trend:'neutral',note:'National Average'},
+      {label:'Working Age Pop.',      value:'62.3%',             trend:'neutral',note:'Ages 15–64 — INDEC'},
     ],
     ev: [
       {label:'EV Subsidy Available',  value:'Limited',           trend:'neutral',note:'Provincial programmes only'},
-      {label:'EV Subsidy Amount',     value:'ARS 200�500K',      trend:'neutral',note:'Province-dependent'},
-      {label:'EV Charging Stations',  value:'320+',              trend:'up',     note:'Public Stations � ACARA'},
+      {label:'EV Subsidy Amount',     value:'ARS 200–500K',      trend:'neutral',note:'Province-dependent'},
+      {label:'EV Charging Stations',  value:'320+',              trend:'up',     note:'Public Stations — ACARA'},
       {label:'Electricity Price',     value:'ARS 190/kWh',       trend:'up',     note:'Residential (regulated)'},
-      {label:'EV Penetration',        value:'1.4%',              trend:'up',     note:'% of 2W Sales � ACARA'},
+      {label:'EV Penetration',        value:'1.4%',              trend:'up',     note:'% of 2W Sales — ACARA'},
     ],
     trade: [
       {label:'Exchange Rate vs USD',  value:'ARS 1,020 / USD',   trend:'down',   note:'Official FX May 2025'},
       {label:'Manufacturing PMI',     value:'48.2',              trend:'down',   note:'S&P Global Argentina PMI'},
-      {label:'Import Duties (2W)',    value:'18% uniform',       trend:'neutral',note:'Post-Milei reform � ARCA'},
+      {label:'Import Duties (2W)',    value:'18% uniform',       trend:'neutral',note:'Post-Milei reform — ARCA'},
     ],
   },
   Chile: {
     economic: [
       {label:'GDP Growth Rate',       value:'2.4%',              trend:'up',     note:'IMF WEO Apr 2025'},
       {label:'GDP Per Capita',        value:'$16,173',           trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'3.7%',              trend:'down',   note:'Annual CPI � INE Chile'},
-      {label:'Consumer Confidence',   value:'45.1 pts',          trend:'up',     note:'IPEC Index (0�100)'},
+      {label:'Inflation Rate (CPI)',  value:'3.7%',              trend:'down',   note:'Annual CPI — INE Chile'},
+      {label:'Consumer Confidence',   value:'45.1 pts',          trend:'up',     note:'IPEC Index (0–100)'},
     ],
     purchasing: [
       {label:'Avg Household Income',  value:'CLP 1.15M/mo',      trend:'up',     note:'INE CASEN 2025 est.'},
       {label:'Unemployment Rate',     value:'8.5%',              trend:'down',   note:'INE National Rate'},
-      {label:'Wage Growth',           value:'+5.8% real',        trend:'up',     note:'Real Wage YoY � INE'},
+      {label:'Wage Growth',           value:'+5.8% real',        trend:'up',     note:'Real Wage YoY — INE'},
     ],
     financing: [
       {label:'Central Bank Rate',     value:'5.5%',              trend:'down',   note:'BCCh Policy Rate'},
-      {label:'Auto Loan APR',         value:'~11.2%',            trend:'neutral',note:'Avg Consumer APR � BCCh'},
+      {label:'Auto Loan APR',         value:'~11.2%',            trend:'neutral',note:'Avg Consumer APR — BCCh'},
       {label:'Consumer Credit Growth',value:'+5.8%',             trend:'up',     note:'BCCh Credit YoY'},
     ],
     fuel: [
-      {label:'Petrol / Gasoline',     value:'CLP 1,080/L',       trend:'up',     note:'93-Octane � ENAP'},
-      {label:'Diesel Price',          value:'CLP 1,010/L',       trend:'up',     note:'National Avg � ENAP'},
+      {label:'Petrol / Gasoline',     value:'CLP 1,080/L',       trend:'up',     note:'93-Octane — ENAP'},
+      {label:'Diesel Price',          value:'CLP 1,010/L',       trend:'up',     note:'National Avg — ENAP'},
       {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
     ],
     mobility: [
-      {label:'Total Population',      value:'19.6M',             trend:'neutral',note:'Growth rate: 0.6% p.a. � INE'},
-      {label:'Urbanization Rate',     value:'88.2%',             trend:'up',     note:'Urban Population � INE 2025'},
-      {label:'Population Density',    value:'26 /km�',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'66.4%',             trend:'neutral',note:'Ages 15�64 � INE'},
+      {label:'Total Population',      value:'19.6M',             trend:'neutral',note:'Growth rate: 0.6% p.a. — INE'},
+      {label:'Urbanization Rate',     value:'88.2%',             trend:'up',     note:'Urban Population — INE 2025'},
+      {label:'Population Density',    value:'26 /km²',           trend:'neutral',note:'National Average'},
+      {label:'Working Age Pop.',      value:'66.4%',             trend:'neutral',note:'Ages 15–64 — INE'},
     ],
     ev: [
       {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'MTES Scrapping Bonus'},
       {label:'EV Subsidy Amount',     value:'USD 800/unit',      trend:'up',     note:'ICE replacement bonus'},
-      {label:'EV Charging Stations',  value:'1,850+',            trend:'up',     note:'Public Stations � SEC'},
-      {label:'Electricity Price',     value:'CLP 130/kWh',       trend:'neutral',note:'Residential � CNE'},
-      {label:'EV Penetration',        value:'4.6% (LATAM #1)',   trend:'up',     note:'% of 2W Sales � ANAC'},
+      {label:'EV Charging Stations',  value:'1,850+',            trend:'up',     note:'Public Stations — SEC'},
+      {label:'Electricity Price',     value:'CLP 130/kWh',       trend:'neutral',note:'Residential — CNE'},
+      {label:'EV Penetration',        value:'4.6% (LATAM #1)',   trend:'up',     note:'% of 2W Sales — ANAC'},
     ],
     trade: [
       {label:'Exchange Rate vs USD',  value:'CLP 940 / USD',     trend:'down',   note:'CLP spot May 2025'},
       {label:'Manufacturing PMI',     value:'50.4',              trend:'up',     note:'S&P Global Chile PMI'},
-      {label:'Import Duties (2W)',    value:'6% FTA � 15% gen.', trend:'neutral',note:'FTA partners (US, EU, JP)'},
+      {label:'Import Duties (2W)',    value:'6% FTA — 15% gen.', trend:'neutral',note:'FTA partners (US, EU, JP)'},
     ],
   },
   Peru: {
     economic: [
       {label:'GDP Growth Rate',       value:'3.1%',              trend:'up',     note:'IMF WEO Apr 2025'},
       {label:'GDP Per Capita',        value:'$7,455',            trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'2.9%',              trend:'down',   note:'Annual CPI � INEI'},
+      {label:'Inflation Rate (CPI)',  value:'2.9%',              trend:'down',   note:'Annual CPI — INEI'},
       {label:'Consumer Confidence',   value:'44.2 pts',          trend:'up',     note:'BCR Expectations Index'},
     ],
     purchasing: [
       {label:'Avg Household Income',  value:'S/. 2,200/mo',      trend:'up',     note:'INEI ENAHO 2025 est.'},
       {label:'Unemployment Rate',     value:'5.8%',              trend:'down',   note:'INEI (Lima Metro)'},
-      {label:'Wage Growth',           value:'+4.2% real',        trend:'up',     note:'Real Wage YoY � INEI'},
+      {label:'Wage Growth',           value:'+4.2% real',        trend:'up',     note:'Real Wage YoY — INEI'},
     ],
     financing: [
       {label:'Central Bank Rate',     value:'5.75%',             trend:'down',   note:'BCRP Policy Rate'},
-      {label:'Auto Loan APR',         value:'~18.9%',            trend:'neutral',note:'Avg Consumer APR � SBS'},
+      {label:'Auto Loan APR',         value:'~18.9%',            trend:'neutral',note:'Avg Consumer APR — SBS'},
       {label:'Consumer Credit Growth',value:'+7.2%',             trend:'up',     note:'SBS Credit YoY'},
     ],
     fuel: [
-      {label:'Petrol / Gasoline',     value:'S/. 7.10/L',        trend:'up',     note:'90-Octane Avg � OSINERGMIN'},
-      {label:'Diesel Price',          value:'S/. 6.80/L',        trend:'up',     note:'B5 Blend � OSINERGMIN'},
+      {label:'Petrol / Gasoline',     value:'S/. 7.10/L',        trend:'up',     note:'90-Octane Avg — OSINERGMIN'},
+      {label:'Diesel Price',          value:'S/. 6.80/L',        trend:'up',     note:'B5 Blend — OSINERGMIN'},
       {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
     ],
     mobility: [
-      {label:'Total Population',      value:'33.4M',             trend:'up',     note:'Growth rate: 1.1% p.a. � INEI'},
-      {label:'Urbanization Rate',     value:'79.3%',             trend:'up',     note:'Urban Population � INEI 2025'},
-      {label:'Population Density',    value:'26 /km�',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'65.1%',             trend:'neutral',note:'Ages 15�64 � INEI'},
+      {label:'Total Population',      value:'33.4M',             trend:'up',     note:'Growth rate: 1.1% p.a. — INEI'},
+      {label:'Urbanization Rate',     value:'79.3%',             trend:'up',     note:'Urban Population — INEI 2025'},
+      {label:'Population Density',    value:'26 /km²',           trend:'neutral',note:'National Average'},
+      {label:'Working Age Pop.',      value:'65.1%',             trend:'neutral',note:'Ages 15–64 — INEI'},
     ],
     ev: [
       {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'Lima Municipality Grant'},
       {label:'EV Subsidy Amount',     value:'S/. 2,500/unit',    trend:'up',     note:'Lima scrapping bonus'},
-      {label:'EV Charging Stations',  value:'420+',              trend:'up',     note:'Public Stations � ARAPER'},
-      {label:'Electricity Price',     value:'S/. 0.22/kWh',      trend:'neutral',note:'Residential � OSINERGMIN'},
-      {label:'EV Penetration',        value:'1.2%',              trend:'up',     note:'% of 2W Sales � ARAPER'},
+      {label:'EV Charging Stations',  value:'420+',              trend:'up',     note:'Public Stations — ARAPER'},
+      {label:'Electricity Price',     value:'S/. 0.22/kWh',      trend:'neutral',note:'Residential — OSINERGMIN'},
+      {label:'EV Penetration',        value:'1.2%',              trend:'up',     note:'% of 2W Sales — ARAPER'},
     ],
     trade: [
       {label:'Exchange Rate vs USD',  value:'S/. 3.72 / USD',    trend:'neutral',note:'PEN spot May 2025'},
       {label:'Manufacturing PMI',     value:'50.1',              trend:'up',     note:'S&P Global Peru PMI'},
-      {label:'Import Duties (2W)',    value:'0% EV � 0% arancel + 16% IGV', trend:'neutral',note:'EV <$3K IGV-exempt through 2028'},
+      {label:'Import Duties (2W)',    value:'0% EV — 0% arancel + 16% IGV', trend:'neutral',note:'EV <$3K IGV-exempt through 2028'},
     ],
   },
 };
@@ -3357,7 +3357,7 @@ function renderMacroeconomics() {
     {key:'trade',     label:'Trade & Manufacturing',      icon:'factory',     color:'var(--purple)', bg:'var(--purple-soft)', cols:'cols-3'},
   ];
 
-  const trendArrow = {up:'?', down:'?', neutral:'�'};
+  const trendArrow = {up:'▲', down:'▼', neutral:'●'};
   const trendLabel = {up:'Positive', down:'Negative', neutral:'Stable'};
 
   let html = '';
@@ -3390,92 +3390,92 @@ function renderMacroeconomics() {
 const regulatoryData = {
   Brazil: {
     snapshot: {
-      text: "Brazil's Mover Programme (2024) allocates BRL 19.3B for EV ecosystem development covering manufacturing, charging, and consumer incentives. PROCONVE L8 � Brazil's Euro 5 equivalent � became mandatory for all new 2W from April 2026, effectively ending carbureted engine sales. The government targets 30% EV share in total new vehicle sales by 2030 under the National Green Mobility Plan.",
-      keyLaw: 'Mover Programme + PROCONVE L8 (2024�2026)',
+      text: "Brazil's Mover Programme (2024) allocates BRL 19.3B for EV ecosystem development covering manufacturing, charging, and consumer incentives. PROCONVE L8 — Brazil's Euro 5 equivalent — became mandatory for all new 2W from April 2026, effectively ending carbureted engine sales. The government targets 30% EV share in total new vehicle sales by 2030 under the National Green Mobility Plan.",
+      keyLaw: 'Mover Programme + PROCONVE L8 (2024–2026)',
       target: '30% EV share by 2030',
       maturity: 'Advancing', mc: 'blue',
     },
     sections: [
-      {icon:'??', title:'Incentives & Subsidies', status:'Active', sc:'green',
-       body:'The <em>Minha Moto</em> programme provides a BRL 2,000 per-unit subsidy for low-income buyers (=3� minimum wage). IPI tax exemptions apply to EVs meeting local content thresholds, and BNDES offers TJLP+1.5% financing for EV manufacturers. Import duty on EV motorcycles was reduced to 12% through 2027 under the Green Mobility Programme.'},
-      {icon:'??', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
-       body:'No federal regulation exists. ABNT is drafting NBR 17163 with publication targeted Q4 2026. Pilot programmes in S�o Paulo and Rio operate under temporary municipal permits; mandatory interoperability standards are not expected before 2027.'},
+      {icon:'💰', title:'Incentives & Subsidies', status:'Active', sc:'green',
+       body:'The <em>Minha Moto</em> programme provides a BRL 2,000 per-unit subsidy for low-income buyers (≤3× minimum wage). IPI tax exemptions apply to EVs meeting local content thresholds, and BNDES offers TJLP+1.5% financing for EV manufacturers. Import duty on EV motorcycles was reduced to 12% through 2027 under the Green Mobility Programme.'},
+      {icon:'🔋', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
+       body:'No federal regulation exists. ABNT is drafting NBR 17163 with publication targeted Q4 2026. Pilot programmes in São Paulo and Rio operate under temporary municipal permits; mandatory interoperability standards are not expected before 2027.'},
       {icon:'?', title:'Charging Infrastructure Policies', status:'Active', sc:'green',
        body:'ANEEL Resolution 819/2018 authorises EV charging at fuel stations and commercial premises. The Mover programme allocated BRL 800M for charging expansion, targeting 20,000 public stations by 2030 (4,200+ deployed). A 2022 condominium law amendment mandates EV charging conduit in all new residential buildings.'},
-      {icon:'??', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
-       body:'No dedicated federal e-rickshaw framework; the 3W cargo segment is nascent in Brazil. Light cargo e-trikes require CONTRAN certification and DENATRAN registration. S�o Paulo and Rio municipalities are piloting cargo e-trike delivery corridors with formal CONTRAN rules expected by 2026.'},
-      {icon:'??', title:'Localization & Manufacturing', status:'Active', sc:'green',
-       body:'Mover mandates local content rising to 50% by 2029 for full IPI exemption. BRL 10B in BNDES credit supports domestic EV production. Honda, Yamaha, and Voltz EVS already manufacture locally in Manaus (Zona Franca de Manaus) and S�o Paulo, benefiting from significant federal tax advantages.'},
-      {icon:'??', title:'Safety & Compliance Standards', status:'Active', sc:'green',
+      {icon:'🛺', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
+       body:'No dedicated federal e-rickshaw framework; the 3W cargo segment is nascent in Brazil. Light cargo e-trikes require CONTRAN certification and DENATRAN registration. São Paulo and Rio municipalities are piloting cargo e-trike delivery corridors with formal CONTRAN rules expected by 2026.'},
+      {icon:'🏭', title:'Localization & Manufacturing', status:'Active', sc:'green',
+       body:'Mover mandates local content rising to 50% by 2029 for full IPI exemption. BRL 10B in BNDES credit supports domestic EV production. Honda, Yamaha, and Voltz EVS already manufacture locally in Manaus (Zona Franca de Manaus) and São Paulo, benefiting from significant federal tax advantages.'},
+      {icon:'🛡', title:'Safety & Compliance Standards', status:'Active', sc:'green',
        body:'PROCONVE L8 (Euro 5-equivalent) is mandatory from April 2026. INMETRO certification is required for all EV batteries and chargers. ABNT NBR 15911 governs light EV battery safety; ABNT NBR 16765 covers EV charger safety and installation standards.'},
-      {icon:'??', title:'Import & Trade Policies', status:'Active', sc:'green',
+      {icon:'📦', title:'Import & Trade Policies', status:'Active', sc:'green',
        body:'CBU import duty: 35% (standard). CKD assembly lines benefit from a 2% preferential rate. EV drivetrain components for local assembly attract 0% import duty. Brazil has no major automotive FTA that reduces tariffs further, making local assembly economically compelling.'},
-      {icon:'??', title:'ICE Restriction Policies', status:'Partial', sc:'teal',
-       body:'No national ICE ban timeline announced. S�o Paulo restricts Euro 1�3 vehicles in the ZMRC emission zone; PROCONVE L8 effectively ends new carbureted 2W sales. Motofretistas face tighter emission-zone rules in S�o Paulo and Rio, with EV motorcycles receiving preferential access to restricted zones.'},
+      {icon:'🚫', title:'ICE Restriction Policies', status:'Partial', sc:'teal',
+       body:'No national ICE ban timeline announced. São Paulo restricts Euro 1–3 vehicles in the ZMRC emission zone; PROCONVE L8 effectively ends new carbureted 2W sales. Motofretistas face tighter emission-zone rules in São Paulo and Rio, with EV motorcycles receiving preferential access to restricted zones.'},
     ],
     upcoming: [
       {text:'ABNT NBR 17163 battery swap standardization', date:'Q4 2026'},
       {text:'Mandatory connected-vehicle reporting for commercial 2W fleets', date:'2027'},
-      {text:'Mover Programme review � potential BRL 5B extension', date:'H2 2026'},
-      {text:'Seguro Obrigat�rio (mandatory insurance) reform effective', date:'Jul 2025 ?'},
+      {text:'Mover Programme review — potential BRL 5B extension', date:'H2 2026'},
+      {text:'Seguro Obrigatório (mandatory insurance) reform effective', date:'Jul 2025 ?'},
     ],
   },
   Colombia: {
     snapshot: {
-      text: "Ley 1964/2019 (Plan de Acci�n del Veh�culo El�ctrico) is Colombia's primary EV legislation, targeting 600,000 EVs of all types by 2030. Euro 5 emissions became mandatory for all new 2W registrations from January 2026. Bogot�'s Pico y Placa extension to ICE motorcycles and expanding low-emission zones are the most direct levers accelerating the 2W EV transition.",
+      text: "Ley 1964/2019 (Plan de Acción del Vehículo Eléctrico) is Colombia's primary EV legislation, targeting 600,000 EVs of all types by 2030. Euro 5 emissions became mandatory for all new 2W registrations from January 2026. Bogotá's Pico y Placa extension to ICE motorcycles and expanding low-emission zones are the most direct levers accelerating the 2W EV transition.",
       keyLaw: 'Ley 1964/2019 + Euro 5 (Jan 2026)',
       target: '600,000 EVs (all types) by 2030',
       maturity: 'Advancing', mc: 'blue',
     },
     sections: [
-      {icon:'??', title:'Incentives & Subsidies', status:'Active', sc:'green',
+      {icon:'💰', title:'Incentives & Subsidies', status:'Active', sc:'green',
        body:'EVs under USD 40K benefit from 0% import duty and full 19% VAT exemption through 2030. Commercial fleet buyers receive a COP 4M per-unit subsidy for orders of 10+ EV motorcycles. Corporate income tax deductions are available for investments in EV charging infrastructure.'},
-      {icon:'??', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
-       body:'CREG Resolution 091/2023 provides a preliminary framework but no mandatory interoperability standard. Bogot� has three commercial swap stations operating under provisional licenses. A draft ICONTEC technical standard is expected to be published in 2026.'},
+      {icon:'🔋', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
+       body:'CREG Resolution 091/2023 provides a preliminary framework but no mandatory interoperability standard. Bogotá has three commercial swap stations operating under provisional licenses. A draft ICONTEC technical standard is expected to be published in 2026.'},
       {icon:'?', title:'Charging Infrastructure Policies', status:'Active', sc:'green',
-       body:'CREG Resolution 075/2021 defines EV charging tariffs; MinMinas has funded 850+ public chargers through the national EV fund. Bogot�\'s Movilidad El�ctrica plan targets 2,000 charging points by 2026. Ley 675 (condominium statute) was updated to allow EV charger installation in residential buildings.'},
-      {icon:'??', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
-       body:'MinTransporte Resolution 0001304 governs commercial e-cargo trikes. Bogot� is piloting a dedicated cargo e-trike corridor on Calle 13. All motorized 3W commercial vehicles require SIMIT registration and a Tarjeta de Operaci�n from the Ministerio de Transporte.'},
-      {icon:'??', title:'Localization & Manufacturing', status:'Partial', sc:'teal',
-       body:'No mandatory local content requirement. AKT Motos assembles locally under the CKD benefit (5% duty); the Colombia�EU FTA provides preferential rates on EU-origin EV components. A PLI-equivalent battery assembly incentive is under study by DNP for a potential 2027 budget proposal.'},
-      {icon:'??', title:'Safety & Compliance Standards', status:'Active', sc:'green',
+       body:'CREG Resolution 075/2021 defines EV charging tariffs; MinMinas has funded 850+ public chargers through the national EV fund. Bogotá\'s Movilidad Eléctrica plan targets 2,000 charging points by 2026. Ley 675 (condominium statute) was updated to allow EV charger installation in residential buildings.'},
+      {icon:'🛺', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
+       body:'MinTransporte Resolution 0001304 governs commercial e-cargo trikes. Bogotá is piloting a dedicated cargo e-trike corridor on Calle 13. All motorized 3W commercial vehicles require SIMIT registration and a Tarjeta de Operación from the Ministerio de Transporte.'},
+      {icon:'🏭', title:'Localization & Manufacturing', status:'Partial', sc:'teal',
+       body:'No mandatory local content requirement. AKT Motos assembles locally under the CKD benefit (5% duty); the Colombia–EU FTA provides preferential rates on EU-origin EV components. A PLI-equivalent battery assembly incentive is under study by DNP for a potential 2027 budget proposal.'},
+      {icon:'🛡', title:'Safety & Compliance Standards', status:'Active', sc:'green',
        body:'Euro 5 homologation via ICONTEC is mandatory from January 2026, having removed 12 non-compliant models from the registry. NTC 4001 (ICONTEC) governs EV battery safety. A new ICONTEC fire safety standard for Li-ion battery storage is currently in draft.'},
-      {icon:'??', title:'Import & Trade Policies', status:'Active', sc:'green',
-       body:'EVs under USD 40K: 0% import duty (suspended through 2030). Standard CBU 2W duty: 35%; CKD assembly: 5% preferential. The Colombia�Korea FTA grants 0% on Korean-origin EV components; EV battery imports face 0% duty independently of vehicle tariff classification.'},
-      {icon:'??', title:'ICE Restriction Policies', status:'Active', sc:'green',
-       body:'Bogot� extended Pico y Placa to ICE motorcycles on weekday mornings (6�9am) from March 2026; EV motorcycles are fully exempt. Low-emission zones are active in Bogot� Zona Rosa and Chapinero. Expansion to 15 comunas is planned for 2027 with ongoing Ministerio study of a national 2W phaseout by 2035.'},
+      {icon:'📦', title:'Import & Trade Policies', status:'Active', sc:'green',
+       body:'EVs under USD 40K: 0% import duty (suspended through 2030). Standard CBU 2W duty: 35%; CKD assembly: 5% preferential. The Colombia–Korea FTA grants 0% on Korean-origin EV components; EV battery imports face 0% duty independently of vehicle tariff classification.'},
+      {icon:'🚫', title:'ICE Restriction Policies', status:'Active', sc:'green',
+       body:'Bogotá extended Pico y Placa to ICE motorcycles on weekday mornings (6–9am) from March 2026; EV motorcycles are fully exempt. Low-emission zones are active in Bogotá Zona Rosa and Chapinero. Expansion to 15 comunas is planned for 2027 with ongoing Ministerio study of a national 2W phaseout by 2035.'},
     ],
     upcoming: [
       {text:'ICONTEC EV battery technical standard publication', date:'Q3 2026'},
-      {text:'Colombia�Euroc�mara joint EV financing initiative launch', date:'H2 2026'},
+      {text:'Colombia–Eurocámara joint EV financing initiative launch', date:'H2 2026'},
       {text:'Euro 5 enforcement 12-month review', date:'Jan 2027'},
-      {text:'Bogot� low-emission zone expansion to 15 comunas', date:'2027'},
+      {text:'Bogotá low-emission zone expansion to 15 comunas', date:'2027'},
     ],
   },
   Argentina: {
     snapshot: {
-      text: "Argentina's EV policy is fragmented after Decreto 926/2024 under the Milei administration eliminated the preferential 8% EV import tariff, equalising it with the standard 18% rate. Provincial programmes in Buenos Aires, Mendoza, and Neuqu�n remain the primary drivers of EV adoption. No federal EV mandate, national phaseout target, or centrally funded charging network programme has been announced.",
+      text: "Argentina's EV policy is fragmented after Decreto 926/2024 under the Milei administration eliminated the preferential 8% EV import tariff, equalising it with the standard 18% rate. Provincial programmes in Buenos Aires, Mendoza, and Neuquén remain the primary drivers of EV adoption. No federal EV mandate, national phaseout target, or centrally funded charging network programme has been announced.",
       keyLaw: 'Decreto 926/2024 (tariff reform) + ABS mandate Jan 2026',
       target: 'No federal EV target set',
       maturity: 'Fragmented', mc: 'amber',
     },
     sections: [
-      {icon:'??', title:'Incentives & Subsidies', status:'Partial', sc:'teal',
-       body:'Federal EV subsidies were suspended under the Milei deregulation programme (2024). Buenos Aires Province offers an ARS 200K�500K scrapping bonus for ICE?EV conversion. Mendoza provides a 50% provincial ingresos brutos tax exemption for EV purchases; Neuqu�n offers free EV registration through 2026.'},
-      {icon:'??', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
+      {icon:'💰', title:'Incentives & Subsidies', status:'Partial', sc:'teal',
+       body:'Federal EV subsidies were suspended under the Milei deregulation programme (2024). Buenos Aires Province offers an ARS 200K–500K scrapping bonus for ICE?EV conversion. Mendoza provides a 50% provincial ingresos brutos tax exemption for EV purchases; Neuquén offers free EV registration through 2026.'},
+      {icon:'🔋', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
        body:'No specific national regulation exists. An IRAM standards committee formed in 2025 to draft swap station rules, with publication unlikely before 2028. Zanella operates a proprietary swap system in Buenos Aires under interim municipal permits; mandatory interoperability is a long-term goal.'},
       {icon:'?', title:'Charging Infrastructure Policies', status:'Partial', sc:'teal',
-       body:'Secretar�a de Energ�a Resolution 13/2022 covers charging tariffs, but national infrastructure investment has stalled under fiscal consolidation. Approximately 320 public stations operate nationwide, concentrated in Buenos Aires. A 2025 condominium law amendment allows residential EV charger installation.'},
-      {icon:'??', title:'3W Commercial Regulations', status:'None', sc:'red',
+       body:'Secretaría de Energía Resolution 13/2022 covers charging tariffs, but national infrastructure investment has stalled under fiscal consolidation. Approximately 320 public stations operate nationwide, concentrated in Buenos Aires. A 2025 condominium law amendment allows residential EV charger installation.'},
+      {icon:'🛺', title:'3W Commercial Regulations', status:'None', sc:'red',
        body:'No national e-rickshaw or e-cargo trike regulatory framework exists. Light cargo e-trikes require biannual VTV (vehicle technical inspection) in Buenos Aires Province. E-moto-taxis are in pilot phase only; conventional moto-taxis face operating restrictions in Buenos Aires City.'},
-      {icon:'??', title:'Localization & Manufacturing', status:'Partial', sc:'teal',
-       body:'Bajaj assembles in C�rdoba under AFIP CKD customs treatment; Beta Motor and Zanella manufacture entirely domestically. The Milei government removed most local content incentives; ARCA streamlined homologation to 45 days. A new La Plata national testing laboratory is expected to further cut certification timelines.'},
-      {icon:'??', title:'Safety & Compliance Standards', status:'Active', sc:'green',
-       body:'IRAM 62.405 covers Li-ion EV battery safety. ARCA mandatory homologation applies to all new 2W with a 45-day review process from 2025. Mandatory ABS for all new 2W above 150cc takes effect from January 2026 under the amended Ley Nacional de Tr�nsito.'},
-      {icon:'??', title:'Import & Trade Policies', status:'Active', sc:'green',
-       body:'Post-Milei reform: 18% uniform import duty applies to all 2W including EVs � the former 8% EV preferential rate was eliminated (Decreto 926/2024). A 5% CKD reduction remains via Secretar�a de Industria approval. MERCOSUR common external tariff governs intra-regional trade.'},
-      {icon:'??', title:'ICE Restriction Policies', status:'Partial', sc:'teal',
-       body:'No national ICE ban or phaseout target. Buenos Aires City restricts Euro 1�2 motorcycles in Centro and Puerto Madero. C�rdoba mandates biannual VTV emission inspection for all 2W above 50cc. Palermo and Recoleta municipalities are piloting low-emission delivery zones.'},
+      {icon:'🏭', title:'Localization & Manufacturing', status:'Partial', sc:'teal',
+       body:'Bajaj assembles in Córdoba under AFIP CKD customs treatment; Beta Motor and Zanella manufacture entirely domestically. The Milei government removed most local content incentives; ARCA streamlined homologation to 45 days. A new La Plata national testing laboratory is expected to further cut certification timelines.'},
+      {icon:'🛡', title:'Safety & Compliance Standards', status:'Active', sc:'green',
+       body:'IRAM 62.405 covers Li-ion EV battery safety. ARCA mandatory homologation applies to all new 2W with a 45-day review process from 2025. Mandatory ABS for all new 2W above 150cc takes effect from January 2026 under the amended Ley Nacional de Tránsito.'},
+      {icon:'📦', title:'Import & Trade Policies', status:'Active', sc:'green',
+       body:'Post-Milei reform: 18% uniform import duty applies to all 2W including EVs — the former 8% EV preferential rate was eliminated (Decreto 926/2024). A 5% CKD reduction remains via Secretaría de Industria approval. MERCOSUR common external tariff governs intra-regional trade.'},
+      {icon:'🚫', title:'ICE Restriction Policies', status:'Partial', sc:'teal',
+       body:'No national ICE ban or phaseout target. Buenos Aires City restricts Euro 1–2 motorcycles in Centro and Puerto Madero. Córdoba mandates biannual VTV emission inspection for all 2W above 50cc. Palermo and Recoleta municipalities are piloting low-emission delivery zones.'},
     ],
     upcoming: [
       {text:'IRAM battery swap station standards', date:'Q4 2026 (est.)'},
@@ -3486,28 +3486,28 @@ const regulatoryData = {
   },
   Chile: {
     snapshot: {
-      text: "Chile leads LATAM in EV policy maturity, having confirmed a national ICE 2W ban by 2035 � the first in the region. The Ministerio del Medio Ambiente roadmap targets 30% EV share in new 2W by 2028 and 60% by 2031. Chile is the only LATAM signatory to the COP26 Zero Emission Vehicle Declaration and has the highest public charging density and EV penetration rate in the region.",
+      text: "Chile leads LATAM in EV policy maturity, having confirmed a national ICE 2W ban by 2035 — the first in the region. The Ministerio del Medio Ambiente roadmap targets 30% EV share in new 2W by 2028 and 60% by 2031. Chile is the only LATAM signatory to the COP26 Zero Emission Vehicle Declaration and has the highest public charging density and EV penetration rate in the region.",
       keyLaw: 'ICE 2W ban by 2035 + Electro Movilidad Strategy',
-      target: '30% EV share by 2028 � 60% by 2031',
+      target: '30% EV share by 2028 — 60% by 2031',
       maturity: 'Leading', mc: 'green',
     },
     sections: [
-      {icon:'??', title:'Incentives & Subsidies', status:'Active', sc:'green',
-       body:'A USD 800 ICE-scrapping bonus is available for buyers replacing an ICE 2W with an EV (MTES programme). CORFO Cr�dito Verde provides fleet EV financing at 5.5% vs the ~11.2% market rate. EV imports from FTA partners (US, EU, Japan) attract 0% duty; commercial EV purchases qualify for IVA credit.'},
-      {icon:'??', title:'Battery Swapping Regulations', status:'Partial', sc:'teal',
+      {icon:'💰', title:'Incentives & Subsidies', status:'Active', sc:'green',
+       body:'A USD 800 ICE-scrapping bonus is available for buyers replacing an ICE 2W with an EV (MTES programme). CORFO Crédito Verde provides fleet EV financing at 5.5% vs the ~11.2% market rate. EV imports from FTA partners (US, EU, Japan) attract 0% duty; commercial EV purchases qualify for IVA credit.'},
+      {icon:'🔋', title:'Battery Swapping Regulations', status:'Partial', sc:'teal',
        body:'SEC Resolution 80/2024 issued provisional swap station guidelines. No mandatory interoperability standard yet; Niu Technologies and Govecs operate networks in Santiago under SEC approval. Formal regulation is targeted following ENAC lab accreditation, expected Q1 2026.'},
       {icon:'?', title:'Charging Infrastructure Policies', status:'Active', sc:'green',
-       body:'SEC Resolution 825/2021 governs public charging; 1,850+ stations deployed � the highest per-capita density in LATAM. Ley 21.233 requires EV charging conduit in all new residential buildings of 5+ units. The Ministerio de Energ�a targets 3,000 stations by 2027 with ENAP fuel stations converting to dual-fuel charging points.'},
-      {icon:'??', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
-       body:'No e-rickshaw market; cargo e-trikes are registered under Ley de Tr�nsito 18.290 on a provisional basis. Santiago\'s Providencia and Las Condes municipalities pilot cargo e-trike delivery corridors. A formal MTC light-cargo e-trike certification standard is being drafted for 2026.'},
-      {icon:'??', title:'Localization & Manufacturing', status:'None', sc:'red',
-       body:'No mandatory local content requirement � Chile maintains one of the most open trade regimes in LATAM. The FTA network (US, EU, Japan, South Korea, China) provides 0�6% tariffs on EV imports. CORFO ProChile supports supply chain investment but no assembly mandate exists. Chile\'s lithium strategy may create long-term battery production incentives.'},
-      {icon:'??', title:'Safety & Compliance Standards', status:'Active', sc:'green',
+       body:'SEC Resolution 825/2021 governs public charging; 1,850+ stations deployed — the highest per-capita density in LATAM. Ley 21.233 requires EV charging conduit in all new residential buildings of 5+ units. The Ministerio de Energía targets 3,000 stations by 2027 with ENAP fuel stations converting to dual-fuel charging points.'},
+      {icon:'🛺', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
+       body:'No e-rickshaw market; cargo e-trikes are registered under Ley de Tránsito 18.290 on a provisional basis. Santiago\'s Providencia and Las Condes municipalities pilot cargo e-trike delivery corridors. A formal MTC light-cargo e-trike certification standard is being drafted for 2026.'},
+      {icon:'🏭', title:'Localization & Manufacturing', status:'None', sc:'red',
+       body:'No mandatory local content requirement — Chile maintains one of the most open trade regimes in LATAM. The FTA network (US, EU, Japan, South Korea, China) provides 0–6% tariffs on EV imports. CORFO ProChile supports supply chain investment but no assembly mandate exists. Chile\'s lithium strategy may create long-term battery production incentives.'},
+      {icon:'🛡', title:'Safety & Compliance Standards', status:'Active', sc:'green',
        body:'NCh 3410:2023 (Norma Chilena) covers EV battery testing and safety. SEC mandatory approval applies to all EV chargers above 3.7kW. ABS is mandatory for all new 2W above 125cc from August 2025 (Ministerio de Transportes fast-track). SEREMI de Salud issues fire safety permits for battery storage facilities.'},
-      {icon:'??', title:'Import & Trade Policies', status:'Active', sc:'green',
-       body:'EV import duty: 0% from FTA partners (US, EU, Japan, South Korea); 6% for non-FTA. Standard CBU 2W (non-EV): 6% FTA, 15% MFN. The Chile�China FTA provides 0% on Chinese EV components. No mandatory local assembly � CKD treated as components at 0�6%.'},
-      {icon:'??', title:'ICE Restriction Policies', status:'Active', sc:'green',
-       body:'National ICE 2W ban by 2035 confirmed � first in LATAM. A 2028 ZEV mandate requires 30% of new 2W registrations to be electric. Gran Santiago\'s Plan de Descontaminaci�n restricts Euro 3 and below. A 2025 law empowers municipalities to create Zero Emission Zones (ZEZ); EV motorcycles are exempt from all urban driving restrictions.'},
+      {icon:'📦', title:'Import & Trade Policies', status:'Active', sc:'green',
+       body:'EV import duty: 0% from FTA partners (US, EU, Japan, South Korea); 6% for non-FTA. Standard CBU 2W (non-EV): 6% FTA, 15% MFN. The Chile–China FTA provides 0% on Chinese EV components. No mandatory local assembly — CKD treated as components at 0–6%.'},
+      {icon:'🚫', title:'ICE Restriction Policies', status:'Active', sc:'green',
+       body:'National ICE 2W ban by 2035 confirmed — first in LATAM. A 2028 ZEV mandate requires 30% of new 2W registrations to be electric. Gran Santiago\'s Plan de Descontaminación restricts Euro 3 and below. A 2025 law empowers municipalities to create Zero Emission Zones (ZEZ); EV motorcycles are exempt from all urban driving restrictions.'},
     ],
     upcoming: [
       {text:'SEC formal battery swap regulation', date:'Q1 2026'},
@@ -3518,28 +3518,28 @@ const regulatoryData = {
   },
   Peru: {
     snapshot: {
-      text: "Ley 31399 (2022) established Peru's National EV Promotion Framework, led by MTC (Ministerio de Transportes y Comunicaciones). Policy centres on tax incentives � a full IGV exemption for EV imports under USD 3,000 through 2028 � rather than mandates or bans. Lima Metropolitana is the primary driver through scrapping grants and EV expressway lane privileges, with national policy still in early stages.",
+      text: "Ley 31399 (2022) established Peru's National EV Promotion Framework, led by MTC (Ministerio de Transportes y Comunicaciones). Policy centres on tax incentives — a full IGV exemption for EV imports under USD 3,000 through 2028 — rather than mandates or bans. Lima Metropolitana is the primary driver through scrapping grants and EV expressway lane privileges, with national policy still in early stages.",
       keyLaw: 'Ley 31399/2022 + Lima EV Grant Programme',
       target: 'No national target (Lima-led adoption)',
       maturity: 'Nascent', mc: 'amber',
     },
     sections: [
-      {icon:'??', title:'Incentives & Subsidies', status:'Active', sc:'green',
+      {icon:'💰', title:'Incentives & Subsidies', status:'Active', sc:'green',
        body:'Lima Metropolitana provides a S/. 2,500 per-unit scrapping bonus (12,000-unit cap for 2026). EV motorcycle imports under USD 3,000 are exempt from both arancel (0%) and IGV (16%) through 2028 under Ley 31399. BCP and BBVA partner with Honda and Bajaj to offer subsidised EV financing at 6.9% APR.'},
-      {icon:'??', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
+      {icon:'🔋', title:'Battery Swapping Regulations', status:'Pending', sc:'amber',
        body:'No national regulation exists. OSINERGMIN is studying safety standards for swap stations; MINEM is expected to publish a draft regulation in Q1 2026. Lima has two commercial swap stations operating under informal municipal permits.'},
       {icon:'?', title:'Charging Infrastructure Policies', status:'Partial', sc:'teal',
        body:'MINEM Resolution 291-2021 establishes the charging station concession framework. 420+ public stations are concentrated in Lima (Miraflores, San Isidro, Surco). A joint SUNASS-OSINERGMIN resolution defines electricity tariffs for public EV charging; Lima targets 800 public chargers by 2027.'},
-      {icon:'??', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
+      {icon:'🛺', title:'3W Commercial Regulations', status:'Partial', sc:'teal',
        body:'DS 017-2009-MTC governs commercial vehicle transport. E-moto-taxis under 1kW are exempt from formal MTC licensing in rural areas. Lima restricts conventional moto-taxi operations; ARAPER is working with MTC on a formal e-trike commercial regulation with a draft expected in Q3 2026.'},
-      {icon:'??', title:'Localization & Manufacturing', status:'Partial', sc:'teal',
-       body:'No mandatory local content requirement. Honda and Yamaha import CKD kits from Brazil and India under ALADI preferential rates (5�8%). PRODUCE offers industrial park incentives for EV assembly investment. A PLI-type scheme is under study at MEF for potential inclusion in the 2027 national budget.'},
-      {icon:'??', title:'Safety & Compliance Standards', status:'Active', sc:'green',
-       body:'NTP 370.301:2021 (Norma T�cnica Peruana) governs EV battery safety. INDECOPI certification is required for all imported EV batteries. OSINERGMIN must approve EV charger installations above 7.4kW. All new 2W require MTC/AAP homologation before commercial sale in Peru.'},
-      {icon:'??', title:'Import & Trade Policies', status:'Active', sc:'green',
-       body:'EV 2W under USD 3,000: 0% arancel + 0% IGV through 2028 (Ley 31399) � the lowest EV import barrier in LATAM. EV 2W above USD 3,000: 0% arancel + standard 16% IGV. Peru\'s very low baseline tariffs and the Peru�China FTA (0% on most 2W components) make it an attractive import market.'},
-      {icon:'??', title:'ICE Restriction Policies', status:'Partial', sc:'teal',
-       body:'Lima restricts ICE motorcycles older than 5 years from re-registering in Cercado Lima (from November 2025). EV motorcycles gained access to Lima\'s Via Expresa and Paseo de la Rep�blica lanes from May 2026. MTC is studying a national low-emission zone framework; no national ICE ban has been announced.'},
+      {icon:'🏭', title:'Localization & Manufacturing', status:'Partial', sc:'teal',
+       body:'No mandatory local content requirement. Honda and Yamaha import CKD kits from Brazil and India under ALADI preferential rates (5–8%). PRODUCE offers industrial park incentives for EV assembly investment. A PLI-type scheme is under study at MEF for potential inclusion in the 2027 national budget.'},
+      {icon:'🛡', title:'Safety & Compliance Standards', status:'Active', sc:'green',
+       body:'NTP 370.301:2021 (Norma Técnica Peruana) governs EV battery safety. INDECOPI certification is required for all imported EV batteries. OSINERGMIN must approve EV charger installations above 7.4kW. All new 2W require MTC/AAP homologation before commercial sale in Peru.'},
+      {icon:'📦', title:'Import & Trade Policies', status:'Active', sc:'green',
+       body:'EV 2W under USD 3,000: 0% arancel + 0% IGV through 2028 (Ley 31399) — the lowest EV import barrier in LATAM. EV 2W above USD 3,000: 0% arancel + standard 16% IGV. Peru\'s very low baseline tariffs and the Peru–China FTA (0% on most 2W components) make it an attractive import market.'},
+      {icon:'🚫', title:'ICE Restriction Policies', status:'Partial', sc:'teal',
+       body:'Lima restricts ICE motorcycles older than 5 years from re-registering in Cercado Lima (from November 2025). EV motorcycles gained access to Lima\'s Via Expresa and Paseo de la República lanes from May 2026. MTC is studying a national low-emission zone framework; no national ICE ban has been announced.'},
     ],
     upcoming: [
       {text:'ARAPER formal e-trike commercial regulation draft', date:'Q3 2026'},
@@ -3553,10 +3553,10 @@ const regulatoryData = {
 // ===================== REGULATORY RENDER =====================
 function renderRegulatoryOverview() {
   const d = regulatoryData[currentCountry];
-  document.getElementById('reg-title').innerHTML = getFlagImg(currentCountry) + currentCountry + ' � Regulatory Overview';
+  document.getElementById('reg-title').innerHTML = getFlagImg(currentCountry) + currentCountry + ' — Regulatory Overview';
   if (!d) { document.getElementById('reg-content').innerHTML = '<div style="color:var(--text3);padding:32px;text-align:center;">No regulatory data available for ' + currentCountry + ' yet.</div>'; return; }
 
-  document.getElementById('reg-sub').textContent = 'EV policy � compliance standards � trade policy � 2025�2026';
+  document.getElementById('reg-sub').textContent = 'EV policy — compliance standards — trade policy — 2025–2026';
 
   const matColors = {green:'var(--green)',blue:'var(--blue)',amber:'var(--amber)',red:'var(--red)'};
   const matBg    = {green:'var(--green-soft)',blue:'var(--blue-soft)',amber:'var(--amber-soft)',red:'var(--red-soft)'};

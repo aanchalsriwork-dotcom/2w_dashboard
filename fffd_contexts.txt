@@ -1,0 +1,206 @@
+0	165	Market Intelligence � Global 2W Dashboar
+1	42470	  <span class="sep">�</span>\n        <sp
+2	45202	r:var(--text);">2025�2026 LATAM 2W Indus
+3	46520	try-sub">Top brands � followers &amp; 20
+4	47546	"reg-sub">EV policy � compliance standar
+5	47569	ompliance standards � trade policy � 202
+6	47584	ards � trade policy � 2025�2026</div>\n  
+7	47590	 trade policy � 2025�2026</div>\n        
+8	47935	lass="page-sub">2025�2026 LATAM 2W indus
+9	48948	Social Benchmarking � LATAM</div>\n      
+10	50784	untry/flag-code map � no runtime CSV fet
+11	61920	/div>' + t.name + ' � <span>' + t.pct.to
+12	70216	 'CAGR forecast 2025�2030', cagrDir: 'up
+13	70479	 fuelChg: 'Gasoline � ? 3.2% YoY', fuelD
+14	72236	 'CAGR forecast 2025�2030', cagrDir: 'up
+15	72502	 fuelChg: 'Gasoline � ? 4.1% YoY', fuelD
+16	74097	 'CAGR forecast 2025�2030', cagrDir: 'up
+17	74362	 fuelChg: 'Gasoline � ? 62% YoY', fuelDi
+18	75942	 'CAGR forecast 2025�2030', cagrDir: 'up
+19	76209	 fuelChg: 'Gasoline � ? 1.8% YoY', fuelD
+20	77798	 'CAGR forecast 2025�2030', cagrDir: 'up
+21	78064	 fuelChg: 'Gasoline � ? 2.5% YoY', fuelD
+22	158659	    {name:'Honda Per�',seg:'Two-Wheeler'
+23	159381	   {name:'Yamaha Per�',seg:'Two-Wheeler'
+24	160064	    {name:'Bajaj Per�',seg:'Two-Wheeler'
+25	162041	%',leader:'Bajaj Per�'},\n  {platform:'Fa
+26	164194	on || 'Global') + ' � ' + country;\n  set
+27	171828	pan>', 'vs Apr 2024 �')\n      + scItem('
+28	172051	pan>', 'vs Apr 2024 �')\n      + scItem('
+29	182302	tUrl.slice(0,60) + '�' : '(none set)'}`,
+30	182627	ying Apps Script URL�', 'var(--text3)');
+31	183247	! Reloading data now�', 'var(--green)');
+32	183532	Apps Script URL set � paste it above and
+33	184857	`\nTrying ${u.label}�`, 'var(--text3)');
+34	186230	HTML page (not CSV) � sheet not publishe
+35	186384	'  ? Got empty JSON � proxy returned not
+36	186641	? This method works � reloading data now
+37	186661	� reloading data now�', 'var(--green)');
+38	186882	(--red)');\n  log('  � File ? Share ? Pub
+39	186969	-amber)');\n  log('  � Share ? Anyone wit
+40	187037	-amber)');\n  log('  � Tab name is exactl
+41	187121	-amber)');\n  log('  � Sheet ID is correc
+42	187990	 ' Requesting update�';\n\n  // Send promp
+43	189037	' + country + ' data�', 'var(--text3)');
+44	189525	a from Google Sheets�\n    </div></td></t
+45	190275	fetch JSON directly � no CORS, no proxie
+46	190473	 for ' + country + '�', 'var(--text3)');
+47	190936	: ' + e.message + ' � Check the URL is c
+48	191184	r "' + country + '" � check the tab name
+49	192264	no valid rows found � check column heade
+50	193480	ase spreadsheet URL � extracted from the
+51	196853	ummy MoM growth (%) � real data is only 
+52	199632	olor:var(--text3);">�</div>'\n    + '<div
+53	202849	3);font-size:10px;">�</span>'\n    : bran
+54	206743	' + (r.category || '�') + '</span></td>'
+55	210441	/div>' + s.name + ' � <span>' + s.pct.to
+56	217862	ntCountry + ' &nbsp;�&nbsp; May 2024</di
+57	219458	.textContent = '2025�2026 headlines for 
+58	220344	 NEWS URL RESOLVER  � Claude web_search 
+59	220578	is baked into n.url � just apply it dire
+60	221174	EWS IMAGE RESOLVER  � fetches OG image f
+61	226805	ed async resolution � Claude call per ca
+62	226984	 // Card body click � uses live _resolve
+63	228089	 currentCountry + ' � followers & 2026 c
+64	231943	Link ? followers : '�') + '</div>'\n    +
+65	232749	m-segment">${o.seg} � ${c}</div>\n       
+66	234360	ne-meta">${c.brand} � ${c.country} � ${c
+67	234375	and} � ${c.country} � ${c.platform} � <s
+68	234391	ry} � ${c.platform} � <span style="color
+69	234990	meta">${e.platform} � ${e.country} � ${e
+70	235005	orm} � ${e.country} � ${e.date}</div>\n  
+71	236476	  note:'Annual IPCA � IBGE'},\n      {lab
+72	236837	note:'IBGE PNAD Cont�nua'},\n      {label
+73	237066	p',     note:'SELIC � BCB May 2025'},\n  
+74	237421	 note:'National Avg � Petrobras'},\n     
+75	237533	    note:'B10 Blend � ANP'},\n      {labe
+76	237782	wth rate: 0.7% p.a. � IBGE'},\n      {lab
+77	237896	e:'Urban Population � IBGE 2025'},\n     
+78	237962	y',    value:'25 /km�',           trend:
+79	238112	utral',note:'Ages 15�64 � IBGE'},\n    ],
+80	238116	l',note:'Ages 15�64 � IBGE'},\n    ],\n   
+81	238465	te:'Public Stations � ABVE'},\n      {lab
+82	238578	te:'Residential Avg � ANEEL'},\n      {la
+83	238690	note:'% of 2W Sales � ABRACICLO'},\n    ]
+84	238998	,    value:'35% CBU � 2% CKD',  trend:'n
+85	239405	   note:'Annual CPI � DANE'},\n      {lab
+86	239876	e:'Nominal Wage YoY � DANE'},\n    ],\n   
+87	240012	ote:'Banco de la Rep�blica'},\n      {lab
+88	240356	 note:'National Avg � MinMinas'},\n      
+89	240716	wth rate: 0.9% p.a. � DANE'},\n      {lab
+90	240830	e:'Urban Population � World Bank 2025'},
+91	240902	y',    value:'46 /km�',           trend:
+92	241052	utral',note:'Ages 15�64 � DANE'},\n    ],
+93	241056	l',note:'Ages 15�64 � DANE'},\n    ],\n   
+94	241417	te:'Public Stations � ANDEMOS'},\n      {
+95	241529	  note:'Residential � CREG'},\n      {lab
+96	241640	note:'% of 2W Sales � ANDI'},\n    ],\n   
+97	241945	,    value:'35% CBU � 5% CKD',  trend:'n
+98	242367	   note:'Annual CPI � INDEC (easing)'},\n
+99	242623	,     note:'Nominal � INDEC EPH'},\n     
+100	243211	',note:'Nominal YoY � BCRA'},\n    ],\n   
+101	243335	,     note:'Premium � National Avg'},\n  
+102	243696	wth rate: 0.8% p.a. � INDEC'},\n      {la
+103	243811	e:'Urban Population � INDEC 2025'},\n    
+104	243878	y',    value:'16 /km�',           trend:
+105	244028	utral',note:'Ages 15�64 � INDEC'},\n    ]
+106	244032	l',note:'Ages 15�64 � INDEC'},\n    ],\n  
+107	244229	,     value:'ARS 200�500K',      trend:'
+108	244389	te:'Public Stations � ACARA'},\n      {la
+109	244615	note:'% of 2W Sales � ACARA'},\n    ],\n  
+110	244977	:'Post-Milei reform � ARCA'},\n    ],\n  }
+111	245333	   note:'Annual CPI � INE Chile'},\n     
+112	245448	 note:'IPEC Index (0�100)'},\n    ],\n    
+113	245801	note:'Real Wage YoY � INE'},\n    ],\n    
+114	246045	e:'Avg Consumer APR � BCCh'},\n      {lab
+115	246277	    note:'93-Octane � ENAP'},\n      {lab
+116	246387	 note:'National Avg � ENAP'},\n      {lab
+117	246637	wth rate: 0.6% p.a. � INE'},\n      {labe
+118	246750	e:'Urban Population � INE 2025'},\n      
+119	246815	y',    value:'26 /km�',           trend:
+120	246965	utral',note:'Ages 15�64 � INE'},\n    ],\n
+121	246969	l',note:'Ages 15�64 � INE'},\n    ],\n    
+122	247321	te:'Public Stations � SEC'},\n      {labe
+123	247429	',note:'Residential � CNE'},\n      {labe
+124	247539	note:'% of 2W Sales � ANAC'},\n    ],\n   
+125	247840	',    value:'6% FTA � 15% gen.', trend:'
+126	248249	   note:'Annual CPI � INEI'},\n      {lab
+127	248717	note:'Real Wage YoY � INEI'},\n    ],\n   
+128	248962	e:'Avg Consumer APR � SBS'},\n      {labe
+129	249196	note:'90-Octane Avg � OSINERGMIN'},\n    
+130	249308	     note:'B5 Blend � OSINERGMIN'},\n    
+131	249564	wth rate: 1.1% p.a. � INEI'},\n      {lab
+132	249678	e:'Urban Population � INEI 2025'},\n     
+133	249744	y',    value:'26 /km�',           trend:
+134	249894	utral',note:'Ages 15�64 � INEI'},\n    ],
+135	249898	l',note:'Ages 15�64 � INEI'},\n    ],\n   
+136	250253	te:'Public Stations � ARAPER'},\n      {l
+137	250364	',note:'Residential � OSINERGMIN'},\n    
+138	250481	note:'% of 2W Sales � ARAPER'},\n    ],\n 
+139	250782	)',    value:'0% EV � 0% arancel + 16% I
+140	252183	 down:'?', neutral:'�'};\n  const trendLa
+141	253746	ntives. PROCONVE L8 � Brazil's Euro 5 eq
+142	253775	s Euro 5 equivalent � became mandatory f
+143	254033	 + PROCONVE L8 (2024�2026)',\n      targe
+144	254333	ow-income buyers (=3� minimum wage). IPI
+145	254788	ilot programmes in S�o Paulo and Rio ope
+146	255592	TRAN registration. S�o Paulo and Rio mun
+147	256043	nca de Manaus) and S�o Paulo, benefiting
+148	256957	imeline announced. S�o Paulo restricts E
+149	256982	ulo restricts Euro 1�3 vehicles in the Z
+150	257126	sion-zone rules in S�o Paulo and Rio, wi
+151	257445	er Programme review � potential BRL 5B e
+152	257520	text:'Seguro Obrigat�rio (mandatory insu
+153	257668	4/2019 (Plan de Acci�n del Veh�culo El�c
+154	257678	an de Acci�n del Veh�culo El�ctrico) is 
+155	257686	ci�n del Veh�culo El�ctrico) is Colombia
+156	257864	 January 2026. Bogot�'s Pico y Placa ext
+157	258744	lity standard. Bogot� has three commerci
+158	259125	ional EV fund. Bogot�\'s Movilidad El�ct
+159	259142	got�\'s Movilidad El�ctrica plan targets
+160	259466	-cargo trikes. Bogot� is piloting a dedi
+161	259616	a Tarjeta de Operaci�n from the Minister
+162	259868	 duty); the Colombia�EU FTA provides pre
+163	260617	ential. The Colombia�Korea FTA grants 0%
+164	260852	,\n       body:'Bogot� extended Pico y Pl
+165	260917	 weekday mornings (6�9am) from March 202
+166	261011	 are active in Bogot� Zona Rosa and Chap
+167	261276	     {text:'Colombia�Euroc�mara joint EV
+168	261282	text:'Colombia�Euroc�mara joint EV finan
+169	261430	,\n      {text:'Bogot� low-emission zone 
+170	261784	, Mendoza, and Neuqu�n remain the primar
+171	262344	e offers an ARS 200K�500K scrapping bonu
+172	262476	 EV purchases; Neuqu�n offers free EV re
+173	263026	      body:'Secretar�a de Energ�a Resolu
+174	263037	'Secretar�a de Energ�a Resolution 13/202
+175	263819	Bajaj assembles in C�rdoba under AFIP CK
+176	264460	d Ley Nacional de Tr�nsito.'},\n      {ic
+177	264639	ll 2W including EVs � the former 8% EV p
+178	264750	remains via Secretar�a de Industria appr
+179	265009	ity restricts Euro 1�2 motorcycles in Ce
+180	265054	and Puerto Madero. C�rdoba mandates bian
+181	265687	 ICE 2W ban by 2035 � the first in the r
+182	266079	0% EV share by 2028 � 60% by 2031',\n    
+183	266361	programme). CORFO Cr�dito Verde provides
+184	267095	+ stations deployed � the highest per-ca
+185	267247	 Ministerio de Energ�a targets 3,000 sta
+186	267511	ered under Ley de Tr�nsito 18.290 on a p
+187	267862	content requirement � Chile maintains on
+188	267987	a, China) provides 0�6% tariffs on EV im
+189	268812	, 15% MFN. The Chile�China FTA provides 
+190	268889	tory local assembly � CKD treated as com
+191	268921	d as components at 0�6%.'},\n      {icon:
+192	269061	n by 2035 confirmed � first in LATAM. A 
+193	269190	an de Descontaminaci�n restricts Euro 3 
+194	269891	s on tax incentives � a full IGV exempti
+195	269958	 3,000 through 2028 � rather than mandat
+196	272042	referential rates (5�8%). PRODUCE offers
+197	272338	70.301:2021 (Norma T�cnica Peruana) gove
+198	272745	gh 2028 (Ley 31399) � the lowest EV impo
+199	272886	tariffs and the Peru�China FTA (0% on mo
+200	273237	 and Paseo de la Rep�blica lanes from Ma
+201	273969	 currentCountry + ' � Regulatory Overvie
+202	274263	ontent = 'EV policy � compliance standar
+203	274286	ompliance standards � trade policy � 202
+204	274301	ards � trade policy � 2025�2026';\n\n  con
+205	274307	 trade policy � 2025�2026';\n\n  const mat

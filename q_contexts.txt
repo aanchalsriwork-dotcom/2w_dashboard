@@ -1,0 +1,99 @@
+0	46778	en);color:var(--green);">? Verified May 2026</div>
+1	56442	 Math.abs(best - target) ? w : best;\n  }, FLAGCDN_
+2	57972	region-toggle' + (isOpen ? ' open' : '') + '" id="
+3	58143	"country-list' + (isOpen ? ' open' : '') + '" id="
+4	59431	eturn (rounded % 1 === 0 ? rounded.toFixed(0) : ro
+5	59807	extra = k.sublines\n      ? k.sublines.map(function
+6	60046	 (k.changeDir === 'down' ? '?' : '?') + ' ' + k.ch
+7	60696	ss="vbar-fill' + (isLast ? ' current' : '') + '" s
+8	60983	turn '<span>' + (f === 0 ? '0' : formatAxisVal(m.y
+9	70481	L', fuelChg: 'Gasoline � ? 3.2% YoY', fuelDir: 'do
+10	72504	L', fuelChg: 'Gasoline � ? 4.1% YoY', fuelDir: 'do
+11	74364	L', fuelChg: 'Gasoline � ? 62% YoY', fuelDir: 'dow
+12	76211	L', fuelChg: 'Gasoline � ? 1.8% YoY', fuelDir: 'do
+13	78066	L', fuelChg: 'Gasoline � ? 2.5% YoY', fuelDir: 'do
+14	170176	 (k.changeDir === 'down' ? '?' : '?') + ' ' + k.ch
+15	170512	tion(v) { return (v >= 0 ? '+' : '') + v.toFixed(1
+16	171381	+ sc.globalShareDir + '">? ' + sc.globalShareChg +
+17	171575	sc.regionalShareDir + '">? ' + sc.regionalShareChg
+18	173279	ss="vbar-fill' + (isLast ? ' current' : '') + '" s
+19	173917	turn '<span>' + (f === 0 ? '0' : formatAxisVal(sal
+20	181964	: ${id || '(none)'}`, id ? 'var(--green)' : 'var(-
+21	182275	 Script URL: ${scriptUrl ? scriptUrl.slice(0,60) +
+22	182337	e set)'}`,\n    scriptUrl ? 'var(--green)' : 'var(-
+23	182713	(scriptUrl.includes('?') ? '&' : '?') + 'sheet=' +
+24	183059	ice(0,80));\n      log(`  ? Got ${data.length} rows
+25	183335	 catch(e) {\n      log(`  ? Error: ${e.message}`, '
+26	183387	r(--red)');\n      log('  ? Check: deployed as Web 
+27	183965	 { label: '3) allorigins ? gviz', type: 'allorigin
+28	184139	  { label: '4) corsproxy ? gviz', type: 'corsproxy
+29	184313	 { label: '5) thingproxy ? gviz', type: 'thingprox
+30	184488	 { label: '6) allorigins ? export', type: 'allorig
+31	186106	trim()) {\n        log('  ? Empty response', 'var(-
+32	186204	('<!')) {\n        log('  ? Got HTML page (not CSV)
+33	186367	= '{}') {\n        log('  ? Got empty JSON � proxy 
+34	186456	 } else {\n        log('  ? Looks like CSV! Rows: '
+35	186761	 catch(e) {\n      log(`  ? Error: ${e.message}`, '
+36	186889	-red)');\n  log('  � File ? Share ? Publish to web 
+37	186897	\n  log('  � File ? Share ? Publish to web ? CSV ? 
+38	186914	? Share ? Publish to web ? CSV ? Publish (each tab
+39	186920	e ? Publish to web ? CSV ? Publish (each tab)', 'v
+40	186977	ber)');\n  log('  � Share ? Anyone with the link ? 
+41	187000	e ? Anyone with the link ? Viewer', 'var(--amber)'
+42	190357	(scriptUrl.includes('?') ? '&' : '?') + 'sheet=' +
+43	198164	rallYoY = totalSales2024 ? ((totalSales2025 - tota
+44	198605	b.share = totalSales2025 ? (b.sales2025 / totalSal
+45	198673	\n    b.yoy = b.sales2024 ? ((b.sales2025 - b.sales
+46	199397	s="bi-kpi-icon' + (amber ? ' amber' : '') + '"><i 
+47	200669	pan class="' + (mom >= 0 ? 'up' : 'down') + '">' +
+48	200705	own') + '">' + (mom >= 0 ? '?' : '?') + ' ' + Math
+49	200879	' + (agg.overallYoY >= 0 ? 'up' : 'down') + '">' +
+50	200926	' + (agg.overallYoY >= 0 ? '?' : '?') + ' ' + Math
+51	201446	 class="' + (tb.yoy >= 0 ? 'up' : 'down') + '">' +
+52	201485	') + '">' + (tb.yoy >= 0 ? '?' : '?') + ' ' + Math
+53	202007	"' + ((tm.yoy || 0) >= 0 ? 'up' : 'down') + '">' +
+54	202053	>' + ((tm.yoy || 0) >= 0 ? '?' : '?') + ' ' + Math
+55	202665	{\n  const pct = maxSales ? Math.max(4, Math.round(
+56	202749	nst badge = isOthers\n    ? '<span class="brand-bad
+57	203349	<td class="' + (yoy >= 0 ? 'up' : 'down') + '">' +
+58	203385	own') + '">' + (yoy >= 0 ? '? ' : '? ') + Math.abs
+59	204470	are = agg.totalSales2025 ? (othersSales / agg.tota
+60	204558	thersYoy = othersSales24 ? ((othersSales - othersS
+61	205188	&& agg.brands.length > 7 ? '<button class="view-al
+62	205282	(BI_STATE.brandsExpanded ? 'Show Top Brands' : 'Vi
+63	205441	odels = (hasData && agg) ? agg.modelsSorted : [];\n
+64	205541	  const filtered = q\n    ? allModels.filter(functi
+65	205737	 BI_STATE.modelsExpanded ? filtered : filtered.sli
+66	206305	are = agg.totalSales2025 ? (r.sales2025 / agg.tota
+67	206866	<td class="' + (mom >= 0 ? 'up' : 'down') + '">' +
+68	206902	own') + '">' + (mom >= 0 ? '? ' : '? ') + Math.abs
+69	207000	="' + ((r.yoy || 0) >= 0 ? 'up' : 'down') + '">' +
+70	207045	">' + ((r.yoy || 0) >= 0 ? '? ' : '? ') + Math.abs
+71	208373	 && filtered.length > 10 ? '<button class="view-al
+72	208467	(BI_STATE.modelsExpanded ? 'Show Top 10' : 'View A
+73	209047	_STATE.contribBrand; })) ? BI_STATE.contribBrand :
+74	209577	r.model, pct: brandTotal ? (r.sales2025 / brandTot
+75	209692	Others', pct: brandTotal ? (othersTotal / brandTot
+76	210916	.brand === selectedBrand ? ' selected' : '') + '>'
+77	212222	ATE.trendBrand === 'all' ? agg.modelsSorted : agg.
+78	212440	maxSales = models.length ? Math.max.apply(null, mo
+79	214063	turn '<span>' + (f === 0 ? '0' : formatUnits(yAxis
+80	214588	I_STATE.trendCount === 5 ? ' selected' : '') + '>T
+81	214683	_STATE.trendCount === 10 ? ' selected' : '') + '>T
+82	214916	I_STATE.trendBrand === b ? ' selected' : '') + '>'
+83	214957	'') + '>' + (b === 'all' ? 'All Brands' : b) + '</
+84	216129	="' + ((r.yoy || 0) >= 0 ? 'up' : 'down') + '">' +
+85	216174	">' + ((r.yoy || 0) >= 0 ? '? ' : '? ') + Math.abs
+86	216530	/span></div>' + (hasRows ? '<span class="view-all-
+87	217032	 const allRows = hasData ? getBrandIntelRows(curre
+88	217223	STATE.segment === 'all') ? allRows : allRows.filte
+89	217334	 const agg = rows.length ? aggregateBrandIntelFrom
+90	217457	const flagImg = flagCode ? '<img src="https://flag
+91	218469	_STATE.segment === 'all' ? ' selected' : '') + '>A
+92	218605	 (BI_STATE.segment === s ? ' selected' : '') + '>'
+93	220483	sUrlCache = {};   // key ? resolved url string\n\nas
+94	224459	tered = filter === 'all' ? items.slice() : items.f
+95	231524	 wrapStart = hasLink\n    ? '<a href="' + url + '" 
+96	231732	\n  var wrapEnd = hasLink ? '</a>' : '</div>';\n  re
+97	231928	form-count">' + (hasLink ? followers : '�') + '</d
+98	232211	ries = country === 'all' ? ['Brazil','Colombia','A
