@@ -2045,14 +2045,10 @@ async function loadMarketOverviewData() {
 async function renderCountryOverview() {
   const el = document.getElementById('overview-content');
   if (!el) return;
-  const d = latamData[currentCountry];
-  const mo = marketOverviewData[currentCountry];
 
-  if (!d || !mo) {
-    el.innerHTML = '<div style="color:var(--text3);padding:48px 0;text-align:center;">No market overview data available for ' + currentCountry + ' yet.</div>';
-    return;
-  }
-
+  // Try the live fetch FIRST -- the old code checked for dummy data before even
+  // attempting this, so any country without a hardcoded dummy entry (which is most
+  // of them now) showed "No data" regardless of whether live data actually existed.
   let live;
   try {
     live = await loadMarketOverviewData();
@@ -2060,6 +2056,36 @@ async function renderCountryOverview() {
     console.error('loadMarketOverviewData failed:', e);
     live = { hasData: false };
   }
+
+  const hasDummy = !!(latamData[currentCountry] && marketOverviewData[currentCountry]);
+
+  // Only show "no data" when NEITHER live nor dummy data exists for this country
+  if (!live.hasData && !hasDummy) {
+    el.innerHTML = '<div style="color:var(--text3);padding:48px 0;text-align:center;">No market overview data available for ' + currentCountry + ' yet.</div>';
+    return;
+  }
+
+  // Safe placeholders for the pieces that are still dummy-only (Global Market Share,
+  // Ranks, etc.) -- only used when a country has live data but was never added to the
+  // old hardcoded dummy set. Real dummy countries (Brazil, Colombia, Argentina, Chile,
+  // Peru) keep using their actual dummy values as before.
+  const d = latamData[currentCountry] || { market2w: (live.hasData ? formatUnits(live.totalUnits) : '0') + ' units' };
+  const mo = marketOverviewData[currentCountry] || {
+    kpis: [],   // never read when live.hasData is true -- see the kpiDefs ternary below
+    scorecard: {
+      globalShare: '\u2014', globalShareChg: '\u2014', globalShareDir: 'up',
+      regionalShare: '\u2014', regionalShareChg: '\u2014', regionalShareDir: 'up',
+      rankGlobal: '\u2014', rankGlobalTotal: '\u2014', rankRegional: '\u2014', rankRegionalTotal: '\u2014',
+      ownGrowth: 0, growthVsGlobalDir: 'up', growthVsRegionalDir: 'up',
+    },
+    // 3 safe placeholder entries, not an empty array -- the podium code below reads
+    // brands[0]/[1]/[2] directly without checking length first, so an empty array
+    // here would crash the page instead of just showing placeholder shares.
+    topBrands: [{ name: '\u2014', pct: 1 }, { name: '\u2014', pct: 1 }, { name: '\u2014', pct: 1 }],
+    segmentMix: [],
+    trendSeed: null,
+  };
+
   const periodLabel = live.hasData ? (MONTH_NAMES[live.period.month - 1] + ' ' + live.period.year) : mo.kpis[0].date;
 
   // ---- KPI row (6 cards) ----
