@@ -172,8 +172,8 @@
   .data-table td { font-size: 13px; color: var(--text2); padding: 10px 6px; border-bottom: 1px solid var(--border); }
   .data-table tr:last-child td { border-bottom: none; }
   .data-table td.num { font-family: var(--font-head); color: var(--text); font-weight: 600; }
-  .data-table td.up { color: var(--green); }
-  .data-table td.down { color: var(--red); }
+  .data-table td.up, .data-table .up { color: var(--green); font-weight: 600; }
+  .data-table td.down, .data-table .down { color: var(--red); font-weight: 600; }
 
   /* Tag */
   .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
@@ -346,6 +346,12 @@
   .bi-header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .bi-filter-group { display: flex; flex-direction: column; gap: 4px; }
   .bi-filter-label { font-size: 10px; color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+  /* Analysis Type: a row of buttons, one active at a time (like the image you shared) */
+  .bi-analysis-type { display: flex; background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 2px; gap: 2px; }
+  .bi-analysis-type button { padding: 7px 12px; font-size: 12px; font-family: var(--font-body); border: none; background: transparent; color: var(--text2); border-radius: 6px; cursor: pointer; white-space: nowrap; }
+  .bi-analysis-type button.active { background: var(--accent); color: #fff; font-weight: 600; }
+  /* Last 6 Months has no dropdowns -- just shows the computed range as text */
+  .bi-period-computed { font-size: 12.5px; color: var(--text); background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 6px 12px; white-space: nowrap; align-self: flex-end; }
   .bi-reset-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--bg2); border: 1px solid var(--border2); border-radius: 8px; color: var(--text2); font-size: 12.5px; font-weight: 500; cursor: pointer; transition: all var(--transition); align-self: flex-end; }
   .bi-reset-btn:hover { border-color: var(--accent); color: var(--accent2); }
   .bi-reset-btn i { width: 14px; height: 14px; }
@@ -1896,7 +1902,147 @@ function genGrowthLine(seed) {
 const SEGMIX_PALETTE = ['#2f5fdb', '#0f172a', '#7c4dff'];
 const SEGMIX_ICONS = { 'Scooter': 'bike', 'Motorcycle': 'gauge', 'Moped / Others': 'package' };
 
-function renderCountryOverview() {
+// ===================== MARKET OVERVIEW: LIVE DATA =====================
+// Deliberately separate from BI_STATE (the Brand & Model Sales tab's filters) --
+// this tab always shows the latest available month only, with no category/fuel/cc
+// filtering, as requested.
+
+function priorMonthOf(p) {
+  let mm = p.month - 1, yy = p.year;
+  if (mm <= 0) { mm = 12; yy -= 1; }
+  return { year: yy, month: mm };
+}
+function priorYearOf(p) { return { year: p.year - 1, month: p.month }; }
+
+// The 6 months ending at p (inclusive), oldest first -- used for "Average Monthly Sales (Last 6 Months)"
+function sixMonthsEndingAt(p) {
+  const months = [];
+  for (let i = 5; i >= 0; i--) {
+    let mm = p.month - i, yy = p.year;
+    while (mm <= 0) { mm += 12; yy -= 1; }
+    months.push({ year: yy, month: mm });
+  }
+  return months;
+}
+
+// Does ANY data exist for this month, for this country? (Unscoped by category/fuel/cc,
+// unlike monthsHaveData() on the Brand & Model Sales tab -- Market Overview ignores those filters.)
+function monthHasAnyData(m) {
+  return BI_AVAILABLE.some(function(r) { return r.sales_year === m.year && r.sales_month_num === m.month; });
+}
+
+async function fetchMarketOverviewDetail(wbCode, months, extraFilter) {
+  let url = SUPABASE_URL + '/rest/v1/v_model_month_detail?wb_code=eq.' + wbCode;
+  url += '&sales_month=in.(' + months.map(monthDateStr).join(',') + ')';
+  if (extraFilter) url += '&' + extraFilter.field + '=eq.' + encodeURIComponent(extraFilter.value);
+  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
+  const body = await res.json();
+  if (!res.ok) { console.error('fetchMarketOverviewDetail failed:', url, body); return []; }
+  return body;
+}
+
+// Same as above but scoped by region instead of a single country -- used for Regional Market Share
+async function fetchRegionDetail(region, months) {
+  let url = SUPABASE_URL + '/rest/v1/v_model_month_detail?region=eq.' + encodeURIComponent(region);
+  url += '&sales_month=in.(' + months.map(monthDateStr).join(',') + ')';
+  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
+  const body = await res.json();
+  if (!res.ok) { console.error('fetchRegionDetail failed:', url, body); return []; }
+  return body;
+}
+
+async function loadMarketOverviewData() {
+  const wbCode = COUNTRY_WB_CODE[currentCountry];
+  if (!wbCode) return { hasData: false };
+
+  // Reuse the same available-months cache the Brand & Model Sales tab uses, just to
+  // find "the latest month" -- this doesn't touch any of that tab's filter state.
+  if (BI_AVAILABLE_COUNTRY !== currentCountry) await loadAvailableFilters(currentCountry);
+  if (!BI_AVAILABLE.length) return { hasData: false };
+
+  const latest = getLatestAvailablePeriod();
+  const current = { year: latest.year, month: latest.month };
+  const prior = priorMonthOf(current);
+  const priorYr = priorYearOf(current);
+  const sixMonths = sixMonthsEndingAt(current);
+  const sixMonthsPriorYr = sixMonths.map(priorYearOf);
+
+  const hasPrior = monthHasAnyData(prior);
+  const hasPriorYr = monthHasAnyData(priorYr);
+  const hasSixPriorYr = sixMonthsPriorYr.every(monthHasAnyData);
+
+  const [currentRows, priorRows, priorYrRows, sixRows, sixPriorYrRows] = await Promise.all([
+    fetchMarketOverviewDetail(wbCode, [current]),
+    hasPrior ? fetchMarketOverviewDetail(wbCode, [prior]) : Promise.resolve([]),
+    hasPriorYr ? fetchMarketOverviewDetail(wbCode, [priorYr]) : Promise.resolve([]),
+    fetchMarketOverviewDetail(wbCode, sixMonths),
+    hasSixPriorYr ? fetchMarketOverviewDetail(wbCode, sixMonthsPriorYr) : Promise.resolve([]),
+  ]);
+
+  if (!currentRows.length) return { hasData: false };
+
+  // ---- Total 2W Sales ----
+  const totalUnits = sumUnits(currentRows);
+  const priorTotal = sumUnits(priorRows);
+  const priorYrTotal = sumUnits(priorYrRows);
+  const totalMom = hasPrior ? pctGrowth(totalUnits, priorTotal) : null;
+  const totalYoy = hasPriorYr ? pctGrowth(totalUnits, priorYrTotal) : null;
+
+  // ---- EV Sales: same rows as above, just filtered to fuel_type = 'Electric' ----
+  // (No separate fetch needed -- we already have the rows, just filter them client-side.)
+  const isElectric = function(r) { return r.fuel_type === 'Electric'; };
+  const evUnits = sumUnits(currentRows.filter(isElectric));
+  const evPriorUnits = sumUnits(priorRows.filter(isElectric));
+  const evPriorYrUnits = sumUnits(priorYrRows.filter(isElectric));
+  const evMom = hasPrior ? pctGrowth(evUnits, evPriorUnits) : null;
+  const evYoy = hasPriorYr ? pctGrowth(evUnits, evPriorYrUnits) : null;
+
+  // ---- EV 2W Share: compared to last YEAR only, as a percentage-point difference ----
+  const evShare = totalUnits ? (evUnits / totalUnits * 100) : 0;
+  const evSharePriorYr = (hasPriorYr && priorYrTotal) ? (evPriorYrUnits / priorYrTotal * 100) : null;
+  const evShareChangePp = (evSharePriorYr !== null) ? (evShare - evSharePriorYr) : null;
+
+  // ---- Average Monthly Sales (Last 6 Months) + YoY ----
+  const sixAvg = sumUnits(sixRows) / 6;
+  const sixAvgPriorYr = (hasSixPriorYr && sixPriorYrRows.length) ? (sumUnits(sixPriorYrRows) / 6) : null;
+  const sixAvgYoy = sixAvgPriorYr ? pctGrowth(sixAvg, sixAvgPriorYr) : null;
+
+  // ---- Top 3 Brand Share ----
+  const brandTotals = sumByKey(currentRows, 'brand_name');
+  const topBrands = Object.keys(brandTotals).map(function(name) {
+    return { name: name, units: brandTotals[name], pct: totalUnits ? (brandTotals[name] / totalUnits * 100) : 0 };
+  }).sort(function(a, b) { return b.units - a.units; }).slice(0, 3);
+
+  // ---- Segment Mix ----
+  const segTotals = sumByKey(currentRows, 'category');
+  const segmentMix = Object.keys(segTotals).map(function(name) {
+    return { name: name, pct: totalUnits ? (segTotals[name] / totalUnits * 100) : 0 };
+  }).sort(function(a, b) { return b.pct - a.pct; });
+
+  // ---- Regional Market Share: country sales / region sales, vs last YEAR only ----
+  const region = currentRows[0].region;
+  const [regionRows, regionPriorYrRows] = await Promise.all([
+    fetchRegionDetail(region, [current]),
+    hasPriorYr ? fetchRegionDetail(region, [priorYr]) : Promise.resolve([]),
+  ]);
+  const regionTotal = sumUnits(regionRows);
+  const regionalShare = regionTotal ? (totalUnits / regionTotal * 100) : 0;
+  const regionPriorYrTotal = sumUnits(regionPriorYrRows);
+  const regionalSharePriorYr = (hasPriorYr && regionPriorYrTotal) ? (priorYrTotal / regionPriorYrTotal * 100) : null;
+  const regionalShareChangePp = (regionalSharePriorYr !== null) ? (regionalShare - regionalSharePriorYr) : null;
+
+  return {
+    hasData: true, period: current,
+    totalUnits: totalUnits, totalMom: totalMom, totalYoy: totalYoy,
+    evUnits: evUnits, evMom: evMom, evYoy: evYoy,
+    evShare: evShare, evShareChangePp: evShareChangePp,
+    sixAvg: sixAvg, sixAvgYoy: sixAvgYoy,
+    topBrands: topBrands, segmentMix: segmentMix,
+    regionalShare: regionalShare, regionalShareChangePp: regionalShareChangePp,
+  };
+}
+
+async function renderCountryOverview() {
   const el = document.getElementById('overview-content');
   if (!el) return;
   const d = latamData[currentCountry];
@@ -1907,21 +2053,55 @@ function renderCountryOverview() {
     return;
   }
 
+  let live;
+  try {
+    live = await loadMarketOverviewData();
+  } catch (e) {
+    console.error('loadMarketOverviewData failed:', e);
+    live = { hasData: false };
+  }
+  const periodLabel = live.hasData ? (MONTH_NAMES[live.period.month - 1] + ' ' + live.period.year) : mo.kpis[0].date;
+
   // ---- KPI row (6 cards) ----
-  const kpiHtml = mo.kpis.map(function(k) {
+  // Built from live data when available, falling back to the dummy values otherwise.
+  // Card 1 (Total 2W Sales) deliberately has no change-row -- MoM/YoY are their own cards.
+  const kpiDefs = live.hasData ? [
+    { icon: 'bike', label: 'Total 2W Sales', value: formatUnits(live.totalUnits), changeText: null },
+    { icon: 'trending-up', label: 'YoY Growth', value: (live.totalYoy === null ? '\u2014' : (live.totalYoy >= 0 ? '+' : '') + live.totalYoy.toFixed(1) + '%'), changeDir: live.totalYoy >= 0 ? 'up' : 'down', changeText: live.totalYoy === null ? null : 'vs ' + periodLabel + ' last year' },
+    { icon: 'activity', label: 'MoM Growth', value: (live.totalMom === null ? '\u2014' : (live.totalMom >= 0 ? '+' : '') + live.totalMom.toFixed(1) + '%'), changeDir: live.totalMom >= 0 ? 'up' : 'down', changeText: live.totalMom === null ? null : 'vs prior month' },
+    { icon: 'battery-charging', label: 'EV Sales', value: formatUnits(live.evUnits), changeDir: live.evYoy >= 0 ? 'up' : 'down',
+      changeText: live.evMom === null ? null : (live.evMom >= 0 ? '+' : '') + live.evMom.toFixed(1) + '% MoM', note: live.evYoy === null ? '' : ((live.evYoy >= 0 ? '+' : '') + live.evYoy.toFixed(1) + '% YoY') },
+    { icon: 'zap', label: 'EV 2W Share', value: live.evShare.toFixed(1) + '%', changeDir: (live.evShareChangePp || 0) >= 0 ? 'up' : 'down',
+      changeText: live.evShareChangePp === null ? null : (live.evShareChangePp >= 0 ? '+' : '') + live.evShareChangePp.toFixed(1) + ' pp', note: 'vs ' + periodLabel + ' last year' },
+    { icon: 'calendar', label: 'Average Monthly Sales', value: formatUnits(Math.round(live.sixAvg)), changeDir: (live.sixAvgYoy || 0) >= 0 ? 'up' : 'down',
+      changeText: live.sixAvgYoy === null ? null : (live.sixAvgYoy >= 0 ? '+' : '') + live.sixAvgYoy.toFixed(1) + '%', note: 'YoY, last 6 months' },
+  ] : mo.kpis.map(function(k) { return { icon: k.icon, label: k.label, value: k.value, changeDir: k.changeDir, changeText: k.changeText, note: k.note }; });
+
+  const kpiHtml = kpiDefs.map(function(k) {
+    const changeRow = k.changeText
+      ? '<div class="ov-kpi-change ' + (k.changeDir || 'up') + '">' + ((k.changeDir || 'up') === 'down' ? '▼' : '▲') + ' ' + k.changeText + (k.note ? ' <span class="note">' + k.note + '</span>' : '') + '</div>'
+      : '';
     return '<div class="ov-kpi-card compact">'
       + '<div class="ov-kpi-top">'
         + '<div class="ov-kpi-icon"><i data-lucide="' + k.icon + '" style="width:19px;height:19px"></i></div>'
         + '<div class="ov-kpi-label">' + k.label + '</div>'
       + '</div>'
       + '<div class="ov-kpi-value">' + k.value + '</div>'
-      + '<div class="ov-kpi-date">' + k.date + '</div>'
-      + '<div class="ov-kpi-change ' + k.changeDir + '">' + (k.changeDir === 'down' ? '▼' : '▲') + ' ' + k.changeText + ' <span class="note">' + k.note + '</span></div>'
+      + '<div class="ov-kpi-date">' + periodLabel + '</div>'
+      + changeRow
       + '</div>';
   }).join('');
 
   // ---- Country Scorecard ----
   const sc = mo.scorecard;
+  // Regional Market Share becomes live when available; Global stays dummy data for now (per scope)
+  const regionalShareDisplay = live.hasData ? live.regionalShare.toFixed(1) + '%' : sc.regionalShare;
+  const regionalShareChgDisplay = (live.hasData && live.regionalShareChangePp !== null)
+    ? (live.regionalShareChangePp >= 0 ? '+' : '') + live.regionalShareChangePp.toFixed(1) + ' pp'
+    : sc.regionalShareChg;
+  const regionalShareDirDisplay = (live.hasData && live.regionalShareChangePp !== null)
+    ? (live.regionalShareChangePp >= 0 ? 'up' : 'down')
+    : sc.regionalShareDir;
   const vsGlobalPp = sc.ownGrowth - GLOBAL_AVG_GROWTH;
   const vsRegionalPp = sc.ownGrowth - LATAM_AVG_GROWTH;
   const fmtPp = function(v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + ' pp'; };
@@ -1935,8 +2115,8 @@ function renderCountryOverview() {
   const scorecardHtml = '<div class="card">'
     + '<div class="card-head"><div class="card-title">Country Scorecard</div></div>'
     + '<div class="scorecard-grid">'
-      + scItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Global Market Share', sc.globalShare, 'vs Apr 2024 <span class="' + sc.globalShareDir + '">? ' + sc.globalShareChg + '</span>')
-      + scItem('var(--green-soft)', 'var(--green)', 'map', 'Regional Market Share', sc.regionalShare, 'vs Apr 2024 <span class="' + sc.regionalShareDir + '">? ' + sc.regionalShareChg + '</span>')
+      + scItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Global Market Share', sc.globalShare, 'vs Apr 2024 <span class="' + sc.globalShareDir + '">' + (sc.globalShareDir === 'down' ? '\u25bc' : '\u25b2') + ' ' + sc.globalShareChg + '</span>')
+      + scItem('var(--green-soft)', 'var(--green)', 'map', 'Regional Market Share', regionalShareDisplay, (live.hasData ? 'vs ' + periodLabel + ' last year' : 'vs Apr 2024') + ' <span class="' + regionalShareDirDisplay + '">' + (regionalShareDirDisplay === 'down' ? '\u25bc' : '\u25b2') + ' ' + regionalShareChgDisplay + '</span>')
       + scItem('var(--blue-soft)', 'var(--accent2)', 'trophy', 'Rank (Global)', sc.rankGlobal + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankGlobalTotal + '</span>', 'vs Apr 2024')
       + scItem('var(--green-soft)', 'var(--green)', 'trophy', 'Rank (Regional)', sc.rankRegional + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankRegionalTotal + '</span>', 'vs Apr 2024')
       + scItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Growth vs Global', '<span style="color:' + (vsGlobalPp>=0?'var(--green)':'var(--red)') + '">' + fmtPp(vsGlobalPp) + '</span>', currentCountry + ': ' + sc.ownGrowth.toFixed(1) + '%&nbsp;&nbsp;|&nbsp;&nbsp;Global: ' + GLOBAL_AVG_GROWTH.toFixed(1) + '%')
@@ -1985,7 +2165,10 @@ function renderCountryOverview() {
   + '</div>';
 
   // ---- Top 3 Brand Share podium ----
-  const brands = mo.topBrands; // sorted desc by pct: [0]=1st,[1]=2nd,[2]=3rd
+  // Live data when available (needs all 3 podium spots filled; falls back to dummy otherwise)
+  const brands = (live.hasData && live.topBrands.length >= 3)
+    ? live.topBrands.map(function(b) { return { name: b.name, pct: b.pct }; })
+    : mo.topBrands; // sorted desc by pct: [0]=1st,[1]=2nd,[2]=3rd
   const maxPct = brands[0].pct;
   const top3Total = brands.reduce(function(s, b) { return s + b.pct; }, 0);
   const order = [
@@ -1995,7 +2178,7 @@ function renderCountryOverview() {
   ];
   const rankColor = { 1: 'var(--accent2)', 2: 'var(--navy)', 3: 'var(--accent)' };
   const podiumHtml = '<div class="card">'
-    + '<div class="card-head"><div class="card-title">Top 3 Brand Share</div><span class="tag amber">May 2024</span></div>'
+    + '<div class="card-head"><div class="card-title">Top 3 Brand Share</div><span class="tag amber">' + periodLabel + '</span></div>'
     + '<div class="podium-wrap">'
       + order.map(function(o) {
           return '<div class="podium-col">'
@@ -2011,7 +2194,8 @@ function renderCountryOverview() {
   + '</div>';
 
   // ---- Segment Mix ----
-  const segRows = mo.segmentMix.map(function(s, i) {
+  const segmentMixData = live.hasData && live.segmentMix.length ? live.segmentMix : mo.segmentMix;
+  const segRows = segmentMixData.map(function(s, i) {
     return '<div class="segmix-row">'
       + '<div class="segmix-icon"><i data-lucide="' + (SEGMIX_ICONS[s.name] || 'bike') + '" style="width:16px;height:16px"></i></div>'
       + '<div class="segmix-name">' + s.name + '</div>'
@@ -2020,11 +2204,11 @@ function renderCountryOverview() {
       + '</div>';
   }).join('');
   const segMixHtml = '<div class="card">'
-    + '<div class="card-head"><div class="card-title">Segment Mix</div><span class="tag amber">May 2024</span></div>'
+    + '<div class="card-head"><div class="card-title">Segment Mix</div><span class="tag amber">' + periodLabel + '</span></div>'
     + '<div class="segmix-wrap">'
       + '<div class="segmix-rows">' + segRows + '</div>'
       + '<svg class="segmix-bracket" viewBox="0 0 24 150" preserveAspectRatio="none"><path d="M4,4 Q16,4 16,20 L16,68 Q16,75 22,75 Q16,75 16,82 L16,130 Q16,146 4,146" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
-      + '<div class="segmix-total"><div class="segmix-total-value">' + d.market2w.replace(' units', '') + '</div><div class="segmix-total-label">Total Sales<br>May 2024</div></div>'
+      + '<div class="segmix-total"><div class="segmix-total-value">' + (live.hasData ? formatUnits(live.totalUnits) : d.market2w.replace(' units', '')) + '</div><div class="segmix-total-label">Total Sales<br>' + periodLabel + '</div></div>'
     + '</div>'
   + '</div>';
 
@@ -2420,19 +2604,279 @@ function openSheet() {
 // Only this country has mock data for now; every other country shows the same skeleton with empty states.
 const BI_TARGET_COUNTRY = 'Argentina';
 
-const BI_STATE = { segment: 'all', search: '', modelsExpanded: false, brandsExpanded: false, contribBrand: null, trendCount: 5, trendBrand: 'all' };
+// TEMPORARY placeholder for "the latest month we have data for."
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function quarterOfMonth(m) { return Math.ceil(m / 3); }   // e.g. month 5 (May) -> quarter 2
+
+// TODO: fill these in once the Supabase project exists (same pattern as SHEET_ID above)
+const SUPABASE_URL = 'https://gcugsrwshbhoqkmyrapc.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_IH6ITRf4ewAXj4XaupX9Sg_aFevAu2I';
+
+// Holds every distinct (year, month, category, fuel_type, cc_segment) combination
+// that actually has sales data for the current country. Fetched ONCE whenever the
+// country changes -- every dropdown below just filters this same list in plain
+// JavaScript, so changing a filter never needs another network request.
+let BI_AVAILABLE = [];
+let BI_AVAILABLE_COUNTRY = null;   // which country BI_AVAILABLE currently holds data for
+
+// Your database keys everything by a 3-letter World Bank code (e.g. 'ARG'),
+// but the dashboard tracks the current country by its full display name
+// (e.g. 'Argentina'). This maps one to the other -- fetched once from your
+// `country` table and cached, instead of hardcoding the pairs by hand.
+let COUNTRY_WB_CODE = {};
+let countryWbCodeLoaded = false;
+
+async function loadCountryWbCodes() {
+  if (!SUPABASE_URL) return;
+  const url = SUPABASE_URL + '/rest/v1/country?select=country,wb_code';
+  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
+  const rows = await res.json();
+  rows.forEach(function(r) { COUNTRY_WB_CODE[r.country] = r.wb_code; });
+  countryWbCodeLoaded = true;
+}
+
+async function loadAvailableFilters(country) {
+  if (!SUPABASE_URL) { BI_AVAILABLE = []; BI_AVAILABLE_COUNTRY = country; return; }   // not configured yet
+  if (!countryWbCodeLoaded) await loadCountryWbCodes();
+
+  const wbCode = COUNTRY_WB_CODE[country];
+  if (!wbCode) {
+    // No matching row in your `country` table for this display name -- most likely
+    // a spelling/casing mismatch between the dashboard's name and the DB's `country` column.
+    console.warn('No wb_code found for country:', country);
+    BI_AVAILABLE = []; BI_AVAILABLE_COUNTRY = country; return;
+  }
+
+  const url = SUPABASE_URL + '/rest/v1/v_available_filters?wb_code=eq.' + wbCode + '&select=*';
+  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
+  BI_AVAILABLE = await res.json();
+  BI_AVAILABLE_COUNTRY = country;
+}
+
+// Pulls the unique values of one column out of BI_AVAILABLE, only counting rows
+// that match whatever filters are already selected above it in the cascade.
+// e.g. distinctValues('fuel_type', { category: 'Motorcycle' }) only looks at
+// rows that are actually Motorcycles.
+function distinctValues(column, matchFilters) {
+  const keys = Object.keys(matchFilters || {});
+  const matches = BI_AVAILABLE.filter(function(row) {
+    return keys.every(function(k) { return row[k] === matchFilters[k]; });
+  });
+  return [...new Set(matches.map(function(row) { return row[column]; }))].filter(Boolean).sort();
+}
+
+// Years that actually have data, newest first
+function getYearOptions() {
+  return distinctValues('sales_year', {}).sort(function(a, b) { return b - a; });
+}
+
+// Months that actually have data for a given year, e.g. getMonthOptions(2026) -> [1,2,3,4,5,6]
+function getMonthOptions(year) {
+  return distinctValues('sales_month_num', { sales_year: year }).sort(function(a, b) { return a - b; });
+}
+
+// The most recent (year, month) that has any data at all -- used as the default
+// period on first load, and as the anchor point for "Last 6 Months".
+function getLatestAvailablePeriod() {
+  if (!BI_AVAILABLE.length) {
+    const now = new Date();
+    return { year: now.getFullYear(), month: now.getMonth() + 1 };   // fallback if nothing's loaded yet
+  }
+  const maxYear = Math.max.apply(null, getYearOptions());
+  const maxMonth = Math.max.apply(null, getMonthOptions(maxYear));
+  return { year: maxYear, month: maxMonth };
+}
+
+const BI_STATE = {
+  category: 'all', fuelType: 'all', ccSegment: 'all', search: '', modelsExpanded: false, brandsExpanded: false, contribBrand: null, trendCount: 5, trendBrand: 'all',
+  // New: period filter state. year/month/quarter start as null and get filled in
+  // the first time data loads for a country (see renderBrandIntelligence below) --
+  // we can't know the "latest period" until we've actually fetched something.
+  analysisType: 'monthly',          // 'monthly' | 'quarterly' | '6months' | 'ytm' | 'annual'
+  year: null,
+  month: null,       // used by Monthly and Year to Month
+  quarter: null,     // used by Quarterly
+};
+
+// Turns the current BI_STATE period selection into a list of actual months,
+// e.g. Quarterly / Q2 2026 -> [Apr 2026, May 2026, Jun 2026].
+// This is the exact same resolver logic from the backend design -- same rules apply here.
+function resolveSelectedMonths() {
+  const y = BI_STATE.year, m = BI_STATE.month, q = BI_STATE.quarter;
+  if (BI_STATE.analysisType === 'monthly') {
+    return [{ year: y, month: m }];
+  }
+  if (BI_STATE.analysisType === 'quarterly') {
+    const startMonth = (q - 1) * 3 + 1;   // Q1->1, Q2->4, Q3->7, Q4->10
+    return [0, 1, 2].map(function(i) { return { year: y, month: startMonth + i }; });
+  }
+  if (BI_STATE.analysisType === '6months') {
+    // Always anchored to the latest available period -- no dropdown for this type
+    const latest = getLatestAvailablePeriod();
+    const months = [];
+    for (let i = 5; i >= 0; i--) {
+      let mm = latest.month - i, yy = latest.year;
+      while (mm <= 0) { mm += 12; yy -= 1; }   // step back across a year boundary if needed
+      months.push({ year: yy, month: mm });
+    }
+    return months;
+  }
+  if (BI_STATE.analysisType === 'ytm') {   // Year to Month: Jan through the chosen month
+    const months = [];
+    for (let mm = 1; mm <= m; mm++) months.push({ year: y, month: mm });
+    return months;
+  }
+  if (BI_STATE.analysisType === 'annual') {
+    // Cap at the latest available month if this is the current/incomplete year
+    const latest = getLatestAvailablePeriod();
+    const lastMonth = (y === latest.year) ? latest.month : 12;
+    const months = [];
+    for (let mm = 1; mm <= lastMonth; mm++) months.push({ year: y, month: mm });
+    return months;
+  }
+  return [];
+}
+
+// Short text like "Jan 2026 - Jun 2026", used for the Last 6 Months display
+// and anywhere else we want to show the resolved range in human terms.
+function formatPeriodRange(months) {
+  if (!months.length) return '';
+  const first = months[0], last = months[months.length - 1];
+  const fmt = function(p) { return MONTH_NAMES[p.month - 1] + ' ' + p.year; };
+  return months.length === 1 ? fmt(first) : fmt(first) + ' \u2013 ' + fmt(last);
+}
+
+function biSetAnalysisType(val) {
+  BI_STATE.analysisType = val;
+  renderBrandIntelligence();
+}
+function biSetYear(val) { BI_STATE.year = parseInt(val, 10); renderBrandIntelligence(); }
+function biSetMonth(val) { BI_STATE.month = parseInt(val, 10); renderBrandIntelligence(); }
+function biSetQuarter(val) { BI_STATE.quarter = parseInt(val, 10); renderBrandIntelligence(); }
+
+// Builds the "Monthly | Quarterly | Last 6 Months | Year to Month | Annual" button row
+function biAnalysisTypeButtonsHtml() {
+  const types = [
+    { id: 'monthly', label: 'Monthly' },
+    { id: 'quarterly', label: 'Quarterly' },
+    { id: '6months', label: 'Last 6 Months' },
+    { id: 'ytm', label: 'Year to Month' },
+    { id: 'annual', label: 'Annual' },
+  ];
+  return '<div class="bi-analysis-type">'
+    + types.map(function(t) {
+        const activeClass = (BI_STATE.analysisType === t.id) ? 'active' : '';
+        return '<button class="' + activeClass + '" onclick="biSetAnalysisType(\'' + t.id + '\')">' + t.label + '</button>';
+      }).join('')
+    + '</div>';
+}
+
+// Builds whichever Period controls belong to the current Analysis Type.
+// This is the "dynamic" part -- the dropdowns shown here change based on BI_STATE.analysisType.
+function biPeriodSelectorHtml() {
+  const years = getYearOptions();
+  const yearOptions = years.map(function(y) {
+    return '<option value="' + y + '"' + (BI_STATE.year === y ? ' selected' : '') + '>' + y + '</option>';
+  }).join('');
+  const yearSelect = '<div class="bi-filter-group"><span class="bi-filter-label">Year</span>'
+    + '<select class="brand-select" onchange="biSetYear(this.value)">' + yearOptions + '</select></div>';
+
+  // Last 6 Months: no dropdowns at all -- just the computed range as text
+  if (BI_STATE.analysisType === '6months') {
+    return '<div class="bi-period-computed"><span class="label">Last 6 Months</span>' + formatPeriodRange(resolveSelectedMonths()) + '</div>';
+  }
+
+  // Annual: Year only
+  if (BI_STATE.analysisType === 'annual') {
+    return yearSelect;
+  }
+
+  // Quarterly: Year + Quarter
+  if (BI_STATE.analysisType === 'quarterly') {
+    const quarterOptions = [1, 2, 3, 4].map(function(q) {
+      return '<option value="' + q + '"' + (BI_STATE.quarter === q ? ' selected' : '') + '>Q' + q + '</option>';
+    }).join('');
+    return yearSelect + '<div class="bi-filter-group"><span class="bi-filter-label">Quarter</span>'
+      + '<select class="brand-select" onchange="biSetQuarter(this.value)">' + quarterOptions + '</select></div>';
+  }
+
+  // Monthly and Year to Month: both use Year + Month.
+  // Only months that actually have data for the selected year are shown.
+  const monthOptions = getMonthOptions(BI_STATE.year).map(function(m) {
+    return '<option value="' + m + '"' + (BI_STATE.month === m ? ' selected' : '') + '>' + MONTH_NAMES[m - 1] + '</option>';
+  }).join('');
+  return yearSelect + '<div class="bi-filter-group"><span class="bi-filter-label">Month</span>'
+    + '<select class="brand-select" onchange="biSetMonth(this.value)">' + monthOptions + '</select></div>';
+}
 
 function biResetFilters() {
-  BI_STATE.segment = 'all';
+  BI_STATE.category = 'all';
+  BI_STATE.fuelType = 'all';
+  BI_STATE.ccSegment = 'all';
   BI_STATE.search = '';
   BI_STATE.modelsExpanded = false;
   BI_STATE.brandsExpanded = false;
   BI_STATE.contribBrand = null;
   BI_STATE.trendCount = 5;
   BI_STATE.trendBrand = 'all';
+  // Reset the period filter back to the default: Monthly, latest month/year
+  BI_STATE.analysisType = 'monthly';
+  const latest = getLatestAvailablePeriod();
+  BI_STATE.year = latest.year;
+  BI_STATE.month = latest.month;
+  BI_STATE.quarter = quarterOfMonth(latest.month);
   renderBrandIntelligence();
 }
-function biSetSegment(val) { BI_STATE.segment = val; renderBrandIntelligence(); }
+
+// Vehicle Category -> Fuel Type -> CC Segment is a 2-level cascade: changing
+// a filter clears anything "below" it that's no longer valid for the new choice.
+function biSetCategory(val) {
+  BI_STATE.category = val;
+  BI_STATE.fuelType = 'all';
+  BI_STATE.ccSegment = 'all';
+  renderBrandIntelligence();
+}
+function biSetFuelType(val) {
+  BI_STATE.fuelType = val;
+  BI_STATE.ccSegment = 'all';
+  renderBrandIntelligence();
+}
+function biSetCcSegment(val) { BI_STATE.ccSegment = val; renderBrandIntelligence(); }
+
+// Builds a single dependent dropdown: its options come from distinctValues(),
+// scoped by whatever's selected in the filters "above" it. Used for both
+// Fuel Type (depends on Category) and CC Segment (depends on Category + Fuel Type).
+function biDependentFilterHtml(label, column, matchFilters, currentValue, onchangeFn) {
+  const options = distinctValues(column, matchFilters);
+
+  if (!options.length) {
+    return '<div class="bi-filter-group"><span class="bi-filter-label">' + label + '</span>'
+      + '<select class="brand-select" disabled><option>Select above first</option></select></div>';
+  }
+
+  const optionsHtml = options.map(function(v) {
+    return '<option value="' + v + '"' + (currentValue === v ? ' selected' : '') + '>' + v + '</option>';
+  }).join('');
+
+  return '<div class="bi-filter-group"><span class="bi-filter-label">' + label + '</span>'
+    + '<select class="brand-select" onchange="' + onchangeFn + '(this.value)">'
+      + '<option value="all"' + (currentValue === 'all' ? ' selected' : '') + '>All</option>'
+      + optionsHtml
+    + '</select></div>';
+}
+
+function biFuelTypeFilterHtml() {
+  const scope = (BI_STATE.category === 'all') ? {} : { category: BI_STATE.category };
+  return biDependentFilterHtml('Fuel Type', 'fuel_type', scope, BI_STATE.fuelType, 'biSetFuelType');
+}
+
+function biCcSegmentFilterHtml() {
+  const scope = {};
+  if (BI_STATE.category !== 'all') scope.category = BI_STATE.category;
+  if (BI_STATE.fuelType !== 'all') scope.fuel_type = BI_STATE.fuelType;
+  return biDependentFilterHtml('CC Segment', 'cc_segment', scope, BI_STATE.ccSegment, 'biSetCcSegment');
+}
 function biSetSearch(val) { BI_STATE.search = val; renderBrandIntelligence(); }
 function biToggleModelsExpand() { BI_STATE.modelsExpanded = !BI_STATE.modelsExpanded; renderBrandIntelligence(); }
 function biToggleBrandsExpand() { BI_STATE.brandsExpanded = !BI_STATE.brandsExpanded; renderBrandIntelligence(); }
@@ -2487,6 +2931,160 @@ function getBrandIntelRows(country) {
   return brandModelData.filter(function(r) { return r.country === country; });
 }
 
+// ===================== LIVE SALES DATA (replaces the dummy functions above, for Monthly) =====================
+
+function monthDateStr(m) { return m.year + '-' + String(m.month).padStart(2, '0') + '-01'; }
+
+function sumUnits(rows) { return rows.reduce(function(s, r) { return s + r.units_sold; }, 0); }
+
+// % growth from `prior` to `current`. Returns null (not 0) when `prior` is 0 --
+// a brand/model going from 0 units to any number isn't a meaningful percentage,
+// so we leave it blank rather than show something like "+infinity%".
+function pctGrowth(current, prior) {
+  if (!prior) return null;
+  return Math.round(((current - prior) / prior) * 10000) / 100;
+}
+
+// Sums units_sold grouped by one plain column (e.g. brand_name), returning {value: totalUnits}
+function sumByKey(rows, key) {
+  const totals = {};
+  rows.forEach(function(r) { totals[r[key]] = (totals[r[key]] || 0) + r.units_sold; });
+  return totals;
+}
+
+// Same idea, but grouped by model_id -- and keeps model_name/brand_name on each
+// group too, since the table needs to display those, not just a total.
+function sumByModel(rows) {
+  const groups = {};
+  rows.forEach(function(r) {
+    if (!groups[r.model_id]) groups[r.model_id] = { model_id: r.model_id, model_name: r.model_name, brand_name: r.brand_name, units: 0 };
+    groups[r.model_id].units += r.units_sold;
+  });
+  return groups;
+}
+
+async function fetchSalesDetail(wbCode, months, filters) {
+  let url = SUPABASE_URL + '/rest/v1/v_model_month_detail?wb_code=eq.' + wbCode;
+  url += '&sales_month=in.(' + months.map(monthDateStr).join(',') + ')';
+  if (filters.category !== 'all') url += '&category=eq.' + encodeURIComponent(filters.category);
+  if (filters.fuelType !== 'all') url += '&fuel_type=eq.' + encodeURIComponent(filters.fuelType);
+  if (filters.ccSegment !== 'all') url += '&cc_segment=eq.' + encodeURIComponent(filters.ccSegment);
+  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
+  const body = await res.json();
+  if (!res.ok) {
+    // Supabase returns an error OBJECT (not an array) when something's wrong --
+    // e.g. the view doesn't exist, or RLS is blocking the request. Logging it here
+    // means the real reason shows up in the browser console instead of just
+    // silently failing further down.
+    console.error('fetchSalesDetail failed:', url, body);
+    return [];
+  }
+  return body;
+}
+
+// Same count of months, immediately before the current ones (e.g. Monthly: the 1 prior month).
+// Not meaningful for Year to Month / Annual -- see the backend design discussion -- so those return null.
+function resolvePriorPeriodMonths(currentMonths) {
+  if (BI_STATE.analysisType === 'ytm' || BI_STATE.analysisType === 'annual') return null;
+  const earliest = currentMonths[0];
+  const months = [];
+  for (let i = currentMonths.length; i >= 1; i--) {
+    let mm = earliest.month - i, yy = earliest.year;
+    while (mm <= 0) { mm += 12; yy -= 1; }   // step back across a year boundary if needed
+    months.push({ year: yy, month: mm });
+  }
+  return months;
+}
+
+// Same months, exactly 1 year earlier
+function resolvePriorYearMonths(currentMonths) {
+  return currentMonths.map(function(m) { return { year: m.year - 1, month: m.month }; });
+}
+
+// True only if EVERY one of the given months has at least one row of data for the
+// currently selected Vehicle Category / Fuel Type / CC Segment. This is what decides
+// whether a MoM/YoY comparison is shown at all, per your "should not be visible if
+// previous period is not available" rule.
+function monthsHaveData(months) {
+  if (!months) return false;
+  return months.every(function(m) {
+    return BI_AVAILABLE.some(function(r) {
+      if (r.sales_year !== m.year || r.sales_month_num !== m.month) return false;
+      if (BI_STATE.category !== 'all' && r.category !== BI_STATE.category) return false;
+      if (BI_STATE.fuelType !== 'all' && r.fuel_type !== BI_STATE.fuelType) return false;
+      if (BI_STATE.ccSegment !== 'all' && r.cc_segment !== BI_STATE.ccSegment) return false;
+      return true;
+    });
+  });
+}
+
+// The main data loader for the KPI cards, Brand Ranking, and Model Table.
+// Fetches current + (if available) prior period + prior year, then aggregates
+// everything in JavaScript -- same approach as the backend design discussion.
+async function loadBrandModelData() {
+  const wbCode = COUNTRY_WB_CODE[currentCountry];
+  if (!wbCode) return { hasData: false };
+
+  const currentMonths = resolveSelectedMonths();
+  if (!currentMonths.length) return { hasData: false };
+
+  const filters = { category: BI_STATE.category, fuelType: BI_STATE.fuelType, ccSegment: BI_STATE.ccSegment };
+  const priorMonths = resolvePriorPeriodMonths(currentMonths);
+  const priorYearMonths = resolvePriorYearMonths(currentMonths);
+
+  const hasPrior = monthsHaveData(priorMonths);
+  const hasPriorYear = monthsHaveData(priorYearMonths);
+
+  const [currentRows, priorRows, priorYearRows] = await Promise.all([
+    fetchSalesDetail(wbCode, currentMonths, filters),
+    hasPrior ? fetchSalesDetail(wbCode, priorMonths, filters) : Promise.resolve([]),
+    hasPriorYear ? fetchSalesDetail(wbCode, priorYearMonths, filters) : Promise.resolve([]),
+  ]);
+
+  if (!currentRows.length) return { hasData: false };
+
+  const totalUnits = sumUnits(currentRows);
+
+  // ---- Brand Sales Ranking ----
+  const brandCurrent = sumByKey(currentRows, 'brand_name');
+  const brandPrior = sumByKey(priorRows, 'brand_name');
+  const brandPriorYear = sumByKey(priorYearRows, 'brand_name');
+  const brands = Object.keys(brandCurrent).map(function(name) {
+    const units = brandCurrent[name];
+    return {
+      brand: name, units: units,
+      share: totalUnits ? (units / totalUnits * 100) : 0,
+      mom: hasPrior ? pctGrowth(units, brandPrior[name] || 0) : null,
+      yoy: hasPriorYear ? pctGrowth(units, brandPriorYear[name] || 0) : null,
+    };
+  }).sort(function(a, b) { return b.units - a.units; });
+
+  // ---- Model Intelligence Table ----
+  const modelCurrentGroups = sumByModel(currentRows);
+  const modelPrior = sumByKey(priorRows, 'model_id');
+  const modelPriorYear = sumByKey(priorYearRows, 'model_id');
+  const allModels = Object.values(modelCurrentGroups).map(function(m) {
+    return {
+      model_id: m.model_id, model_name: m.model_name, brand_name: m.brand_name, units: m.units,
+      share: totalUnits ? (m.units / totalUnits * 100) : 0,
+      mom: hasPrior ? pctGrowth(m.units, modelPrior[m.model_id] || 0) : null,
+      yoy: hasPriorYear ? pctGrowth(m.units, modelPriorYear[m.model_id] || 0) : null,
+    };
+  }).sort(function(a, b) { return b.units - a.units; });
+
+  return {
+    hasData: true,
+    totalUnits: totalUnits,
+    momGrowthPct: hasPrior ? pctGrowth(totalUnits, sumUnits(priorRows)) : null,
+    yoyGrowthPct: hasPriorYear ? pctGrowth(totalUnits, sumUnits(priorYearRows)) : null,
+    activeModels: allModels.length,          // uncapped -- the real count of distinct models sold
+    topBrand: brands[0] || null,
+    topModel: allModels[0] || null,
+    brands: brands,
+    models: allModels.slice(0, 25),          // Model Intelligence Table shows at most 25
+  };
+}
+
 function aggregateBrandIntelFromRows(rows) {
   const totalSales2025 = rows.reduce(function(s, r) { return s + (r.sales2025 || 0); }, 0);
   const totalSales2024 = rows.reduce(function(s, r) { return s + (r.sales2024 || 0); }, 0);
@@ -2523,8 +3121,15 @@ function biKpiEmptyCard(icon, label, amber) {
     + '</div></div>';
 }
 
-function biKpiCards(agg, hasData) {
-  if (!hasData || !agg || !agg.topBrand || !agg.topModelRow) {
+// Renders a growth figure as "▲ 4.2%" / "▼ 1.1%", or returns '' when value is null --
+// this is what makes MoM/YoY "not visible" when there's no prior period to compare to.
+function growthSpan(value, suffix) {
+  if (value === null || value === undefined) return '';
+  return '<span class="' + (value >= 0 ? 'up' : 'down') + '">' + (value >= 0 ? '\u25b2' : '\u25bc') + ' ' + Math.abs(value).toFixed(1) + '%' + (suffix || '') + '</span>';
+}
+
+function biKpiCards(data) {
+  if (!data.hasData) {
     return '<div class="bi-kpi-grid">'
       + biKpiEmptyCard('bike', 'Total Market Sales')
       + biKpiEmptyCard('crown', '#1 Brand')
@@ -2532,120 +3137,121 @@ function biKpiCards(agg, hasData) {
       + biKpiEmptyCard('layers', 'Active Models')
       + '</div>';
   }
-  const mom = genMomGrowth(seedFromString(currentCountry + BI_STATE.segment + 'mom'));
-  const tb = agg.topBrand, tm = agg.topModelRow;
+  const tb = data.topBrand, tm = data.topModel;
+  const periodLabel = formatPeriodRange(resolveSelectedMonths());
   return '<div class="bi-kpi-grid">'
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="bike" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">Total Market Sales</div>'
-      + '<div class="bi-kpi-value">' + formatUnits(agg.totalSales2025) + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">May 2024</span><span class="' + (mom >= 0 ? 'up' : 'down') + '">' + (mom >= 0 ? '▲' : '▼') + ' ' + Math.abs(mom).toFixed(1) + '% MoM</span></div>'
-      + '<div class="bi-kpi-row" style="justify-content:flex-end;"><span class="' + (agg.overallYoY >= 0 ? 'up' : 'down') + '">' + (agg.overallYoY >= 0 ? '▲' : '▼') + ' ' + Math.abs(agg.overallYoY).toFixed(1) + '% YoY</span></div>'
+      + '<div class="bi-kpi-value">' + formatUnits(data.totalUnits) + '</div>'
+      + '<div class="bi-kpi-row"><span class="bi-muted">' + periodLabel + '</span>' + growthSpan(data.momGrowthPct, ' MoM') + '</div>'
+      + '<div class="bi-kpi-row" style="justify-content:flex-end;">' + growthSpan(data.yoyGrowthPct, ' YoY') + '</div>'
       + '</div></div>'
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="crown" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">#1 Brand</div>'
       + '<div class="bi-kpi-value" title="' + tb.brand + '">' + tb.brand + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">' + tb.share.toFixed(1) + '% Market Share</span><span class="' + (tb.yoy >= 0 ? 'up' : 'down') + '">' + (tb.yoy >= 0 ? '▲' : '▼') + ' ' + Math.abs(tb.yoy).toFixed(1) + '% YoY</span></div>'
+      + '<div class="bi-kpi-row"><span class="bi-muted">' + growthSpan(tb.mom, ' MoM') + '</span>' + growthSpan(tb.yoy, ' YoY') + '</div>'
       + '</div></div>'
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon amber"><i data-lucide="star" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">#1 Model</div>'
-      + '<div class="bi-kpi-value" title="' + tm.model + '">' + tm.model + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">' + formatUnits(tm.sales2025) + ' Units</span><span class="' + ((tm.yoy || 0) >= 0 ? 'up' : 'down') + '">' + ((tm.yoy || 0) >= 0 ? '▲' : '▼') + ' ' + Math.abs(tm.yoy || 0).toFixed(1) + '% YoY</span></div>'
+      + '<div class="bi-kpi-value" title="' + tm.model_name + '">' + tm.model_name + '</div>'
+      + '<div class="bi-muted" style="margin-top:1px;">' + tm.brand_name + '</div>'
+      + '<div class="bi-kpi-row"><span class="bi-muted">' + growthSpan(tm.mom, ' MoM') + '</span>' + growthSpan(tm.yoy, ' YoY') + '</div>'
       + '</div></div>'
     + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="layers" style="width:20px;height:20px"></i></div>'
       + '<div class="bi-kpi-body"><div class="bi-kpi-label">Active Models</div>'
-      + '<div class="bi-kpi-value">' + agg.activeModels + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">Models with sales in May 2024</span></div>'
+      + '<div class="bi-kpi-value">' + data.activeModels + '</div>'
+      + '<div class="bi-kpi-row"><span class="bi-muted">Models with sales in ' + periodLabel + '</span></div>'
       + '</div></div>'
     + '</div>';
 }
 
-function brandRankRow(rank, name, sales, maxSales, share, yoy, isOthers) {
+function brandRankRow(rank, name, sales, maxSales, share, mom, yoy, isOthers) {
   const pct = maxSales ? Math.max(4, Math.round(sales / maxSales * 100)) : 0;
   const badge = isOthers
-    ? '<span class="brand-badge" style="width:22px;height:22px;background:var(--text3);font-size:10px;">—</span>'
+    ? '<span class="brand-badge" style="width:22px;height:22px;background:var(--text3);font-size:10px;">\u2014</span>'
     : brandBadge(name, 22);
   return '<tr>'
     + '<td>' + rank + '</td>'
     + '<td><div class="rank-cell">' + badge + '<span style="font-weight:600;color:var(--text);">' + name + '</span></div></td>'
     + '<td class="rank-sales-cell"><div class="rank-sales-val">' + formatUnits(sales) + '</div><div class="rank-sales-track"><div class="rank-sales-fill" style="width:' + pct + '%;"></div></div></td>'
     + '<td class="num">' + share.toFixed(1) + '%</td>'
-    + '<td class="' + (yoy >= 0 ? 'up' : 'down') + '">' + (yoy >= 0 ? '? ' : '? ') + Math.abs(yoy).toFixed(1) + '%</td>'
+    + '<td>' + (mom === null ? '\u2014' : growthSpan(mom)) + '</td>'
+    + '<td>' + (yoy === null ? '\u2014' : growthSpan(yoy)) + '</td>'
     + '</tr>';
 }
 
-function biBrandRankingCard(agg, hasData) {
+function biBrandRankingCard(data) {
   let bodyHtml;
-  const hasBrands = hasData && agg && agg.brands.length;
+  const hasBrands = data.hasData && data.brands.length;
+  // MoM/YoY columns only appear at all if the period comparison is possible --
+  // same "not visible if previous period unavailable" rule as the KPI cards
+  const showMom = data.hasData && data.momGrowthPct !== null;
+  const showYoy = data.hasData && data.yoyGrowthPct !== null;
+
   if (!hasBrands) {
     bodyHtml = '<tr><td colspan="5" style="text-align:center;color:var(--text3);padding:24px;">No brand data available for ' + currentCountry + ' yet.</td></tr>';
   } else {
-    const maxSales = agg.brands[0].sales2025;
-    if (BI_STATE.brandsExpanded) {
-      bodyHtml = agg.brands.map(function(b, i) { return brandRankRow(i + 1, b.brand, b.sales2025, maxSales, b.share, b.yoy); }).join('');
-    } else {
-      const top = agg.brands.slice(0, 7);
-      const others = agg.brands.slice(7);
-      bodyHtml = top.map(function(b, i) { return brandRankRow(i + 1, b.brand, b.sales2025, maxSales, b.share, b.yoy); }).join('');
-      if (others.length) {
-        const othersSales = others.reduce(function(s, b) { return s + b.sales2025; }, 0);
-        const othersSales24 = others.reduce(function(s, b) { return s + b.sales2024; }, 0);
-        const othersShare = agg.totalSales2025 ? (othersSales / agg.totalSales2025 * 100) : 0;
-        const othersYoy = othersSales24 ? ((othersSales - othersSales24) / othersSales24 * 100) : 0;
-        bodyHtml += brandRankRow(top.length + 1, 'Others', othersSales, maxSales, othersShare, othersYoy, true);
-      }
+    const maxSales = data.brands[0].units;
+    const list = BI_STATE.brandsExpanded ? data.brands : data.brands.slice(0, 7);
+    bodyHtml = list.map(function(b, i) { return brandRankRow(i + 1, b.brand, b.units, maxSales, b.share, b.mom, b.yoy); }).join('');
+    if (!BI_STATE.brandsExpanded && data.brands.length > 7) {
+      const others = data.brands.slice(7);
+      const othersUnits = others.reduce(function(s, b) { return s + b.units; }, 0);
+      const othersShare = data.totalUnits ? (othersUnits / data.totalUnits * 100) : 0;
+      bodyHtml += brandRankRow(8, 'Others', othersUnits, maxSales, othersShare, null, null, true);
     }
   }
+  const momHeader = showMom ? '<th>MoM Growth</th>' : '';
+  const yoyHeader = showYoy ? '<th>YoY Growth</th>' : '';
   return '<div class="card">'
-    + '<div class="card-head"><div class="card-title">Brand Sales Ranking <span style="font-weight:400;color:var(--text3);font-size:12px;">(May 2024)</span></div></div>'
-    + '<table class="data-table"><thead><tr><th>Rank</th><th>Brand</th><th>Sales (Units)</th><th>Market Share</th><th>YoY Growth</th></tr></thead>'
+    + '<div class="card-head"><div class="card-title">Brand Sales Ranking <span style="font-weight:400;color:var(--text3);font-size:12px;">(' + formatPeriodRange(resolveSelectedMonths()) + ')</span></div></div>'
+    + '<table class="data-table"><thead><tr><th>Rank</th><th>Brand</th><th>Sales (Units)</th><th>Market Share</th>' + momHeader + yoyHeader + '</tr></thead>'
     + '<tbody>' + bodyHtml + '</tbody></table>'
-    + (hasBrands && agg.brands.length > 7 ? '<button class="view-all-btn" onclick="biToggleBrandsExpand()">' + (BI_STATE.brandsExpanded ? 'Show Top Brands' : 'View All Brands') + '</button>' : '')
+    + (hasBrands && data.brands.length > 7 ? '<button class="view-all-btn" onclick="biToggleBrandsExpand()">' + (BI_STATE.brandsExpanded ? 'Show Top Brands' : 'View All Brands') + '</button>' : '')
     + '</div>';
 }
 
-function biModelTableCard(agg, hasData) {
-  const allModels = (hasData && agg) ? agg.modelsSorted : [];
+function biModelTableCard(data) {
+  const allModels = data.hasData ? data.models : [];   // already capped to 25 by loadBrandModelData()
+  const showMom = data.hasData && data.momGrowthPct !== null;
+  const showYoy = data.hasData && data.yoyGrowthPct !== null;
+
   const q = BI_STATE.search.trim().toLowerCase();
   const filtered = q
-    ? allModels.filter(function(r) { return (r.model || '').toLowerCase().indexOf(q) > -1 || (r.brand || '').toLowerCase().indexOf(q) > -1; })
+    ? allModels.filter(function(r) { return r.model_name.toLowerCase().indexOf(q) > -1 || r.brand_name.toLowerCase().indexOf(q) > -1; })
     : allModels;
   const shown = BI_STATE.modelsExpanded ? filtered : filtered.slice(0, 10);
 
   let bodyHtml;
   if (!allModels.length) {
-    bodyHtml = '<tr><td colspan="9" style="text-align:center;color:var(--text3);padding:24px;">No model data available for ' + currentCountry + ' yet.</td></tr>';
+    bodyHtml = '<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:24px;">No model data available for ' + currentCountry + ' yet.</td></tr>';
   } else if (!shown.length) {
-    bodyHtml = '<tr><td colspan="9" style="text-align:center;color:var(--text3);padding:24px;">No models match your search.</td></tr>';
+    bodyHtml = '<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:24px;">No models match your search.</td></tr>';
   } else {
     bodyHtml = shown.map(function(r, i) {
-      const mom = genMomGrowth(seedFromString(r.brand + r.model));
-      const share = agg.totalSales2025 ? (r.sales2025 / agg.totalSales2025 * 100) : 0;
-      const spark = genSparkline(seedFromString(r.model));
+      const momCell = showMom ? '<td>' + (r.mom === null ? '\u2014' : growthSpan(r.mom)) + '</td>' : '';
+      const yoyCell = showYoy ? '<td>' + (r.yoy === null ? '\u2014' : growthSpan(r.yoy)) + '</td>' : '';
       return '<tr>'
         + '<td>' + (i + 1) + '</td>'
-        + '<td><div class="rank-cell">' + brandBadge(r.brand, 20) + '<span>' + r.brand + '</span></div></td>'
-        + '<td style="font-weight:600;color:var(--text);">' + r.model + '</td>'
-        + '<td><span class="tag purple" style="font-size:10px;">' + (r.category || '—') + '</span></td>'
-        + '<td class="num">' + formatUnits(r.sales2025) + '</td>'
-        + '<td class="' + (mom >= 0 ? 'up' : 'down') + '">' + (mom >= 0 ? '? ' : '? ') + Math.abs(mom).toFixed(1) + '%</td>'
-        + '<td class="' + ((r.yoy || 0) >= 0 ? 'up' : 'down') + '">' + ((r.yoy || 0) >= 0 ? '? ' : '? ') + Math.abs(r.yoy || 0).toFixed(1) + '%</td>'
-        + '<td class="num">' + share.toFixed(1) + '%</td>'
-        + '<td class="sparkline-cell">' + sparklineSvg(spark) + '</td>'
+        + '<td><div class="rank-cell">' + brandBadge(r.brand_name, 20) + '<span>' + r.brand_name + '</span></div></td>'
+        + '<td style="font-weight:600;color:var(--text);">' + r.model_name + '</td>'
+        + '<td class="num">' + formatUnits(r.units) + '</td>'
+        + momCell + yoyCell
+        + '<td class="num">' + r.share.toFixed(1) + '%</td>'
         + '</tr>';
     }).join('');
   }
 
+  const momHeader = showMom ? '<th>MoM</th>' : '';
+  const yoyHeader = showYoy ? '<th>YoY</th>' : '';
   return '<div class="card">'
     + '<div class="card-head">'
-      + '<div class="card-title">Model Intelligence Table <span style="font-weight:400;color:var(--text3);font-size:12px;">(May 2024)</span></div>'
+      + '<div class="card-title">Model Intelligence Table <span style="font-weight:400;color:var(--text3);font-size:12px;">(' + formatPeriodRange(resolveSelectedMonths()) + ')</span></div>'
       + '<div class="card-head-tools">'
         + '<div class="bi-search"><i data-lucide="search"></i><input type="text" placeholder="Search model..." value="' + BI_STATE.search.replace(/"/g, '&quot;') + '" oninput="biSetSearch(this.value)"></div>'
-        + '<div class="bi-icon-btn" title="Filter"><i data-lucide="sliders-horizontal"></i></div>'
-        + '<div class="bi-icon-btn" title="Layout"><i data-lucide="layout-grid"></i></div>'
-        + '<div class="bi-icon-btn" title="Settings"><i data-lucide="settings-2"></i></div>'
       + '</div>'
     + '</div>'
-    + '<div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Rank</th><th>Brand</th><th>Model</th><th>Segment</th><th>May Sales</th><th>MoM</th><th>YoY</th><th>Share</th><th>3M Trend</th></tr></thead>'
+    + '<div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Rank</th><th>Brand</th><th>Model</th><th>Sales (Units)</th>' + momHeader + yoyHeader + '<th>Market Share</th></tr></thead>'
     + '<tbody>' + bodyHtml + '</tbody></table></div>'
     + (allModels.length && filtered.length > 10 ? '<button class="view-all-btn" onclick="biToggleModelsExpand()">' + (BI_STATE.modelsExpanded ? 'Show Top 10' : 'View All Models') + '</button>' : '')
     + '</div>';
@@ -2770,15 +3376,45 @@ function biFastestGrowingCard(agg, hasData) {
     + '</div>';
 }
 
-function renderBrandIntelligence() {
+async function renderBrandIntelligence() {
   const el = document.getElementById('brand-intel-content');
   if (!el) return;
 
+  // Fetch the available-filter-values cache whenever we land on a new country.
+  // Everything below (Year/Month/Category/Fuel Type/CC Segment options) reads from
+  // this cache rather than hitting the network again.
+  if (BI_AVAILABLE_COUNTRY !== currentCountry) {
+    el.innerHTML = '<div class="loading">Loading filters...</div>';
+    await loadAvailableFilters(currentCountry);
+    if (BI_STATE.year === null) {   // first load ever -- default to the latest available period
+      const latest = getLatestAvailablePeriod();
+      BI_STATE.year = latest.year;
+      BI_STATE.month = latest.month;
+      BI_STATE.quarter = quarterOfMonth(latest.month);
+    }
+  }
+
   const hasData = currentCountry === BI_TARGET_COUNTRY;
   const allRows = hasData ? getBrandIntelRows(currentCountry) : [];
-  const segments = [...new Set(allRows.map(function(r) { return r.category; }).filter(Boolean))].sort();
-  const rows = (BI_STATE.segment === 'all') ? allRows : allRows.filter(function(r) { return r.category === BI_STATE.segment; });
+  // Vehicle Category options now come from the DB cache (BI_AVAILABLE), not the dummy rows
+  const categories = distinctValues('category', {});
+  const rows = (BI_STATE.category === 'all') ? allRows : allRows.filter(function(r) { return r.category === BI_STATE.category; });
+  // Note: fuelType/ccSegment aren't applied to `rows` yet -- the current dummy data
+  // (brandModelData) has no fuel_type/cc_segment fields at all, so there's nothing to
+  // filter against until the real dim_model data replaces it. The filter UI itself,
+  // and its options, are fully live against the database already.
   const agg = rows.length ? aggregateBrandIntelFromRows(rows) : null;
+
+  // Live data for the KPI cards, Brand Sales Ranking, and Model Intelligence Table.
+  // (Brand Contribution / Model Trend / Fastest Growing below still use the dummy
+  // `agg` above for now -- those haven't been migrated yet, this is Monthly only.)
+  let liveData;
+  try {
+    liveData = await loadBrandModelData();
+  } catch (e) {
+    console.error('loadBrandModelData failed:', e);
+    liveData = { hasData: false };
+  }
 
   const flagCode = countryCodeMap[currentCountry];
   const flagImg = flagCode ? '<img src="https://flagcdn.com/64x48/' + flagCode + '.png" alt="' + currentCountry + '">' : '';
@@ -2793,18 +3429,21 @@ function renderBrandIntelligence() {
     + '</div>'
     + '<div class="bi-header-desc">Track brand and model level performance with monthly sales, growth trends and competitive insights.</div>'
     + '<div class="bi-header-right">'
-      + '<div class="bi-filter-group"><span class="bi-filter-label">Month</span><select class="brand-select" disabled><option>May 2024</option></select></div>'
-      + '<div class="bi-filter-group"><span class="bi-filter-label">Segment</span><select class="brand-select" onchange="biSetSegment(this.value)">'
-        + '<option value="all"' + (BI_STATE.segment === 'all' ? ' selected' : '') + '>All</option>'
-        + segments.map(function(s) { return '<option value="' + s + '"' + (BI_STATE.segment === s ? ' selected' : '') + '>' + s + '</option>'; }).join('')
+      + '<div class="bi-filter-group"><span class="bi-filter-label">Analysis Type</span>' + biAnalysisTypeButtonsHtml() + '</div>'
+      + biPeriodSelectorHtml()
+      + '<div class="bi-filter-group"><span class="bi-filter-label">Vehicle Category</span><select class="brand-select" onchange="biSetCategory(this.value)">'
+        + '<option value="all"' + (BI_STATE.category === 'all' ? ' selected' : '') + '>All</option>'
+        + categories.map(function(c) { return '<option value="' + c + '"' + (BI_STATE.category === c ? ' selected' : '') + '>' + c + '</option>'; }).join('')
       + '</select></div>'
+      + biFuelTypeFilterHtml()
+      + biCcSegmentFilterHtml()
       + '<button class="bi-reset-btn" onclick="biResetFilters()"><i data-lucide="rotate-ccw"></i>Reset Filters</button>'
     + '</div>'
   + '</div>';
 
   const html = headerHtml
-    + biKpiCards(agg, hasData)
-    + '<div class="section-row cols-bi2">' + biBrandRankingCard(agg, hasData) + biModelTableCard(agg, hasData) + '</div>'
+    + biKpiCards(liveData)
+    + '<div class="section-row cols-bi2">' + biBrandRankingCard(liveData) + biModelTableCard(liveData) + '</div>'
     + '<div class="section-row cols-bi3">' + biBrandContributionCard(agg, hasData) + biModelTrendCard(agg, hasData) + biFastestGrowingCard(agg, hasData) + '</div>';
 
   el.innerHTML = html;
