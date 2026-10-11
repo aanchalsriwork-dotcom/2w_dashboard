@@ -89,6 +89,13 @@
   .flag { font-size: 14px; }
   .flag-img { border-radius: 3px; vertical-align: middle; box-shadow: 0 0 0 1px rgba(15,23,42,0.08); flex-shrink: 0; }
   .country-name { font-size: 12.5px; color: var(--text2); }
+  /* Collapsed state: the sidebar slides shut and the main area takes the full width */
+  #sidebar { transition: width .22s ease, min-width .22s ease; }
+  body.sidebar-collapsed #sidebar { width: 0; min-width: 0; border-right: none; }
+  .sidebar-toggle { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin-right: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg2); color: var(--text2); cursor: pointer; flex-shrink: 0; }
+  .topbar-left .sidebar-toggle { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); color: #fff; }
+  .topbar-left .sidebar-toggle:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.5); color: #fff; }
+  .sidebar-toggle:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
   #sidebar::-webkit-scrollbar { width: 3px; }
   #sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
@@ -177,6 +184,7 @@
 
   /* Tag */
   .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .period-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: #E7F1FE; color: #617397; font-size: 11.5px; font-weight: 600; letter-spacing: 0.2px; text-transform: uppercase; white-space: nowrap; }
   .tag.blue { background: var(--blue-soft); color: var(--blue); }
   .tag.green { background: var(--green-soft); color: var(--green); }
   .tag.red { background: var(--red-soft); color: var(--red); }
@@ -269,9 +277,17 @@
   .vbar-yaxis { display: flex; flex-direction: column; justify-content: space-between; height: 200px; font-size: 10px; color: var(--text3); text-align: right; width: 32px; flex-shrink: 0; }
   .vbar-yaxis.right { text-align: left; }
   .vbar-plot { flex: 1; min-width: 0; }
-  .vbar-bars-row { display: flex; align-items: flex-end; gap: 8px; height: 200px; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); padding-left: 8px; }
+  .vbar-bars-row { position: relative; display: flex; align-items: flex-end; gap: 8px; height: 200px; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); padding-left: 8px; }
   .vbar-col-fill { flex: 1; display: flex; justify-content: center; align-items: flex-end; height: 100%; }
-  .vbar-fill { width: 60%; border-radius: 4px 4px 0 0; background: var(--accent); }
+  .vbar-fill { position: relative; width: 60%; border-radius: 4px 4px 0 0; background: var(--accent); }
+  .trend-tiles { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 16px; background: var(--accent-soft); border-radius: 10px; }
+  .trend-tile { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: var(--accent); }
+  .trend-tile + .trend-tile { border-left: 1px solid var(--border); }
+  .trend-tile-label { font-size: 11px; color: var(--text3); }
+  .trend-tile-value { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--text); margin-top: 2px; white-space: nowrap; }
+  .vbar-ref { position: absolute; left: 0; right: 0; border-top: 1.5px dashed var(--amber); pointer-events: none; z-index: 2; }
+  .vbar-value { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 3px; font-size: 10px; font-weight: 600; color: var(--text2); white-space: nowrap; }
+  .vbar-fill.current .vbar-value { color: var(--text); font-weight: 700; }
   .vbar-fill.current { background: var(--navy); }
   .vbar-labels-row { display: flex; gap: 8px; padding-left: 8px; margin-top: 8px; }
   .vbar-label-col { flex: 1; text-align: center; font-size: 10px; color: var(--text3); white-space: nowrap; }
@@ -283,6 +299,111 @@
   .ov-kpi-card.compact .ov-kpi-icon { width: 34px; height: 34px; border-radius: 9px; }
   .ov-kpi-card.compact .ov-kpi-label { font-size: 11.5px; line-height: 1.2; }
   .ov-kpi-card.compact .ov-kpi-value { font-size: 23px; }
+  /* ---- Market Snapshot section (Market Overview tab) ---- */
+  .snap-section { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 22px 22px; box-shadow: var(--shadow-sm); margin-bottom: 20px; }
+  .snap-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+  .snap-title { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.2px; }
+  .snap-sub { font-size: 12.5px; color: var(--text2); margin-top: 4px; }
+  .snap-asof { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text2); white-space: nowrap; margin-top: 2px; }
+  .snap-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .snap-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 16px 14px; min-height: 148px; box-shadow: var(--shadow-sm); }
+  .snap-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .snap-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; background: var(--accent-soft); color: var(--accent2); flex-shrink: 0; }
+  .snap-label { font-size: 11.5px; font-weight: 600; color: var(--text); line-height: 1.25; }
+  .snap-value { height: 40px; line-height: 40px; font-family: var(--font-head); font-size: 28px; font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: -0.5px; white-space: nowrap; }
+  .snap-unit { font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--text3); letter-spacing: 0; margin-left: 6px; }
+  .snap-lines { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; min-height: 40px; }
+  .snap-line { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; line-height: 16px; }
+  .snap-line.up { color: var(--green); }
+  .snap-line.down { color: var(--red); }
+  .snap-line.muted { color: var(--text3); font-weight: 400; }
+  .snap-arrow.up { color: var(--green); font-weight: 600; }
+  .snap-arrow.down { color: var(--red); font-weight: 600; }
+  /* First card (Latest Monthly Sales) is the headline KPI: larger number in the accent colour */
+  .snap-card.primary { border-color: var(--accent); }
+  .snap-card.primary .snap-value { font-size: 34px; color: var(--accent); }
+
+  /* ---- Trend row: 2W Sales Trend + Top 3 Brand Concentration + Segment Mix ---- */
+  .section-row.cols-trend3 { grid-template-columns: 2.2fr 1fr 1fr; }
+  /* Fuel Mix + CC Mix row */
+  .section-row.cols-fuelcc { grid-template-columns: 1fr 1.3fr; }
+  .fuel-wrap { display: flex; gap: 16px; align-items: center; }
+  .fuel-donut { flex: 0 0 170px; position: relative; }
+  .fuel-donut svg { width: 170px; height: 170px; display: block; }
+  .fuel-donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+  .fuel-donut-center .fdc-label { font-size: 10px; color: var(--text3); }
+  .fuel-donut-center .fdc-value { font-family: var(--font-head); font-size: 20px; font-weight: 700; color: var(--text); line-height: 1.1; }
+  .fuel-donut-center .fdc-unit { font-size: 10px; color: var(--text3); }
+  .fuel-table { flex: 1; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; min-width: 0; }
+  .fuel-table table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .fuel-table th { text-align: left; font-weight: 600; font-size: 10.5px; color: var(--text3); padding: 8px 8px; border-bottom: 1px solid var(--border); line-height: 1.25; }
+  .fuel-table td { padding: 11px 8px; border-bottom: 1px solid var(--border); color: var(--text); white-space: nowrap; }
+  .fuel-table tr:last-child td { border-bottom: none; }
+  .fuel-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 3px solid; box-sizing: border-box; margin-right: 8px; vertical-align: -1px; }
+  .fuel-table .up { color: var(--green); font-weight: 600; }
+  .fuel-table .down { color: var(--red); font-weight: 600; }
+  .ccm-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .ccm-panel { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px 14px; min-width: 0; }
+  .ccm-title { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .ccm-title .ccm-ico { width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft, #eef3ff); color: var(--accent); display: flex; align-items: center; justify-content: center; }
+  .ccm-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 10.5px; color: var(--text3); margin-bottom: 12px; }
+  .ccm-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+  .ccm-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .ccm-bar-label { flex: 0 0 62px; font-size: 10.5px; color: var(--text3); }
+  .ccm-bar { flex: 1; display: flex; height: 26px; border-radius: 4px; overflow: hidden; background: var(--border); }
+  .ccm-seg { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 10.5px; font-weight: 700; overflow: hidden; white-space: nowrap; }
+  .conc-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .conc-headline { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .conc-value { font-family: var(--font-head); font-size: 30px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; line-height: 1.1; }
+  .conc-delta { font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+  .conc-delta.up, .segm-delta.up, .mpos-value .up, .mpos-note .up { color: var(--green); }
+  .conc-delta.down, .segm-delta.down, .mpos-value .down, .mpos-note .down { color: var(--red); }
+  .conc-row { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-top: 1px solid var(--border); }
+  .conc-rank { width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--text); font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .conc-name { flex: 1; min-width: 0; font-size: 13px; color: var(--text); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .conc-pct { font-family: var(--font-head); font-weight: 700; font-size: 13px; color: var(--text); }
+  .card-title-ico { display: flex; align-items: center; gap: 10px; }
+  .card-title-ico > i, .card-title-ico > svg { color: var(--accent); flex-shrink: 0; }
+  .segt-box { display: flex; gap: 12px; margin-top: 20px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--accent-soft); }
+  .segt-ico { color: var(--accent); flex-shrink: 0; padding-top: 1px; }
+  .segt-body { flex: 1; min-width: 0; }
+  .segt-title { font-size: 12.5px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .segt-row { display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--text3); margin-top: 6px; white-space: nowrap; }
+  .segt-row b { color: var(--text); font-weight: 700; }
+  .segm-list { display: flex; flex-direction: column; gap: 24px; padding-top: 8px; }
+  .segm-row { display: flex; align-items: center; gap: 12px; }
+  .segm-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--accent-soft); color: var(--accent2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .segm-name { flex: 1; min-width: 0; font-size: 13px; color: var(--text2); }
+  .segm-right { text-align: right; }
+  .segm-pct { font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--text); }
+  .segm-delta { font-size: 11.5px; font-weight: 600; margin-top: 2px; white-space: nowrap; }
+
+  /* ---- Market Position & Competitive Landscape (bottom section) ---- */
+  .mpos-card { padding: 20px 22px 22px; }
+  .mpos-title { font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.2px; margin-bottom: 14px; }
+  .mpos-grid { display: grid; grid-template-columns: 2fr 3.4fr; gap: 16px; }
+  .mpos-panel { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px 18px; min-width: 0; }
+  .mpos-panel-title { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+  .mpos-panel-title i { color: var(--accent2); }
+  .mpos-items { display: grid; }
+  .mpos-items.two { grid-template-columns: repeat(2, 1fr); }
+  .mpos-items.four { grid-template-columns: repeat(4, 1fr); }
+  .mpos-item { display: flex; align-items: flex-start; gap: 10px; padding: 0 14px; border-left: 1px solid var(--border); min-width: 0; }
+  .mpos-item:first-child { border-left: none; padding-left: 0; }
+  .mpos-icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mpos-label { font-size: 11.5px; color: var(--text2); font-weight: 500; }
+  .mpos-value { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.2; margin-top: 2px; white-space: nowrap; }
+  .mpos-of { font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--text3); }
+  .mpos-note { font-size: 11px; color: var(--text3); margin-top: 5px; }
+  .mpos-note .up, .mpos-note .down { font-weight: 600; margin-left: 6px; }
+  @media (max-width: 1100px) {
+    .mpos-grid { grid-template-columns: 1fr; }
+    .mpos-items.four { grid-template-columns: repeat(2, 1fr); row-gap: 18px; }
+    .mpos-items.four .mpos-item:nth-child(3) { border-left: none; padding-left: 0; }
+  }
+  /* The first card (Total 2W Sales) is the headline KPI: bigger number, accent colour */
+  .ov-kpi-card.compact.primary { border-color: var(--accent); background: linear-gradient(180deg, var(--bg2) 0%, var(--accent-soft, #eef3ff) 100%); }
+  .ov-kpi-card.compact.primary .ov-kpi-value { font-size: 34px; color: var(--accent); }
   .ov-kpi-card.compact .ov-kpi-date { margin-top: 8px; }
 
   .scorecard-grid { display: grid; grid-template-columns: repeat(6, 1fr); }
@@ -327,7 +448,7 @@
   .segmix-total-label { font-size: 11px; color: var(--text3); margin-top: 2px; line-height: 1.4; }
 
   @media (max-width: 1100px) {
-    .ov-kpi-grid-6, .scorecard-grid { grid-template-columns: repeat(3, 1fr); }
+    .ov-kpi-grid-6, .scorecard-grid, .snap-grid { grid-template-columns: repeat(3, 1fr); }
     .scorecard-item { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 14px; margin-bottom: 14px; }
   }
 
@@ -336,6 +457,9 @@
   .brand-select:focus { border-color: var(--accent); }
 
   /* ===== BRAND & MODEL INTELLIGENCE (per brand and sales intelligence.png) ===== */
+  /* Filter bar: Analysis Type and all filters on one row at the top, Reset on the far right */
+  .bi-filterbar { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 12px 16px; margin-bottom: 16px; box-shadow: var(--shadow-sm); }
+  .bi-filterbar .bi-reset-btn { margin-left: auto; }
   .bi-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 22px; flex-wrap: wrap; }
   .bi-header-left { display: flex; align-items: flex-start; gap: 14px; }
   .bi-header-flag { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--bg3); }
@@ -347,6 +471,8 @@
   .bi-filter-group { display: flex; flex-direction: column; gap: 4px; }
   .bi-filter-label { font-size: 10px; color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
   /* Analysis Type: a row of buttons, one active at a time (like the image you shared) */
+  /* Shared loading message shown by Market Overview and Brand & Model Sales while data is being fetched */
+  .loading { padding: 64px 0; text-align: center; color: var(--text3); font-size: 14px; }
   .bi-analysis-type { display: flex; background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 2px; gap: 2px; }
   .bi-analysis-type button { padding: 7px 12px; font-size: 12px; font-family: var(--font-body); border: none; background: transparent; color: var(--text2); border-radius: 6px; cursor: pointer; white-space: nowrap; }
   .bi-analysis-type button.active { background: var(--accent); color: #fff; font-weight: 600; }
@@ -360,11 +486,90 @@
   .bi-kpi-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px 20px; box-shadow: var(--shadow-sm); display: flex; gap: 14px; transition: border-color var(--transition), box-shadow var(--transition); }
   .bi-kpi-card:hover { border-color: var(--border2); box-shadow: var(--shadow-md); }
   .bi-kpi-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--accent-soft); color: var(--accent2); }
+  /* Shaded KPI card backgrounds */
+  .bi-kpi-card.tone-blue   { background: #EEF4FF; border-color: #D6E4FF; }
+  .bi-kpi-card.tone-green  { background: #E9F8F4; border-color: #C9EDE5; }
+  .bi-kpi-card.tone-purple { background: #F2EEFF; border-color: #DFD6FC; }
+  .bi-kpi-card.tone-amber  { background: #FFF5E6; border-color: #F6E1BC; }
+  .bi-kpi-card.tone-blue .bi-kpi-icon, .bi-kpi-card.tone-green .bi-kpi-icon, .bi-kpi-card.tone-purple .bi-kpi-icon, .bi-kpi-card.tone-amber .bi-kpi-icon { background: #fff; }
+  .bi-kpi-card.tone-blue .bi-kpi-icon { color: #3D83F6; }
+  .bi-kpi-card.tone-green .bi-kpi-icon { color: #20B99A; }
+  .bi-kpi-card.tone-purple .bi-kpi-icon { color: #7857F5; }
+  .bi-kpi-card.tone-amber .bi-kpi-icon { color: var(--amber); }
+  /* Per-month hover tooltip on the KPI sparklines (light card, matching the mockup header) */
+  .bi-kpi-card { position: relative; }
+  /* Model table: Portfolio Share bars */
+  .pf-cell { display: flex; align-items: center; gap: 8px; min-width: 120px; }
+  .pf-track { flex: 1; height: 8px; border-radius: 4px; background: #E9EDF3; overflow: hidden; }
+  .pf-fill { height: 100%; border-radius: 4px; background: #2563EB; }
+  .pf-cell span { font-size: 12px; font-weight: 600; color: var(--text); min-width: 40px; text-align: right; }
+  /* Model Momentum Matrix + Market Movers */
+  .section-row.cols-matrix { grid-template-columns: 1.7fr 1fr; }
+  .mx-card { padding: 12px 14px 12px; }
+  .mx-card .card-head { margin-bottom: 8px; }
+  .mx-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .mx-wrap { border-radius: 10px; padding: 0; overflow: hidden; }
+  .mx-svg { display: block; width: 100%; height: auto; }
+  .mx-quad { font-size: 10px; font-weight: 700; letter-spacing: 0.6px; }
+  .mx-quad-sub { font-size: 9px; font-weight: 500; letter-spacing: 0; }   /* same colour as the quadrant name (inherited fill) */
+  .mx-tick { font-size: 9px; fill: #617397; }
+  .mx-axis { font-size: 10px; fill: #617397; font-weight: 600; }
+  .mx-label { font-size: 9px; fill: #1f2a4d; font-weight: 600; pointer-events: none; paint-order: stroke; stroke: rgba(255,255,255,0.75); stroke-width: 2.5px; }
+  .mx-bubble { transition: fill-opacity .12s; }
+  .mx-bubble:hover { fill-opacity: 1; }
+  .mx-foot { font-size: 11px; color: var(--text3); margin-top: 6px; }
+  .bi-empty { color: var(--text3); font-size: 12.5px; padding: 40px 12px; text-align: center; }
+  /* Market Movers: compact tables */
+  .mm-title { display: flex; align-items: center; gap: 8px; font-family: var(--font-head); font-size: 16px; font-weight: 700; margin: 0 0 4px; }
+  .mm-table { width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; }
+  .mm-table col.c-n { width: 22px; } .mm-table col.c-u { width: 50px; } .mm-table col.c-v { width: 150px; }
+  .mm-table th { text-align: left; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; color: var(--text3); padding: 3px 5px; border-bottom: 1px solid var(--border); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mm-table td { padding: 4px 5px; border-bottom: 1px solid var(--border); color: var(--text); }
+  .mm-table tr:last-child td { border-bottom: none; }
+  .mm-table .mm-n { color: var(--text3); }
+  .mm-table .mm-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: default; }
+  .mm-table .mm-units { text-align: right; }
+  .mm-table .mm-val { text-align: right; font-weight: 700; white-space: nowrap; }
+  .mm-vb { display: flex; align-items: center; gap: 6px; }   /* value first, bar right after it */
+  .mm-vb .mm-v { flex: 0 0 62px; text-align: right; font-weight: 700; white-space: nowrap; }
+  .mm-vb .mm-bar { flex: 1; min-width: 30px; }
+  .mm-bar { height: 8px; border-radius: 1px; overflow: hidden; }
+  /* Brand ranking + Model table: same 10-row height, fixed row heights, buttons pinned to the bottom */
+  .section-row.cols-bi2 > .card { display: flex; flex-direction: column; }
+  .section-row.cols-bi2 .tbl-wrap { margin-bottom: 12px; }
+  .section-row.cols-bi2 .view-all-btn { margin-top: auto; }
+  .fix10 td { height: 40px; padding-top: 4px; padding-bottom: 4px; white-space: nowrap; }
+  .fix10 .cell-ell { overflow: hidden; text-overflow: ellipsis; max-width: 170px; }
+  .fix10 tfoot td { border-top: 1px solid var(--border2); background: var(--bg3); }
+  .mm-fill { height: 100%; border-radius: 0; }
+  .mm-none { font-size: 12px; color: var(--text3); padding: 4px 0; }
+  .bi-spark-wrap { position: relative; }
+  .bi-spark-zones { position: absolute; inset: 0; display: flex; }
+  .bi-spark-zone { flex: 1; position: relative; cursor: crosshair; }
+  .bi-spark-dot { position: absolute; left: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: #2563EB; border: 2px solid #fff; box-shadow: 0 0 0 1px #2563EB; opacity: 0; transition: opacity .1s; pointer-events: none; }
+  .bi-spark-zone:hover .bi-spark-dot { opacity: 1; }
+  .bi-tip { position: absolute; top: calc(100% + 10px); z-index: 40; width: 300px; padding: 16px 18px; background: #fff; color: #0F1B3D; border: 1px solid #E2E8F5; border-radius: 12px; box-shadow: 0 12px 32px rgba(15,27,61,0.16); font-size: 13px; line-height: 1.4; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .15s ease, transform .15s ease, visibility .15s; pointer-events: none; cursor: default; }
+  .bi-spark-zone.tip-left .bi-tip { left: 0; }
+  .bi-spark-zone.tip-right .bi-tip { right: 0; }
+  .bi-spark-zone.tip-mid .bi-tip { left: 50%; margin-left: -150px; }
+  .bi-spark-zone:hover .bi-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+  .bi-tip-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+  .bi-tip-title { font-family: var(--font-head); font-weight: 700; font-size: 15px; color: #0F1B3D; }
+  .bi-tip-badge { flex-shrink: 0; padding: 4px 12px; border-radius: 8px; background: #E7F1FE; color: #2563EB; font-weight: 700; font-size: 12.5px; white-space: nowrap; }
+  .bi-tip-filters { color: #7A8AAE; font-size: 12px; margin: 6px 0 10px; padding-bottom: 10px; border-bottom: 1px solid #EDF1FA; }
+  .bi-tip-row { display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; color: #617397; }
+  .bi-tip-row b { color: #0F1B3D; font-weight: 700; text-align: right; }
+  .bi-tip-row .up { color: var(--green); font-weight: 700; }
+  .bi-tip-row .down { color: var(--red); font-weight: 700; }
+  .bi-tip-na { color: #9AA8C7; }
+  .bi-kpi-value.wrap { white-space: normal; font-size: 18px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .bi-spark-wrap { margin-top: 10px; }
+  .bi-spark { display: block; width: 100%; height: 34px; }
   .bi-kpi-icon.amber { background: var(--amber-soft); color: var(--amber); }
   .bi-kpi-body { flex: 1; min-width: 0; }
   .bi-kpi-label { font-size: 12px; color: var(--text2); font-weight: 500; margin-bottom: 6px; }
   .bi-kpi-value { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .bi-kpi-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 5px; font-size: 12px; }
+  .bi-kpi-row { display: flex; align-items: center; gap: 14px; margin-top: 6px; font-size: 12px; min-height: 16px; }
   .bi-kpi-row .bi-muted { color: var(--text3); }
   .bi-kpi-row .up { color: var(--green); font-weight: 600; }
   .bi-kpi-row .down { color: var(--red); font-weight: 600; }
@@ -421,7 +626,9 @@
     .ov-kpi-grid { grid-template-columns: repeat(3,1fr); }
     .section-row.cols-3 { grid-template-columns: 1fr; }
     .section-row.cols-2 { grid-template-columns: 1fr; }
-    .section-row.cols-mkt3 { grid-template-columns: 1fr; }
+    .section-row.cols-mkt3, .section-row.cols-trend3, .section-row.cols-fuelcc, .section-row.cols-matrix { grid-template-columns: 1fr; }
+    .fuel-wrap { flex-direction: column; align-items: stretch; }
+    .fuel-donut { align-self: center; }
     .platform-grid { grid-template-columns: repeat(3,1fr); }
     .topbar-chip span, .topbar-chip { font-size: 11px; }
   }
@@ -505,6 +712,7 @@
 <div id="main">
   <div id="topbar">
     <div class="topbar-left">
+      <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" title="Collapse country selection" aria-label="Collapse country selection"><i data-lucide="panel-left-close" style="width:18px;height:18px"></i></button>
       <div class="breadcrumb">
         <span>2W Dashboard</span>
         <span class="sep">›</span>
@@ -774,6 +982,21 @@ function flagImgTag(code, name, size) {
   return '<img src="https://flagcdn.com/' + srcW + 'x' + srcH + '/' + code + '.png" width="' + w + '" height="' + h + '" class="flag-img" alt="' + name + '">';
 }
 
+// Collapse / expand the left Country Selection pane. The choice is remembered between visits.
+function setSidebarCollapsed(collapsed) {
+  document.body.classList.toggle('sidebar-collapsed', collapsed);
+  const btn = document.getElementById('sidebar-toggle');
+  if (btn) {
+    btn.title = collapsed ? 'Expand country selection' : 'Collapse country selection';
+    btn.setAttribute('aria-label', btn.title);
+    btn.innerHTML = '<i data-lucide="' + (collapsed ? 'panel-left-open' : 'panel-left-close') + '" style="width:18px;height:18px"></i>';
+    if (window.lucide) lucide.createIcons();
+  }
+  try { localStorage.setItem('sidebarCollapsed', collapsed ? '1' : '0'); } catch (e) {}
+}
+function toggleSidebar() { setSidebarCollapsed(!document.body.classList.contains('sidebar-collapsed')); }
+try { if (localStorage.getItem('sidebarCollapsed') === '1') document.addEventListener('DOMContentLoaded', function() { setSidebarCollapsed(true); }); } catch (e) {}
+
 // Builds the sidebar Countries tree from countryDirectory, grouped by region.
 // Regions are shown in this fixed display order (not split into continents).
 const REGION_DISPLAY_ORDER = ['ASEAN', 'Other Asia', 'Europe', 'Africa I', 'Africa II', 'LATAM', 'Middle East', 'North America'];
@@ -823,6 +1046,45 @@ function genMonthlyHeights(seed) {
 function formatAxisVal(val, unit) {
   const rounded = Math.round(val * 10) / 10;
   return (rounded % 1 === 0 ? rounded.toFixed(0) : rounded.toFixed(1)) + unit;
+}
+
+// ---- Chart axis helpers (used by the Market Overview trend chart) ----
+
+// Picks a round step size (1, 1.5, 2, 2.5, 3, 4, 5, 6, 8 or 10 x a power of ten) so that `intervals`
+// equal steps cover maxValue, e.g. a max of 83,000 over 4 steps -> 25,000 per step.
+function niceAxisStep(maxValue, intervals) {
+  if (!(maxValue > 0)) return 1;
+  const raw = maxValue / intervals;
+  const pow = Math.pow(10, Math.floor(Math.log10(raw)));
+  const multipliers = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10];   // finer steps keep the bars filling the chart
+  for (let i = 0; i < multipliers.length; i++) {
+    if (multipliers[i] * pow >= raw) return multipliers[i] * pow;
+  }
+  return 10 * pow;
+}
+
+// Writes a unit count in the unit that suits ITS size: 800, 2.5K, 750K, 1.2M ...
+// (so a market selling 60K a month gets 15K / 30K / 45K / 60K, not 0.06M)
+function formatAxisTick(units) {
+  if (units === 0) return '0';
+  const trim = function(n) { return String(parseFloat(n.toFixed(2))); };   // 2.50 -> 2.5, 3.00 -> 3
+  if (units >= 1e6) return trim(units / 1e6) + 'M';
+  if (units >= 1e3) return trim(units / 1e3) + 'K';
+  return trim(units);
+}
+
+// Period badge shown at the top right of a chart card: pale blue pill with a blue calendar icon
+function periodBadge(text) {
+  const icon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
+  return '<span class="period-badge">' + icon + '<span>' + text + '</span></span>';
+}
+
+// Short label for the top of a bar: 800, 42.4K, 1.28M
+function formatBarLabel(units) {
+  const trim = function(n, dp) { return String(parseFloat(n.toFixed(dp))); };
+  if (units >= 1e6) return trim(units / 1e6, 2) + 'M';
+  if (units >= 1e3) return trim(units / 1e3, 1) + 'K';
+  return String(Math.round(units));
 }
 
 // Renders the Global/Region Overview layout (KPI row + monthly trend + top-markets donut) into containerId.
@@ -891,7 +1153,7 @@ function renderOverviewContent(containerId, data) {
         + '</div>'
       + '</div>'
       + '<div class="card">'
-        + '<div class="card-head"><div class="card-title">Top Markets by Sales</div><span class="tag amber">' + data.periodLabel + '</span></div>'
+        + '<div class="card-head"><div class="card-title">Top Markets by Sales</div>' + periodBadge(data.periodLabel) + '</div>'
         + '<div class="donut-wrap">'
           + '<svg class="donut-svg" width="120" height="120" viewBox="0 0 100 100">'
             + '<circle cx="50" cy="50" r="38" fill="none" stroke="#eef1f7" stroke-width="14"/>'
@@ -1915,50 +2177,112 @@ function priorMonthOf(p) {
 function priorYearOf(p) { return { year: p.year - 1, month: p.month }; }
 
 // The 6 months ending at p (inclusive), oldest first -- used for "Average Monthly Sales (Last 6 Months)"
-function sixMonthsEndingAt(p) {
+// Returns `count` months ending at p (inclusive), oldest first
+function monthsEndingAt(p, count) {
   const months = [];
-  for (let i = 5; i >= 0; i--) {
+  for (let i = count - 1; i >= 0; i--) {
     let mm = p.month - i, yy = p.year;
     while (mm <= 0) { mm += 12; yy -= 1; }
     months.push({ year: yy, month: mm });
   }
   return months;
 }
+function sixMonthsEndingAt(p) { return monthsEndingAt(p, 6); }
 
 // Does ANY data exist for this month, for this country? (Unscoped by category/fuel/cc,
 // unlike monthsHaveData() on the Brand & Model Sales tab -- Market Overview ignores those filters.)
 function monthHasAnyData(m) {
-  return BI_AVAILABLE.some(function(r) { return r.sales_year === m.year && r.sales_month_num === m.month; });
+  return BI_AVAILABLE.some(function(r) { return Number(r.sales_year) === m.year && Number(r.sales_month_num) === m.month; });
+}
+
+// Supabase returns at most 1000 rows per request. A multi-month fetch (e.g. 12 months of models) can
+// easily have more than that, and the extra rows are silently dropped -- which makes totals too small.
+// This helper keeps asking for the next 1000 rows until everything has been received.
+async function fetchAllRows(baseUrl, orderBy) {
+  const PAGE = 1000;
+  // One request for a given page. `ordered` adds a sort so the pages never overlap.
+  const getPage = async function(offset, ordered) {
+    const url = baseUrl + (ordered ? '&order=' + (orderBy || 'sales_month,wb_code,model_id') : '') + '&limit=' + PAGE + '&offset=' + offset;
+    const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
+    const body = await res.json();
+    if (!res.ok || !Array.isArray(body)) { console.error('fetchAllRows failed:', url, body); throw new Error('Supabase request failed'); }
+    return body;
+  };
+
+  // Most requests return fewer than 1000 rows, so first try the plain request: no sorting, which is
+  // the quickest for the database. If that already returns everything, we're done.
+  const first = await getPage(0, false);
+  if (first.length < PAGE) return first;
+
+  // A full first page means there may be more rows. Start again with a fixed sort order (so pages
+  // can't overlap or skip rows) and keep going until an empty page comes back.
+  let all = [];
+  try {
+    for (let offset = 0, pages = 0; pages < 200; pages++) {
+      const body = await getPage(offset, true);
+      if (body.length === 0) break;
+      all = all.concat(body);
+      offset += body.length;
+    }
+    return all;
+  } catch (e) {
+    // The sort can fail on some views (a missing column, or a slow query timing out). Fall back to
+    // unsorted pages rather than showing nothing.
+    console.warn('Sorted paging failed, retrying without a sort order:', e);
+    all = first.slice();
+    for (let offset = first.length, pages = 0; pages < 200; pages++) {
+      const body = await getPage(offset, false);
+      if (body.length === 0) break;
+      all = all.concat(body);
+      offset += body.length;
+    }
+    return all;
+  }
 }
 
 async function fetchMarketOverviewDetail(wbCode, months, extraFilter) {
   let url = SUPABASE_URL + '/rest/v1/v_model_month_detail?wb_code=eq.' + wbCode;
   url += '&sales_month=in.(' + months.map(monthDateStr).join(',') + ')';
   if (extraFilter) url += '&' + extraFilter.field + '=eq.' + encodeURIComponent(extraFilter.value);
-  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
-  const body = await res.json();
-  if (!res.ok) { console.error('fetchMarketOverviewDetail failed:', url, body); return []; }
-  return body;
+  return fetchAllRows(url);
 }
 
 // Same as above but scoped by region instead of a single country -- used for Regional Market Share
 async function fetchRegionDetail(region, months) {
   let url = SUPABASE_URL + '/rest/v1/v_model_month_detail?region=eq.' + encodeURIComponent(region);
   url += '&sales_month=in.(' + months.map(monthDateStr).join(',') + ')';
-  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
-  const body = await res.json();
-  if (!res.ok) { console.error('fetchRegionDetail failed:', url, body); return []; }
-  return body;
+  return fetchAllRows(url);
+}
+
+// Shortens a CC segment name by splitting it on spaces and dropping any word that is a vehicle
+// category (e.g. "Motorcycle 125-150cc" -> "125-150cc"). If nothing would be left, keep the original.
+function shortCcLabel(name, categoryWords) {
+  // Split on any kind of space (including non-breaking), underscores and brackets, not just a plain ' '
+  const words = String(name).split(/[\s_()]+/);
+  const kept = words.filter(function(w) {
+    const lower = w.toLowerCase();
+    if (!lower) return false;
+    // A word is dropped if it is a category word or a plural/singular form of one ("Scooters" vs "Scooter")
+    const singular = lower.replace(/s$/, '');
+    return !(categoryWords[lower] || categoryWords[singular] || categoryWords[lower + 's']);
+  });
+  return kept.length ? kept.join(' ') : String(name);
 }
 
 async function loadMarketOverviewData() {
-  const wbCode = COUNTRY_WB_CODE[currentCountry];
+  const country = currentCountry;
+
+  // The country -> wb_code lookup must be loaded BEFORE we read it. Previously it was only
+  // loaded by the Brand & Model Sales tab, so on a first visit here it was still empty and
+  // this function returned "no data" immediately, without actually loading anything.
+  if (!countryWbCodeLoaded) await loadCountryWbCodes();
+  const wbCode = COUNTRY_WB_CODE[country];
   if (!wbCode) return { hasData: false };
 
   // Reuse the same available-months cache the Brand & Model Sales tab uses, just to
   // find "the latest month" -- this doesn't touch any of that tab's filter state.
-  if (BI_AVAILABLE_COUNTRY !== currentCountry) await loadAvailableFilters(currentCountry);
-  if (!BI_AVAILABLE.length) return { hasData: false };
+  if (BI_AVAILABLE_COUNTRY !== country) await loadAvailableFilters(country);
+  if (BI_AVAILABLE_COUNTRY !== country || !BI_AVAILABLE.length) return { hasData: false };
 
   const latest = getLatestAvailablePeriod();
   const current = { year: latest.year, month: latest.month };
@@ -1971,11 +2295,10 @@ async function loadMarketOverviewData() {
   const hasPriorYr = monthHasAnyData(priorYr);
   const hasSixPriorYr = sixMonthsPriorYr.every(monthHasAnyData);
 
-  const [currentRows, priorRows, priorYrRows, sixRows, sixPriorYrRows] = await Promise.all([
+  const [currentRows, priorRows, priorYrRows, sixPriorYrRows] = await Promise.all([
     fetchMarketOverviewDetail(wbCode, [current]),
     hasPrior ? fetchMarketOverviewDetail(wbCode, [prior]) : Promise.resolve([]),
     hasPriorYr ? fetchMarketOverviewDetail(wbCode, [priorYr]) : Promise.resolve([]),
-    fetchMarketOverviewDetail(wbCode, sixMonths),
     hasSixPriorYr ? fetchMarketOverviewDetail(wbCode, sixMonthsPriorYr) : Promise.resolve([]),
   ]);
 
@@ -2003,9 +2326,8 @@ async function loadMarketOverviewData() {
   const evShareChangePp = (evSharePriorYr !== null) ? (evShare - evSharePriorYr) : null;
 
   // ---- Average Monthly Sales (Last 6 Months) + YoY ----
-  const sixAvg = sumUnits(sixRows) / 6;
+  // (sixAvg itself is worked out further down from the monthly totals used by the trend chart, so the two always agree)
   const sixAvgPriorYr = (hasSixPriorYr && sixPriorYrRows.length) ? (sumUnits(sixPriorYrRows) / 6) : null;
-  const sixAvgYoy = sixAvgPriorYr ? pctGrowth(sixAvg, sixAvgPriorYr) : null;
 
   // ---- Top 3 Brand Share ----
   const brandTotals = sumByKey(currentRows, 'brand_name');
@@ -2015,9 +2337,74 @@ async function loadMarketOverviewData() {
 
   // ---- Segment Mix ----
   const segTotals = sumByKey(currentRows, 'category');
+  // Each segment's share of the month, and how that share moved vs the same month last year (in pp)
+  const segPriorYr = sumByKey(priorYrRows, 'category');
   const segmentMix = Object.keys(segTotals).map(function(name) {
-    return { name: name, pct: totalUnits ? (segTotals[name] / totalUnits * 100) : 0 };
+    const pct = totalUnits ? (segTotals[name] / totalUnits * 100) : 0;
+    const priorPct = (hasPriorYr && priorYrTotal) ? ((segPriorYr[name] || 0) / priorYrTotal * 100) : null;
+    return { name: name, units: segTotals[name], pct: pct, changePp: priorPct === null ? null : (pct - priorPct) };
   }).sort(function(a, b) { return b.pct - a.pct; });
+
+  // ---- Top 3 Brand Concentration: combined share of the 3 biggest brands, vs the same month last year ----
+  // (Compares "the top 3 then" with "the top 3 now", so a change of leader doesn't distort it.)
+  const top3Share = topBrands.reduce(function(sum, b) { return sum + b.pct; }, 0);
+  const brandPriorYr = sumByKey(priorYrRows, 'brand_name');
+  const top3PriorYrUnits = Object.keys(brandPriorYr).map(function(k) { return brandPriorYr[k]; })
+    .sort(function(a, b) { return b - a; }).slice(0, 3).reduce(function(sum, u) { return sum + u; }, 0);
+  const top3ShareChangePp = (hasPriorYr && priorYrTotal) ? (top3Share - top3PriorYrUnits / priorYrTotal * 100) : null;
+
+  // ---- Fuel Mix: every fuel type found in the data, with share, change in share and sales growth vs last year ----
+  const fuelNow = sumByKey(currentRows, 'fuel_type');
+  const fuelPrior = sumByKey(priorYrRows, 'fuel_type');
+  const fuelMix = Object.keys(fuelNow).map(function(name) {
+    const share = totalUnits ? (fuelNow[name] / totalUnits * 100) : 0;
+    const priorShare = (hasPriorYr && priorYrTotal) ? ((fuelPrior[name] || 0) / priorYrTotal * 100) : null;
+    return {
+      name: name, units: fuelNow[name], share: share,
+      sharePp: priorShare === null ? null : (share - priorShare),
+      growth: hasPriorYr ? pctGrowth(fuelNow[name], fuelPrior[name] || 0) : null,
+    };
+  }).sort(function(a, b) { return b.share - a.share; });
+
+  // Words to strip from CC labels: every vehicle category name and its individual words, in lower case
+  // (so "Motorcycle 125-150cc" is shown as "125-150cc"). Built from the data, nothing is hard-coded.
+  const categoryWords = { motorcycle: true, scooter: true, moped: true, bike: true, motorbike: true };   // common vehicle words, plus whatever categories the data has
+  Object.keys(segTotals).forEach(function(c) {
+    categoryWords[String(c).toLowerCase()] = true;
+    String(c).split(/[\s_\/]+/).forEach(function(w) { if (w.length > 2 && w.toLowerCase() !== 'others') categoryWords[w.toLowerCase()] = true; });
+  });
+
+  // ---- CC Mix: for each vehicle category, the split by CC segment (electric bikes are shown as their own slice) ----
+  // One helper turns a set of rows into { 'segment name': % of that category's units }
+  const ccSplit = function(rows, category) {
+    const catRows = rows.filter(function(r) { return r.category === category; });
+    const total = sumUnits(catRows);
+    const units = {};
+    catRows.forEach(function(r) {
+      const bucket = (r.fuel_type === 'Electric') ? 'Electric' : shortCcLabel(r.cc_segment, categoryWords);
+      units[bucket] = (units[bucket] || 0) + r.units_sold;
+    });
+    const pct = {};
+    Object.keys(units).forEach(function(k) { pct[k] = total ? (units[k] / total * 100) : 0; });
+    return { total: total, pct: pct };
+  };
+  const ccMix = Object.keys(segTotals).sort(function(a, b) { return segTotals[b] - segTotals[a]; }).map(function(category) {
+    const now = ccSplit(currentRows, category);
+    const before = hasPriorYr ? ccSplit(priorYrRows, category) : null;
+    const hasBefore = !!(before && before.total > 0);
+    // Legend order = every segment seen in either month, sorted by the number in its name (e.g. 125 before 250)
+    const names = {};
+    Object.keys(now.pct).forEach(function(k) { names[k] = true; });
+    if (hasBefore) Object.keys(before.pct).forEach(function(k) { names[k] = true; });
+    const segments = Object.keys(names).sort(function(a, b) {
+      if (a === 'Electric') return 1;
+      if (b === 'Electric') return -1;
+      const na = parseFloat(String(a).replace(/[^0-9.]/g, '')) || 0;
+      const nb = parseFloat(String(b).replace(/[^0-9.]/g, '')) || 0;
+      return na - nb;
+    });
+    return { category: category, segments: segments, now: now.pct, before: hasBefore ? before.pct : null };
+  });
 
   // ---- Regional Market Share: country sales / region sales, vs last YEAR only ----
   const region = currentRows[0].region;
@@ -2031,24 +2418,68 @@ async function loadMarketOverviewData() {
   const regionalSharePriorYr = (hasPriorYr && regionPriorYrTotal) ? (priorYrTotal / regionPriorYrTotal * 100) : null;
   const regionalShareChangePp = (regionalSharePriorYr !== null) ? (regionalShare - regionalSharePriorYr) : null;
 
+  // ---- YTM Sales: January through the latest month, vs the same months a year earlier ----
+  const ytmMonths = monthsEndingAt(current, current.month);   // current.month months ending at `current` = Jan..latest
+  const ytmPriorMonths = ytmMonths.map(priorYearOf);
+  const hasYtmPriorYr = ytmPriorMonths.every(monthHasAnyData);
+  const [ytmRows, ytmPriorRows] = await Promise.all([
+    fetchMarketOverviewDetail(wbCode, ytmMonths),
+    hasYtmPriorYr ? fetchMarketOverviewDetail(wbCode, ytmPriorMonths) : Promise.resolve([]),
+  ]);
+  const ytmUnits = sumUnits(ytmRows);
+  const ytmYoy = (hasYtmPriorYr && ytmPriorRows.length) ? pctGrowth(ytmUnits, sumUnits(ytmPriorRows)) : null;
+
+  // ---- 2W Sales Trend (Units): total units for each of the 12 trailing months ----
+  const twelveMonths = monthsEndingAt(current, 12);
+  const trendRows = await fetchMarketOverviewDetail(wbCode, twelveMonths);
+  // Key by just 'YYYY-MM' (first 7 characters), not the full date string -- Supabase can
+  // return the date with a time part attached (e.g. '2026-06-01T00:00:00'), and matching
+  // on the exact full string would silently fail every lookup if so, with no error anywhere.
+  const monthKey = function(m) { return m.year + '-' + String(m.month).padStart(2, '0'); };
+  const unitsByMonth = {};
+  trendRows.forEach(function(r) {
+    const key = String(r.sales_month).slice(0, 7);
+    unitsByMonth[key] = (unitsByMonth[key] || 0) + r.units_sold;
+  });
+
+  const trendUnits = twelveMonths.map(function(m) { return unitsByMonth[monthKey(m)] || 0; });
+
+  // ---- 6M average = the last 6 monthly totals from the chart data above, divided by 6 ----
+  const sixAvg = trendUnits.slice(-6).reduce(function(sum, u) { return sum + u; }, 0) / 6;
+  const sixAvgYoy = sixAvgPriorYr ? pctGrowth(sixAvg, sixAvgPriorYr) : null;
+  const trendLabels = twelveMonths.map(function(m) { return MONTH_NAMES[m.month - 1] + ' ' + String(m.year).slice(2); });
+
+  if (trendRows.length && !trendUnits.some(function(u) { return u > 0; })) {
+    console.warn('Trend chart: fetched', trendRows.length, 'rows but none matched any expected month key. Sample sales_month value:', trendRows[0] && trendRows[0].sales_month);
+  }
+
   return {
     hasData: true, period: current,
+    ytmUnits: ytmUnits, ytmYoy: ytmYoy,
+    trendUnits: trendUnits, trendLabels: trendLabels,
     totalUnits: totalUnits, totalMom: totalMom, totalYoy: totalYoy,
     evUnits: evUnits, evMom: evMom, evYoy: evYoy,
     evShare: evShare, evShareChangePp: evShareChangePp,
     sixAvg: sixAvg, sixAvgYoy: sixAvgYoy,
-    topBrands: topBrands, segmentMix: segmentMix,
+    fuelMix: fuelMix, ccMix: ccMix, priorYearPeriod: priorYr,
+    topBrands: topBrands, top3Share: top3Share, top3ShareChangePp: top3ShareChangePp, segmentMix: segmentMix,
     regionalShare: regionalShare, regionalShareChangePp: regionalShareChangePp,
   };
 }
+
+let OV_RENDER_SEQ = 0;   // bumped on every Market Overview render, used to ignore out-of-date async results
 
 async function renderCountryOverview() {
   const el = document.getElementById('overview-content');
   if (!el) return;
 
-  // Try the live fetch FIRST -- the old code checked for dummy data before even
-  // attempting this, so any country without a hardcoded dummy entry (which is most
-  // of them now) showed "No data" regardless of whether live data actually existed.
+  // Show a loading message straight away, and only draw the page once ALL the live
+  // data has arrived -- nothing (and certainly no dummy data) is shown in the meantime.
+  // The counter makes sure that if the user switches country/tab while this is still
+  // loading, the older request can't draw over the newer one when it finishes.
+  const seq = ++OV_RENDER_SEQ;
+  el.innerHTML = '<div class="loading">Loading data...</div>';
+
   let live;
   try {
     live = await loadMarketOverviewData();
@@ -2056,11 +2487,10 @@ async function renderCountryOverview() {
     console.error('loadMarketOverviewData failed:', e);
     live = { hasData: false };
   }
+  if (seq !== OV_RENDER_SEQ) return;
 
-  const hasDummy = !!(latamData[currentCountry] && marketOverviewData[currentCountry]);
-
-  // Only show "no data" when NEITHER live nor dummy data exists for this country
-  if (!live.hasData && !hasDummy) {
+  // Only show "no data" once loading has finished and nothing came back
+  if (!live.hasData) {
     el.innerHTML = '<div style="color:var(--text3);padding:48px 0;text-align:center;">No market overview data available for ' + currentCountry + ' yet.</div>';
     return;
   }
@@ -2088,159 +2518,277 @@ async function renderCountryOverview() {
 
   const periodLabel = live.hasData ? (MONTH_NAMES[live.period.month - 1] + ' ' + live.period.year) : mo.kpis[0].date;
 
-  // ---- KPI row (6 cards) ----
-  // Built from live data when available, falling back to the dummy values otherwise.
-  // Card 1 (Total 2W Sales) deliberately has no change-row -- MoM/YoY are their own cards.
-  const kpiDefs = live.hasData ? [
-    { icon: 'bike', label: 'Total 2W Sales', value: formatUnits(live.totalUnits), changeText: null },
-    { icon: 'trending-up', label: 'YoY Growth', value: (live.totalYoy === null ? '\u2014' : (live.totalYoy >= 0 ? '+' : '') + live.totalYoy.toFixed(1) + '%'), changeDir: live.totalYoy >= 0 ? 'up' : 'down', changeText: live.totalYoy === null ? null : 'vs ' + periodLabel + ' last year' },
-    { icon: 'activity', label: 'MoM Growth', value: (live.totalMom === null ? '\u2014' : (live.totalMom >= 0 ? '+' : '') + live.totalMom.toFixed(1) + '%'), changeDir: live.totalMom >= 0 ? 'up' : 'down', changeText: live.totalMom === null ? null : 'vs prior month' },
-    { icon: 'battery-charging', label: 'EV Sales', value: formatUnits(live.evUnits), changeDir: live.evYoy >= 0 ? 'up' : 'down',
-      changeText: live.evMom === null ? null : (live.evMom >= 0 ? '+' : '') + live.evMom.toFixed(1) + '% MoM', note: live.evYoy === null ? '' : ((live.evYoy >= 0 ? '+' : '') + live.evYoy.toFixed(1) + '% YoY') },
-    { icon: 'zap', label: 'EV 2W Share', value: live.evShare.toFixed(1) + '%', changeDir: (live.evShareChangePp || 0) >= 0 ? 'up' : 'down',
-      changeText: live.evShareChangePp === null ? null : (live.evShareChangePp >= 0 ? '+' : '') + live.evShareChangePp.toFixed(1) + ' pp', note: 'vs ' + periodLabel + ' last year' },
-    { icon: 'calendar', label: 'Average Monthly Sales', value: formatUnits(Math.round(live.sixAvg)), changeDir: (live.sixAvgYoy || 0) >= 0 ? 'up' : 'down',
-      changeText: live.sixAvgYoy === null ? null : (live.sixAvgYoy >= 0 ? '+' : '') + live.sixAvgYoy.toFixed(1) + '%', note: 'YoY, last 6 months' },
-  ] : mo.kpis.map(function(k) { return { icon: k.icon, label: k.label, value: k.value, changeDir: k.changeDir, changeText: k.changeText, note: k.note }; });
+  // ---- Market Snapshot: 6 KPI cards ----
+  const fmtMonth = function(p) { return MONTH_NAMES[p.month - 1] + ' ' + p.year; };
+  const signed = function(v, suffix) { return (v >= 0 ? '+' : '') + v.toFixed(1) + suffix; };
+  const arrowOf = function(v) { return v >= 0 ? '\u25b2' : '\u25bc'; };
+  const dirOf = function(v) { return v >= 0 ? 'up' : 'down'; };
+  // Whole line coloured (arrow + text), e.g. "▲ +18.4% YoY"
+  const trendLine = function(v, text) { return '<div class="snap-line ' + dirOf(v) + '"><span>' + arrowOf(v) + '</span><span>' + text + '</span></div>'; };
+  // Coloured arrow with grey text, e.g. "▲ vs Dec 2023"
+  const arrowNoteLine = function(v, text) { return '<div class="snap-line muted"><span class="snap-arrow ' + dirOf(v) + '">' + arrowOf(v) + '</span><span>' + text + '</span></div>'; };
+  const mutedLine = function(text) { return '<div class="snap-line muted"><span>' + text + '</span></div>'; };
 
-  const kpiHtml = kpiDefs.map(function(k) {
-    const changeRow = k.changeText
-      ? '<div class="ov-kpi-change ' + (k.changeDir || 'up') + '">' + ((k.changeDir || 'up') === 'down' ? '▼' : '▲') + ' ' + k.changeText + (k.note ? ' <span class="note">' + k.note + '</span>' : '') + '</div>'
-      : '';
-    return '<div class="ov-kpi-card compact">'
-      + '<div class="ov-kpi-top">'
-        + '<div class="ov-kpi-icon"><i data-lucide="' + k.icon + '" style="width:19px;height:19px"></i></div>'
-        + '<div class="ov-kpi-label">' + k.label + '</div>'
+  const sixM = sixMonthsEndingAt(live.period);
+  const sixRangeLabel = (sixM[0].year === sixM[5].year)
+    ? MONTH_NAMES[sixM[0].month - 1] + '-' + MONTH_NAMES[sixM[5].month - 1] + ' ' + sixM[5].year
+    : fmtMonth(sixM[0]) + '-' + fmtMonth(sixM[5]);
+
+  const kpiDefs = [
+    { icon: 'bike', label: 'Latest Monthly Sales', value: formatUnits(live.totalUnits), unit: 'units',
+      // How far the latest month is above/below the 6-month average (e.g. "8.4% above 6M average")
+      lines: (live.sixAvg > 0) ? [trendLine(live.totalUnits - live.sixAvg, Math.abs((live.totalUnits - live.sixAvg) / live.sixAvg * 100).toFixed(1) + '% ' + (live.totalUnits >= live.sixAvg ? 'above' : 'below') + ' 6M average')] : [] },
+    { icon: 'trending-up', label: 'YoY Growth',
+      value: live.totalYoy === null ? '\u2014' : signed(live.totalYoy, '%'),
+      lines: live.totalYoy === null ? [] : [arrowNoteLine(live.totalYoy, 'vs ' + fmtMonth(priorYearOf(live.period)))] },
+    { icon: 'activity', label: 'MoM Growth',
+      value: live.totalMom === null ? '\u2014' : signed(live.totalMom, '%'),
+      lines: live.totalMom === null ? [] : [arrowNoteLine(live.totalMom, 'vs ' + fmtMonth(priorMonthOf(live.period)))] },
+    { icon: 'calendar', label: '6M Avg. Monthly Sales', value: formatUnits(Math.round(live.sixAvg)), unit: 'units',
+      lines: [mutedLine(sixRangeLabel), live.sixAvgYoy === null ? '' : trendLine(live.sixAvgYoy, signed(live.sixAvgYoy, '% YoY'))] },
+    { icon: 'calendar-range', label: 'YTM Sales', value: formatUnits(live.ytmUnits), unit: 'units',
+      lines: [live.ytmYoy === null ? '' : trendLine(live.ytmYoy, signed(live.ytmYoy, '% YoY'))] },
+    { icon: 'zap', label: 'EV 2W Share', value: live.evShare.toFixed(1) + '%',
+      lines: [live.evShareChangePp === null ? '' : trendLine(live.evShareChangePp, signed(live.evShareChangePp, ' pp YoY'))] },
+  ];
+
+  const kpiHtml = kpiDefs.map(function(k, idx) {
+    return '<div class="snap-card' + (idx === 0 ? ' primary' : '') + '">'
+      + '<div class="snap-card-top">'
+        + '<div class="snap-icon"><i data-lucide="' + k.icon + '" style="width:18px;height:18px"></i></div>'
+        + '<div class="snap-label">' + k.label + '</div>'
       + '</div>'
-      + '<div class="ov-kpi-value">' + k.value + '</div>'
-      + '<div class="ov-kpi-date">' + periodLabel + '</div>'
-      + changeRow
+      + '<div class="snap-value">' + k.value + (k.unit ? '<span class="snap-unit">' + k.unit + '</span>' : '') + '</div>'
+      + '<div class="snap-lines">' + k.lines.join('') + '</div>'
       + '</div>';
   }).join('');
 
-  // ---- Country Scorecard ----
+  // Section wrapper: title, subtitle, and the dynamic "latest month" label on the right
+  const snapshotHtml = '<div class="snap-section">'
+    + '<div class="snap-head">'
+      + '<div><div class="snap-title">Market Snapshot</div><div class="snap-sub">Key indicators for ' + currentCountry + '\'s 2W market</div></div>'
+      + '<div class="snap-asof"><i data-lucide="calendar" style="width:14px;height:14px"></i>' + periodLabel + ' (latest month)</div>'
+    + '</div>'
+    + '<div class="snap-grid">' + kpiHtml + '</div>'
+  + '</div>';
+
+  // ---- Market Position & Competitive Landscape (bottom section) ----
   const sc = mo.scorecard;
-  // Regional Market Share becomes live when available; Global stays dummy data for now (per scope)
-  const regionalShareDisplay = live.hasData ? live.regionalShare.toFixed(1) + '%' : sc.regionalShare;
-  const regionalShareChgDisplay = (live.hasData && live.regionalShareChangePp !== null)
-    ? (live.regionalShareChangePp >= 0 ? '+' : '') + live.regionalShareChangePp.toFixed(1) + ' pp'
-    : sc.regionalShareChg;
-  const regionalShareDirDisplay = (live.hasData && live.regionalShareChangePp !== null)
-    ? (live.regionalShareChangePp >= 0 ? 'up' : 'down')
-    : sc.regionalShareDir;
+  // Global figures, ranks and the growth comparisons are still dummy data (as agreed); for a country with
+  // no dummy entry they show "—" rather than a made-up number. Regional Share is live.
+  const hasScorecardDummy = !!marketOverviewData[currentCountry];
+  const priorYearLabel = fmtMonth(priorYearOf(live.period));
   const vsGlobalPp = sc.ownGrowth - GLOBAL_AVG_GROWTH;
   const vsRegionalPp = sc.ownGrowth - LATAM_AVG_GROWTH;
   const fmtPp = function(v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + ' pp'; };
-  const scItem = function(iconBg, iconColor, icon, label, value, note) {
-    return '<div class="scorecard-item">'
-      + '<div class="scorecard-icon-row"><div class="scorecard-icon" style="background:' + iconBg + ';color:' + iconColor + ';"><i data-lucide="' + icon + '" style="width:16px;height:16px"></i></div><div class="scorecard-label">' + label + '</div></div>'
-      + '<div class="scorecard-value">' + value + '</div>'
-      + '<div class="scorecard-note">' + note + '</div>'
-      + '</div>';
+  const growthValue = function(v) { return hasScorecardDummy ? '<span class="' + dirOf(v) + '">' + fmtPp(v) + '</span>' : '—'; };
+  const rankValue = function(rank, total) { return rank === '—' ? '—' : rank + ' <span class="mpos-of">/ ' + total + '</span>'; };
+  const changeNote = function(label, dir, text) { return label + ' <span class="' + dir + '">' + (dir === 'down' ? '▼' : '▲') + ' ' + text + '</span>'; };
+
+  // One metric: round icon on the left; label, big value and a small note on the right
+  const posItem = function(iconBg, iconColor, icon, label, value, note) {
+    return '<div class="mpos-item">'
+      + '<div class="mpos-icon" style="background:' + iconBg + ';color:' + iconColor + ';"><i data-lucide="' + icon + '" style="width:17px;height:17px"></i></div>'
+      + '<div class="mpos-text"><div class="mpos-label">' + label + '</div><div class="mpos-value">' + value + '</div><div class="mpos-note">' + note + '</div></div>'
+    + '</div>';
   };
-  const scorecardHtml = '<div class="card">'
-    + '<div class="card-head"><div class="card-title">Country Scorecard</div></div>'
-    + '<div class="scorecard-grid">'
-      + scItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Global Market Share', sc.globalShare, 'vs Apr 2024 <span class="' + sc.globalShareDir + '">' + (sc.globalShareDir === 'down' ? '\u25bc' : '\u25b2') + ' ' + sc.globalShareChg + '</span>')
-      + scItem('var(--green-soft)', 'var(--green)', 'map', 'Regional Market Share', regionalShareDisplay, (live.hasData ? 'vs ' + periodLabel + ' last year' : 'vs Apr 2024') + ' <span class="' + regionalShareDirDisplay + '">' + (regionalShareDirDisplay === 'down' ? '\u25bc' : '\u25b2') + ' ' + regionalShareChgDisplay + '</span>')
-      + scItem('var(--blue-soft)', 'var(--accent2)', 'trophy', 'Rank (Global)', sc.rankGlobal + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankGlobalTotal + '</span>', 'vs Apr 2024')
-      + scItem('var(--green-soft)', 'var(--green)', 'trophy', 'Rank (Regional)', sc.rankRegional + ' <span style="font-size:13px;color:var(--text3);font-weight:500;">/ ' + sc.rankRegionalTotal + '</span>', 'vs Apr 2024')
-      + scItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Growth vs Global', '<span style="color:' + (vsGlobalPp>=0?'var(--green)':'var(--red)') + '">' + fmtPp(vsGlobalPp) + '</span>', currentCountry + ': ' + sc.ownGrowth.toFixed(1) + '%&nbsp;&nbsp;|&nbsp;&nbsp;Global: ' + GLOBAL_AVG_GROWTH.toFixed(1) + '%')
-      + scItem('var(--green-soft)', 'var(--green)', 'map', 'Growth vs Regional', '<span style="color:' + (vsRegionalPp>=0?'var(--green)':'var(--red)') + '">' + fmtPp(vsRegionalPp) + '</span>', currentCountry + ': ' + sc.ownGrowth.toFixed(1) + '%&nbsp;&nbsp;|&nbsp;&nbsp;Regional: ' + LATAM_AVG_GROWTH.toFixed(1) + '%')
+
+  const regionalNote = live.regionalShareChangePp === null
+    ? 'vs ' + priorYearLabel
+    : changeNote('vs ' + priorYearLabel, dirOf(live.regionalShareChangePp), fmtPp(live.regionalShareChangePp).replace(' pp', '') + ' pp');
+
+  const positionHtml = '<div class="card mpos-card">'
+    + '<div class="mpos-title">Country Scorecard</div>'
+    + '<div class="mpos-grid">'
+      + '<div class="mpos-panel">'
+        + '<div class="mpos-panel-title">Market Share</div>'
+        + '<div class="mpos-items two">'
+          + posItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Global Share', sc.globalShare, changeNote('vs Apr 2024', sc.globalShareDir, sc.globalShareChg))
+          + posItem('var(--green-soft)', 'var(--green)', 'map', 'Regional Share', live.regionalShare.toFixed(1) + '%', regionalNote)
+        + '</div>'
+      + '</div>'
+      + '<div class="mpos-panel">'
+        + '<div class="mpos-panel-title"><i data-lucide="trophy" style="width:15px;height:15px"></i>Relative Performance</div>'
+        + '<div class="mpos-items four">'
+          + posItem('var(--blue-soft)', 'var(--accent2)', 'trophy', 'Global Rank', rankValue(sc.rankGlobal, sc.rankGlobalTotal), 'vs Apr 2024')
+          + posItem('var(--green-soft)', 'var(--green)', 'award', 'Regional Rank', rankValue(sc.rankRegional, sc.rankRegionalTotal), 'vs Apr 2024')
+          + posItem('var(--blue-soft)', 'var(--accent2)', 'globe', 'Growth vs Global', growthValue(vsGlobalPp), 'vs Apr 2024')
+          + posItem('var(--green-soft)', 'var(--green)', 'map', 'Growth vs Regional', growthValue(vsRegionalPp), 'vs Apr 2024')
+        + '</div>'
+      + '</div>'
     + '</div>'
   + '</div>';
 
-  // ---- 2W Sales Trend combo chart: bars (sales) + line (YoY growth %) ----
-  const sizeM = parseMarketSizeToM(d.market2w);
-  const salesYAxisMax = Math.ceil(sizeM * 1.3 * 10) / 10;
-  const barHeights = genMonthlyHeights(seedFromString(currentCountry));
-  const growthVals = genGrowthLine(mo.trendSeed || seedFromString(currentCountry));
-  const growthAxisMin = -10, growthAxisMax = 30;
-  const barsHtml = barHeights.map(function(h, i) {
-    const isLast = i === barHeights.length - 1;
-    return '<div class="vbar-col-fill"><div class="vbar-fill' + (isLast ? ' current' : '') + '" style="height:' + h + '%"></div></div>';
+  // ---- 2W Sales Trend (Units): bars with a value label on each bar ----
+  const hasTrend = live.hasData && live.trendUnits.some(function(u) { return u > 0; });
+
+  let salesAxisMax, barUnits, monthLabels;   // salesAxisMax and barUnits are in plain units
+  if (hasTrend) {
+    // Axis top = a round number with ~12% headroom above the biggest month (room for its label),
+    // split into 4 equal round steps. Works the same for 40K a month as for 4M a month.
+    const maxUnits = Math.max.apply(null, live.trendUnits);
+    salesAxisMax = niceAxisStep(maxUnits * 1.12, 4) * 4;
+    barUnits = live.trendUnits;
+    monthLabels = live.trendLabels;
+  } else {
+    const sizeM = parseMarketSizeToM(d.market2w);
+    salesAxisMax = Math.ceil(sizeM * 1.3 * 10) / 10 * 1000000;
+    barUnits = genMonthlyHeights(seedFromString(currentCountry)).map(function(h) { return h / 100 * salesAxisMax; });
+    monthLabels = MONTH_LABELS;
+  }
+
+  const barsHtml = barUnits.map(function(u, i) {
+    const isLast = i === barUnits.length - 1;
+    const h = Math.max(2, (u / salesAxisMax) * 100);   // min 2% so a zero month still shows a sliver
+    return '<div class="vbar-col-fill"><div class="vbar-fill' + (isLast ? ' current' : '') + '" style="height:' + h + '%">'
+      + '<span class="vbar-value">' + formatBarLabel(u) + '</span></div></div>';
   }).join('');
-  const points = growthVals.map(function(g, i) {
-    const x = ((i + 0.5) / 12) * 100;
-    const y = 100 - ((g - growthAxisMin) / (growthAxisMax - growthAxisMin)) * 100;
-    return { x: x, y: y };
-  });
-  const polylinePoints = points.map(function(p) { return p.x.toFixed(1) + ',' + p.y.toFixed(1); }).join(' ');
-  const dots = points.map(function(p) { return '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="1.6" fill="#17a558"/>'; }).join('');
-  const salesAxisHtml = [1, 0.75, 0.5, 0.25, 0].map(function(f) { return '<span>' + (f === 0 ? '0' : formatAxisVal(salesYAxisMax * f, 'M')) + '</span>'; }).join('');
-  const growthAxisHtml = [30, 20, 10, 0, -10].map(function(v) { return '<span>' + v + '%</span>'; }).join('');
-  const labelsHtml = MONTH_LABELS.map(function(l) { return '<div class="vbar-label-col">' + l + '</div>'; }).join('');
+  const salesAxisHtml = [1, 0.75, 0.5, 0.25, 0].map(function(f) { return '<span>' + formatAxisTick(salesAxisMax * f) + '</span>'; }).join('');
+  const labelsHtml = monthLabels.map(function(l) { return '<div class="vbar-label-col">' + l + '</div>'; }).join('');
+
+  // Dashed reference line at the average of the 12 months shown
+  // (average of the 12 months the chart shows)
+  const trend12Avg = live.trendUnits.reduce(function(sum, u) { return sum + u; }, 0) / live.trendUnits.length;
+  const refLineHtml = (hasTrend && trend12Avg > 0)
+    ? '<div class="vbar-ref" style="bottom:' + Math.min(100, trend12Avg / salesAxisMax * 100).toFixed(2) + '%"></div>'
+    : '';
+  // Top-right tag for the trend chart: the 12 months it covers, e.g. "Jan 24 - Dec 24"
+  const t12 = monthsEndingAt(live.period, 12);
+  const trendRangeLabel = (t12[0].year === t12[11].year)
+    ? MONTH_NAMES[t12[0].month - 1] + ' \u2013 ' + MONTH_NAMES[t12[11].month - 1] + ' ' + t12[11].year
+    : MONTH_NAMES[t12[0].month - 1] + ' ' + t12[0].year + ' \u2013 ' + MONTH_NAMES[t12[11].month - 1] + ' ' + t12[11].year;
+
+  // Two summary tiles under the chart: the peak month, and the change from the first to the last month shown
+  let trendTilesHtml = '';
+  if (hasTrend) {
+    const peakIdx = live.trendUnits.indexOf(Math.max.apply(null, live.trendUnits));
+    const firstU = live.trendUnits[0], lastU = live.trendUnits[live.trendUnits.length - 1];
+    const firstMon = MONTH_NAMES[t12[0].month - 1], lastMon = MONTH_NAMES[t12[11].month - 1];
+    const trendPct = firstU > 0 ? ((lastU - firstU) / firstU * 100) : null;
+    const trendText = trendPct === null ? '\u2014' : (trendPct >= 0 ? '+' : '') + Math.round(trendPct) + '%';
+    trendTilesHtml = '<div class="trend-tiles">'
+      + '<div class="trend-tile"><i data-lucide="star" style="width:26px;height:26px"></i><div><div class="trend-tile-label">Peak month</div>'
+        + '<div class="trend-tile-value">' + MONTH_NAMES[t12[peakIdx].month - 1] + ' \u00b7 ' + formatBarLabel(live.trendUnits[peakIdx]) + '</div></div></div>'
+      + '<div class="trend-tile"><i data-lucide="minus" style="width:26px;height:26px"></i><div><div class="trend-tile-label">12M avg</div>'
+        + '<div class="trend-tile-value">' + formatBarLabel(trend12Avg) + ' units</div></div></div>'
+      + '<div class="trend-tile"><i data-lucide="trending-up" style="width:26px;height:26px"></i><div><div class="trend-tile-label">YoY/period trend</div>'
+        + '<div class="trend-tile-value">' + firstMon + '-' + lastMon + '&nbsp; ' + trendText + '</div></div></div>'
+    + '</div>';
+  }
 
   const comboHtml = '<div class="card">'
-    + '<div class="card-head"><div class="card-title">2W Sales Trend (Units)</div></div>'
-    + '<div class="combo-legend">'
-      + '<div class="combo-legend-item"><span class="combo-legend-swatch"></span>Sales (Units)</div>'
-      + '<div class="combo-legend-item"><span class="combo-legend-line"></span>YoY Growth (%)</div>'
-    + '</div>'
+    + '<div class="card-head"><div class="card-title card-title-ico"><i data-lucide="chart-column" style="width:20px;height:20px"></i>2W Sales Trend (Units)</div>' + periodBadge(trendRangeLabel) + '</div>'
     + '<div class="vbar-chart-wrap">'
       + '<div class="vbar-yaxis">' + salesAxisHtml + '</div>'
       + '<div class="vbar-plot">'
-        + '<div class="combo-plot-area">'
-          + '<div class="vbar-bars-row">' + barsHtml + '</div>'
-          + '<svg class="combo-line-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline points="' + polylinePoints + '" fill="none" stroke="#17a558" stroke-width="1.6" vector-effect="non-scaling-stroke"/>' + dots + '</svg>'
-        + '</div>'
+        + '<div class="vbar-bars-row">' + barsHtml + refLineHtml + '</div>'
         + '<div class="vbar-labels-row">' + labelsHtml + '</div>'
       + '</div>'
-      + '<div class="vbar-yaxis right">' + growthAxisHtml + '</div>'
     + '</div>'
+    + trendTilesHtml
   + '</div>';
 
-  // ---- Top 3 Brand Share podium ----
-  // Live data when available (needs all 3 podium spots filled; falls back to dummy otherwise)
-  const brands = (live.hasData && live.topBrands.length >= 3)
-    ? live.topBrands.map(function(b) { return { name: b.name, pct: b.pct }; })
-    : mo.topBrands; // sorted desc by pct: [0]=1st,[1]=2nd,[2]=3rd
-  const maxPct = brands[0].pct;
-  const top3Total = brands.reduce(function(s, b) { return s + b.pct; }, 0);
-  const order = [
-    { b: brands[1], rank: 2, heightPct: Math.max(34, (brands[1].pct / maxPct) * 100) },
-    { b: brands[0], rank: 1, heightPct: 100 },
-    { b: brands[2], rank: 3, heightPct: Math.max(26, (brands[2].pct / maxPct) * 100) },
-  ];
-  const rankColor = { 1: 'var(--accent2)', 2: 'var(--navy)', 3: 'var(--accent)' };
-  const podiumHtml = '<div class="card">'
-    + '<div class="card-head"><div class="card-title">Top 3 Brand Share</div><span class="tag amber">' + periodLabel + '</span></div>'
-    + '<div class="podium-wrap">'
-      + order.map(function(o) {
-          return '<div class="podium-col">'
-            + '<div class="podium-pct">' + o.b.pct.toFixed(1) + '%</div>'
-            + '<div class="podium-brand">' + o.b.name + '</div>'
-            + '<div class="podium-bar" style="height:' + o.heightPct + '%;background:' + rankColor[o.rank] + ';">'
-              + '<div class="podium-rank">' + o.rank + '</div>'
-            + '</div>'
-          + '</div>';
-        }).join('')
-    + '</div>'
-    + '<div class="podium-footer">Top 3 Brand Share <strong>' + top3Total.toFixed(1) + '%</strong></div>'
-  + '</div>';
-
-  // ---- Segment Mix ----
-  const segmentMixData = live.hasData && live.segmentMix.length ? live.segmentMix : mo.segmentMix;
-  const segRows = segmentMixData.map(function(s, i) {
-    return '<div class="segmix-row">'
-      + '<div class="segmix-icon"><i data-lucide="' + (SEGMIX_ICONS[s.name] || 'bike') + '" style="width:16px;height:16px"></i></div>'
-      + '<div class="segmix-name">' + s.name + '</div>'
-      + '<div class="segmix-track"><div class="segmix-fill" style="width:' + s.pct + '%;background:' + SEGMIX_PALETTE[i % SEGMIX_PALETTE.length] + ';"></div></div>'
-      + '<div class="segmix-pct">' + s.pct.toFixed(1) + '%</div>'
-      + '</div>';
+  // ---- Top 3 Brand Concentration: headline share + the three brands ----
+  // Live brands only (up to 3, biggest first) -- a country with fewer than 3 brands just lists fewer rows.
+  const top3Rows = live.topBrands.map(function(b, i) {
+    return '<div class="conc-row"><span class="conc-rank">' + (i + 1) + '</span><span class="conc-name">' + b.name + '</span><span class="conc-pct">' + b.pct.toFixed(1) + '%</span></div>';
   }).join('');
+  const top3Delta = live.top3ShareChangePp === null ? ''
+    : '<span class="conc-delta ' + dirOf(live.top3ShareChangePp) + '">' + arrowOf(live.top3ShareChangePp) + ' ' + signed(live.top3ShareChangePp, ' pp YoY') + '</span>';
+  const concHtml = '<div class="card">'
+    + '<div class="card-head"><div class="card-title">Top 3 Brand Concentration</div>' + periodBadge(periodLabel) + '</div>'
+    + '<div class="conc-label">Top 3 Share</div>'
+    + '<div class="conc-headline"><span class="conc-value">' + live.top3Share.toFixed(1) + '%</span>' + top3Delta + '</div>'
+    + '<div class="conc-list">' + top3Rows + '</div>'
+  + '</div>';
+
+  // ---- Segment Mix: each segment's share of the month, and its change vs last year ----
+  const segRows = live.segmentMix.map(function(s) {
+    const delta = s.changePp === null ? '' : '<div class="segm-delta ' + dirOf(s.changePp) + '">' + arrowOf(s.changePp) + ' ' + signed(s.changePp, ' pp YoY') + '</div>';
+    return '<div class="segm-row">'
+      + '<div class="segm-icon"><i data-lucide="' + (SEGMIX_ICONS[s.name] || 'bike') + '" style="width:18px;height:18px"></i></div>'
+      + '<div class="segm-name">' + s.name + '</div>'
+      + '<div class="segm-right"><div class="segm-pct">' + s.pct.toFixed(1) + '%</div>' + delta + '</div>'
+    + '</div>';
+  }).join('');
+  // "Total Segment Sales" box under the segment rows: units and share per segment
+  const segTotalRows = live.segmentMix.map(function(s) {
+    return '<div class="segt-row"><span>' + s.name + '</span><span><b>' + formatBarLabel(s.units) + '</b> units (' + s.pct.toFixed(1) + '%)</span></div>';
+  }).join('');
+  const segTotalBox = '<div class="segt-box"><div class="segt-ico"><i data-lucide="chart-column" style="width:18px;height:18px"></i></div>'
+    + '<div class="segt-body"><div class="segt-title">Total Segment Sales</div>' + segTotalRows + '</div></div>';
   const segMixHtml = '<div class="card">'
-    + '<div class="card-head"><div class="card-title">Segment Mix</div><span class="tag amber">' + periodLabel + '</span></div>'
-    + '<div class="segmix-wrap">'
-      + '<div class="segmix-rows">' + segRows + '</div>'
-      + '<svg class="segmix-bracket" viewBox="0 0 24 150" preserveAspectRatio="none"><path d="M4,4 Q16,4 16,20 L16,68 Q16,75 22,75 Q16,75 16,82 L16,130 Q16,146 4,146" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
-      + '<div class="segmix-total"><div class="segmix-total-value">' + (live.hasData ? formatUnits(live.totalUnits) : d.market2w.replace(' units', '')) + '</div><div class="segmix-total-label">Total Sales<br>' + periodLabel + '</div></div>'
+    + '<div class="card-head"><div class="card-title">Segment Mix</div>' + periodBadge(periodLabel) + '</div>'
+    + '<div class="segm-list">' + segRows + '</div>'
+    + segTotalBox
+  + '</div>';
+
+  // ---- Fuel Mix: donut + table. Fuel types come straight from the data; Electric is always green ----
+  const BLUE_PURPLE = ['#3D83F6', '#7857F5', '#A68AF7', '#70A8FF'];   // colours for every non-electric fuel type, in order
+  const ELECTRIC_COLOR = '#20B99A';
+  let fuelColorIdx = 0;
+  const fuelColor = {};
+  live.fuelMix.forEach(function(f) {
+    fuelColor[f.name] = (f.name === 'Electric') ? ELECTRIC_COLOR : BLUE_PURPLE[fuelColorIdx++ % BLUE_PURPLE.length];
+  });
+  // Donut: each fuel type is one circle outline drawn with a dash covering its share of the ring
+  let donutSlices = '', donutLabels = '', startPct = 0;
+  live.fuelMix.forEach(function(f) {
+    donutSlices += '<circle cx="80" cy="80" r="46" fill="none" stroke="' + fuelColor[f.name] + '" stroke-width="18" pathLength="100"'
+      + ' stroke-dasharray="' + f.share.toFixed(3) + ' ' + (100 - f.share).toFixed(3) + '" stroke-dashoffset="' + (-startPct).toFixed(3) + '"/>';
+    if (f.share >= 1.5) {
+      const ang = (startPct + f.share / 2) / 100 * 2 * Math.PI - Math.PI / 2;   // middle of this slice, measured from 12 o'clock
+      const lx = 80 + 68 * Math.cos(ang), ly = 80 + 68 * Math.sin(ang);
+      donutLabels += '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="middle" dominant-baseline="middle" font-size="9" font-weight="600" fill="' + fuelColor[f.name] + '">' + f.share.toFixed(1) + '%</text>';
+    }
+    startPct += f.share;
+  });
+  const fuelTableRows = live.fuelMix.map(function(f) {
+    const pp = f.sharePp === null ? '<td>—</td>' : '<td class="' + dirOf(f.sharePp) + '">' + arrowOf(f.sharePp) + ' ' + signed(f.sharePp, ' pp') + '</td>';
+    const gr = f.growth === null ? '<td>—</td>' : '<td class="' + dirOf(f.growth) + '">' + arrowOf(f.growth) + ' ' + signed(f.growth, '%') + '</td>';
+    return '<tr><td><span class="fuel-dot" style="border-color:' + fuelColor[f.name] + '"></span>' + f.name + '</td><td>' + f.share.toFixed(1) + '%</td>' + pp + gr + '</tr>';
+  }).join('');
+  const fuelHtml = '<div class="card">'
+    + '<div class="card-head"><div class="card-title card-title-ico"><i data-lucide="fuel" style="width:20px;height:20px"></i>Fuel Mix</div>' + periodBadge(periodLabel) + '</div>'
+    + '<div class="fuel-wrap">'
+      + '<div class="fuel-donut"><svg viewBox="0 0 160 160"><g transform="rotate(-90 80 80)">' + donutSlices + '</g>' + donutLabels + '</svg>'
+        + '<div class="fuel-donut-center"><div class="fdc-label">Total Sales</div><div class="fdc-value">' + formatBarLabel(live.totalUnits) + '</div><div class="fdc-unit">units</div></div></div>'
+      + '<div class="fuel-table"><table><thead><tr><th>Fuel Type</th><th>Share<br>(' + periodLabel + ')</th><th>YoY Change<br>(share, pp)</th><th>YoY Sales<br>Growth</th></tr></thead><tbody>' + fuelTableRows + '</tbody></table></div>'
     + '</div>'
   + '</div>';
 
-  el.innerHTML = '<div class="ov-kpi-grid-6">' + kpiHtml + '</div>'
-    + '<div class="section-row">' + scorecardHtml + '</div>'
-    + '<div class="section-row cols-mkt3">' + comboHtml + podiumHtml + segMixHtml + '</div>';
+  // ---- CC Mix: one panel per vehicle category, two 100% stacked bars (latest month vs same month last year) ----
+  const priorLabel = fmtMonth(live.priorYearPeriod);
+  const ccBar = function(label, pctMap, segments, colors) {
+    const segs = segments.filter(function(n) { return (pctMap[n] || 0) > 0; }).map(function(n) {
+      const v = pctMap[n];
+      return '<div class="ccm-seg" style="width:' + v.toFixed(2) + '%;background:' + colors[n] + '">' + (v >= 4 ? Math.round(v) + '%' : '') + '</div>';
+    }).join('');
+    return '<div class="ccm-bar-row"><div class="ccm-bar-label">' + label + '</div><div class="ccm-bar">' + segs + '</div></div>';
+  };
+  const ccPanels = live.ccMix.map(function(c) {
+    // Electric is green; every other CC segment takes the next blue/purple in the list
+    const colors = {};
+    let ci = 0;
+    c.segments.forEach(function(n) { colors[n] = (n === 'Electric') ? ELECTRIC_COLOR : BLUE_PURPLE[ci++ % BLUE_PURPLE.length]; });
+    const legend = c.segments.map(function(n) { return '<span><i style="background:' + colors[n] + '"></i>' + n + '</span>'; }).join('');
+    return '<div class="ccm-panel">'
+      + '<div class="ccm-title"><span class="ccm-ico"><i data-lucide="' + (SEGMIX_ICONS[c.category] || 'bike') + '" style="width:14px;height:14px"></i></span>' + c.category + '</div>'
+      + '<div class="ccm-legend">' + legend + '</div>'
+      + ccBar(periodLabel, c.now, c.segments, colors)
+      + (c.before ? ccBar(priorLabel, c.before, c.segments, colors) : '')
+    + '</div>';
+  }).join('');
+  const ccHtml = '<div class="card">'
+    + '<div class="card-head"><div class="card-title card-title-ico"><i data-lucide="chart-column" style="width:20px;height:20px"></i>CC Mix <span style="font-weight:400;color:var(--text3)">(by Vehicle Category)</span></div>' + periodBadge(periodLabel) + '</div>'
+    + '<div class="ccm-panels">' + ccPanels + '</div>'
+  + '</div>';
+
+  // Page order: Market Snapshot, then the trend chart with the two cards beside it, then the bottom section
+  el.innerHTML = snapshotHtml
+    + '<div class="section-row cols-trend3">' + comboHtml + concHtml + segMixHtml + '</div>'
+    + '<div class="section-row cols-fuelcc">' + fuelHtml + ccHtml + '</div>'
+    + '<div class="section-row">' + positionHtml + '</div>';
 
   if (window.lucide) lucide.createIcons();
 }
@@ -2653,31 +3201,64 @@ let BI_AVAILABLE_COUNTRY = null;   // which country BI_AVAILABLE currently holds
 let COUNTRY_WB_CODE = {};
 let countryWbCodeLoaded = false;
 
+let WB_CODES_PROMISE = null;   // shared in-flight request, so two callers at once don't fetch twice
+
 async function loadCountryWbCodes() {
-  if (!SUPABASE_URL) return;
-  const url = SUPABASE_URL + '/rest/v1/country?select=country,wb_code';
-  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
-  const rows = await res.json();
-  rows.forEach(function(r) { COUNTRY_WB_CODE[r.country] = r.wb_code; });
-  countryWbCodeLoaded = true;
+  if (countryWbCodeLoaded || !SUPABASE_URL) return;
+  if (!WB_CODES_PROMISE) {
+    WB_CODES_PROMISE = (async function() {
+      const url = SUPABASE_URL + '/rest/v1/country?select=country,wb_code';
+      const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
+      const rows = await res.json();
+      if (!res.ok || !Array.isArray(rows)) {
+        console.error('loadCountryWbCodes failed:', rows);   // leave "not loaded" so the next render retries
+        return;
+      }
+      rows.forEach(function(r) { COUNTRY_WB_CODE[r.country] = r.wb_code; });
+      countryWbCodeLoaded = true;
+    })().finally(function() { WB_CODES_PROMISE = null; });
+  }
+  return WB_CODES_PROMISE;
 }
 
+let BI_AVAIL_INFLIGHT = {};   // country -> in-progress request, shared by whoever asks for it at the same time
+
 async function loadAvailableFilters(country) {
-  if (!SUPABASE_URL) { BI_AVAILABLE = []; BI_AVAILABLE_COUNTRY = country; return; }   // not configured yet
-  if (!countryWbCodeLoaded) await loadCountryWbCodes();
+  if (BI_AVAIL_INFLIGHT[country]) return BI_AVAIL_INFLIGHT[country];
 
-  const wbCode = COUNTRY_WB_CODE[country];
-  if (!wbCode) {
-    // No matching row in your `country` table for this display name -- most likely
-    // a spelling/casing mismatch between the dashboard's name and the DB's `country` column.
-    console.warn('No wb_code found for country:', country);
-    BI_AVAILABLE = []; BI_AVAILABLE_COUNTRY = country; return;
-  }
+  const request = (async function() {
+    if (!SUPABASE_URL) { BI_AVAILABLE = []; BI_AVAILABLE_COUNTRY = country; return; }   // not configured yet
+    if (!countryWbCodeLoaded) await loadCountryWbCodes();
+    if (!countryWbCodeLoaded) return;   // couldn't load the lookup -- leave unloaded so it's retried
 
-  const url = SUPABASE_URL + '/rest/v1/v_available_filters?wb_code=eq.' + wbCode + '&select=*';
-  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
-  BI_AVAILABLE = await res.json();
-  BI_AVAILABLE_COUNTRY = country;
+    const wbCode = COUNTRY_WB_CODE[country];
+    let rows = [];
+    if (!wbCode) {
+      // No matching row in your `country` table for this display name -- most likely
+      // a spelling/casing mismatch between the dashboard's name and the DB's `country` column.
+      console.warn('No wb_code found for country:', country);
+    } else {
+      // This view has one row per month/category/fuel/CC combination, so a country with a long history
+      // can pass Supabase's 1000-row limit -- if only the first 1000 came back, the newest months would
+      // be missing from the Month dropdown. fetchAllRows keeps asking until it has every row.
+      const url = SUPABASE_URL + '/rest/v1/v_available_filters?wb_code=eq.' + wbCode + '&select=*';
+      try {
+        rows = await fetchAllRows(url, 'sales_year,sales_month_num,category,fuel_type,cc_segment');
+      } catch (e) {
+        console.error('loadAvailableFilters failed:', url, e);
+        return;   // leave unloaded so the next render retries
+      }
+    }
+
+    // If the user has already moved on to a different country while this was loading,
+    // don't overwrite that country's data with this older result.
+    if (country !== currentCountry) return;
+    BI_AVAILABLE = rows;
+    BI_AVAILABLE_COUNTRY = country;
+  })();
+
+  BI_AVAIL_INFLIGHT[country] = request;
+  try { await request; } finally { delete BI_AVAIL_INFLIGHT[country]; }
 }
 
 // Pulls the unique values of one column out of BI_AVAILABLE, only counting rows
@@ -2687,19 +3268,25 @@ async function loadAvailableFilters(country) {
 function distinctValues(column, matchFilters) {
   const keys = Object.keys(matchFilters || {});
   const matches = BI_AVAILABLE.filter(function(row) {
-    return keys.every(function(k) { return row[k] === matchFilters[k]; });
+    return keys.every(function(k) { return String(row[k]) === String(matchFilters[k]); });   // String() so 2026 and "2026" match
   });
   return [...new Set(matches.map(function(row) { return row[column]; }))].filter(Boolean).sort();
 }
 
+// Year / month values from the database turned into plain numbers, so comparisons with the dropdown
+// choices (which are numbers) always work, whatever type the database sends back.
+function numericValues(column, matchFilters) {
+  return distinctValues(column, matchFilters).map(Number).filter(function(n) { return !isNaN(n); });
+}
+
 // Years that actually have data, newest first
 function getYearOptions() {
-  return distinctValues('sales_year', {}).sort(function(a, b) { return b - a; });
+  return numericValues('sales_year', {}).sort(function(a, b) { return b - a; });
 }
 
 // Months that actually have data for a given year, e.g. getMonthOptions(2026) -> [1,2,3,4,5,6]
 function getMonthOptions(year) {
-  return distinctValues('sales_month_num', { sales_year: year }).sort(function(a, b) { return a - b; });
+  return numericValues('sales_month_num', { sales_year: year }).sort(function(a, b) { return a - b; });
 }
 
 // The most recent (year, month) that has any data at all -- used as the default
@@ -2715,10 +3302,12 @@ function getLatestAvailablePeriod() {
 }
 
 const BI_STATE = {
-  category: 'all', fuelType: 'all', ccSegment: 'all', search: '', modelsExpanded: false, brandsExpanded: false, contribBrand: null, trendCount: 5, trendBrand: 'all',
+  category: 'all', fuelType: 'all', ccSegment: 'all', search: '', modelsExpanded: false, brandsExpanded: false, modelBrand: 'all', contribBrand: null, trendCount: 5, trendBrand: 'all',
   // New: period filter state. year/month/quarter start as null and get filled in
   // the first time data loads for a country (see renderBrandIntelligence below) --
   // we can't know the "latest period" until we've actually fetched something.
+  matrixView: 'leaders',            // Model Momentum Matrix: 'leaders' (overall market) or 'brand' (one brand's portfolio)
+  matrixBrand: null,                // the brand shown when matrixView is 'brand' (null = the #1 brand)
   analysisType: 'monthly',          // 'monthly' | 'quarterly' | '6months' | 'ytm' | 'annual'
   year: null,
   month: null,       // used by Monthly and Year to Month
@@ -2777,7 +3366,21 @@ function biSetAnalysisType(val) {
   BI_STATE.analysisType = val;
   renderBrandIntelligence();
 }
-function biSetYear(val) { BI_STATE.year = parseInt(val, 10); renderBrandIntelligence(); }
+// Makes sure the selected Year and Month really exist in the data for this country.
+// Without this, picking a year that doesn't have the previously chosen month (or switching to a
+// country whose latest month is different) leaves the dropdown showing one month while the
+// dashboard silently asks for another -- so the fetch comes back empty.
+function biEnsureValidPeriod() {
+  const latest = getLatestAvailablePeriod();
+  if (BI_STATE.year === null || getYearOptions().indexOf(BI_STATE.year) === -1) BI_STATE.year = latest.year;
+  const months = getMonthOptions(BI_STATE.year);
+  if (months.length && months.indexOf(BI_STATE.month) === -1) {
+    // keep the same month number if the new year has it, otherwise fall back to that year's latest month
+    BI_STATE.month = months[months.length - 1];
+  }
+  BI_STATE.quarter = BI_STATE.quarter || quarterOfMonth(BI_STATE.month);
+}
+function biSetYear(val) { BI_STATE.year = parseInt(val, 10); biEnsureValidPeriod(); renderBrandIntelligence(); }
 function biSetMonth(val) { BI_STATE.month = parseInt(val, 10); renderBrandIntelligence(); }
 function biSetQuarter(val) { BI_STATE.quarter = parseInt(val, 10); renderBrandIntelligence(); }
 
@@ -2829,7 +3432,13 @@ function biPeriodSelectorHtml() {
 
   // Monthly and Year to Month: both use Year + Month.
   // Only months that actually have data for the selected year are shown.
-  const monthOptions = getMonthOptions(BI_STATE.year).map(function(m) {
+  let monthList = getMonthOptions(BI_STATE.year);
+  if (!monthList.length) {
+    // Shouldn't happen, but if the year has no month list, say so in the console and still offer all 12 months
+    console.warn('No available months found for year', BI_STATE.year, '- rows loaded:', BI_AVAILABLE.length);
+    monthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  }
+  const monthOptions = monthList.map(function(m) {
     return '<option value="' + m + '"' + (BI_STATE.month === m ? ' selected' : '') + '>' + MONTH_NAMES[m - 1] + '</option>';
   }).join('');
   return yearSelect + '<div class="bi-filter-group"><span class="bi-filter-label">Month</span>'
@@ -2841,6 +3450,7 @@ function biResetFilters() {
   BI_STATE.fuelType = 'all';
   BI_STATE.ccSegment = 'all';
   BI_STATE.search = '';
+  BI_STATE.modelBrand = 'all';
   BI_STATE.modelsExpanded = false;
   BI_STATE.brandsExpanded = false;
   BI_STATE.contribBrand = null;
@@ -2903,6 +3513,7 @@ function biCcSegmentFilterHtml() {
   if (BI_STATE.fuelType !== 'all') scope.fuel_type = BI_STATE.fuelType;
   return biDependentFilterHtml('CC Segment', 'cc_segment', scope, BI_STATE.ccSegment, 'biSetCcSegment');
 }
+function biSetModelBrand(v) { BI_STATE.modelBrand = v; BI_STATE.modelsExpanded = false; renderBrandIntelligence(); }
 function biSetSearch(val) { BI_STATE.search = val; renderBrandIntelligence(); }
 function biToggleModelsExpand() { BI_STATE.modelsExpanded = !BI_STATE.modelsExpanded; renderBrandIntelligence(); }
 function biToggleBrandsExpand() { BI_STATE.brandsExpanded = !BI_STATE.brandsExpanded; renderBrandIntelligence(); }
@@ -2989,23 +3600,15 @@ function sumByModel(rows) {
   return groups;
 }
 
-async function fetchSalesDetail(wbCode, months, filters) {
+async function fetchSalesDetail(wbCode, months, filters, selectCols) {
   let url = SUPABASE_URL + '/rest/v1/v_model_month_detail?wb_code=eq.' + wbCode;
   url += '&sales_month=in.(' + months.map(monthDateStr).join(',') + ')';
   if (filters.category !== 'all') url += '&category=eq.' + encodeURIComponent(filters.category);
   if (filters.fuelType !== 'all') url += '&fuel_type=eq.' + encodeURIComponent(filters.fuelType);
   if (filters.ccSegment !== 'all') url += '&cc_segment=eq.' + encodeURIComponent(filters.ccSegment);
-  const res = await fetch(url, { headers: { apikey: SUPABASE_ANON_KEY } });
-  const body = await res.json();
-  if (!res.ok) {
-    // Supabase returns an error OBJECT (not an array) when something's wrong --
-    // e.g. the view doesn't exist, or RLS is blocking the request. Logging it here
-    // means the real reason shows up in the browser console instead of just
-    // silently failing further down.
-    console.error('fetchSalesDetail failed:', url, body);
-    return [];
-  }
-  return body;
+  if (selectCols) url += '&select=' + selectCols;   // optional: only fetch the columns that are needed
+  // fetchAllRows gets past Supabase's 1000-row limit (a quarter or a year of models is well over 1000 rows)
+  return fetchAllRows(url);
 }
 
 // Same count of months, immediately before the current ones (e.g. Monthly: the 1 prior month).
@@ -3048,6 +3651,7 @@ function monthsHaveData(months) {
 // Fetches current + (if available) prior period + prior year, then aggregates
 // everything in JavaScript -- same approach as the backend design discussion.
 async function loadBrandModelData() {
+  if (!countryWbCodeLoaded) await loadCountryWbCodes();
   const wbCode = COUNTRY_WB_CODE[currentCountry];
   if (!wbCode) return { hasData: false };
 
@@ -3061,10 +3665,17 @@ async function loadBrandModelData() {
   const hasPrior = monthsHaveData(priorMonths);
   const hasPriorYear = monthsHaveData(priorYearMonths);
 
-  const [currentRows, priorRows, priorYearRows] = await Promise.all([
+  // 12 months ending at the last month of the selected period, with the same Vehicle Category / Fuel / CC filters.
+  // Used only for the small sparklines on the first three KPI cards.
+  // We fetch 24 months: the 12 shown on the line, plus the 12 before them so each point can show its YoY.
+  const sparkMonths = monthsEndingAt(currentMonths[currentMonths.length - 1], 24);
+
+  const [currentRows, priorRows, priorYearRows, sparkRows] = await Promise.all([
     fetchSalesDetail(wbCode, currentMonths, filters),
     hasPrior ? fetchSalesDetail(wbCode, priorMonths, filters) : Promise.resolve([]),
     hasPriorYear ? fetchSalesDetail(wbCode, priorYearMonths, filters) : Promise.resolve([]),
+    // Only for the sparklines -- if this one fails the rest of the tab must still load
+    fetchSalesDetail(wbCode, sparkMonths, filters, 'sales_month,brand_name,model_id,units_sold').catch(function(e) { console.warn('Sparkline data failed:', e); return []; }),
   ]);
 
   if (!currentRows.length) return { hasData: false };
@@ -3093,13 +3704,59 @@ async function loadBrandModelData() {
     return {
       model_id: m.model_id, model_name: m.model_name, brand_name: m.brand_name, units: m.units,
       share: totalUnits ? (m.units / totalUnits * 100) : 0,
+      // Portfolio Share = this model's sales / the total sales of its own brand (same period and filters)
+      brandUnits: brandCurrent[m.brand_name] || 0,
+      portfolioShare: brandCurrent[m.brand_name] ? (m.units / brandCurrent[m.brand_name] * 100) : 0,
+      priorYearUnits: modelPriorYear[m.model_id] || 0,
+      // Share change vs the same period last year, in percentage points (null when there is no last-year data to compare):
+      //   marketSharePp    = share of the whole market now - share of the whole market a year ago
+      //   portfolioSharePp = share of its own brand now   - share of its own brand a year ago
+      marketSharePp: (hasPriorYear && sumUnits(priorYearRows)) ? ((totalUnits ? m.units / totalUnits * 100 : 0) - (modelPriorYear[m.model_id] || 0) / sumUnits(priorYearRows) * 100) : null,
+      portfolioSharePp: (hasPriorYear && brandPriorYear[m.brand_name]) ? ((brandCurrent[m.brand_name] ? m.units / brandCurrent[m.brand_name] * 100 : 0) - (modelPriorYear[m.model_id] || 0) / brandPriorYear[m.brand_name] * 100) : null,
       mom: hasPrior ? pctGrowth(m.units, modelPrior[m.model_id] || 0) : null,
       yoy: hasPriorYear ? pctGrowth(m.units, modelPriorYear[m.model_id] || 0) : null,
     };
   }).sort(function(a, b) { return b.units - a.units; });
 
+  // ---- 12-month series for the sparklines: total, #1 brand and #1 model, one value per month ----
+  // All three series are worked out over the 24 fetched months; the last 12 are drawn, and the first 12 are
+  // only used to give each drawn month its "same month last year" figure.
+  const topBrandName = brands[0] ? brands[0].brand : null;
+  const topModelId = allModels[0] ? allModels[0].model_id : null;
+  const tot24 = [], brand24 = [], model24 = [];
+  const sparkIndex = {};   // 'YYYY-MM' -> position 0..23
+  sparkMonths.forEach(function(m, i) { sparkIndex[m.year + '-' + String(m.month).padStart(2, '0')] = i; tot24.push(0); brand24.push(0); model24.push(0); });
+  sparkRows.forEach(function(r) {
+    const i = sparkIndex[String(r.sales_month).slice(0, 7)];
+    if (i === undefined) return;
+    tot24[i] += r.units_sold;
+    if (r.brand_name === topBrandName) brand24[i] += r.units_sold;
+    if (r.model_id === topModelId) model24[i] += r.units_sold;
+  });
+  // What the tooltip shows for one hovered month: units, share of that month's total, MoM, YoY
+  const sparkPoint = function(series, i, withShare) {
+    const m = sparkMonths[i];
+    return {
+      label: MONTH_NAMES[m.month - 1] + ' ' + m.year,
+      units: series[i],
+      share: withShare ? (tot24[i] ? series[i] / tot24[i] * 100 : null) : null,
+      mom: i >= 1 ? pctGrowth(series[i], series[i - 1]) : null,
+      yoy: i >= 12 ? pctGrowth(series[i], series[i - 12]) : null,
+    };
+  };
+  const shown = []; for (let i = 12; i < 24; i++) shown.push(i);
+  const sparkTotal = shown.map(function(i) { return tot24[i]; });
+  const sparkBrand = shown.map(function(i) { return brand24[i]; });
+  const sparkModel = shown.map(function(i) { return model24[i]; });
+  const sparkPoints = {
+    total: shown.map(function(i) { return sparkPoint(tot24, i, false); }),
+    brand: shown.map(function(i) { return sparkPoint(brand24, i, true); }),
+    model: shown.map(function(i) { return sparkPoint(model24, i, true); }),
+  };
+
   return {
     hasData: true,
+    sparkTotal: sparkTotal, sparkBrand: sparkBrand, sparkModel: sparkModel, sparkPoints: sparkPoints,
     totalUnits: totalUnits,
     momGrowthPct: hasPrior ? pctGrowth(totalUnits, sumUnits(priorRows)) : null,
     yoyGrowthPct: hasPriorYear ? pctGrowth(totalUnits, sumUnits(priorYearRows)) : null,
@@ -3108,6 +3765,7 @@ async function loadBrandModelData() {
     topModel: allModels[0] || null,
     brands: brands,
     models: allModels.slice(0, 25),          // Model Intelligence Table shows at most 25
+    modelsAll: allModels,                    // every model, used by the Model Momentum Matrix / Market Movers
   };
 }
 
@@ -3139,8 +3797,8 @@ function aggregateBrandIntelFromRows(rows) {
   };
 }
 
-function biKpiEmptyCard(icon, label, amber) {
-  return '<div class="bi-kpi-card"><div class="bi-kpi-icon' + (amber ? ' amber' : '') + '"><i data-lucide="' + icon + '" style="width:20px;height:20px"></i></div>'
+function biKpiEmptyCard(icon, label, tone) {
+  return '<div class="bi-kpi-card ' + tone + '"><div class="bi-kpi-icon"><i data-lucide="' + icon + '" style="width:20px;height:20px"></i></div>'
     + '<div class="bi-kpi-body"><div class="bi-kpi-label">' + label + '</div>'
     + '<div class="bi-kpi-value" style="color:var(--text3);">—</div>'
     + '<div class="bi-kpi-row"><span class="bi-muted">No data available</span></div>'
@@ -3154,40 +3812,105 @@ function growthSpan(value, suffix) {
   return '<span class="' + (value >= 0 ? 'up' : 'down') + '">' + (value >= 0 ? '\u25b2' : '\u25bc') + ' ' + Math.abs(value).toFixed(1) + '%' + (suffix || '') + '</span>';
 }
 
+// Plain-text summary of the active filters, e.g. "All categories · All fuel types · All CC segments"
+function biFilterSummary() {
+  return [
+    BI_STATE.category === 'all' ? 'All categories' : BI_STATE.category,
+    BI_STATE.fuelType === 'all' ? 'All fuel types' : BI_STATE.fuelType,
+    BI_STATE.ccSegment === 'all' ? 'All CC segments' : BI_STATE.ccSegment,
+  ].join(' · ');
+}
+
+// "▲ +4.2%" / "▼ -1.1%" in green/red for the tooltip, or "—" when there is nothing to compare with
+function biTipGrowth(v) {
+  if (v === null || v === undefined) return '<span class="bi-tip-na">—</span>';
+  return '<span class="' + (v >= 0 ? 'up' : 'down') + '">' + (v >= 0 ? '▲ +' : '▼ ') + v.toFixed(1) + '%</span>';
+}
+
+// The hover tooltip for ONE month on a sparkline. Header: KPI name on the left, that month as a badge on
+// the right, and the active filters underneath. Then the metrics for that month only.
+function biPointTip(title, point, kind) {
+  const rows = [['Units Sold', formatUnits(point.units)]];
+  if (kind !== 'total') rows.push(['Market Share', point.share === null ? '—' : point.share.toFixed(1) + '%']);
+  rows.push(['MoM vs previous period', biTipGrowth(point.mom)]);
+  rows.push(['YoY vs same period last year', biTipGrowth(point.yoy)]);
+  return '<div class="bi-tip" role="tooltip">'
+    + '<div class="bi-tip-head"><div class="bi-tip-title">' + title + '</div><span class="bi-tip-badge">' + point.label + '</span></div>'
+    + '<div class="bi-tip-filters">' + biFilterSummary() + '</div>'
+    + rows.map(function(r) { return '<div class="bi-tip-row"><span>' + r[0] + '</span><b>' + r[1] + '</b></div>'; }).join('')
+    + '</div>';
+}
+
+// Small 12-month trend line with a light area fill underneath (blue stroke, subtle blue fill).
+// On top of it sit 12 invisible hover zones, one per month; hovering one shows a dot on the line and the
+// tooltip for that month.
+function biSparkline(values, points, title, kind) {
+  if (!values || values.length < 2 || !values.some(function(v) { return v > 0; })) return '';
+  const w = 100, h = 34, pad = 3, n = values.length;
+  const max = Math.max.apply(null, values), min = Math.min.apply(null, values);
+  const range = (max - min) || 1;
+  const step = w / (n - 1);
+  const yOf = function(v) { return (max === min) ? h / 2 : pad + (h - 2 * pad) * (1 - (v - min) / range); };   // flat series -> middle
+  const pts = values.map(function(v, i) { return [i * step, yOf(v)]; });
+  const line = pts.map(function(pt) { return pt[0].toFixed(1) + ',' + pt[1].toFixed(1); }).join(' ');
+  const area = '0,' + h + ' ' + line + ' ' + w + ',' + h;
+  const svg = '<svg class="bi-spark" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none">'
+    + '<polygon points="' + area + '" fill="rgba(37,99,235,0.12)"/>'
+    + '<polyline points="' + line + '" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>'
+    + '</svg>';
+  // Hover zones: left-most ones keep the tooltip's left edge on the zone, right-most keep the right edge, so it never runs off the card
+  const zones = values.map(function(v, i) {
+    const align = i < 4 ? 'tip-left' : (i >= n - 4 ? 'tip-right' : 'tip-mid');
+    const dotTop = (yOf(v) / h * 100).toFixed(1);
+    return '<div class="bi-spark-zone ' + align + '"><span class="bi-spark-dot" style="top:' + dotTop + '%"></span>'
+      + (points && points[i] ? biPointTip(title, points[i], kind) : '') + '</div>';
+  }).join('');
+  return svg + '<div class="bi-spark-zones">' + zones + '</div>';
+}
+
+// One KPI card: icon, label, big value, MoM + YoY on one line directly under the value (or a plain
+// sub-text line), and an optional sparkline with its per-month hover tooltips
+function biKpiCard(tone, icon, label, valueHtml, mom, yoy, sparkHtml, subText) {
+  const metricRow = subText
+    ? '<div class="bi-kpi-row"><span class="bi-muted">' + subText + '</span></div>'
+    : '<div class="bi-kpi-row">' + (growthSpan(mom, ' MoM') || '') + (growthSpan(yoy, ' YoY') || '') + '</div>';
+  return '<div class="bi-kpi-card ' + tone + '">'
+    + '<div class="bi-kpi-icon"><i data-lucide="' + icon + '" style="width:20px;height:20px"></i></div>'
+    + '<div class="bi-kpi-body"><div class="bi-kpi-label">' + label + '</div>'
+    + valueHtml
+    + metricRow
+    + (sparkHtml ? '<div class="bi-spark-wrap">' + sparkHtml + '</div>' : '')
+    + '</div></div>';
+}
+
 function biKpiCards(data) {
   if (!data.hasData) {
     return '<div class="bi-kpi-grid">'
-      + biKpiEmptyCard('bike', 'Total Market Sales')
-      + biKpiEmptyCard('crown', '#1 Brand')
-      + biKpiEmptyCard('star', '#1 Model', true)
-      + biKpiEmptyCard('layers', 'Active Models')
+      + biKpiEmptyCard('bike', 'Total Market Sales', 'tone-blue')
+      + biKpiEmptyCard('crown', '#1 Brand', 'tone-green')
+      + biKpiEmptyCard('star', '#1 Model', 'tone-purple')
+      + biKpiEmptyCard('layers', 'Active Models', 'tone-amber')
       + '</div>';
   }
   const tb = data.topBrand, tm = data.topModel;
   const periodLabel = formatPeriodRange(resolveSelectedMonths());
+  const sp = data.sparkPoints || {};
+  // #1 Model shows "Brand Model" (e.g. "Honda CB 190"), joined from the source data; if the model name
+  // already starts with the brand name it isn't repeated.
+  const modelFull = (tm.model_name.toLowerCase().indexOf(String(tm.brand_name).toLowerCase()) === 0) ? tm.model_name : (tm.brand_name + ' ' + tm.model_name);
+
   return '<div class="bi-kpi-grid">'
-    + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="bike" style="width:20px;height:20px"></i></div>'
-      + '<div class="bi-kpi-body"><div class="bi-kpi-label">Total Market Sales</div>'
-      + '<div class="bi-kpi-value">' + formatUnits(data.totalUnits) + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">' + periodLabel + '</span>' + growthSpan(data.momGrowthPct, ' MoM') + '</div>'
-      + '<div class="bi-kpi-row" style="justify-content:flex-end;">' + growthSpan(data.yoyGrowthPct, ' YoY') + '</div>'
-      + '</div></div>'
-    + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="crown" style="width:20px;height:20px"></i></div>'
-      + '<div class="bi-kpi-body"><div class="bi-kpi-label">#1 Brand</div>'
-      + '<div class="bi-kpi-value" title="' + tb.brand + '">' + tb.brand + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">' + growthSpan(tb.mom, ' MoM') + '</span>' + growthSpan(tb.yoy, ' YoY') + '</div>'
-      + '</div></div>'
-    + '<div class="bi-kpi-card"><div class="bi-kpi-icon amber"><i data-lucide="star" style="width:20px;height:20px"></i></div>'
-      + '<div class="bi-kpi-body"><div class="bi-kpi-label">#1 Model</div>'
-      + '<div class="bi-kpi-value" title="' + tm.model_name + '">' + tm.model_name + '</div>'
-      + '<div class="bi-muted" style="margin-top:1px;">' + tm.brand_name + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">' + growthSpan(tm.mom, ' MoM') + '</span>' + growthSpan(tm.yoy, ' YoY') + '</div>'
-      + '</div></div>'
-    + '<div class="bi-kpi-card"><div class="bi-kpi-icon"><i data-lucide="layers" style="width:20px;height:20px"></i></div>'
-      + '<div class="bi-kpi-body"><div class="bi-kpi-label">Active Models</div>'
-      + '<div class="bi-kpi-value">' + data.activeModels + '</div>'
-      + '<div class="bi-kpi-row"><span class="bi-muted">Models with sales in ' + periodLabel + '</span></div>'
-      + '</div></div>'
+    + biKpiCard('tone-blue', 'bike', 'Total Market Sales',
+        '<div class="bi-kpi-value">' + formatUnits(data.totalUnits) + '</div>', data.momGrowthPct, data.yoyGrowthPct,
+        biSparkline(data.sparkTotal, sp.total, 'Total Market Sales', 'total'))
+    + biKpiCard('tone-green', 'crown', '#1 Brand',
+        '<div class="bi-kpi-value" title="' + tb.brand + '">' + tb.brand + '</div>', tb.mom, tb.yoy,
+        biSparkline(data.sparkBrand, sp.brand, '#1 Brand · ' + tb.brand, 'brand'))
+    + biKpiCard('tone-purple', 'star', '#1 Model',
+        '<div class="bi-kpi-value wrap" title="' + modelFull + '">' + modelFull + '</div>', tm.mom, tm.yoy,
+        biSparkline(data.sparkModel, sp.model, '#1 Model · ' + modelFull, 'model'))
+    + biKpiCard('tone-amber', 'layers', 'Active Models',
+        '<div class="bi-kpi-value">' + data.activeModels + '</div>', null, null, '', 'Models with sales in ' + periodLabel)
     + '</div>';
 }
 
@@ -3207,7 +3930,7 @@ function brandRankRow(rank, name, sales, maxSales, share, mom, yoy, isOthers) {
 }
 
 function biBrandRankingCard(data) {
-  let bodyHtml;
+  let bodyHtml, othersFoot = '';   // "Others" is a summary line under the 10 brand rows
   const hasBrands = data.hasData && data.brands.length;
   // MoM/YoY columns only appear at all if the period comparison is possible --
   // same "not visible if previous period unavailable" rule as the KPI cards
@@ -3218,27 +3941,30 @@ function biBrandRankingCard(data) {
     bodyHtml = '<tr><td colspan="5" style="text-align:center;color:var(--text3);padding:24px;">No brand data available for ' + currentCountry + ' yet.</td></tr>';
   } else {
     const maxSales = data.brands[0].units;
-    const list = BI_STATE.brandsExpanded ? data.brands : data.brands.slice(0, 7);
+    const list = BI_STATE.brandsExpanded ? data.brands : data.brands.slice(0, 10);
     bodyHtml = list.map(function(b, i) { return brandRankRow(i + 1, b.brand, b.units, maxSales, b.share, b.mom, b.yoy); }).join('');
-    if (!BI_STATE.brandsExpanded && data.brands.length > 7) {
-      const others = data.brands.slice(7);
+    if (!BI_STATE.brandsExpanded && data.brands.length > 10) {
+      const others = data.brands.slice(10);   // every brand after the top 10 is added together as "Others"
       const othersUnits = others.reduce(function(s, b) { return s + b.units; }, 0);
       const othersShare = data.totalUnits ? (othersUnits / data.totalUnits * 100) : 0;
-      bodyHtml += brandRankRow(8, 'Others', othersUnits, maxSales, othersShare, null, null, true);
+      othersFoot = brandRankRow('', 'Others', othersUnits, maxSales, othersShare, null, null, true);
     }
   }
   const momHeader = showMom ? '<th>MoM Growth</th>' : '';
   const yoyHeader = showYoy ? '<th>YoY Growth</th>' : '';
   return '<div class="card">'
     + '<div class="card-head"><div class="card-title">Brand Sales Ranking <span style="font-weight:400;color:var(--text3);font-size:12px;">(' + formatPeriodRange(resolveSelectedMonths()) + ')</span></div></div>'
-    + '<table class="data-table"><thead><tr><th>Rank</th><th>Brand</th><th>Sales (Units)</th><th>Market Share</th>' + momHeader + yoyHeader + '</tr></thead>'
-    + '<tbody>' + bodyHtml + '</tbody></table>'
-    + (hasBrands && data.brands.length > 7 ? '<button class="view-all-btn" onclick="biToggleBrandsExpand()">' + (BI_STATE.brandsExpanded ? 'Show Top Brands' : 'View All Brands') + '</button>' : '')
+    + '<div class="tbl-wrap"><table class="data-table fix10"><thead><tr><th>Rank</th><th>Brand</th><th>Sales (Units)</th><th>Market Share</th>' + momHeader + yoyHeader + '</tr></thead>'
+    + '<tbody>' + bodyHtml + '</tbody>' + (othersFoot ? '<tfoot>' + othersFoot + '</tfoot>' : '') + '</table></div>'
+    + (hasBrands && data.brands.length > 10 ? '<button class="view-all-btn" onclick="biToggleBrandsExpand()">' + (BI_STATE.brandsExpanded ? 'Show Top Brands' : 'View All Brands') + '</button>' : '')
     + '</div>';
 }
 
 function biModelTableCard(data) {
-  const allModels = data.hasData ? data.models : [];   // already capped to 25 by loadBrandModelData()
+  // Brand filter: "all" uses the overall top 25; a brand uses that brand's own top 25 models
+  const brandNames = data.hasData ? data.brands.map(function(b) { return b.brand; }) : [];
+  const mb = (brandNames.indexOf(BI_STATE.modelBrand) > -1) ? BI_STATE.modelBrand : 'all';
+  const allModels = !data.hasData ? [] : (mb === 'all' ? data.models : data.modelsAll.filter(function(m) { return m.brand_name === mb; }).slice(0, 25));
   const showMom = data.hasData && data.momGrowthPct !== null;
   const showYoy = data.hasData && data.yoyGrowthPct !== null;
 
@@ -3250,9 +3976,9 @@ function biModelTableCard(data) {
 
   let bodyHtml;
   if (!allModels.length) {
-    bodyHtml = '<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:24px;">No model data available for ' + currentCountry + ' yet.</td></tr>';
+    bodyHtml = '<tr><td colspan="8" style="text-align:center;color:var(--text3);padding:24px;">No model data available for ' + currentCountry + ' yet.</td></tr>';
   } else if (!shown.length) {
-    bodyHtml = '<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:24px;">No models match your search.</td></tr>';
+    bodyHtml = '<tr><td colspan="8" style="text-align:center;color:var(--text3);padding:24px;">No models match your search.</td></tr>';
   } else {
     bodyHtml = shown.map(function(r, i) {
       const momCell = showMom ? '<td>' + (r.mom === null ? '\u2014' : growthSpan(r.mom)) + '</td>' : '';
@@ -3260,10 +3986,11 @@ function biModelTableCard(data) {
       return '<tr>'
         + '<td>' + (i + 1) + '</td>'
         + '<td><div class="rank-cell">' + brandBadge(r.brand_name, 20) + '<span>' + r.brand_name + '</span></div></td>'
-        + '<td style="font-weight:600;color:var(--text);">' + r.model_name + '</td>'
+        + '<td style="font-weight:600;color:var(--text);"><div class="cell-ell" title="' + biFullModelName(r).replace(/"/g, '&quot;') + '">' + biFullModelName(r) + '</div></td>'
         + '<td class="num">' + formatUnits(r.units) + '</td>'
         + momCell + yoyCell
         + '<td class="num">' + r.share.toFixed(1) + '%</td>'
+        + '<td><div class="pf-cell"><div class="pf-track"><div class="pf-fill" style="width:' + Math.min(100, r.portfolioShare).toFixed(1) + '%"></div></div><span>' + r.portfolioShare.toFixed(1) + '%</span></div></td>'
         + '</tr>';
     }).join('');
   }
@@ -3274,13 +4001,226 @@ function biModelTableCard(data) {
     + '<div class="card-head">'
       + '<div class="card-title">Model Intelligence Table <span style="font-weight:400;color:var(--text3);font-size:12px;">(' + formatPeriodRange(resolveSelectedMonths()) + ')</span></div>'
       + '<div class="card-head-tools">'
+        + '<select class="brand-select" onchange="biSetModelBrand(this.value)"><option value="all">All Brands</option>'
+          + brandNames.map(function(b) { return '<option value="' + b + '"' + (b === mb ? ' selected' : '') + '>' + b + '</option>'; }).join('') + '</select>'
         + '<div class="bi-search"><i data-lucide="search"></i><input type="text" placeholder="Search model..." value="' + BI_STATE.search.replace(/"/g, '&quot;') + '" oninput="biSetSearch(this.value)"></div>'
       + '</div>'
     + '</div>'
-    + '<div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Rank</th><th>Brand</th><th>Model</th><th>Sales (Units)</th>' + momHeader + yoyHeader + '<th>Market Share</th></tr></thead>'
+    + '<div class="tbl-wrap" style="overflow-x:auto;"><table class="data-table fix10"><thead><tr><th>Rank</th><th>Brand</th><th>Model</th><th>Sales (Units)</th>' + momHeader + yoyHeader + '<th>Market Share</th><th>Portfolio Share</th></tr></thead>'
     + '<tbody>' + bodyHtml + '</tbody></table></div>'
     + (allModels.length && filtered.length > 10 ? '<button class="view-all-btn" onclick="biToggleModelsExpand()">' + (BI_STATE.modelsExpanded ? 'Show Top 10' : 'View All Models') + '</button>' : '')
     + '</div>';
+}
+
+// ===================== MODEL MOMENTUM MATRIX + MARKET MOVERS =====================
+
+// "Brand Model" label used everywhere (e.g. "Honda CB 190"); the brand isn't repeated if the model name already starts with it
+function biFullModelName(m) {
+  const brand = String(m.brand_name || ''), model = String(m.model_name || '');
+  return model.toLowerCase().indexOf(brand.toLowerCase()) === 0 ? model : (brand + ' ' + model).trim();
+}
+
+// Bubble colours (one per brand, in order of brand ranking)
+const bubbleColors = {
+  blue: "#2563EB", violet: "#8B5CF6", teal: "#0F9D83", limeGreen: "#84B821", orange: "#F97316",
+  rosePink: "#E84D8A", cyan: "#0891B2", goldenAmber: "#D4A017", periwinkle: "#6474D9", magenta: "#D946A8"
+};
+const MATRIX_COLORS = { emerging: '#EAF0FF', stars: '#EAF6F0', laggards: '#FCEBEA', defending: '#FFF0E4', divider: '#A8BCE0', background: '#F8FAFD' };
+const MOVER_COLORS = { gainers: '#079653', losers: '#FF202D', track: '#E9EDF3' };
+
+function biSetMatrixView(v) { BI_STATE.matrixView = v; renderBrandIntelligence(); }
+function biSetMatrixBrand(b) { BI_STATE.matrixBrand = b; renderBrandIntelligence(); }
+
+// The models both new visuals work from. Shared, so Market Movers always follows the Matrix's filter:
+//   Market Leaders  -> the overall top 10 models by sales
+//   Brand Portfolio -> the top 10 models of the chosen brand
+// Only models with a YoY figure can be placed on the matrix / ranked as movers.
+function biMatrixSelection(data) {
+  const brandNames = data.brands.map(function(b) { return b.brand; });
+  const brand = (BI_STATE.matrixBrand && brandNames.indexOf(BI_STATE.matrixBrand) > -1) ? BI_STATE.matrixBrand : brandNames[0];
+  let pool = data.modelsAll;
+  if (BI_STATE.matrixView === 'brand') pool = pool.filter(function(m) { return m.brand_name === brand; });
+  const top10 = pool.slice(0, 10);   // modelsAll is already sorted by units, biggest first
+  return {
+    brand: brand, brandNames: brandNames, top10: top10,
+    withGrowth: top10.filter(function(m) { return m.yoy !== null; }),
+  };
+}
+
+function biMatrixChart(sel, data) {
+  const pts = sel.withGrowth;
+  const W = 640, H = 392, L = 50, R = 16, T = 44, B = 70;
+  const x0 = L, x1 = W - R, y0 = H - B, y1 = T;   // x0..x1 left to right, y0 (bottom) .. y1 (top)
+
+  // X = market share, Y = YoY growth. Growth is capped for the axis (-100% .. +200%) so one extreme model can't squash the rest.
+  // X axis: Market Leaders = model sales / total market sales; Brand Portfolio = model sales / that brand's sales
+  const isBrandX = BI_STATE.matrixView === 'brand';
+  const xOf = function(m) { return isBrandX ? m.portfolioShare : m.share; };
+  const shares = pts.map(xOf);
+  const xMax = Math.max.apply(null, shares) * 1.2 || 1;
+  const sortedShares = shares.slice().sort(function(a, b) { return a - b; });
+  const n = sortedShares.length;
+  const xDiv = (n % 2) ? sortedShares[(n - 1) / 2] : (sortedShares[n / 2 - 1] + sortedShares[n / 2]) / 2;   // vertical divider: median share of the models shown
+  const yDiv = (data.yoyGrowthPct !== null) ? data.yoyGrowthPct : 0;   // horizontal divider: the overall market's YoY growth
+  const growths = pts.map(function(m) { return Math.max(-100, Math.min(200, m.yoy)); }).concat([yDiv]);
+  let gMin = Math.min.apply(null, growths), gMax = Math.max.apply(null, growths);
+  const pad = ((gMax - gMin) || 20) * 0.12;
+  gMin -= pad; gMax += pad;
+
+  const sx = function(v) { return x0 + (v / xMax) * (x1 - x0); };
+  const sy = function(g) { const c = Math.max(gMin, Math.min(gMax, g)); return y0 - ((c - gMin) / (gMax - gMin)) * (y0 - y1); };
+  const xd = sx(xDiv), yd = sy(yDiv);
+
+  // Quadrants (exact colours as supplied)
+  let svg = '<rect x="' + x0 + '" y="' + y1 + '" width="' + (xd - x0) + '" height="' + (yd - y1) + '" fill="' + MATRIX_COLORS.emerging + '"/>'
+    + '<rect x="' + xd + '" y="' + y1 + '" width="' + (x1 - xd) + '" height="' + (yd - y1) + '" fill="' + MATRIX_COLORS.stars + '"/>'
+    + '<rect x="' + x0 + '" y="' + yd + '" width="' + (xd - x0) + '" height="' + (y0 - yd) + '" fill="' + MATRIX_COLORS.laggards + '"/>'
+    + '<rect x="' + xd + '" y="' + yd + '" width="' + (x1 - xd) + '" height="' + (y0 - yd) + '" fill="' + MATRIX_COLORS.defending + '"/>'
+    + '<line x1="' + xd + '" y1="' + y1 + '" x2="' + xd + '" y2="' + y0 + '" stroke="' + MATRIX_COLORS.divider + '" stroke-width="1.5" stroke-dasharray="5 4"/>'
+    + '<line x1="' + x0 + '" y1="' + yd + '" x2="' + x1 + '" y2="' + yd + '" stroke="' + MATRIX_COLORS.divider + '" stroke-width="1.5" stroke-dasharray="5 4"/>';
+  // Quadrant captions sit in the margin just outside the chart (top ones above it, bottom ones below it),
+  // so they never collide with bubbles, labels or the chart edge. Name and description share one colour.
+  const quad = function(x, y, anchor, name, desc, color) {
+    // title on the first line, subtitle directly underneath, same colour
+    return '<text x="' + x + '" y="' + y + '" class="mx-quad" fill="' + color + '" text-anchor="' + anchor + '">' + name + '</text>'
+      + '<text x="' + x + '" y="' + (y + 11) + '" class="mx-quad-sub" fill="' + color + '" text-anchor="' + anchor + '">' + desc + '</text>';
+  };
+  svg += quad(x0, y1 - 25, 'start', 'EMERGING', 'Low Share, High Growth', '#2563EB')
+    + quad(x1, y1 - 25, 'end', 'STARS', 'High Share, High Growth', '#0F9D83')
+    + quad(x0, y0 + 30, 'start', 'LAGGARDS', 'Low Share, Low Growth', '#D64545')
+    + quad(x1, y0 + 30, 'end', 'DEFENDING', 'High Share, Low Growth', '#F97316');
+  // Axes: 5 ticks each
+  for (let i = 0; i <= 4; i++) {
+    const xv = xMax * i / 4, gv = gMin + (gMax - gMin) * i / 4;
+    svg += '<text x="' + sx(xv).toFixed(1) + '" y="' + (y0 + 14) + '" class="mx-tick" text-anchor="' + (i === 0 ? 'start' : (i === 4 ? 'end' : 'middle')) + '">' + xv.toFixed(xv < 10 ? 1 : 0) + '%</text>'
+      + '<text x="' + (x0 - 5) + '" y="' + (sy(gv) + 3).toFixed(1) + '" class="mx-tick" text-anchor="end">' + Math.round(gv) + '%</text>';
+  }
+  svg += '<text x="' + ((x0 + x1) / 2) + '" y="' + (H - 8) + '" class="mx-axis" text-anchor="middle">' + (isBrandX ? 'Brand Portfolio Share (%)' : 'Market Share (%)') + '</text>'
+    + '<text x="9" y="' + ((y0 + y1) / 2) + '" class="mx-axis" text-anchor="middle" transform="rotate(-90 9 ' + ((y0 + y1) / 2) + ')">YoY Growth (%)</text>';
+
+  // Bubbles: AREA is proportional to units sold (radius = 22 * sqrt(units / biggest units)), with a small minimum so tiny models stay visible.
+  // Colour: one per brand in the market view; one per model in the single-brand view (otherwise every bubble would be the same colour).
+  const maxUnits = Math.max.apply(null, pts.map(function(m) { return m.units; })) || 1;
+  const palette = Object.keys(bubbleColors).map(function(k) { return bubbleColors[k]; });
+  const isBrandView = BI_STATE.matrixView === 'brand';
+  const items = pts.map(function(m, i) {
+    const r = Math.max(5, 22 * Math.sqrt(m.units / maxUnits));
+    const colorIdx = isBrandView ? sel.top10.indexOf(m) : Math.max(0, sel.brandNames.indexOf(m.brand_name));
+    const name = biFullModelName(m);
+    const text = name.length > 26 ? name.slice(0, 25) + '…' : name;
+    return { m: m, r: r, cx: sx(xOf(m)), cy: sy(m.yoy), color: palette[colorIdx % palette.length], name: name, text: text, w: text.length * 4.9, h: 10 };
+  });
+
+  // Label placement: for each label (biggest bubble first) try 8 spots around its bubble and keep the one that
+  // overlaps the fewest other bubbles / already-placed labels and stays inside the chart.
+  const boxes = [];   // labels placed so far
+  const hit = function(a, b) { return Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y)); };
+  let bubbles = '', labels = '';
+  items.slice().sort(function(a, b) { return b.m.units - a.m.units; }).forEach(function(it) {
+    const g = 3, cx = it.cx, cy = it.cy, r = it.r, w = it.w, h = it.h;
+    // 16 candidate spots: right, left, above, below and the four diagonals, each at two distances
+    const spots = [];
+    [0, 9].forEach(function(extra) {
+      const d = r + g + extra, dd = (r + extra) * 0.72;
+      spots.push({ x: cx + d, y: cy - h / 2, a: 'start' }, { x: cx - d - w, y: cy - h / 2, a: 'end' },
+        { x: cx - w / 2, y: cy - r - extra - h - 1, a: 'middle' }, { x: cx - w / 2, y: cy + r + extra + 1, a: 'middle' },
+        { x: cx + dd, y: cy - dd - h, a: 'start' }, { x: cx - dd - w, y: cy - dd - h, a: 'end' },
+        { x: cx + dd, y: cy + dd, a: 'start' }, { x: cx - dd - w, y: cy + dd, a: 'end' });
+    });
+    let best = spots[0], bestScore = Infinity;
+    spots.forEach(function(sp, k) {
+      const box = { x: sp.x, y: sp.y, w: w, h: h };
+      let score = k * 0.4;   // slight preference for the earlier (closer) spots
+      if (box.x < x0 || box.x + w > x1 || box.y < y1 || box.y + h > y0) score += 500;   // outside the plot area
+      boxes.forEach(function(o) { score += hit(box, o) * 4; });
+      items.forEach(function(o) { if (o !== it) score += hit(box, { x: o.cx - o.r, y: o.cy - o.r, w: o.r * 2, h: o.r * 2 }) * 2.5; });
+      if (score < bestScore) { bestScore = score; best = sp; }
+    });
+    boxes.push({ x: best.x, y: best.y, w: w, h: h });
+    const tx = best.a === 'start' ? best.x : (best.a === 'end' ? best.x + w : best.x + w / 2);
+    bubbles += '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="' + it.color + '" fill-opacity="0.85" stroke="#fff" stroke-width="1.3" class="mx-bubble">'
+      + '<title>Model: ' + it.name + '\nUnits: ' + formatUnits(it.m.units) + '\nMarket Share: ' + it.m.share.toFixed(1) + '%\nBrand Portfolio Share: ' + it.m.portfolioShare.toFixed(1) + '%\nYoY: ' + (it.m.yoy >= 0 ? '+' : '') + it.m.yoy.toFixed(1) + '%</title></circle>';
+    labels += '<text x="' + tx.toFixed(1) + '" y="' + (best.y + 8).toFixed(1) + '" class="mx-label" text-anchor="' + best.a + '">' + it.text + '</text>';
+  });
+  return '<svg class="mx-svg" viewBox="0 0 ' + W + ' ' + H + '">' + svg + bubbles + labels + '</svg>';
+}
+
+function biModelMomentumCard(data) {
+  const periodBadge_ = periodBadge(formatPeriodRange(resolveSelectedMonths()));
+  const head = function(controls) {
+    return '<div class="card-head"><div class="card-title">Model Momentum Matrix <span style="font-weight:400;color:var(--text3);font-size:12px;">(Share vs YoY Growth)</span></div>' + periodBadge_ + '</div>' + (controls || '');
+  };
+  if (!data.hasData || !data.modelsAll.length) {
+    return '<div class="card mx-card">' + head('') + '<div class="bi-empty">No model data available for ' + currentCountry + ' yet.</div></div>';
+  }
+  const sel = biMatrixSelection(data);
+  // The only filter for both new visuals: Market Leaders / Brand Portfolio (+ a brand picker for the second one)
+  const isBrand = BI_STATE.matrixView === 'brand';
+  const controls = '<div class="mx-controls">'
+    + '<div class="bi-analysis-type">'
+      + '<button class="' + (!isBrand ? 'active' : '') + '" onclick="biSetMatrixView(\'leaders\')">View Market Leaders</button>'
+      + '<button class="' + (isBrand ? 'active' : '') + '" onclick="biSetMatrixView(\'brand\')">View Brand Portfolio</button>'
+    + '</div>'
+    + (isBrand ? '<select class="brand-select" onchange="biSetMatrixBrand(this.value)">'
+        + sel.brandNames.map(function(b) { return '<option value="' + b + '"' + (b === sel.brand ? ' selected' : '') + '>' + b + '</option>'; }).join('')
+      + '</select>' : '')
+  + '</div>';
+  if (!sel.withGrowth.length) {
+    return '<div class="card mx-card">' + head(controls) + '<div class="bi-empty">YoY growth needs sales for the same period last year, which isn\'t available for this selection.</div></div>';
+  }
+  const skipped = sel.top10.length - sel.withGrowth.length;
+  return '<div class="card mx-card">' + head(controls)
+    + '<div class="mx-wrap" style="background:' + MATRIX_COLORS.background + '">' + biMatrixChart(sel, data) + '</div>'
+    + '<div class="mx-foot">Top ' + sel.top10.length + ' models ' + (isBrand ? 'of ' + sel.brand : 'in the market') + ' · bubble size = units sold'
+      + (skipped ? ' · ' + skipped + ' without last-year sales not shown' : '') + '</div>'
+  + '</div>';
+}
+
+// Market Movers: no filter of its own -- it uses exactly the models the Matrix is showing.
+// Ranks them by Share Change (percentage points vs the same period last year):
+//   Market Leaders  -> change in the model's share of the TOTAL market
+//   Brand Portfolio -> change in the model's share of its BRAND's sales (portfolio share)
+// Bars show the size of that share change; the biggest gainers are listed first, then the biggest decliners.
+function biMarketMoversCard(data) {
+  const badge = periodBadge(formatPeriodRange(resolveSelectedMonths()));
+  const isBrand = BI_STATE.matrixView === 'brand';
+  const head = '<div class="card-head"><div class="card-title">Market Movers <span style="font-weight:400;color:var(--text3);font-size:12px;">(' + (isBrand ? 'Portfolio Share' : 'Market Share') + ' Change)</span></div>' + badge + '</div>';
+  if (!data.hasData || !data.modelsAll.length) {
+    return '<div class="card mx-card">' + head + '<div class="bi-empty">No model data available for ' + currentCountry + ' yet.</div></div>';
+  }
+  const sel = biMatrixSelection(data);
+  const ppOf = function(m) { return isBrand ? m.portfolioSharePp : m.marketSharePp; };
+  const list = sel.top10.filter(function(m) { return ppOf(m) !== null; });
+  if (!list.length) {
+    return '<div class="card mx-card">' + head + '<div class="bi-empty">Share change needs sales for the same period last year, which isn\'t available for this selection.</div></div>';
+  }
+  const gainers = list.filter(function(m) { return ppOf(m) > 0; }).sort(function(a, b) { return ppOf(b) - ppOf(a); }).slice(0, 5);
+  const losers = list.filter(function(m) { return ppOf(m) < 0; }).sort(function(a, b) { return ppOf(a) - ppOf(b); }).slice(0, 5);
+  const maxAbs = Math.max.apply(null, gainers.concat(losers).map(function(m) { return Math.abs(ppOf(m)); }).concat([0.01]));
+  const esc = function(t) { return String(t).replace(/"/g, '&quot;'); };
+
+  const table = function(rows, color, emptyText) {
+    if (!rows.length) return '<div class="mm-none">' + emptyText + '</div>';
+    const body = rows.map(function(m, i) {
+      const pp = ppOf(m);
+      const w = Math.max(3, Math.abs(pp) / maxAbs * 100);
+      const nowShare = isBrand ? m.portfolioShare : m.share;
+      const tip = (isBrand ? 'Portfolio share' : 'Market share') + ': ' + nowShare.toFixed(2) + '% now, ' + (nowShare - pp).toFixed(2) + '% last year';
+      const full = biFullModelName(m);
+      return '<tr>'
+        + '<td class="mm-n">' + (i + 1) + '</td>'
+        + '<td class="mm-name" title="' + esc(full) + '">' + full + '</td>'
+        + '<td class="mm-units">' + formatUnits(m.units) + '</td>'
+        + '<td title="' + esc(tip) + '"><div class="mm-vb"><span class="mm-v" style="color:' + color + '">' + (pp >= 0 ? '+' : '−') + Math.abs(pp).toFixed(2) + ' pp</span>'
+        + '<div class="mm-bar" style="background:' + MOVER_COLORS.track + '"><div class="mm-fill" style="width:' + w.toFixed(1) + '%;background:' + color + '"></div></div></div></td></tr>';
+    }).join('');
+    return '<table class="mm-table"><colgroup><col class="c-n"><col><col class="c-u"><col class="c-v"></colgroup>'
+      + '<thead><tr><th class="mm-n">#</th><th>Model</th><th class="mm-units">Units</th><th>Share Change</th></tr></thead><tbody>' + body + '</tbody></table>';
+  };
+  return '<div class="card mx-card">' + head
+    + '<div class="mm-title" style="color:' + MOVER_COLORS.gainers + '"><i data-lucide="trending-up" style="width:20px;height:20px"></i>Top Gainers</div>' + table(gainers, MOVER_COLORS.gainers, 'No gainers in this selection')
+    + '<div class="mm-title" style="color:' + MOVER_COLORS.losers + ';margin-top:12px;"><i data-lucide="trending-down" style="width:20px;height:20px"></i>Top Losers</div>' + table(losers, MOVER_COLORS.losers, 'No decliners in this selection')
+  + '</div>';
 }
 
 function biBrandContributionCard(agg, hasData) {
@@ -3402,22 +4342,59 @@ function biFastestGrowingCard(agg, hasData) {
     + '</div>';
 }
 
+let BI_RENDER_SEQ = 0;                            // bumped on every Brand & Model Sales render
+let BI_LIVE_CACHE = { key: null, data: null };    // last loaded KPI/table data, and the filters it was loaded for
+
+// A text fingerprint of everything that changes WHICH data we need to fetch
+function biLiveDataKey() {
+  return JSON.stringify([currentCountry, BI_STATE.analysisType, BI_STATE.year, BI_STATE.month,
+    BI_STATE.quarter, BI_STATE.category, BI_STATE.fuelType, BI_STATE.ccSegment]);
+}
+
 async function renderBrandIntelligence() {
   const el = document.getElementById('brand-intel-content');
   if (!el) return;
 
-  // Fetch the available-filter-values cache whenever we land on a new country.
-  // Everything below (Year/Month/Category/Fuel Type/CC Segment options) reads from
-  // this cache rather than hitting the network again.
-  if (BI_AVAILABLE_COUNTRY !== currentCountry) {
-    el.innerHTML = '<div class="loading">Loading filters...</div>';
+  // If the user changes country/filters while a load is still running, the older
+  // run must not draw over the newer one -- this counter lets it detect that and stop.
+  const seq = ++BI_RENDER_SEQ;
+
+  // We only need to fetch (and show "Loading data...") when the country or any filter/
+  // period actually changed. Things like typing in the search box or expanding a table
+  // reuse the data already loaded, so they redraw instantly without a loading flash.
+  const needsFilters = BI_AVAILABLE_COUNTRY !== currentCountry;
+  const needsData = needsFilters || BI_LIVE_CACHE.key !== biLiveDataKey();
+  if (needsData) el.innerHTML = '<div class="loading">Loading data...</div>';
+
+  // Available-filter-values cache for this country (powers every dropdown's options)
+  if (needsFilters) {
     await loadAvailableFilters(currentCountry);
+    if (seq !== BI_RENDER_SEQ) return;
     if (BI_STATE.year === null) {   // first load ever -- default to the latest available period
       const latest = getLatestAvailablePeriod();
       BI_STATE.year = latest.year;
       BI_STATE.month = latest.month;
       BI_STATE.quarter = quarterOfMonth(latest.month);
+    } else {
+      biEnsureValidPeriod();   // switched country: keep the choice only if this country has that month
     }
+  }
+
+  // Live data for the KPI cards, Brand Sales Ranking, and Model Intelligence Table.
+  // Everything on the page is drawn only after this has finished loading.
+  const liveKey = biLiveDataKey();
+  let liveData;
+  if (BI_LIVE_CACHE.key === liveKey) {
+    liveData = BI_LIVE_CACHE.data;
+  } else {
+    try {
+      liveData = await loadBrandModelData();
+    } catch (e) {
+      console.error('loadBrandModelData failed:', e);
+      liveData = { hasData: false };
+    }
+    if (seq !== BI_RENDER_SEQ) return;
+    BI_LIVE_CACHE = { key: liveKey, data: liveData };
   }
 
   const hasData = currentCountry === BI_TARGET_COUNTRY;
@@ -3431,30 +4408,11 @@ async function renderBrandIntelligence() {
   // and its options, are fully live against the database already.
   const agg = rows.length ? aggregateBrandIntelFromRows(rows) : null;
 
-  // Live data for the KPI cards, Brand Sales Ranking, and Model Intelligence Table.
   // (Brand Contribution / Model Trend / Fastest Growing below still use the dummy
-  // `agg` above for now -- those haven't been migrated yet, this is Monthly only.)
-  let liveData;
-  try {
-    liveData = await loadBrandModelData();
-  } catch (e) {
-    console.error('loadBrandModelData failed:', e);
-    liveData = { hasData: false };
-  }
+  // `agg` above for now -- those haven't been migrated yet.)
 
-  const flagCode = countryCodeMap[currentCountry];
-  const flagImg = flagCode ? '<img src="https://flagcdn.com/64x48/' + flagCode + '.png" alt="' + currentCountry + '">' : '';
-
-  const headerHtml = '<div class="bi-header">'
-    + '<div class="bi-header-left">'
-      + '<div class="bi-header-flag">' + flagImg + '</div>'
-      + '<div>'
-        + '<div class="bi-header-title">Brand &amp; Model Intelligence</div>'
-        + '<div class="bi-header-meta">' + currentCountry + ' &nbsp;•&nbsp; May 2024</div>'
-      + '</div>'
-    + '</div>'
-    + '<div class="bi-header-desc">Track brand and model level performance with monthly sales, growth trends and competitive insights.</div>'
-    + '<div class="bi-header-right">'
+  // Filter bar only -- the old "Brand & Model Intelligence" title, country/period line and description are gone
+  const headerHtml = '<div class="bi-filterbar">'
       + '<div class="bi-filter-group"><span class="bi-filter-label">Analysis Type</span>' + biAnalysisTypeButtonsHtml() + '</div>'
       + biPeriodSelectorHtml()
       + '<div class="bi-filter-group"><span class="bi-filter-label">Vehicle Category</span><select class="brand-select" onchange="biSetCategory(this.value)">'
@@ -3464,13 +4422,12 @@ async function renderBrandIntelligence() {
       + biFuelTypeFilterHtml()
       + biCcSegmentFilterHtml()
       + '<button class="bi-reset-btn" onclick="biResetFilters()"><i data-lucide="rotate-ccw"></i>Reset Filters</button>'
-    + '</div>'
   + '</div>';
 
   const html = headerHtml
     + biKpiCards(liveData)
     + '<div class="section-row cols-bi2">' + biBrandRankingCard(liveData) + biModelTableCard(liveData) + '</div>'
-    + '<div class="section-row cols-bi3">' + biBrandContributionCard(agg, hasData) + biModelTrendCard(agg, hasData) + biFastestGrowingCard(agg, hasData) + '</div>';
+    + '<div class="section-row cols-matrix">' + biModelMomentumCard(liveData) + biMarketMoversCard(liveData) + '</div>';
 
   el.innerHTML = html;
   if (window.lucide) lucide.createIcons();
@@ -3752,7 +4709,7 @@ function renderGlobalSocial(country) {
   html += `<div class="section-divider"><div class="section-divider-label">LATAM Active Campaigns &amp; Events</div><div class="section-divider-line"></div></div>`;
   html += `<div class="section-row cols-2">
     <div class="card">
-      <div class="card-head"><div class="card-title">Active Campaigns</div><span class="tag amber">Q2 2025</span></div>
+      <div class="card-head"><div class="card-title">Active Campaigns</div>${periodBadge('Q2 2025')}</div>
       <div class="timeline">${globalCampaigns.map(c=>`
         <div class="timeline-item">
           <div class="timeline-dot" style="border-color:${c.color};color:${c.color}">?</div>
