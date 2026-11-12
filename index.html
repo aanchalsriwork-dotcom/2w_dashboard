@@ -1017,45 +1017,66 @@
     .topbar-chip span, .topbar-chip { font-size: 11px; }
   }
 
-  /* ===== MACROECONOMICS TAB ===== */
-  .macro-section { margin-bottom: 28px; }
-  .macro-section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-  .macro-section-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .macro-section-title { font-family: var(--font-head); font-size: 17px; font-weight: 600; color: var(--text); letter-spacing: -0.1px; }
-  .macro-kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .macro-kpi-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-  .macro-kpi-card { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid transparent; border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow-sm); transition: border-color var(--transition), box-shadow var(--transition); }
-  .macro-kpi-card:hover { border-color: var(--border2); box-shadow: var(--shadow-md); }
-  .macro-kpi-label { font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
-  .macro-kpi-value { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text); line-height: 1.15; margin-bottom: 4px; word-break: break-word; }
-  .macro-kpi-note { font-size: 11px; color: var(--text3); line-height: 1.4; }
-  .macro-kpi-trend { display: flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; font-weight: 500; }
-  .macro-kpi-trend.up { color: var(--green); }
-  .macro-kpi-trend.down { color: var(--red); }
-  .macro-kpi-trend.neutral { color: var(--text3); }
-  @media (max-width: 900px) {
-    .macro-kpi-grid { grid-template-columns: repeat(2,1fr); }
-    .macro-kpi-grid.cols-3 { grid-template-columns: repeat(2,1fr); }
-  }
+  /* ===== MACROECONOMICS TAB (mc-*) ===== */
+  .mc-wrap { display:flex; flex-direction:column; gap:26px; }
+  .mc-empty { color:var(--text3); padding:40px; text-align:center; }
+  .mc-banner { position:relative; overflow:hidden; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; color:#fff; padding:24px 28px; border-radius:20px; background:linear-gradient(115deg,#0b1736 0%,#17306e 52%,#3D83F6 135%); box-shadow:0 12px 32px rgba(23,48,110,.28); }
+  .mc-banner::before { content:""; position:absolute; right:-60px; top:-90px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(166,138,247,.55),transparent 68%); }
+  .mc-banner::after { content:""; position:absolute; right:150px; bottom:-120px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,rgba(32,185,154,.40),transparent 70%); }
+  .mc-banner > * { position:relative; z-index:1; }
+  .mc-eyebrow { font-size:11px; letter-spacing:1.6px; text-transform:uppercase; opacity:.75; font-weight:600; }
+  .mc-title { font-family:var(--font-head); font-size:28px; font-weight:700; margin:4px 0 2px; display:flex; align-items:center; gap:12px; }
+  .mc-title img { height:26px; border-radius:4px; }
+  .mc-bsub { font-size:12px; opacity:.78; max-width:640px; }
+  .mc-legend { display:flex; gap:14px; font-size:12px; font-weight:500; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:30px; padding:8px 16px; backdrop-filter:blur(4px); }
+  .mc-legend span { display:inline-flex; align-items:center; gap:7px; }
+  .mc-legend i { width:14px; height:14px; border-radius:4px; display:inline-block; }
+  .mc-legend i.a { background:#fff; } .mc-legend i.f { background:repeating-linear-gradient(45deg,rgba(255,255,255,.95) 0 2px,rgba(255,255,255,.2) 2px 5px); }
+  .mc-sec-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .mc-sec-ic { width:40px; height:40px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; color:#fff; background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 55%,#fff)); box-shadow:0 6px 14px color-mix(in srgb,var(--c) 35%,transparent); }
+  .mc-sec-ic i { width:20px; height:20px; }
+  .mc-sec-title { font-family:var(--font-head); font-size:18px; font-weight:700; color:var(--text); letter-spacing:-.2px; }
+  .mc-sec-n { margin-left:auto; font-size:11.5px; font-weight:600; color:var(--c); background:var(--soft); border-radius:20px; padding:4px 12px; }
+  .mc-heros { display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:14px; margin-bottom:14px; }
+  .mc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px; }
+  .mc-card { position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; padding:16px 18px 14px; border-radius:18px; border:1px solid color-mix(in srgb,var(--c) 18%,var(--border)); background:linear-gradient(150deg,var(--soft) 0%,var(--bg2) 58%); box-shadow:0 2px 6px rgba(15,23,42,.04),0 8px 22px color-mix(in srgb,var(--c) 9%,transparent); transition:transform .2s,box-shadow .2s; }
+  .mc-card::before { content:""; position:absolute; left:0; top:14px; bottom:14px; width:4px; border-radius:0 4px 4px 0; background:var(--c); }
+  .mc-card::after { content:""; position:absolute; right:-38px; top:-38px; width:110px; height:110px; border-radius:50%; background:var(--soft); opacity:.9; pointer-events:none; }
+  .mc-card:hover { transform:translateY(-3px); box-shadow:0 4px 10px rgba(15,23,42,.06),0 16px 34px color-mix(in srgb,var(--c) 18%,transparent); }
+  .mc-card > * { position:relative; z-index:1; }
+  .mc-top { display:flex; align-items:center; gap:10px; }
+  .mc-ic { width:34px; height:34px; border-radius:11px; display:inline-flex; align-items:center; justify-content:center; background:#fff; color:var(--c); box-shadow:0 2px 8px color-mix(in srgb,var(--c) 25%,transparent); flex:none; }
+  .mc-ic i { width:17px; height:17px; }
+  .mc-name { font-size:12.5px; font-weight:600; color:var(--text2); flex:1; line-height:1.25; }
+  .mc-per { font-size:10.5px; font-weight:600; color:var(--text2); background:rgba(255,255,255,.85); border:1px solid var(--border); border-radius:20px; padding:3px 9px; white-space:nowrap; }
+  .mc-per.fc { color:var(--amber); background:var(--amber-soft); border-color:rgba(217,122,6,.35); }
+  .mc-mid { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; }
+  .mc-val { font-family:var(--font-head); font-size:27px; font-weight:700; color:var(--text); line-height:1.1; letter-spacing:-.5px; white-space:nowrap; }
+  .mc-val.big { font-size:34px; }
+  .mc-pre, .mc-suf { font-size:.5em; font-weight:600; color:var(--text2); letter-spacing:0; margin:0 2px; }
+  .mc-rng { font-size:.88em; }
+  .mc-spark { width:46%; max-width:150px; height:46px; flex:none; }
+  .mc-chiprow { min-height:22px; }
+  .mc-chip { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; border-radius:20px; padding:3px 10px; }
+  .mc-chip em { font-style:normal; font-weight:500; opacity:.75; }
+  .mc-chip.good { background:var(--green-soft); color:var(--green); } .mc-chip.bad { background:var(--red-soft); color:var(--red); }
+  .mc-chip.flat { background:rgba(137,146,168,.15); color:var(--text2); } .mc-chip.warn { background:var(--amber-soft); color:var(--amber); }
+  .mc-sub { margin-top:auto; padding-top:9px; border-top:1px dashed color-mix(in srgb,var(--c) 30%,var(--border)); display:flex; flex-direction:column; gap:2px; }
+  .mc-sub-l { font-size:10.8px; color:var(--text3); line-height:1.45; }
+  .mc-sub-l b { color:var(--text2); font-weight:600; margin-right:3px; }
+  .mc-sub-l a { color:var(--c); text-decoration:none; font-weight:600; } .mc-sub-l a:hover { text-decoration:underline; }
+  .mc-herorow { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .mc-fcnote { margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:var(--amber); }
+  .mc-fcnote i { width:14px; height:14px; border-radius:4px; background:repeating-linear-gradient(45deg,var(--amber) 0 2px,rgba(217,122,6,.2) 2px 5px); }
+  .mc-chart { width:100%; height:auto; }
+  .mc-dl { font-size:10.5px; font-weight:700; fill:var(--text); } .mc-dl.neg { fill:#dc2f3a; }
+  .mc-ax { font-size:10.5px; fill:var(--text3); } .mc-ax.fc { fill:var(--amber); font-weight:700; }
+  .mc-foot { font-size:11.5px; color:var(--text3); text-align:center; padding:4px 10px 10px; }
+  @media (max-width:640px) { .mc-heros { grid-template-columns:1fr; } .mc-title { font-size:22px; } .mc-banner { padding:18px; } }
 
-  /* ===== Time Period card (above the KPI layer) ===== */
-  .tp-card { display:grid; grid-template-columns:1.25fr 1.4fr 1.2fr auto; gap:18px; align-items:center; background:var(--bg2); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:var(--radius-lg); padding:14px 18px; margin:0 0 14px; }
-  .tp-main { display:flex; gap:12px; align-items:center; }
-  .tp-ic { flex:none; width:40px; height:40px; border-radius:11px; display:inline-flex; align-items:center; justify-content:center; background:var(--accent-soft); color:var(--accent); }
-  .tp-ic i { width:20px; height:20px; }
-  .tp-label { font-size:11px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--text2); }
-  .tp-range { font-family:var(--font-head); font-size:20px; font-weight:700; color:var(--text); line-height:1.2; }
-  .tp-sub { font-size:11.5px; color:var(--text3); }
-  .tp-cmp { display:flex; justify-content:space-between; gap:10px; font-size:12px; padding:3px 0; }
-  .tp-k { color:var(--text2); } .tp-v { color:var(--text); font-weight:600; } .tp-na { color:var(--text3); font-weight:500; font-style:italic; }
-  .tp-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:5px; }
-  .tp-chip { font-size:11.5px; border:1px solid var(--border); border-radius:20px; padding:3px 10px; color:var(--text2); background:var(--bg3); }
-  .tp-chip b { color:var(--text3); font-weight:600; } .tp-chip.on { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); } .tp-chip.on b { color:var(--accent); }
-  .tp-status { display:flex; gap:8px; align-items:center; font-size:12px; font-weight:700; padding:7px 12px; border-radius:10px; }
-  .tp-status i { width:18px; height:18px; flex:none; } .tp-status small { display:block; font-weight:500; font-size:10.5px; opacity:.8; }
-  .tp-status.ok { background:var(--green-soft); color:var(--green); } .tp-status.no { background:var(--amber-soft); color:var(--amber); }
-  @media(max-width:1100px){ .tp-card { grid-template-columns:1fr 1fr; } }
-  @media(max-width:640px){ .tp-card { grid-template-columns:1fr; } }
+  /* ===== Time Period label (above the KPI layer) ===== */
+  .tp-row { display:flex; align-items:center; gap:10px; margin:0 0 12px; }
+  .tp-title { font-family:var(--font-head); font-size:15px; font-weight:700; color:var(--text); }
   /* ===== REGULATORY OVERVIEW TAB (rg-*) ===== */
   .rg-verified { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--green); background:var(--green-soft); border-radius:20px; padding:5px 13px; margin-bottom:14px; }
   .rg-verified i { width:15px; height:15px; }
@@ -4659,33 +4680,17 @@ function biPeriodTitle() {
   return 'Last 6 months';
 }
 function biTimePeriodCard(data) {
+  // Only a "Time Period" label, in the same pill style as the date labels on the charts. Nothing shows without data.
+  if (!data || !data.hasData) return '';
   const months = resolveSelectedMonths();
   if (!months.length) return '';
-  const typeLabel = { monthly: 'Monthly', quarterly: 'Quarterly', '6months': 'Last 6 Months', ytm: 'Year to Month', annual: 'Annual' }[BI_STATE.analysisType];
-  const range = formatPeriodRange(months);
-  const cmp = function(label, mths) {
-    const ok = monthsHaveData(mths);
-    return '<div class="tp-cmp"><span class="tp-k">' + label + '</span><span class="' + (ok ? 'tp-v' : 'tp-v tp-na') + '">'
-      + (ok ? formatPeriodRange(mths) : 'Not available for this selection') + '</span></div>';
-  };
-  let cmps;
-  if (biPriorIsYoY()) cmps = cmp('Compared with (YoY)', resolvePriorYearMonths(months));
-  else if (BI_STATE.analysisType === 'monthly') cmps = cmp('Previous month (MoM)', resolvePriorPeriodMonths(months)) + cmp('Same month last year (YoY)', resolvePriorYearMonths(months));
-  else cmps = cmp('Previous period (' + biPriorLabel().replace('vs ', '') + ')', resolvePriorPeriodMonths(months)) + cmp('Same period last year', resolvePriorYearMonths(months));
-  const chip = function(label, val) { return '<span class="tp-chip' + (val === 'all' ? '' : ' on') + '"><b>' + label + '</b> ' + (val === 'all' ? 'All' : val) + '</span>'; };
-  const ok = data && data.hasData;
-  const latest = getLatestAvailablePeriod();
-  return '<div class="tp-card">'
-    + '<div class="tp-main"><span class="tp-ic"><i data-lucide="calendar-range"></i></span><div>'
-      + '<div class="tp-label">Time Period · ' + typeLabel + '</div>'
-      + '<div class="tp-range">' + biPeriodTitle() + '</div>'
-      + '<div class="tp-sub">' + (months.length > 1 ? range + ' · ' + months.length + ' months' : 'Single month') + '</div></div></div>'
-    + '<div class="tp-cmps">' + cmps + '</div>'
-    + '<div class="tp-filters"><div class="tp-label">Vehicle filters</div><div class="tp-chips">'
-      + chip('Category', BI_STATE.category) + chip('Fuel', BI_STATE.fuelType) + chip('CC', BI_STATE.ccSegment) + '</div></div>'
-    + '<div class="tp-status ' + (ok ? 'ok' : 'no') + '"><i data-lucide="' + (ok ? 'circle-check' : 'circle-alert') + '"></i><span>'
-      + (ok ? 'Filters applied' : 'No data for this selection') + '<small>Data available to ' + MONTH_NAMES[latest.month - 1] + ' ' + latest.year + '</small></span></div>'
-  + '</div>';
+  return '<div class="tp-row"><span class="tp-title">Time Period</span>' + periodBadge(formatPeriodRange(months)) + '</div>';
+}
+// Shown instead of the dashboard whenever there is no data to display (for example before a period is chosen)
+function biNoDataHtml() {
+  const msg = biNoVehicleFilters() ? 'Select a time period to view dashboard data.'
+    : 'No data available for the selected filters. Adjust the filters or select another time period.';
+  return '<div class="card"><div class="bi-empty" style="padding:48px 12px">' + msg + '</div></div>';
 }
 
 async function renderBrandIntelligence() {
@@ -4774,7 +4779,7 @@ async function renderBrandIntelligence() {
     + '</div>'
   + '</div>';
 
-  const html = (BI_STATE.view === 'brand')
+  const html = !liveData.hasData ? headerHtml + biNoDataHtml() : (BI_STATE.view === 'brand')
     ? headerHtml + biTimePeriodCard(liveData) + (liveData.hasData ? biBrandView(liveData) : '<div class="card"><div class="bi-empty">No data available for ' + currentCountry + ' with these filters.</div></div>')
     : (BI_STATE.view === 'competition')
     ? headerHtml + biTimePeriodCard(liveData) + (liveData.hasData ? biCompetitionView(liveData) : '<div class="card"><div class="bi-empty">No data available for ' + currentCountry + ' with these filters.</div></div>')
@@ -5592,257 +5597,226 @@ function getFlagImg(country) {
 // ===================== APPS SCRIPT COPY (legacy stub) =====================
 function copySnippet() {}
 
-// ===================== MACROECONOMIC DATA (2025 estimates) =====================
-const macroData = {
-  Brazil: {
-    economic: [
-      {label:'GDP Growth Rate',       value:'2.9%',              trend:'up',     note:'IMF WEO Apr 2025'},
-      {label:'GDP Per Capita',        value:'$10,046',           trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'4.8%',              trend:'down',   note:'Annual IPCA — IBGE'},
-      {label:'Consumer Confidence',   value:'98.4 pts',          trend:'up',     note:'FGV Consumer Conf. Index'},
-    ],
-    purchasing: [
-      {label:'Avg Household Income',  value:'R$3,200/mo',        trend:'up',     note:'IBGE PNAD 2025 est.'},
-      {label:'Unemployment Rate',     value:'6.8%',              trend:'down',   note:'IBGE PNAD Contínua'},
-      {label:'Wage Growth',           value:'+5.2% real',        trend:'up',     note:'Real Wage YoY'},
-    ],
-    financing: [
-      {label:'Central Bank Rate',     value:'14.75%',            trend:'up',     note:'SELIC — BCB May 2025'},
-      {label:'Auto Loan APR',         value:'~24.5%',            trend:'neutral',note:'Avg Consumer Financing'},
-      {label:'Consumer Credit Growth',value:'+8.4%',             trend:'up',     note:'BCB Credit YoY'},
-    ],
-    fuel: [
-      {label:'Petrol / Gasoline',     value:'R$6.39/L',          trend:'up',     note:'National Avg — Petrobras'},
-      {label:'Diesel Price',          value:'R$6.20/L',          trend:'up',     note:'B10 Blend — ANP'},
-      {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
-    ],
-    mobility: [
-      {label:'Total Population',      value:'216M',              trend:'up',     note:'Growth rate: 0.7% p.a. — IBGE'},
-      {label:'Urbanization Rate',     value:'87.8%',             trend:'up',     note:'Urban Population — IBGE 2025'},
-      {label:'Population Density',    value:'25 /km²',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'69.2%',             trend:'neutral',note:'Ages 15–64 — IBGE'},
-    ],
-    ev: [
-      {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'Minha Moto Programme'},
-      {label:'EV Subsidy Amount',     value:'R$2,000/unit',      trend:'up',     note:'Low-income buyers'},
-      {label:'EV Charging Stations',  value:'4,200+',            trend:'up',     note:'Public Stations — ABVE'},
-      {label:'Electricity Price',     value:'R$0.75/kWh',        trend:'up',     note:'Residential Avg — ANEEL'},
-      {label:'EV Penetration',        value:'3.8%',              trend:'up',     note:'% of 2W Sales — ABRACICLO'},
-    ],
-    trade: [
-      {label:'Exchange Rate vs USD',  value:'R$5.12 / USD',      trend:'down',   note:'BRL spot May 2025'},
-      {label:'Manufacturing PMI',     value:'53.1',              trend:'up',     note:'S&P Global Brazil PMI'},
-      {label:'Import Duties (2W)',    value:'35% CBU — 2% CKD',  trend:'neutral',note:'MDIC tariff schedule'},
-    ],
-  },
-  Colombia: {
-    economic: [
-      {label:'GDP Growth Rate',       value:'1.8%',              trend:'up',     note:'IMF WEO Apr 2025'},
-      {label:'GDP Per Capita',        value:'$6,981',            trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'6.3%',              trend:'down',   note:'Annual CPI — DANE'},
-      {label:'Consumer Confidence',   value:'-18 pts',           trend:'up',     note:'Fedesarrollo ICE Index'},
-    ],
-    purchasing: [
-      {label:'Avg Household Income',  value:'COP 2.4M/mo',       trend:'up',     note:'DANE GEIH 2025 est.'},
-      {label:'Unemployment Rate',     value:'9.7%',              trend:'down',   note:'DANE National Rate'},
-      {label:'Wage Growth',           value:'+8.1% nominal',     trend:'up',     note:'Nominal Wage YoY — DANE'},
-    ],
-    financing: [
-      {label:'Central Bank Rate',     value:'10.25%',            trend:'down',   note:'Banco de la República'},
-      {label:'Auto Loan APR',         value:'~22.8%',            trend:'neutral',note:'Avg Consumer APR'},
-      {label:'Consumer Credit Growth',value:'+4.2%',             trend:'up',     note:'Banrep Credit YoY'},
-    ],
-    fuel: [
-      {label:'Petrol / Gasoline',     value:'COP 15,200/L',      trend:'up',     note:'National Avg — MinMinas'},
-      {label:'Diesel Price',          value:'COP 10,700/L',      trend:'up',     note:'Subsidised Rate'},
-      {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
-    ],
-    mobility: [
-      {label:'Total Population',      value:'52M',               trend:'up',     note:'Growth rate: 0.9% p.a. — DANE'},
-      {label:'Urbanization Rate',     value:'81.4%',             trend:'up',     note:'Urban Population — World Bank 2025'},
-      {label:'Population Density',    value:'46 /km²',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'67.1%',             trend:'neutral',note:'Ages 15–64 — DANE'},
-    ],
-    ev: [
-      {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'Fleet Rebate Programme'},
-      {label:'EV Subsidy Amount',     value:'COP 4M/unit',       trend:'up',     note:'Fleet purchases (10+ units)'},
-      {label:'EV Charging Stations',  value:'850+',              trend:'up',     note:'Public Stations — ANDEMOS'},
-      {label:'Electricity Price',     value:'COP 680/kWh',       trend:'up',     note:'Residential — CREG'},
-      {label:'EV Penetration',        value:'2.1%',              trend:'up',     note:'% of 2W Sales — ANDI'},
-    ],
-    trade: [
-      {label:'Exchange Rate vs USD',  value:'COP 4,050 / USD',   trend:'down',   note:'COP spot May 2025'},
-      {label:'Manufacturing PMI',     value:'49.8',              trend:'down',   note:'S&P Global Colombia PMI'},
-      {label:'Import Duties (2W)',    value:'35% CBU — 5% CKD',  trend:'neutral',note:'DIAN tariff schedule'},
-    ],
-  },
-  Argentina: {
-    economic: [
-      {label:'GDP Growth Rate',       value:'-1.2%',             trend:'down',   note:'IMF WEO Apr 2025'},
-      {label:'GDP Per Capita',        value:'$13,913',           trend:'down',   note:'Nominal USD (official FX)'},
-      {label:'Inflation Rate (CPI)',  value:'84.5%',             trend:'down',   note:'Annual CPI — INDEC (easing)'},
-      {label:'Consumer Confidence',   value:'38.2 pts',          trend:'up',     note:'UTDT Consumer Conf. Index'},
-    ],
-    purchasing: [
-      {label:'Avg Household Income',  value:'ARS 890K/mo',       trend:'up',     note:'Nominal — INDEC EPH'},
-      {label:'Unemployment Rate',     value:'7.8%',              trend:'neutral',note:'INDEC EPH Q1 2025'},
-      {label:'Wage Growth',           value:'+95% nominal',      trend:'neutral',note:'Nominal YoY (real: negative)'},
-    ],
-    financing: [
-      {label:'Central Bank Rate',     value:'35%',               trend:'down',   note:'BCRA Policy Rate (annual)'},
-      {label:'Auto Loan APR',         value:'~72% nominal',      trend:'down',   note:'Avg Consumer APR'},
-      {label:'Consumer Credit Growth',value:'+95% nominal',      trend:'neutral',note:'Nominal YoY — BCRA'},
-    ],
-    fuel: [
-      {label:'Petrol / Gasoline',     value:'ARS 1,240/L',       trend:'up',     note:'Premium — National Avg'},
-      {label:'Diesel Price',          value:'ARS 1,350/L',       trend:'up',     note:'Gasoil Grade'},
-      {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
-    ],
-    mobility: [
-      {label:'Total Population',      value:'46M',               trend:'neutral',note:'Growth rate: 0.8% p.a. — INDEC'},
-      {label:'Urbanization Rate',     value:'92.4%',             trend:'up',     note:'Urban Population — INDEC 2025'},
-      {label:'Population Density',    value:'16 /km²',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'62.3%',             trend:'neutral',note:'Ages 15–64 — INDEC'},
-    ],
-    ev: [
-      {label:'EV Subsidy Available',  value:'Limited',           trend:'neutral',note:'Provincial programmes only'},
-      {label:'EV Subsidy Amount',     value:'ARS 200–500K',      trend:'neutral',note:'Province-dependent'},
-      {label:'EV Charging Stations',  value:'320+',              trend:'up',     note:'Public Stations — ACARA'},
-      {label:'Electricity Price',     value:'ARS 190/kWh',       trend:'up',     note:'Residential (regulated)'},
-      {label:'EV Penetration',        value:'1.4%',              trend:'up',     note:'% of 2W Sales — ACARA'},
-    ],
-    trade: [
-      {label:'Exchange Rate vs USD',  value:'ARS 1,020 / USD',   trend:'down',   note:'Official FX May 2025'},
-      {label:'Manufacturing PMI',     value:'48.2',              trend:'down',   note:'S&P Global Argentina PMI'},
-      {label:'Import Duties (2W)',    value:'18% uniform',       trend:'neutral',note:'Post-Milei reform — ARCA'},
-    ],
-  },
-  Chile: {
-    economic: [
-      {label:'GDP Growth Rate',       value:'2.4%',              trend:'up',     note:'IMF WEO Apr 2025'},
-      {label:'GDP Per Capita',        value:'$16,173',           trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'3.7%',              trend:'down',   note:'Annual CPI — INE Chile'},
-      {label:'Consumer Confidence',   value:'45.1 pts',          trend:'up',     note:'IPEC Index (0–100)'},
-    ],
-    purchasing: [
-      {label:'Avg Household Income',  value:'CLP 1.15M/mo',      trend:'up',     note:'INE CASEN 2025 est.'},
-      {label:'Unemployment Rate',     value:'8.5%',              trend:'down',   note:'INE National Rate'},
-      {label:'Wage Growth',           value:'+5.8% real',        trend:'up',     note:'Real Wage YoY — INE'},
-    ],
-    financing: [
-      {label:'Central Bank Rate',     value:'5.5%',              trend:'down',   note:'BCCh Policy Rate'},
-      {label:'Auto Loan APR',         value:'~11.2%',            trend:'neutral',note:'Avg Consumer APR — BCCh'},
-      {label:'Consumer Credit Growth',value:'+5.8%',             trend:'up',     note:'BCCh Credit YoY'},
-    ],
-    fuel: [
-      {label:'Petrol / Gasoline',     value:'CLP 1,080/L',       trend:'up',     note:'93-Octane — ENAP'},
-      {label:'Diesel Price',          value:'CLP 1,010/L',       trend:'up',     note:'National Avg — ENAP'},
-      {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
-    ],
-    mobility: [
-      {label:'Total Population',      value:'19.6M',             trend:'neutral',note:'Growth rate: 0.6% p.a. — INE'},
-      {label:'Urbanization Rate',     value:'88.2%',             trend:'up',     note:'Urban Population — INE 2025'},
-      {label:'Population Density',    value:'26 /km²',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'66.4%',             trend:'neutral',note:'Ages 15–64 — INE'},
-    ],
-    ev: [
-      {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'MTES Scrapping Bonus'},
-      {label:'EV Subsidy Amount',     value:'USD 800/unit',      trend:'up',     note:'ICE replacement bonus'},
-      {label:'EV Charging Stations',  value:'1,850+',            trend:'up',     note:'Public Stations — SEC'},
-      {label:'Electricity Price',     value:'CLP 130/kWh',       trend:'neutral',note:'Residential — CNE'},
-      {label:'EV Penetration',        value:'4.6% (LATAM #1)',   trend:'up',     note:'% of 2W Sales — ANAC'},
-    ],
-    trade: [
-      {label:'Exchange Rate vs USD',  value:'CLP 940 / USD',     trend:'down',   note:'CLP spot May 2025'},
-      {label:'Manufacturing PMI',     value:'50.4',              trend:'up',     note:'S&P Global Chile PMI'},
-      {label:'Import Duties (2W)',    value:'6% FTA — 15% gen.', trend:'neutral',note:'FTA partners (US, EU, JP)'},
-    ],
-  },
-  Peru: {
-    economic: [
-      {label:'GDP Growth Rate',       value:'3.1%',              trend:'up',     note:'IMF WEO Apr 2025'},
-      {label:'GDP Per Capita',        value:'$7,455',            trend:'up',     note:'Nominal USD'},
-      {label:'Inflation Rate (CPI)',  value:'2.9%',              trend:'down',   note:'Annual CPI — INEI'},
-      {label:'Consumer Confidence',   value:'44.2 pts',          trend:'up',     note:'BCR Expectations Index'},
-    ],
-    purchasing: [
-      {label:'Avg Household Income',  value:'S/. 2,200/mo',      trend:'up',     note:'INEI ENAHO 2025 est.'},
-      {label:'Unemployment Rate',     value:'5.8%',              trend:'down',   note:'INEI (Lima Metro)'},
-      {label:'Wage Growth',           value:'+4.2% real',        trend:'up',     note:'Real Wage YoY — INEI'},
-    ],
-    financing: [
-      {label:'Central Bank Rate',     value:'5.75%',             trend:'down',   note:'BCRP Policy Rate'},
-      {label:'Auto Loan APR',         value:'~18.9%',            trend:'neutral',note:'Avg Consumer APR — SBS'},
-      {label:'Consumer Credit Growth',value:'+7.2%',             trend:'up',     note:'SBS Credit YoY'},
-    ],
-    fuel: [
-      {label:'Petrol / Gasoline',     value:'S/. 7.10/L',        trend:'up',     note:'90-Octane Avg — OSINERGMIN'},
-      {label:'Diesel Price',          value:'S/. 6.80/L',        trend:'up',     note:'B5 Blend — OSINERGMIN'},
-      {label:'Crude Oil (Brent)',     value:'~$75/bbl',          trend:'neutral',note:'Global Benchmark'},
-    ],
-    mobility: [
-      {label:'Total Population',      value:'33.4M',             trend:'up',     note:'Growth rate: 1.1% p.a. — INEI'},
-      {label:'Urbanization Rate',     value:'79.3%',             trend:'up',     note:'Urban Population — INEI 2025'},
-      {label:'Population Density',    value:'26 /km²',           trend:'neutral',note:'National Average'},
-      {label:'Working Age Pop.',      value:'65.1%',             trend:'neutral',note:'Ages 15–64 — INEI'},
-    ],
-    ev: [
-      {label:'EV Subsidy Available',  value:'Yes',               trend:'up',     note:'Lima Municipality Grant'},
-      {label:'EV Subsidy Amount',     value:'S/. 2,500/unit',    trend:'up',     note:'Lima scrapping bonus'},
-      {label:'EV Charging Stations',  value:'420+',              trend:'up',     note:'Public Stations — ARAPER'},
-      {label:'Electricity Price',     value:'S/. 0.22/kWh',      trend:'neutral',note:'Residential — OSINERGMIN'},
-      {label:'EV Penetration',        value:'1.2%',              trend:'up',     note:'% of 2W Sales — ARAPER'},
-    ],
-    trade: [
-      {label:'Exchange Rate vs USD',  value:'S/. 3.72 / USD',    trend:'neutral',note:'PEN spot May 2025'},
-      {label:'Manufacturing PMI',     value:'50.1',              trend:'up',     note:'S&P Global Peru PMI'},
-      {label:'Import Duties (2W)',    value:'0% EV — 0% arancel + 16% IGV', trend:'neutral',note:'EV <$3K IGV-exempt through 2028'},
-    ],
-  },
+// ===================== MACRO DATA (dim_macro.csv + fact_macro.csv) =====================
+const MACRO_DIM = [{"code": "001_GDP", "type": "Economic Health", "name": "GDP", "desc": "Nominal, current prices", "unit": "US$ bn", "freq": "Annual", "cov": "2020-2026 (2026 Forecast)", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/IMF_WEO_NGDPD", "fc": 2026}, {"code": "002_Real_GDP_Growth", "type": "Economic Health", "name": "Real GDP Growth", "desc": "Constant prices", "unit": "%", "freq": "Annual", "cov": "2020-2026 (2026 Forecast)", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/IMF_WEO_NGDP_RPCH", "fc": 2026}, {"code": "003_GDP_Per_Capita", "type": "Economic Health", "name": "GDP per Capita", "desc": "Current prices", "unit": "US$", "freq": "Annual", "cov": "2020-2026 (2026 Forecast)", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/IMF_WEO_NGDPDPC", "fc": 2026}, {"code": "004_Inflation_Rate", "type": "Economic Health", "name": "Inflation Rate", "desc": "NA", "unit": "%", "freq": "Annual", "cov": "2020-2026 (2026 Forecast)", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/FPCPITOTL", "fc": 2026}, {"code": "005_Unemployment_Rate", "type": "Economic Health", "name": "Unemployment Rate", "desc": "NA", "unit": "%", "freq": "Annual", "cov": "2020-2026 (2026 Forecast)", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/IMF_WEO_LUR", "fc": 2026}, {"code": "006_Manufacturing_PMI", "type": "Economic Health", "name": "Manufacturing PMI", "desc": "NA", "unit": "Index", "freq": "Monthly", "cov": "Oct-26", "src": "Trading Economics", "url": "https://tradingeconomics.com/country-list/manufacturing-pmi", "fc": null}, {"code": "007_Average Household Income", "type": "Consumer Purchasing Power", "name": "Average Household Income", "desc": "Current prices", "unit": "US$", "freq": "Annual", "cov": "2020-2025", "src": "World Bank", "url": "https://data.worldbank.org/indicator/NY.GNP.PCAP.CD", "fc": null}, {"code": "008_Consumer_Confidence", "type": "Consumer Purchasing Power", "name": "Consumer Confidence", "desc": "NA", "unit": "Index", "freq": "Monthly", "cov": "Sep-Oct 26", "src": "OECD", "url": "https://www.oecd.org/en/data/indicators/consumer-confidence-index-cci.html", "fc": null}, {"code": "009_Central Bank Rate", "type": "Financing & Interest Rates", "name": "Central Bank Rate", "desc": "NA", "unit": "%", "freq": "Monthly", "cov": "July-Sep 26", "src": "Bank for International Settlements – BIS", "url": "https://data.bis.org/topics/CBPOL/data", "fc": null}, {"code": "010_Lending_Interest_Rate", "type": "Financing & Interest Rates", "name": "Lending interest rate", "desc": "NA", "unit": "%", "freq": "Annual", "cov": "2020-2025", "src": "World Bank", "url": "https://data.worldbank.org/indicator/FR.INR.LEND", "fc": null}, {"code": "011_Consumer_Credit_Growth", "type": "Financing & Interest Rates", "name": "Consumer Credit Growth", "desc": "NA", "unit": "%", "freq": "Annual", "cov": "2025", "src": "Bank for International Settlements – BIS", "url": "https://data.bis.org/topics/TOTAL_CREDIT/data?pdqId=BIS%2CPDQ_F3_2%2C1.0&data_view=table&filter=FREQ%3DQ%255ETC_ADJUST%3DA%255EVALUATION%3DM%255EBORROWERS_CTY_TXT%3DArgentina%257CAustria%257CAustralia%257CBelgium%257CBrazil%257CCanada%257CSwitzerland%257CChile%257CChina%257CColombia%257CCzechia%257CGermany%257CDenmark%257CSpain%257CFinland%257CFrance%257CUnited%2520Kingdom%257CGreece%257CHong%2520Kong%2520SAR%257CHungary%257CIndonesia%257CIreland%257CIsrael%257CIndia%257CItaly%257CJapan%257CKorea%257CLuxembourg%257CMexico%257CMalaysia%257CNetherlands%257CNorway%257CNew%2520Zealand%257CPoland%257CPortugal%257CRussia%257CSaudi%2520Arabia%257CSweden%257CSingapore%257CThailand%257CT%25C3%25BCrkiye%257CUnited%2520States%257CEuro%2520area%257CSouth%2520Africa%255ETC_BORROWERS%3DH%255ETC_LENDERS%3DA%255EUNIT_TYPE%3DUSD%255ELAST_N_PERIODS%3D10&rows=BORROWERS_CTY&cols=TIME_PERIOD&settings=asc%7Cdesc%7Cname", "fc": null}, {"code": "012_Petrol_Price", "type": "Fuel & Energy", "name": "Petrol / Gasoline", "desc": "US$ Per Litre", "unit": "US$", "freq": "Daily", "cov": "Nov-26", "src": "Global Petrol Prices", "url": "https://www.globalpetrolprices.com/gasoline_prices/", "fc": null}, {"code": "013_Gasoline_Price", "type": "Fuel & Energy", "name": "Diesel Price", "desc": "US$ Per Litre", "unit": "US$", "freq": "Daily", "cov": "Nov-26", "src": "Global Petrol Prices", "url": "https://www.globalpetrolprices.com/diesel_prices/", "fc": null}, {"code": "014_Business_Electricity_Price", "type": "Fuel & Energy", "name": "Business Electricity Price", "desc": "2023-2026 Average, US$ Per kWh", "unit": "US$", "freq": "Annual", "cov": "2023-2026 Average", "src": "Global Petrol Prices", "url": "https://www.globalpetrolprices.com/electricity_prices/", "fc": null}, {"code": "015_Total Population", "type": "Demographics", "name": "Total Population", "desc": "NA", "unit": "Million", "freq": "Annual", "cov": "2020-2025", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/WB_WDI_SP_POP_TOTL", "fc": null}, {"code": "016_Population Density", "type": "Demographics", "name": "Population Density", "desc": "people per sq. km", "unit": "NA", "freq": "Annual", "cov": "2020-2023", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/WB_WDI_EN_POP_DNST", "fc": null}, {"code": "017_Urban_Population", "type": "Demographics", "name": "Urban Population", "desc": "NA", "unit": "Million", "freq": "Annual", "cov": "2020-2025", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/WB_WDI_SP_URB_TOTL", "fc": null}, {"code": "018_Urbanization_Rate", "type": "Demographics", "name": "Urbanization Rate", "desc": "NA", "unit": "%", "freq": "Annual", "cov": "2020-2025", "src": "Derived from World Bank Indicators", "url": "https://data360.worldbank.org/en/indicator/WB_WDI_SP_URB_TOTL", "fc": null}, {"code": "019_Working_Age_Population", "type": "Demographics", "name": "Working Age Population", "desc": "NA", "unit": "Million", "freq": "Annual", "cov": "2020-2025", "src": "World Bank", "url": "https://data360.worldbank.org/en/indicator/WB_WDI_SP_POP_1564_TO", "fc": null}, {"code": "020_EV_Charging_Stations", "type": "EV Transition", "name": "EV Charging Stations", "desc": "NA", "unit": "NA", "freq": "Annual", "cov": "2025", "src": "IEA", "url": "https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer", "fc": null}, {"code": "021_Exchange_Rate", "type": "Economic Health", "name": "Exchange Rate", "desc": "per US$", "unit": "", "freq": "Daily", "cov": "Nov-26", "src": "Exchange Rate API", "url": "https://www.exchangerate-api.com/", "fc": null}];
+const MACRO_FACT = {"Argentina": {"001_GDP": [["2020", 385.218], ["2021", 487.377], ["2022", 630.662], ["2023", 654.892], ["2024", 604.26], ["2025", 558.957], ["2026", 592.49]], "002_Real_GDP_Growth": [["2020", -9.9], ["2021", 10.718], ["2022", 4.956], ["2023", -1.569], ["2024", -2.764], ["2025", 5.003], ["2026", 4.495]], "003_GDP_Per_Capita": [["2020", 8489.33], ["2021", 10639.38], ["2022", 13640.41], ["2023", 14024.24], ["2024", 12811.84], ["2025", 11733.98], ["2026", 12314.78]], "005_Unemployment_Rate": [["2020", 11.55], ["2021", 8.75], ["2022", 6.825], ["2023", 6.575], ["2024", 8.0], ["2025", 7.5], ["2026", 7.2]], "007_Average Household Income": [["2020", 9040.0], ["2021", 10070.0], ["2022", 11890.0], ["2023", 12920.0], ["2024", 13530.0], ["2025", 14650.0]], "008_Consumer_Confidence": [["2026-10", 42.0]], "010_Lending_Interest_Rate": [["2020", 29.3875], ["2021", 35.55833333], ["2022", 52.39916667], ["2023", 95.89416667], ["2024", 61.70666667], ["2025", 46.01916667]], "011_Consumer_Credit_Growth": [["2025", 0.801394359]], "012_Petrol_Price": [["2026-11-02", 1.424]], "013_Gasoline_Price": [["2026-11-02", 1.589]], "014_Business_Electricity_Price": [["avg", 0.098]], "015_Total Population": [["2020", 45.0], ["2021", 45.0], ["2022", 45.0], ["2023", 46.0], ["2024", 46.0], ["2025", 46.0]], "016_Population Density": [["2020", 16.51336651], ["2021", 16.55733057], ["2022", 16.59227169], ["2023", 16.63995593]], "017_Urban_Population": [["2020", 42.0], ["2021", 42.0], ["2022", 42.0], ["2023", 42.0], ["2024", 42.0], ["2025", 42.0]], "018_Urbanization_Rate": [["2020", 91.9], ["2021", 92.0], ["2022", 92.1], ["2023", 92.2], ["2024", 92.3], ["2025", 92.4]], "019_Working_Age_Population": [["2020", 29.0], ["2021", 29.0], ["2022", 30.0], ["2023", 30.0], ["2024", 30.0], ["2025", 30.0]], "021_Exchange_Rate": [["2025-11-11", 1545.3974]]}, "Bolivia": {"001_GDP": [["2020", 36.897], ["2021", 40.703], ["2022", 44.315], ["2023", 46.473], ["2024", 49.334], ["2025", 52.52], ["2026", 55.752]], "002_Real_GDP_Growth": [["2020", -8.738], ["2021", 6.111], ["2022", 3.606], ["2023", 2.5], ["2024", 1.6], ["2025", 2.2], ["2026", 2.2]], "003_GDP_Per_Capita": [["2020", 3172.56], ["2021", 3449.38], ["2022", 3705.27], ["2023", 3831.28], ["2024", 4014.18], ["2025", 4218.49], ["2026", 4412.4]], "004_Inflation_Rate": [["2020", 0.9], ["2021", 0.7], ["2022", 1.7], ["2023", 2.6], ["2024", [4.4, 5.1]], ["2025", [4.5, 13.0, 19.5, 30.0]], ["2026", [4.5, 13.5, 21.2, 35.0]]], "005_Unemployment_Rate": [["2020", 8.336], ["2021", 6.937], ["2022", 4.74], ["2023", 4.9], ["2024", 5.0], ["2025", 5.05], ["2026", 5.1]], "007_Average Household Income": [["2020", 3620.0], ["2021", 3990.0], ["2022", 4190.0], ["2023", 4230.0], ["2024", 4160.0], ["2025", 4420.0]], "010_Lending_Interest_Rate": [["2020", 7.592223722], ["2021", 8.01711817], ["2022", 7.764988722], ["2023", 8.686014524], ["2024", 8.804310271], ["2025", 10.18702108]], "012_Petrol_Price": [["2026-11-02", 0.577]], "013_Gasoline_Price": [["2026-11-02", 1.488]], "015_Total Population": [["2020", 12.0], ["2021", 12.0], ["2022", 12.0], ["2023", 12.0], ["2024", 12.0], ["2025", 13.0]], "016_Population Density": [["2020", 10.90768854], ["2021", 11.0194406], ["2022", 11.14848518], ["2023", 11.30264839]], "017_Urban_Population": [["2020", 8.0], ["2021", 8.0], ["2022", 9.0], ["2023", 9.0], ["2024", 9.0], ["2025", 9.0]], "018_Urbanization_Rate": [["2020", 70.0], ["2021", 70.3], ["2022", 70.6], ["2023", 70.9], ["2024", 71.2], ["2025", 71.6]], "019_Working_Age_Population": [["2020", 7.0], ["2021", 8.0], ["2022", 8.0], ["2023", 8.0], ["2024", 8.0], ["2025", 8.0]], "021_Exchange_Rate": [["2025-11-11", 11.8646]]}, "Brazil": {"001_GDP": [["2020", 1476.09], ["2021", 1670.65], ["2022", 1951.85], ["2023", 2173.67], ["2024", 2331.39], ["2025", 2437.91], ["2026", 2596.12]], "002_Real_GDP_Growth": [["2020", -3.277], ["2021", 4.763], ["2022", 3.017], ["2023", 2.908], ["2024", 2.154], ["2025", 2.123], ["2026", 2.083]], "003_GDP_Per_Capita": [["2020", 7344.53], ["2021", 8269.71], ["2022", 9612.06], ["2023", 10642.44], ["2024", 11351.87], ["2025", 11808.7], ["2026", 12509.55]], "004_Inflation_Rate": [["2020", 3.2], ["2021", 8.3], ["2022", 9.3], ["2023", 4.6], ["2024", [3.9, 4.4]], ["2025", [3.7, 4.3, 5.2, 5.4]], ["2026", [3.4, 4.0, 4.5, 4.7]]], "005_Unemployment_Rate": [["2020", 13.775], ["2021", 13.2], ["2022", 9.25], ["2023", 7.975], ["2024", 8.032], ["2025", 7.884], ["2026", 7.745]], "006_Manufacturing_PMI": [["2026-10", 44.8]], "007_Average Household Income": [["2020", 8080.0], ["2021", 8060.0], ["2022", 8440.0], ["2023", 9310.0], ["2024", 9930.0], ["2025", 10550.0]], "008_Consumer_Confidence": [["2026-10", 84.7]], "009_Central Bank Rate": [["2026-07", 14.25], ["2026-08", 14.0], ["2026-09", 13.75]], "010_Lending_Interest_Rate": [["2020", 29.04166667], ["2021", 30.01666667], ["2022", 39.4], ["2023", 43.6], ["2024", 40.225], ["2025", 45.33333333]], "011_Consumer_Credit_Growth": [["2025", 0.1219862]], "012_Petrol_Price": [["2026-11-02", 1.249]], "013_Gasoline_Price": [["2026-11-02", 1.349]], "014_Business_Electricity_Price": [["avg", 0.134]], "015_Total Population": [["2020", 209.0], ["2021", 210.0], ["2022", 210.0], ["2023", 211.0], ["2024", 212.0], ["2025", 213.0]], "016_Population Density": [["2020", 24.96498527], ["2021", 25.07140273], ["2022", 25.16186795], ["2023", 25.26168849]], "017_Urban_Population": [["2020", 181.0], ["2021", 183.0], ["2022", 184.0], ["2023", 185.0], ["2024", 186.0], ["2025", 188.0]], "018_Urbanization_Rate": [["2020", 86.9], ["2021", 87.1], ["2022", 87.3], ["2023", 87.6], ["2024", 87.9], ["2025", 88.2]], "019_Working_Age_Population": [["2020", 145.0], ["2021", 146.0], ["2022", 146.0], ["2023", 147.0], ["2024", 147.0], ["2025", 147.0]], "020_EV_Charging_Stations": [["2025", 16900.0]], "021_Exchange_Rate": [["2025-11-11", 5.5539]]}, "Chile": {"001_GDP": [["2020", 254.06], ["2021", 315.601], ["2022", 302.16], ["2023", 335.658], ["2024", 333.76], ["2025", 374.753], ["2026", 391.385]], "002_Real_GDP_Growth": [["2020", -6.143], ["2021", 11.334], ["2022", 2.059], ["2023", 0.219], ["2024", 1.983], ["2025", 2.534], ["2026", 2.355]], "003_GDP_Per_Capita": [["2020", 13056.64], ["2021", 16037.96], ["2022", 15238.63], ["2023", 16815.78], ["2024", 16616.23], ["2025", 18545.76], ["2026", 19258.4]], "004_Inflation_Rate": [["2020", 3.0], ["2021", 4.5], ["2022", 11.6], ["2023", 7.6], ["2024", [3.3, 4.3]], ["2025", [3.0, 4.2, 4.6]], ["2026", [2.9, 3.0, 3.2, 3.8]]], "005_Unemployment_Rate": [["2020", 10.77], ["2021", 8.862], ["2022", 7.878], ["2023", 8.84], ["2024", 8.713], ["2025", 8.081], ["2026", 7.494]], "007_Average Household Income": [["2020", 12960.0], ["2021", 14790.0], ["2022", 15430.0], ["2023", 15970.0], ["2024", 15840.0], ["2025", 16960.0]], "008_Consumer_Confidence": [["2026-09", 31.0]], "009_Central Bank Rate": [["2026-07", 4.5], ["2026-08", 4.5], ["2026-09", 4.5]], "011_Consumer_Credit_Growth": [["2025", 0.089088991]], "012_Petrol_Price": [["2026-11-02", 1.552]], "013_Gasoline_Price": [["2026-11-02", 1.555]], "014_Business_Electricity_Price": [["avg", 0.172]], "015_Total Population": [["2020", 19.0], ["2021", 19.0], ["2022", 20.0], ["2023", 20.0], ["2024", 20.0], ["2025", 20.0]], "016_Population Density": [["2020", 26.07673523], ["2021", 26.19211804], ["2022", 26.32229828], ["2023", 26.4647249]], "017_Urban_Population": [["2020", 17.0], ["2021", 17.0], ["2022", 17.0], ["2023", 17.0], ["2024", 18.0], ["2025", 18.0]], "018_Urbanization_Rate": [["2020", 88.3], ["2021", 88.5], ["2022", 88.6], ["2023", 88.8], ["2024", 89.0], ["2025", 89.2]], "019_Working_Age_Population": [["2020", 13.0], ["2021", 13.0], ["2022", 13.0], ["2023", 14.0], ["2024", 14.0], ["2025", 14.0]], "020_EV_Charging_Stations": [["2025", 2090.0]], "021_Exchange_Rate": [["2025-11-11", 0.02451]]}, "Colombia": {"001_GDP": [["2020", 270.348], ["2021", 318.525], ["2022", 345.33], ["2023", 363.616], ["2024", 386.076], ["2025", 400.48], ["2026", 417.861]], "002_Real_GDP_Growth": [["2020", -7.186], ["2021", 10.801], ["2022", 7.289], ["2023", 0.612], ["2024", 1.14], ["2025", 2.47], ["2026", 3.0]], "003_GDP_Per_Capita": [["2020", 5366.99], ["2021", 6239.53], ["2022", 6691.21], ["2023", 6971.67], ["2024", 7327.12], ["2025", 7525.47], ["2026", 7776.7]], "004_Inflation_Rate": [["2020", 2.5], ["2021", 3.5], ["2022", 10.2], ["2023", 11.7], ["2024", [6.4, 6.6]], ["2025", [3.8, 4.5, 5.0, 5.1]], ["2026", [2.8, 3.1, 3.4, 6.1]]], "005_Unemployment_Rate": [["2020", 16.675], ["2021", 13.8], ["2022", 11.208], ["2023", 10.1], ["2024", 9.872], ["2025", 9.578], ["2026", 9.278]], "006_Manufacturing_PMI": [["2026-10", 54.6]], "007_Average Household Income": [["2020", 5850.0], ["2021", 6310.0], ["2022", 6560.0], ["2023", 6760.0], ["2024", 7090.0], ["2025", 7900.0]], "008_Consumer_Confidence": [["2026-09", 15.7]], "009_Central Bank Rate": [["2026-07", 12.0], ["2026-08", 12.0], ["2026-09", 12.0]], "010_Lending_Interest_Rate": [["2020", 9.850524251], ["2021", 9.337848409], ["2022", 15.80750887], ["2023", 21.03063683], ["2024", 16.37442264], ["2025", 14.31143893]], "011_Consumer_Credit_Growth": [["2025", 0.100273366]], "012_Petrol_Price": [["2026-11-02", 1.317]], "013_Gasoline_Price": [["2026-11-02", 0.939]], "014_Business_Electricity_Price": [["avg", 0.208]], "015_Total Population": [["2020", 51.0], ["2021", 51.0], ["2022", 52.0], ["2023", 52.0], ["2024", 53.0], ["2025", 53.0]], "016_Population Density": [["2020", 45.63316539], ["2021", 46.13625327], ["2022", 46.63176566], ["2023", 47.15741505]], "017_Urban_Population": [["2020", 39.0], ["2021", 40.0], ["2022", 40.0], ["2023", 41.0], ["2024", 42.0], ["2025", 42.0]], "018_Urbanization_Rate": [["2020", 77.6], ["2021", 77.8], ["2022", 78.0], ["2023", 78.3], ["2024", 78.5], ["2025", 78.8]], "019_Working_Age_Population": [["2020", 35.0], ["2021", 36.0], ["2022", 36.0], ["2023", 37.0], ["2024", 37.0], ["2025", 37.0]], "020_EV_Charging_Stations": [["2025", 1330.0]], "021_Exchange_Rate": [["2025-11-11", 3276.877]]}};
+
+// ===================== MACROECONOMICS (dim_macro.csv + fact_macro.csv) =====================
+// Everything on this tab is read from MACRO_DIM (indicator details) and MACRO_FACT (values per country).
+// An indicator with no rows for the selected country gets no card at all.
+const MC_CODES = { Argentina: 'ARG', Bolivia: 'BOL', Brazil: 'BRA', Chile: 'CHL', Colombia: 'COL' };
+// Section look, in the order the sections appear (names match "ind_type" in dim_macro)
+const MC_SECTIONS = {
+  'Economic Health':            { icon: 'heart-pulse', c: '#17a558', soft: 'rgba(23,165,88,0.11)' },
+  'Consumer Purchasing Power':  { icon: 'wallet',      c: '#7857F5', soft: 'rgba(120,87,245,0.11)' },
+  'Financing & Interest Rates': { noChg: true, icon: 'landmark',    c: '#3D83F6', soft: 'rgba(61,131,246,0.11)' },
+  'Fuel & Energy':              { icon: 'fuel',        c: '#d97a06', soft: 'rgba(217,122,6,0.12)' },
+  'Demographics':               { noChg: true, icon: 'users',       c: '#0d9d8f', soft: 'rgba(13,157,143,0.11)' },
+  'EV Transition':              { icon: 'zap',         c: '#20B99A', soft: 'rgba(32,185,154,0.12)' }
 };
+const MC_ICON = { '001_GDP': 'chart-column', '002_Real_GDP_Growth': 'trending-up', '003_GDP_Per_Capita': 'circle-user', '004_Inflation_Rate': 'flame',
+  '005_Unemployment_Rate': 'briefcase', '006_Manufacturing_PMI': 'factory', '007_Average Household Income': 'house', '008_Consumer_Confidence': 'smile',
+  '009_Central Bank Rate': 'landmark', '010_Lending_Interest_Rate': 'percent', '011_Consumer_Credit_Growth': 'credit-card', '012_Petrol_Price': 'fuel',
+  '013_Gasoline_Price': 'droplet', '014_Business_Electricity_Price': 'zap', '015_Total Population': 'users', '016_Population Density': 'map-pin',
+  '017_Urban_Population': 'building-2', '018_Urbanization_Rate': 'building', '019_Working_Age_Population': 'users-round', '020_EV_Charging_Stations': 'plug-zap',
+  '021_Exchange_Rate': 'arrow-left-right' };
+// How a rise should be coloured in the change chip: 1 = good news, -1 = bad news, 0 = neutral
+const MC_POLARITY = { '001_GDP': 1, '002_Real_GDP_Growth': 1, '003_GDP_Per_Capita': 1, '004_Inflation_Rate': -1, '005_Unemployment_Rate': -1, '006_Manufacturing_PMI': 1,
+  '007_Average Household Income': 1, '008_Consumer_Confidence': 1, '010_Lending_Interest_Rate': -1, '011_Consumer_Credit_Growth': 1, '020_EV_Charging_Stations': 1 };
+// 011 Consumer Credit Growth is stored as a ratio (0.12 = 12%) although dim_macro says "%": it is multiplied by 100 for display
+const MC_SCALE = { '011_Consumer_Credit_Growth': 100 };
+const MC_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function mcEsc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function(m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]; }); }
+const mcIsNA = function(s) { return !s || /^na$/i.test(String(s).trim()); };
+const mcNum = function(v, d) { return v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); };
+
+// Label for a period key: "2025", "2026 · Forecast", "Oct 2026", "2 Nov 2026", "2023–2026 average"
+function mcPeriodLabel(p, dim) {
+  if (p === 'avg') return (dim.desc.match(/\d{4}-\d{4}/) || ['2023-2026'])[0].replace('-', '–') + ' average';
+  const a = p.split('-');
+  if (a.length === 1) return a[0] + (dim.fc && +a[0] >= dim.fc ? ' · Forecast' : '');
+  if (a.length === 2) return MC_MONTHS[+a[1] - 1] + ' ' + a[0];
+  return (+a[2]) + ' ' + MC_MONTHS[+a[1] - 1] + ' ' + a[0];
+}
+const mcIsFc = function(p, dim) { return !!(dim.fc && p.length === 4 && +p >= dim.fc); };
+const mcShort = function(p) { const a = p.split('-'); return a.length === 1 ? a[0] : (a.length === 2 ? MC_MONTHS[+a[1] - 1] : (+a[2]) + ' ' + MC_MONTHS[+a[1] - 1]); };
+
+// Unit shown under the value: dim "unit", or the description when the unit is blank / NA (e.g. "per US$", "people per sq. km")
+function mcUnit(dim) {
+  if (!mcIsNA(dim.unit)) return { text: dim.unit, usedDesc: false };
+  if (!mcIsNA(dim.desc)) return { text: dim.desc, usedDesc: true };
+  return { text: 'Number of stations', usedDesc: false };   // EV Charging Stations has no unit in dim_macro
+}
+// Value split into [prefix, number, suffix] so the number can be large and the rest small
+function mcParts(dim, v) {
+  const u = dim.unit, code = dim.code;
+  if (u === '%') return ['', mcNum(v, 1), '%'];
+  if (u === 'US$ bn') return ['US$ ', mcNum(v, 1), ' bn'];
+  if (u === 'Million') return ['', mcNum(v, v % 1 ? 1 : 0), ' M'];
+  if (u === 'Index') return ['', mcNum(v, 1), ''];
+  if (u === 'US$') return ['US$ ', code === '007_Average Household Income' || code === '003_GDP_Per_Capita' ? mcNum(v, 0) : mcNum(v, 3), ''];
+  if (code === '021_Exchange_Rate') return ['', v >= 100 ? mcNum(v, 1) : (v >= 1 ? mcNum(v, 3) : mcNum(v, 5)), ''];
+  if (code === '016_Population Density') return ['', mcNum(v, 1), ''];
+  return ['', mcNum(v, 0), ''];
+}
+const mcValHtml = function(dim, v) { const p = mcParts(dim, v); return (p[0] ? '<span class="mc-pre">' + p[0] + '</span>' : '') + p[1] + (p[2] ? '<span class="mc-suf">' + p[2] + '</span>' : ''); };
+
+// Series for one country and indicator: [{p, v, lo, hi}] oldest to newest (v is null when the dataset holds several values for a period)
+function mcSeries(country, code) {
+  const raw = (MACRO_FACT[country] || {})[code];
+  if (!raw || !raw.length) return [];
+  const k = MC_SCALE[code] || 1;
+  return raw.map(function(r) {
+    const vals = (Array.isArray(r[1]) ? r[1] : [r[1]]).map(function(x) { return x * k; });
+    return { p: r[0], v: vals.length === 1 ? vals[0] : null, lo: Math.min.apply(null, vals), hi: Math.max.apply(null, vals), n: vals.length };
+  });
+}
+
+// Chip comparing the latest point with the one before it
+function mcChange(dim, pts) {
+  if (pts.length < 2) return '';
+  const a = pts[pts.length - 1], b = pts[pts.length - 2];
+  if (a.v === null || b.v === null) return '';
+  let txt, d;
+  if (dim.unit === '%') { d = a.v - b.v; txt = (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1) + ' pp'; }
+  else { if (!b.v) return ''; d = (a.v / b.v - 1) * 100; txt = (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1) + '%'; }
+  const pol = MC_POLARITY[dim.code] || 0, up = d > 0, flat = Math.abs(d) < 0.05;
+  const cls = flat || !pol ? 'flat' : ((up ? 1 : -1) * pol > 0 ? 'good' : 'bad');
+  return '<span class="mc-chip ' + cls + '">' + (flat ? '●' : (up ? '▲' : '▼')) + ' ' + txt + ' <em>vs ' + mcShort(b.p) + '</em></span>';
+}
+
+// Small trend line under a card's value. Forecast segment is dashed; years with several dataset values show as a range bar.
+function mcSpark(pts, color, dim, id) {
+  const W = 150, H = 46, px = 4, py = 6;
+  const lo0 = Math.min.apply(null, pts.map(function(p) { return p.lo; })), hi0 = Math.max.apply(null, pts.map(function(p) { return p.hi; }));
+  const span = (hi0 - lo0) || 1;
+  const X = function(i) { return px + i * (W - 2 * px) / Math.max(1, pts.length - 1); };
+  const Y = function(v) { return H - py - (v - lo0) / span * (H - 2 * py); };
+  let solid = '', dash = '', area = '', bars = '', dots = '';
+  const ok = pts.map(function(p, i) { return p.v === null ? null : [X(i), Y(p.v), mcIsFc(p.p, dim)]; });
+  let started = false, prev = null;
+  ok.forEach(function(q) {
+    if (!q) { prev = null; return; }
+    if (prev) { (q[2] ? dash += (dash ? ' ' : '') : solid += ''); }
+    prev = q;
+  });
+  // segments
+  const segs = [];
+  for (let i = 1; i < ok.length; i++) if (ok[i] && ok[i - 1]) segs.push([ok[i - 1], ok[i]]);
+  const solidSeg = segs.filter(function(s) { return !s[1][2]; }), dashSeg = segs.filter(function(s) { return s[1][2]; });
+  const path = function(list) { return list.map(function(s) { return 'M' + s[0][0].toFixed(1) + ' ' + s[0][1].toFixed(1) + 'L' + s[1][0].toFixed(1) + ' ' + s[1][1].toFixed(1); }).join(''); };
+  pts.forEach(function(p, i) {
+    if (p.v === null) bars += '<rect x="' + (X(i) - 3).toFixed(1) + '" y="' + Y(p.hi).toFixed(1) + '" width="6" height="' + Math.max(4, Y(p.lo) - Y(p.hi)).toFixed(1) + '" rx="3" fill="' + color + '" opacity=".35"><title>' + mcShort(p.p) + ': ' + p.lo.toFixed(1) + ' to ' + p.hi.toFixed(1) + ' (' + p.n + ' values in dataset)</title></rect>';
+  });
+  const solidOnly = ok.filter(function(q) { return q && !q[2]; });
+  if (solidOnly.length > 1) area = '<path d="M' + solidOnly.map(function(q) { return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join('L') + 'L' + solidOnly[solidOnly.length - 1][0].toFixed(1) + ' ' + (H - py) + 'L' + solidOnly[0][0].toFixed(1) + ' ' + (H - py) + 'Z" fill="url(#sg' + id + ')"/>';
+  const lastOk = ok.filter(Boolean).pop();
+  if (lastOk) dots = '<circle cx="' + lastOk[0].toFixed(1) + '" cy="' + lastOk[1].toFixed(1) + '" r="3.2" fill="' + (lastOk[2] ? '#fff' : color) + '" stroke="' + color + '" stroke-width="1.6"/>';
+  return '<svg class="mc-spark" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none"><defs><linearGradient id="sg' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + color + '" stop-opacity=".30"/><stop offset="1" stop-color="' + color + '" stop-opacity="0"/></linearGradient></defs>'
+    + area + '<path d="' + path(solidSeg) + '" fill="none" stroke="' + color + '" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>'
+    + '<path d="' + path(dashSeg) + '" fill="none" stroke="' + color + '" stroke-width="2.2" stroke-dasharray="3 3" stroke-linecap="round"/>' + bars + dots + '</svg>';
+}
+
+// Subtitle block: description (when there is one), unit and frequency, source link
+function mcSubtitle(dim) {
+  const u = mcUnit(dim);
+  return '<div class="mc-sub">'
+    + (!mcIsNA(dim.desc) && !u.usedDesc ? '<div class="mc-sub-l">' + mcEsc(dim.desc) + '</div>' : '')
+    + '<div class="mc-sub-l">' + mcEsc(u.text) + '</div>'
+    + '<div class="mc-sub-l"><b>Source</b> <a href="' + mcEsc(dim.url) + '" target="_blank" rel="noopener">' + mcEsc(dim.src) + '</a></div></div>';
+}
+
+// One standard KPI card
+function mcCard(country, dim, sec, n) {
+  const pts = mcSeries(country, dim.code);
+  if (!pts.length) return '';
+  const last = pts[pts.length - 1], fc = mcIsFc(last.p, dim);
+  const multi = last.v === null;
+  const val = multi ? '<span class="mc-rng">' + mcNum(last.lo, 1) + '–' + mcNum(last.hi, 1) + '</span><span class="mc-suf">' + (dim.unit === '%' ? '%' : '') + '</span>' : mcValHtml(dim, last.v);
+  const chip = multi ? '<span class="mc-chip warn">' + last.n + ' values in dataset</span>' : (sec.noChg ? '' : mcChange(dim, pts));
+  const spark = '';
+  return '<div class="mc-card" style="--c:' + sec.c + ';--soft:' + sec.soft + '">'
+    + '<div class="mc-top"><span class="mc-ic"><i data-lucide="' + (MC_ICON[dim.code] || 'activity') + '"></i></span><div class="mc-name">' + mcEsc(dim.name) + '</div>'
+    + '<span class="mc-per' + (fc ? ' fc' : '') + '">' + mcEsc(mcPeriodLabel(last.p, dim)) + '</span></div>'
+    + '<div class="mc-mid"><div class="mc-val">' + val + '</div>' + spark + '</div>'
+    + '<div class="mc-chiprow">' + chip + '</div>' + mcSubtitle(dim) + '</div>';
+}
+
+// Chart-style card for GDP (bars) and Real GDP growth (line): latest KPI + history
+function mcHeroCard(country, dim, sec, kind, n) {
+  const pts = mcSeries(country, dim.code).filter(function(p) { return p.p.length === 4; });
+  if (!pts.length) return '';
+  const last = pts[pts.length - 1], fc = mcIsFc(last.p, dim);
+  const W = 560, H = 230, L = 14, R = 14, T = 26, B = 30;
+  const vs = pts.map(function(p) { return p.v; });
+  let svg = '<defs><pattern id="hat' + n + '" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="' + sec.c + '" fill-opacity=".18"/><rect width="2.4" height="6" fill="' + sec.c + '" fill-opacity=".75"/></pattern>'
+    + '<linearGradient id="ar' + n + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + sec.c + '" stop-opacity=".28"/><stop offset="1" stop-color="' + sec.c + '" stop-opacity="0"/></linearGradient></defs>';
+  const slot = (W - L - R) / pts.length, cx = function(i) { return L + slot * i + slot / 2; };
+  const fmtLab = function(v) { return kind === 'bar' ? mcNum(v, 0) : (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(1) + '%'; };
+  if (kind === 'bar') {
+    const top = Math.max.apply(null, vs) * 1.12, y = function(v) { return T + (H - T - B) * (1 - v / top); };
+    for (let i = 0; i <= 3; i++) svg += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(top * i / 3 / 1.12 * 1.12 * 0 + top * i / 3).toFixed(1) + '" y2="' + y(top * i / 3).toFixed(1) + '" stroke="#e6e9f2" stroke-dasharray="3 4"/>';
+    pts.forEach(function(p, i) {
+      const f = mcIsFc(p.p, dim), bw = Math.min(46, slot * 0.58), x = cx(i) - bw / 2;
+      svg += '<rect x="' + x.toFixed(1) + '" y="' + y(p.v).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.max(0, H - B - y(p.v)).toFixed(1) + '" rx="5" fill="' + (f ? 'url(#hat' + n + ')' : sec.c) + '"' + (f ? ' stroke="' + sec.c + '" stroke-dasharray="4 3"' : '') + '><title>' + p.p + (f ? ' (forecast)' : '') + ': US$ ' + mcNum(p.v, 1) + ' bn</title></rect>'
+        + '<text x="' + cx(i).toFixed(1) + '" y="' + (y(p.v) - 7).toFixed(1) + '" text-anchor="middle" class="mc-dl">' + fmtLab(p.v) + '</text>';
+    });
+  } else {
+    const mx = Math.max(0, Math.max.apply(null, vs)), mn = Math.min(0, Math.min.apply(null, vs)), pad = (mx - mn) * 0.18 || 1;
+    const hi = mx + pad, lo = mn - pad, y = function(v) { return T + (H - T - B) * (1 - (v - lo) / (hi - lo)); };
+    svg += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(0).toFixed(1) + '" y2="' + y(0).toFixed(1) + '" stroke="#9aa3b8" stroke-dasharray="4 4"/><text x="' + (W - R) + '" y="' + (y(0) - 4).toFixed(1) + '" text-anchor="end" class="mc-ax">0%</text>';
+    const pt = function(i) { return cx(i).toFixed(1) + ' ' + y(pts[i].v).toFixed(1); };
+    const actual = pts.map(function(p, i) { return mcIsFc(p.p, dim) ? -1 : i; }).filter(function(i) { return i >= 0; });
+    if (actual.length > 1) {
+      svg += '<path d="M' + actual.map(pt).join('L') + 'L' + cx(actual[actual.length - 1]).toFixed(1) + ' ' + y(0).toFixed(1) + 'L' + cx(actual[0]).toFixed(1) + ' ' + y(0).toFixed(1) + 'Z" fill="url(#ar' + n + ')"/>';
+      svg += '<path d="M' + actual.map(pt).join('L') + '" fill="none" stroke="' + sec.c + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';
+    }
+    const fIdx = pts.map(function(p, i) { return mcIsFc(p.p, dim) ? i : -1; }).filter(function(i) { return i >= 0; });
+    if (fIdx.length && actual.length) svg += '<path d="M' + pt(actual[actual.length - 1]) + 'L' + fIdx.map(pt).join('L') + '" fill="none" stroke="' + sec.c + '" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>';
+    pts.forEach(function(p, i) {
+      const f = mcIsFc(p.p, dim), neg = p.v < 0;
+      svg += '<circle cx="' + cx(i).toFixed(1) + '" cy="' + y(p.v).toFixed(1) + '" r="5" fill="' + (f ? '#fff' : (neg ? '#dc2f3a' : sec.c)) + '" stroke="' + (neg ? '#dc2f3a' : sec.c) + '" stroke-width="2.4"><title>' + p.p + (f ? ' (forecast)' : '') + ': ' + fmtLab(p.v) + '</title></circle>'
+        + '<text x="' + cx(i).toFixed(1) + '" y="' + (y(p.v) + (neg ? 18 : -10)).toFixed(1) + '" text-anchor="middle" class="mc-dl' + (neg ? ' neg' : '') + '">' + fmtLab(p.v) + '</text>';
+    });
+  }
+  pts.forEach(function(p, i) { svg += '<text x="' + cx(i).toFixed(1) + '" y="' + (H - 9) + '" text-anchor="middle" class="mc-ax' + (mcIsFc(p.p, dim) ? ' fc' : '') + '">' + p.p + (mcIsFc(p.p, dim) ? ' F' : '') + '</text>'; });
+  const fcNote = pts.some(function(p) { return mcIsFc(p.p, dim); }) ? '<span class="mc-fcnote"><i></i> Forecast (' + pts.filter(function(p) { return mcIsFc(p.p, dim); }).map(function(p) { return p.p; }).join(', ') + ')</span>' : '';
+  return '<div class="mc-card mc-hero" style="--c:' + sec.c + ';--soft:' + sec.soft + '">'
+    + '<div class="mc-top"><span class="mc-ic"><i data-lucide="' + (MC_ICON[dim.code] || 'activity') + '"></i></span><div class="mc-name">' + mcEsc(dim.name) + '</div>'
+    + '<span class="mc-per' + (fc ? ' fc' : '') + '">' + mcEsc(mcPeriodLabel(last.p, dim)) + '</span></div>'
+    + '<div class="mc-herorow"><div class="mc-val big">' + mcValHtml(dim, last.v) + '</div>' + mcChange(dim, pts) + fcNote + '</div>'
+    + '<svg class="mc-chart" viewBox="0 0 ' + W + ' ' + H + '">' + svg + '</svg>' + mcSubtitle(dim) + '</div>';
+}
 
 function renderMacroeconomics() {
-  const d = macroData[currentCountry];
-  if (!d) { document.getElementById('macro-content').innerHTML = '<div style="color:var(--text3);padding:32px;text-align:center;">No macro data available for ' + currentCountry + ' yet.</div>'; return; }
-
-  const sections = [
-    {key:'economic',  label:'Economic Health',            icon:'heart-pulse', color:'var(--green)',  bg:'var(--green-soft)'},
-    {key:'purchasing',label:'Consumer Purchasing Power',  icon:'wallet',      color:'var(--purple)', bg:'var(--purple-soft)', cols:'cols-3'},
-    {key:'financing', label:'Financing & Interest Rates', icon:'landmark',    color:'var(--blue)',   bg:'var(--blue-soft)',   cols:'cols-3'},
-    {key:'fuel',      label:'Fuel & Energy',              icon:'fuel',        color:'var(--amber)',  bg:'var(--amber-soft)',  cols:'cols-3'},
-    {key:'mobility',  label:'Mobility & Demographics',    icon:'building-2',  color:'var(--teal)',   bg:'var(--teal-soft)'},
-    {key:'ev',        label:'EV Transition',              icon:'zap',         color:'#22c97a',       bg:'rgba(34,201,122,0.12)'},
-    {key:'trade',     label:'Trade & Manufacturing',      icon:'factory',     color:'var(--purple)', bg:'var(--purple-soft)', cols:'cols-3'},
-  ];
-
-  const trendArrow = {up:'▲', down:'▼', neutral:'●'};
-  const trendLabel = {up:'Positive', down:'Negative', neutral:'Stable'};
-
-  let html = '';
-  sections.forEach(function(s) {
-    const items = d[s.key] || [];
-    if (!items.length) return;
-    const colClass = s.cols || '';
-    const cards = items.map(function(item) {
-      return '<div class="macro-kpi-card" style="border-left-color:' + s.color + '">'
-        + '<div class="macro-kpi-label">' + item.label + '</div>'
-        + '<div class="macro-kpi-value">' + item.value + '</div>'
-        + '<div class="macro-kpi-note">' + item.note + '</div>'
-        + '<div class="macro-kpi-trend ' + item.trend + '">' + trendArrow[item.trend] + ' ' + trendLabel[item.trend] + '</div>'
-        + '</div>';
-    }).join('');
-    html += '<div class="macro-section">'
-      + '<div class="macro-section-head">'
-      + '<div class="macro-section-icon" style="background:' + s.bg + ';color:' + s.color + ';"><i data-lucide="' + s.icon + '" style="width:19px;height:19px"></i></div>'
-      + '<div class="macro-section-title">' + s.label + '</div>'
-      + '</div>'
-      + '<div class="macro-kpi-grid ' + colClass + '">' + cards + '</div>'
-      + '</div>';
+  const el = document.getElementById('macro-content');
+  const country = currentCountry;
+  if (!MC_CODES[country] || !MACRO_FACT[country]) {
+    el.innerHTML = '<div class="mc-empty">No macroeconomic data available for ' + mcEsc(country) + '.</div>';
+    return;
+  }
+  const byType = {};
+  MACRO_DIM.forEach(function(d) { if ((MACRO_FACT[country] || {})[d.code]) (byType[d.type] = byType[d.type] || []).push(d); });   // only indicators that have data
+  let n = 0, html = '<div class="mc-wrap">';
+  let hasMulti = false, hasForecast = false;
+  Object.keys(MC_SECTIONS).forEach(function(type) {
+    const dims = byType[type];
+    if (!dims) return;
+    const sec = MC_SECTIONS[type];
+    const hero = dims.filter(function(d) { return d.code === '001_GDP' || d.code === '002_Real_GDP_Growth'; });
+    const rest = dims.filter(function(d) { return hero.indexOf(d) === -1; });
+    const heroHtml = hero.map(function(d) { return mcHeroCard(country, d, sec, d.code === '001_GDP' ? 'bar' : 'line', ++n); }).join('');
+    const cards = rest.map(function(d) { return mcCard(country, d, sec, ++n); }).join('');
+    dims.forEach(function(d) { const s = mcSeries(country, d.code); if (s.some(function(p) { return p.v === null; })) hasMulti = true; if (s.some(function(p) { return mcIsFc(p.p, d); })) hasForecast = true; });
+    html += '<section class="mc-sec" style="--c:' + sec.c + ';--soft:' + sec.soft + '"><div class="mc-sec-head"><span class="mc-sec-ic"><i data-lucide="' + sec.icon + '"></i></span><div class="mc-sec-title">' + mcEsc(type) + '</div><span class="mc-sec-n">' + dims.length + ' indicator' + (dims.length > 1 ? 's' : '') + '</span></div>'
+      + (heroHtml ? '<div class="mc-heros">' + heroHtml + '</div>' : '') + (cards ? '<div class="mc-grid">' + cards + '</div>' : '') + '</section>';
   });
-
-  document.getElementById('macro-content').innerHTML = html;
+  html += '</div>';
+  el.innerHTML = html;
   if (window.lucide) lucide.createIcons();
 }
+
 
 // ===================== REGULATORY DATA (regulatory_landscape.csv + EV_Landscape.csv) =====================
 const REG_DATA = {"Argentina":{"reg":{"Emission norms":{"Current":{"raw":"Current","txt":"Resolution 14/2023 requires an Environmental Configuration Licence (LCA) for every new category L model, domestic or imported. Certification covers gaseous and noise emissions, EMC, fuel/energy consumption and CO2 using eligible test protocols.","date":"13 Jan 2023","std":"LCA mandatory for all new category L models; use current Decree 779/95 limits and accepted UN WP.29-listed laboratory/certifier protocols.","scope":"Category L; related NCM 8711","auth":"Undersecretariat for the Environment","s1":"https://www.argentina.gob.ar/noticias/ambiente-regula-las-emisiones-de-los-modelos-de-motos","s2":"https://www.boletinoficial.gob.ar/detalleAviso/primera/279530/20230112","hl":"LCA mandatory"},"ins":"An LCA is required for every new category L model, domestic or imported. No fixed-date successor phase was verified.","Upcoming":{"raw":"Upcoming / announced","txt":"No binding successor motorcycle emission phase with a fixed implementation date was verified. Monitor amendments to Decree 779/95 and LCA guidance.","date":"No fixed date","std":"Monitoring item; do not publish the derived Jul 2027 / Jan 2030 Euro timetable without the operative legal annex.","scope":"Category L","auth":"Undersecretariat for the Environment","s1":"https://www.argentina.gob.ar/jefatura/turismo-y-ambiente/ambiente/evaluacion-y-control-ambiental/emisiones-vehiculares","s2":"https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-14-2023-378186","hl":"No fixed date"}},"Homologation / type approval":{"Current":{"raw":"Current","txt":"Vehicles in categories L, M, N and O require LCM safety approval and LCA environmental approval. Decree 196/2025 replaced Annex P; Resolution 271/2025 sets the LCM process and allows recognized UN WP.29 certification evidence where applicable.","date":"19 Mar 2025","std":"LCM plus LCA before release to public roads; VIN, technical dossier, safety evidence and environmental evidence required.","scope":"Category L; related NCM 8711","auth":"Secretariat of Industry and Commerce; Undersecretariat for the Environment","s1":"https://www.argentina.gob.ar/obtener-licencia-de-configuracion-de-modelo","s2":"https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-271-2025-414678/texto","hl":"LCM + LCA"},"ins":"Two approvals before road release: LCM (safety) and LCA (environmental). Recognised UN WP.29 evidence is accepted where applicable."},"Import duties":{"Current":{"raw":"Current","txt":"The customs duty is NCM-, origin- and regime-specific. Decree 908/2024 updates the Mercosur tariff framework. Qualifying incomplete/CKD motorcycles may use the local-assembly program under Decree 460/2023 as amended; validate every transaction in VUCE.","date":"Current at 5 Nov 2026","std":"Do not use one blanket CBU rate. Confirm the exact NCM, origin preference and current DIE in VUCE; qualifying CKD/incomplete units may receive reduced or 0% treatment subject to program conditions.","scope":"NCM 8711.10-8711.90","auth":"Ministry of Economy; Customs; VUCE","s1":"https://www.argentina.gob.ar/normativa/nacional/decreto-908-2024-405291/texto","s2":"https://www.vuce.gob.ar/","hl":"Varies by NCM"},"ins":"No blanket CBU rate: confirm the exact NCM, origin preference and current DIE in VUCE. Qualifying CKD units may get reduced or 0% treatment.","Upcoming":{"raw":"Upcoming / announced","txt":"No separate fixed-date CBU motorcycle duty change was verified. The special assembly regime remains amendment-sensitive and its stated sunset should be checked against the current consolidated text.","date":"No fixed CBU date","std":"Monitor VUCE, tariff decrees and the CKD regime; do not treat the program sunset as a general CBU tariff change.","scope":"NCM 8711","auth":"Ministry of Economy; VUCE","s1":"https://www.vuce.gob.ar/","s2":"https://www.ambito.com/economia/motos-quitan-aranceles-la-importacion-partes-cinco-anos-n5814680","hl":"No fixed date"}}},"ev":[{"lv":"National","ty":"Proposal","tx":"2 500 jobs in battery manufacturing by 2030.","ca":"Manufacturing","y":2021,"so":"Government of Argentina"},{"lv":"Subnational","ty":"Announced target","tx":"Buenos Aires: 30% low-emission cars in circulation by 2030, 100% by 2050.","ca":"LDV","y":2020,"so":"Government of the City of Buenos Aires"},{"lv":"Subnational","ty":"Announced target","tx":"Buenos Aires: 50% ZEV buses by 2030, 100% by 2050.","ca":"Bus","y":2020,"so":"Government of the City of Buenos Aires"},{"lv":"National","ty":"Proposal","tx":"Ban on sale of new ICE vehicles from 2041.","ca":"Multiple","y":2021,"so":"Government of Argentina"},{"lv":"National","ty":"Proposal","tx":"Bill on the Promotion of Domestic Production of Electric and Hybrid Vehicles.","ca":"Manufacturing","y":2024,"so":"Government of Argentina"},{"lv":"National","ty":"Legislation","tx":"Decree 49/2025 cuts tariffs on electric and hybrid vehicles; allows 50 000 PHEV/EVs per year tariff-free; promotes modernisation and investment in local EV manufacturing, specifies electromobility as a long term goal.","ca":"Multiple","y":2025,"so":"Government of Argentina"},{"lv":"Subnational","ty":"Announced target","tx":"Buenos Aires: From 1 January 2027, all new buses added to the transport network must be powered by clean energy electric or compressed natural gas. Current diesel units may continue operating until they reach the maximum permitted age limit.","ca":"Bus","y":2025,"so":"Government of the City of Buenos Aires"},{"lv":"National","ty":"Legislation","tx":"Import tariffs lifted on some low-cost electric and hybrid vehicles. Up to 50 000 imports of low- cost EVs and hybrids will be exempt from tariffs for 1 year.","ca":"Taxation","y":2025,"so":"Government of Argentina"},{"lv":"National","ty":"Objective","tx":"National Sustainable Transportation plan promotes electromobility and EV manufacturing, among other things.","ca":"Multiple, Manufacturing","y":2022,"so":"Government of Argentina"},{"lv":"Subnational","ty":"Announced target","tx":"Buenos Aires: The Buenos Aires City Government plans to expand its charging infrastructure for zero-emission vehicles with an additional 400 charging points by 2027. Furthermore, electric and hybrid cars will be exempted from registration tax and tolls till August 2026.","ca":"Multiple","y":2025,"so":"Government of the City of Buenos Aires"},{"lv":"National","ty":"Legislation","tx":"The Sustainable Mobility Programme (Programa de Movilidad Sustentable) promotes micromobility and low-emissions transport for individuals and businesses; supports CNG and electric mobility; and provides financial incentives for vehicle and infrastructure investments.","ca":"Multiple","y":2024,"so":"Government of Argentina"}],"watch":[["Monitor Decree 779/95 amendments and LCA guidance","Ongoing"],["Check CKD regime (Decree 460/2023) sunset in consolidated text","To confirm"],["Monitor VUCE and tariff decrees","Ongoing"]]},"Bolivia":{"reg":{"Emission norms":{"Current":{"raw":"Current","txt":"Imported vehicles, including motorcycle lines, must meet Euro II or equivalent and complete the prior-authorization/emission-verification process under RM 064/2022.","date":"1 Apr 2022","std":"Euro II minimum or equivalent, supported by technical documents and emission evidence.","scope":"Vehicle lines including heading 8711","auth":"Vice Ministry of Transport; IBMETRO","s1":"https://www.oopp.gob.bo/wp-content/uploads/2022/04/RM-064-Y-REGLAMENTO.pdf","s2":"https://ibmetro.gob.bo/certificado-de-aceptacion","hl":"Euro II minimum"},"ins":"Imports need IBMETRO emission evidence and prior authorisation under RM 064/2022. Euro IV waits on national fuel quality.","Upcoming":{"raw":"Upcoming / announced","txt":"Euro IV or later is legally contemplated only when national fuel quality permits","date":"Conditional; no fixed date","std":"Do not assign a date until the fuel-quality trigger is formally activated.","scope":"Vehicle lines including heading 8711","auth":"Ministry of Public Works, Services and Housing","s1":"https://www.oopp.gob.bo/wp-content/uploads/2022/04/RM-064-Y-REGLAMENTO.pdf","s2":"https://www.oopp.gob.bo/resoluciones-ministeriales/","hl":"Euro IV (conditional)"}},"Homologation / type approval":{"Current":{"raw":"Current","txt":"Importer obtains an IBMETRO Certificate of Acceptance for emissions compliance and then the electronic prior authorization from the Vice Ministry of Transport; supporting originals and inspection documents may be required.","date":"1 Apr 2022","std":"Digital application, technical documents and emission evidence under RM 064/2022.","scope":"Vehicle lines including heading 8711","auth":"IBMETRO; Vice Ministry of Transport","s1":"https://ibmetro.gob.bo/certificado-de-aceptacion","s2":"https://www.oopp.gob.bo/wp-content/uploads/2022/04/RM-064-Y-REGLAMENTO.pdf","hl":"IBMETRO + prior authorisation"},"ins":"Sequence: IBMETRO Certificate of Acceptance first, then electronic prior authorisation from the Vice Ministry of Transport.","Upcoming":{"raw":"Upcoming / announced","txt":"No fixed-date successor whole-vehicle approval regime was verified. Monitor IBMETRO and Vice Ministry procedures.","date":"No fixed date","std":"Monitoring item.","scope":"Heading 8711","auth":"IBMETRO; Vice Ministry of Transport","s1":"https://ibmetro.gob.bo/certificado-de-aceptacion","s2":"https://www.oopp.gob.bo/resoluciones-ministeriales/","hl":"No fixed date"}},"Import duties":{"Current":{"raw":"Current – implemented","txt":"Supreme Decree 5646/2026 (signed 29 Jun 2026) reduces the applicable Gravamen Arancelario (GA) by 5 percentage points across the 2026 Import Tariff Schedule (\"entire tariff universe\"). No carve-out for motorcycles is stated, so heading 8711 is covered.","date":"6 Jul 2026 – 31 Dec 2027","std":"Five-percentage-point reduction on every tier (e.g. 40%→35%, 15%→10%, 10%→5%, 5%→0%). Goods already under a decree with a temporary lower GA keep that rate until it expires, then follow this schedule. DS 5646 also sets the customs-value freight/insurance load at 10% (Art. 20 of the Customs Regulation), which affects duty base. Final motorcycle rate depends on the original 2026 AAI rate, tariff line and preferences.","scope":"Heading 8711; exact 10-digit NANDINA/national tariff line required.","auth":"Ministry of Economy and Public Finance; National Customs Authority","s1":"https://www.aduana.gob.bo/sites/default/files/archivos/circular180%20D.S.%205646.pdf","s2":"https://www.aduana.gob.bo/node/1408681","hl":"−5 pts on tariff (GA)"},"ins":"Final motorcycle rate depends on the original 2026 AAI rate, tariff line and preferences. DS 5646 also sets the customs-value freight/insurance load at 10%.","Upcoming":{"raw":"Upcoming / announced","txt":"The DS 5646 five-point reduction expires after 31 Dec 2027 unless extended. Annual AAI updates and any product-specific measures remain relevant.","date":"31 Dec 2027 expiry","std":"Revert to the then-current AAI rate unless a new measure extends or changes the reduction.","scope":"Heading 8711","auth":"Ministry of Economy and Public Finance; National Customs Authority","s1":"https://www.aduana.gob.bo/sites/default/files/archivos/circular180%20D.S.%205646.pdf","s2":"https://www.economiayfinanzas.gob.bo/aranceles-aduaneros","hl":"Reduction ends 31 Dec 2027"}}},"ev":[{"lv":"National","ty":"Announced target","tx":"Annual 10% growth in the share of EVs in the Bolivian public transportation fleet.","ca":"Bus","y":2022,"so":"Government of Bolivia"},{"lv":"National","ty":"Legislation","tx":"Tax incentives and financial incentives for the manufacturing, assembly, import, and purchase of EVs.","ca":"Manufacturing, Taxation","y":2021,"so":"Government of Bolivia"}],"watch":[["Euro IV trigger: national fuel quality","No date"],["DS 5646 tariff reduction expires","31 Dec 2027"],["Annual AAI updates","Ongoing"]]},"Brazil":{"reg":{"Emission norms":{"Current":{"raw":"Current","txt":"CONAMA Resolution 493/2019 applies PROMOT M5 to all new motorcycles and similar vehicles. It applied to new models from 1 Jan 2023 and all models from 1 Jan 2025.","date":"1 Jan 2025 for all models","std":"PROMOT M5; 1,500 mg/test evaporative limit; exhaust testing under ABNT NBR 16369:2017 or IBAMA-referenced successor standards.","scope":"NCM heading 8711","auth":"CONAMA; IBAMA","s1":"https://conama.mma.gov.br/?option=com_sisconama&task=arquivo.download&id=785","s2":"https://www.ibama.gov.br/component/legislacao/?view=legislacao&legislacao=138507","hl":"PROMOT M5"},"ins":"Near-term compliance milestone: OBD-M2 extends to all models on 1 Jan 2027 (new models since 1 Jan 2025).","Upcoming":{"raw":"Upcoming / announced","txt":"OBD-M2 becomes mandatory for all models on 1 Jan 2027 under IBAMA Normative Instruction 10/2024. It has applied to new models since 1 Jan 2025.","date":"1 Jan 2027 for all models","std":"OBD-M2 for categories L3, L4, L5-A and L7-A within PROMOT M5; ISO 15031, ISO 15765 and ISO 19689 references apply as specified.","scope":"Category L within stated subcategories","auth":"IBAMA","s1":"https://www.ibama.gov.br/component/legislacao/?view=legislacao&legislacao=139398","s2":"https://www.ibama.gov.br/component/legislacao/?view=legislacao&legislacao=138507","hl":"OBD-M2"}},"Homologation / type approval":{"Current":{"raw":"Current","txt":"Before manufacture or import, the model needs IBAMA environmental configuration approval under PROMOT M5. Road registration requires SENATRAN CAT/RENAVAM procedures; controlled imports also need the applicable IBAMA import consent.","date":"Current at 5 Nov 2026","std":"IBAMA LCM/environmental file plus SENATRAN CAT/RENAVAM submission; accredited/accepted test evidence required.","scope":"Motorcycles in NCM 8711","auth":"IBAMA; SENATRAN / Ministry of Transport","s1":"https://www.gov.br/pt-br/servicos/obter-licenca-para-o-uso-da-configuracao-de-ciclomotores-motociclos-e-similares","s2":"https://www.gov.br/transportes/pt-br/assuntos/transito/arquivos-senatran/portarias/2022/Portaria9902022.pdf","hl":"IBAMA environmental approval"},"ins":"Two-stage approval: IBAMA environmental clearance, then SENATRAN CAT/RENAVAM for road registration.","Upcoming":{"raw":"Upcoming / announced","txt":"A SENATRAN consultation on a draft CAT/RENAVAM homologation procedure is open until 22 Nov 2026. It is a proposal, not an effective rule.","date":"Consultation closes 22 Nov 2026","std":"Potential procedural update; final text and effective date pending.","scope":"Vehicle categories within CAT scope","auth":"SENATRAN / Ministry of Transport","s1":"https://brasilparticipativo.presidencia.gov.br/processes/homologacao-veiculos-concessao-renavam-emissao-cat","s2":"https://www.gov.br/transportes/pt-br","hl":"SENATRAN consultation"}},"Import duties":{"Current":{"raw":"Current","txt":"The applied import tax must be taken from the current consolidated tariff by exact 8-digit NCM. The working rate for common complete-motorcycle lines is 18%, while IPI, PIS/COFINS and ICMS are separate.","date":"Current at 5 Nov 2026","std":"18% working II rate for common lines (Mercosur TEC is 20%; Brazil applies 18% by national decision per the NCM database - Gecex Res. 272/2021 and 391/2022). IPI (35% in the line checked), PIS/COFINS and ICMS are separate. Verify exact NCM and any exception/origin preference before entry.","scope":"NCM 8711.10.00-8711.90.00","auth":"GECEX/CAMEX; Federal Revenue Service","s1":"https://www.gov.br/mdic/pt-br/assuntos/camex/se-camex/strat/tarifas/vigentes","s2":"https://www.gov.br/receitafederal/pt-br","hl":"18%"},"ins":"Do not apply electrified-car tariff announcements for heading 8703 to motorcycles. Verify the exact 8-digit NCM and any origin preference.","Upcoming":{"raw":"Upcoming / announced","txt":"No dated tariff change specific to NCM 8711 motorcycles was verified. Electrified-car tariff announcements for heading 8703 must not be applied to motorcycles.","date":"No fixed date","std":"Monitor GECEX resolutions, TEC and exception lists.","scope":"NCM 8711","auth":"GECEX/CAMEX","s1":"https://www.gov.br/mdic/pt-br/assuntos/camex/se-camex/strat/tarifas","s2":"https://www.gov.br/mdic/pt-br/assuntos/camex/se-camex/strat/tarifas/vigentes","hl":"No fixed date"}}},"ev":[{"lv":"National","ty":"Proposal","tx":"Deputies Bill No. 2156/2021 that aims to provide guidelines for the National Electric Mobility Policy.","ca":"Multiple","y":2021,"so":"Government of Brazil"},{"lv":"National","ty":"Proposal","tx":"Federal Bill PL 497/2025 proposes income-tax deductions for public or shared EV chargers","ca":"EVSE","y":2025,"so":"Government of Brazil"},{"lv":"National","ty":"Legislation","tx":"National Green Mobility and Innovation Program (\"MOVER\"), Provisional Measure 1,205/2023 establishes new guidelines for the local automotive sector, including fleet sustainability requirements and incentives for the production of new technologies. It also outlines financial incentives and support, such as, credits and fiscal incentives (up to R$ 19.3 billion in financial credits between 2024 and 2028) and a National Fund for Industrial Development.","ca":"Multiple","y":2024,"so":"Government of Brazil"},{"lv":"National","ty":"Proposal","tx":"PL 158/2025 proposes ensuring that apartment owners can install private EV chargers in their parking spaces, provided technical standards are followed.","ca":"EVSE","y":2025,"so":"Government of Brazil"},{"lv":"National","ty":"Proposal","tx":"Resolution no. 532/2023 from the Executive Committee of the Foreign Chamber of Commerce establishes the gradual return of import tax on electric, hybrid and plug-in hybrid vehicles.","ca":"Taxation","y":2023,"so":"Government of Brazil"},{"lv":"National","ty":"Proposal","tx":"Senate Bill No. 403/2022 that aims to grant exemption from Import Tax for electric and hybrid vehicles.","ca":"Taxation","y":2022,"so":"Government of Brazil"},{"lv":"Subnational","ty":"Legislation","tx":"São Paulo: The city of São Paulo has mandated that new buildings prepare and plan for the charging infrastructure required for electric vehicles.","ca":"EVSE","y":2020,"so":"The city of São Paulo"},{"lv":"National","ty":"Legislation","tx":"Mission 3 of the Nova Indústria Brasil programme. This industrial policy sets specific targets for six missions, including Mission 3, which focuses on Sustainable Mobility. The priority areas of this mission include the advancement of electromobility and the development of a national battery supply chain for electric vehicles","ca":"Manufacturing","y":2024,"so":"Government of Brazil"}],"watch":[["SENATRAN CAT/RENAVAM consultation closes","22 Nov 2026"],["OBD-M2 mandatory for all models","1 Jan 2027"],["GECEX tariff-line updates","Ongoing"]]},"Chile":{"reg":{"Emission norms":{"Current":{"raw":"Current","txt":"DS 104/2000 as amended by DS 32/2017 applies Euro III-equivalent motorcycle emission limits nationally through the homologation process.","date":"12 Mar 2019","std":"Euro III-equivalent CO, HC and NOx limits with prescribed homologation tests.","scope":"HS heading 8711","auth":"Ministry of the Environment; Ministry of Transport and Telecommunications","s1":"https://www.bcn.cl/leychile/navegar?idNorma=1116017","s2":"https://www.bcn.cl/leychile/navegar?i=175406","hl":"Euro III-equivalent"},"ins":"Limits are applied nationally through the homologation process. No binding Euro 4/5-equivalent date was verified.","Upcoming":{"raw":"Upcoming / announced","txt":"No binding Euro 4/5-equivalent motorcycle implementation date was verified. A noise-standard review is a monitoring item, not an emission-stage mandate.","date":"No fixed date","std":"Monitor amendments to DS 104/2000 and the separate vehicle-noise review.","scope":"Motorcycles","auth":"Ministry of the Environment; MTT","s1":"https://www.bcn.cl/leychile/navegar?i=175406","s2":"https://www.bcn.cl/leychile/","hl":"No fixed date"}},"Homologation / type approval":{"Current":{"raw":"Current","txt":"Manufacturers, assemblers and importers submit a representative motorcycle and technical dossier to 3CV. 3CV verifies emissions and physical/safety characteristics; authorized suppliers issue CHI-e for each unit. The ABS/CBS phase-in under Decree 34 has completed its maximum transition window by Feb 2026.","date":"ABS/CBS final phase Feb 2026","std":"3CV model approval plus CHI-e per unit; ABS required above 150 cc, ABS or CBS for >50 to 150 cc; specified electric bands; exclusions include under 50 cc, under 4 kW electric, enduro and trial.","scope":"Motorcycles; related HS 8711","auth":"MTT Undersecretariat of Transport; 3CV","s1":"https://www.chileatiende.gob.cl/fichas/22359-homologacion-de-motocicletas-nuevas-sin-uso","s2":"https://www.subtrans.gob.cl/mtt-decreta-obligacion-de-frenos-abs-en-motos-exigencia-rige-de-inmediato-para-nuevos-modelos-de-500-cc-o-mayor-cilindrada/","hl":"3CV approval + CHI-e"},"ins":"3CV approves the model, then an authorised supplier issues a CHI-e for each unit. The ABS/CBS phase-in is complete.","Upcoming":{"raw":"Upcoming / announced","txt":"No later fixed-date ordinary motorcycle type-approval change was verified after completion of the ABS/CBS phase-in.","date":"No fixed date","std":"Monitor 3CV circulars and amendments to the homologation and safety decrees.","scope":"Motorcycles","auth":"MTT / 3CV","s1":"https://www.subtrans.gob.cl/3cv/homologacion-de-vehiculos-livianos-medianos-y-motocicletas/","s2":"https://www.chileatiende.gob.cl/fichas/22359-homologacion-de-motocicletas-nuevas-sin-uso","hl":"No fixed date"}},"Import duties":{"Current":{"raw":"Current","txt":"The general MFN customs duty is 6% ad valorem; a qualifying free-trade agreement may reduce it, often to 0%, when origin rules are met. IVA is separate.","date":"Current at 5 Nov 2026","std":"6% general duty; preferential treatment depends on origin and agreement. Confirm the current tariff line and origin documentation.","scope":"HS 8711.10-8711.90","auth":"National Customs Service","s1":"https://www.aduana.cl/arancel-aduanero-vigente/aduana/2016-12-30/090118.html","s2":"https://www.aduana.cl/aduana/site/edic/base/port/inicio.html","hl":"6%"},"ins":"6% is the general MFN rate. A qualifying free-trade agreement can reduce it, often to 0%. IVA is separate.","Upcoming":{"raw":"Upcoming / announced","txt":"No scheduled change specific to heading 8711 was verified.","date":"No fixed date","std":"Monitor tariff amendments and trade agreements.","scope":"HS 8711","auth":"National Customs Service","s1":"https://www.aduana.cl/arancel-aduanero-vigente/aduana/2016-12-30/090118.html","s2":"https://www.aduana.cl/aduana/site/edic/base/port/inicio.html","hl":"No fixed date"}}},"ev":[{"lv":"National","ty":"Announced target","tx":"100% of sales of heavy mobile machinery will be zero-emissions by 2035, 100% of sales of all mobile machinery (heavy and light) by 2040.","ca":"M/HDV","y":2021,"so":"Government of Chile"},{"lv":"National","ty":"Announced target","tx":"100% of sales of M/HDVs will be zero-emissions by 2045.","ca":"M/HDV","y":2021,"so":"Government of Chile"},{"lv":"National","ty":"Announced target","tx":"100% of sales of public transport vehicles will be zero-emissions by 2035.","ca":"Bus","y":2021,"so":"Government of Chile"},{"lv":"National","ty":"Announced target","tx":"100% of the public transport fleet (buses + taxis) will be zero-emissions by 2040, ensuring the necessary infrastructure is in place to achieve this.","ca":"Bus","y":2022,"so":"Government of Chile"},{"lv":"National","ty":"Announced target","tx":"60% of the vehicle fleet to be ZEVs by 2050.","ca":"Bus","y":2022,"so":"Government of Chile"},{"lv":"National","ty":"Legislation","tx":"Accelerated tax depreciation of electric, hybrid, and zero emissions vehicles.","ca":"Taxation","y":2021,"so":"Government of Chile"},{"lv":"National","ty":"Legislation","tx":"Energy efficiency law which promotes the importation of BEVs and PHEVs. Entered into force in 2024, requiring fleet average efficiency of 5.3Lge/100km for the period 2024-26. 2027–2029: An improvement to 22.8 km/lge. 2030: A further increase to 28.9 km/lge.","ca":"LDV","y":2021,"so":"Government of Chile"},{"lv":"National","ty":"Legislation","tx":"Light-duty vehicles are set to increase the fuel economy per litre of gasoline equivalent (lge) from a baseline in 2020 of 14.9 km/lge to 18.8 km/lge from 2024 to 2026, increasing to 22.8 km/lge from 2027 to 2029, and to 28.9 km/lge in 2030.","ca":"LDV","y":2024,"so":"Government of Chile"},{"lv":"National","ty":"Proposal","tx":"National public charging infrastructure plan targeting charging stations along interurban routes at most every 100km apart.","ca":"EVSE","y":2023,"so":"Government of Chile"},{"lv":"National","ty":"Objective","tx":"Roadmap for promoting electromobility including near-term actions on charging, public transport, awareness and regulation.","ca":"Multiple","y":2023,"so":"Government of Chile"},{"lv":"Multi-national","ty":"Objective","tx":"Signatory of the Memorandum of Understanding (MOU) on Zero-Emission Medium- and Heavy- Duty Vehicles, which targets 30% ZEV sales in M/HDVs by 2030, 100% by 2040.","ca":"M/HDV","y":2021,"so":"CALSTART: Drive to Zero MOU"},{"lv":"Multi-national","ty":"Objective","tx":"Signatory to COP26 ZEV Declaration to work towards all sales of new cars and vans being zero emission by no later than 2035 in leading markets.","ca":"LDV","y":2022,"so":"Accelerating to Zero Coalition"},{"lv":"National","ty":"Legislation","tx":"Tax reductions for EVs during the first 8 years after car registration (increasing gradually from 0% tax to 100%).","ca":"Taxation","y":2022,"so":"Government of Chile"},{"lv":"National","ty":"Legislation","tx":"The 2023 bidding process (and subsequent 2025 tenders) now jointly awards operation and fleet provision, with a mandatory requirement for 100% of new vehicles to be electric.","ca":"Bus","y":2023,"so":"CALSTART: Drive to Zero MOU"}],"watch":[["Amendments to DS 104/2000 and noise-standard review","No date"],["3CV circulars and safety decrees","Ongoing"],["Tariff amendments and trade agreements","Ongoing"]]},"Colombia":{"reg":{"Emission norms":{"Current":{"raw":"Current","txt":"Under Law 1972/2019 (Art. 6), all motorcycles manufactured, assembled or imported for use in Colombia must meet Euro 3-equivalent (or higher) limits from 1 Jan 2021. Resolution 762/2022 sets dynamic-test limits (Art. 13), idle limits (Art. 31) and governs the CEPD certification process for new road vehicles.","date":"1 Jan 2021","std":"Euro 3-equivalent plus CEPD supported by prototype dynamic-test report and manufacturer/certification documents.","scope":"Heading 8711","auth":"Ministry of Environment and Sustainable Development; ANLA","s1":"https://www.minambiente.gov.co/wp-content/uploads/2022/09/Resolucion-762-de-2022.pdf","s2":"https://www.anla.gov.co/01_anla/index.php/visto-bueno-importacion-vehiculos/requisitos-previos-vbivm","hl":"Euro 3-equivalent"},"ins":"Euro 3-equivalent has applied since 1 Jan 2021. No Euro 4/5 date for motorcycles was identified; 2026 resolutions amend the procedure.","Upcoming":{"raw":"Upcoming – procedural amendments enacted; effective 31-Dec-2026","txt":"Resolution 683/2026 amended Resolution 762/2022 (including its Art. 2 and Annex 1); Resolution 1015 of 11 Aug 2026 further amends Art. 2 and Annex 1 as modified by Res. 683/2026. No new Euro 4/Euro 5 date for motorcycles was identified; Law 1972/2019 (Art. 6) remains the Euro 3 baseline. Confirm the full change list (scope, definitions, exceptions, CEPD procedure) in the resolution texts.","date":"31 Dec 2026 (to be verified)","std":"New motorcycles manufactured, assembled or imported for use in Colombia must meet Euro III, equivalent or higher. Updated emissions certification and procedural requirements apply under the amended framework.","scope":"Motorcycles, three-wheelers, quadricycles and other covered mobile sources; motorcycle emission limits are specifically addressed in Articles 13 and 31 of Resolution 762/2022.","auth":"Ministry of Environment and Sustainable Development; ANLA; Ministry of Transport","s1":"https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minambienteds_0762_2022.htm","s2":"https://cancilleria.gov.co/normograma/compilacion/docs/ley_1972_2019.htm","hl":"2026 procedural amendments"}},"Homologation / type approval":{"Current":{"raw":"Current","txt":"Imported motorcycles require ANLA CEPD and the related VUCE environmental approval, plus applicable product-safety technical regulations and RUNT/registration documentation. These are separate controls rather than one EU-style whole-vehicle certificate.","date":"Current at 5 Nov 2026","std":"CEPD application and dynamic-test evidence; ANLA/VUCE approval; applicable conformity and registration documents.","scope":"Heading 8711","auth":"ANLA; Ministry of Transport; competent conformity bodies","s1":"https://www.anla.gov.co/01_anla/allcategories-es-es/236-tramites-y-servicios/tramites/vistos-buenos/importacion-vehiculos?start=6","s2":"https://mintransporte.gov.co/publicaciones/11656/grupo-homologaciones-y-avaluos/","hl":"ANLA CEPD + VUCE"},"ins":"CEPD, ANLA/VUCE approval and registration documents are separate controls, not one EU-style whole-vehicle certificate.","Upcoming":{"raw":"Upcoming / announced","txt":"The Ministry of Transport postponed seven vehicle/motorcycle technical regulations by one year. New dates fall between Aug and Oct 2027, with some requirements phased to 2028-2030. Motorcycle tire and braking regulations are included; current rules remain in force during the transition.","date":"Aug–Oct 2027","std":"Postponed package includes motorcycle tires and motorcycle braking, alongside five other vehicle/component regulations. Final model-specific date must be read from the postponement resolution.","scope":"Motorcycles and covered components","auth":"Ministry of Transport; ANSV","s1":"https://mintransporte.gov.co/publicaciones/12378/mintransporte-posterga-por-un-ano-la-entrada-en-vigencia-de-siete-reglamentos-tecnicos-vehiculares-para-fortalecer-su-implementacion/","s2":"https://mintransporte.gov.co/","hl":"Technical regulations postponed"}},"Import duties":{"Current":{"raw":"Current","txt":"Decree 1432/2025 raised the MFN tariff to 35% for five combustion-motorcycle subheadings in 8711, effective 15 calendar days after publication. Preferential trade agreements may still apply. Electric motorcycles are outside this decree and require separate DIAN line confirmation.","date":"10 Jan 2026","std":"35% MFN for combustion motorcycles in 8711.10-8711.50; exact origin preference and electric rate must be checked in DIAN.","scope":"8711.10.00.00-8711.50.00.00; electric 8711.60 excluded from this decree","auth":"Ministry of Commerce, Industry and Tourism; DIAN","s1":"https://dapre.presidencia.gov.co/normativa/normativa/DECRETO%201432%20DEL%2024%20DE%20DICIEMBRE%20DE%202025.pdf","s2":"https://muisca.dian.gov.co/WebArancel/DefConsultaNomenclaturaPorCodigo.faces","hl":"35%"},"ins":"Electric motorcycles (8711.60) sit outside Decree 1432/2025 and need separate DIAN line confirmation. Decree 1131/2026 is not a general CBU change.","Upcoming":{"raw":"Upcoming / announced","txt":"No later fixed-date general CBU motorcycle duty change was verified. Decree 1131/2026 concerns the domestic assembly/local-integration regime and should not be presented as a general CBU tariff change.","date":"No fixed date","std":"Monitor DIAN and MinCIT tariff decrees by exact subheading and origin.","scope":"Heading 8711","auth":"MinCIT; DIAN","s1":"https://normograma.dian.gov.co/dian//compilacion/docs/decreto_1131_2026.htm","s2":"https://muisca.dian.gov.co/WebArancel/DefConsultaNomenclaturaPorCodigo.faces","hl":"No fixed date"}}},"ev":[{"lv":"National","ty":"Announced target","tx":"1 000 heavy-duty fuel cell vehicles by 2030.","ca":"M/HDV","y":2021,"so":"Government of Colombia"},{"lv":"National","ty":"Announced target","tx":"1 500 light-duty fuel cell vehicles by 2030.","ca":"LDV","y":2021,"so":"Government of Colombia"},{"lv":"National","ty":"Announced target","tx":"1 GW of electrolysis capacity; 40% of low-carbon hydrogen in industrial sector.","ca":"Manufacturing","y":2021,"so":"Government of Colombia"},{"lv":"National","ty":"Announced target","tx":"600 000 EV stock (i.e. registrations) across all modes by 2030.","ca":"Multiple","y":2019,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"A national minimum share of 30% EVs for new public buses purchased or rented by 2025, while city bus fleets must ensure that 10% of new buses are EVs in 2025, rising every two years up to 100% by 2035.","ca":"Bus","y":2019,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Announcement of the creation of the Technological Advancement Fund. In its first year of operation, backed by COP 12 billion (Colombian pesos), it will cover the price difference between a petrol vehicle (COP 80 million), and a zero-emission vehicle (~COP 110 million).","ca":"LDV","y":2024,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Interoperability for charging infrastructure.","ca":"Multiple","y":2021,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Law 1964 of 2019: maximum tax of 1% for EVs.","ca":"Taxation","y":2019,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Law 1972 of 2019: 100% Compliance with Euro-VI equivalent standards for all HDVs in circulation by 2035.","ca":"M/HDV","y":2019,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Minimum EV charging infrastructure requirements specify a minimum of 5 charging stations in all Special Category municipalities and 20 stations by 2022 in Bogotá.","ca":"EVSE","y":2019,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Minimum EV purchase quota of 30% for public service fleets by 2025.","ca":"Bus","y":2019,"so":"Government of Colombia"},{"lv":"Multi-national","ty":"Objective","tx":"Signatory of the Memorandum of Understanding (MOU) on Zero-Emission Medium- and Heavy- Duty Vehicles, which targets 30% ZEV sales in M/HDVs by 2030, 100% by 2040.","ca":"M/HDV","y":2023,"so":"CALSTART: Drive to Zero MOU"},{"lv":"Multi-national","ty":"Objective","tx":"Signatory to COP26 ZEV Declaration, committing to work towards all sales of new cars and vans being zero emission by no later than 2035 in leading markets.","ca":"LDV","y":2024,"so":"Accelerating to Zero Coalition"},{"lv":"National","ty":"Legislation","tx":"The Colombian government has allocated COP 12 billion (approximately USD 3 million) to subsidise the purchase of electric taxis and the installation of home charging stations for drivers during Q4 2025. This initiative aims to reduce operational costs for taxi drivers by up to 43% while working toward a long-term national goal of 54 000 electric taxis by 2036.","ca":"LDV","y":2025,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Regulates the circulation and promotes the use of light electric personal mobility vehicles and establishes a legal framework for their integration into the transport system.","ca":"Multiple","y":2025,"so":"Government of Colombia"},{"lv":"National","ty":"Legislation","tx":"Provides tax incentives for EVs, including an income tax deduction of up to 50% of the investment value for up to 15 years, and VAT exemptions for equipment, machinery, and services required for EV projects.","ca":"Taxation, Multiple","y":2025,"so":"Government of Colombia"}],"watch":[["Resolutions 683/2026 and 1015/2026 amend Res. 762/2022","31 Dec 2026 (verify)"],["Seven technical regulations postponed","Aug–Oct 2027"],["DIAN / MinCIT tariff decrees","Ongoing"]]}};
