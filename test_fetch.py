@@ -6,6 +6,8 @@ from psycopg2.extras import execute_values
 from db_connect import get_connection
 from fetchers import get_countries
 from pprint import pprint
+import pandas as pd
+
 ind_code = "EXCHANGE_RATE"
 # Indicator code for exchange rates
 # API key for the ExchangeRate API is stored in an environment variable.
@@ -23,9 +25,11 @@ def fetch_rates():
     resp = requests.get(url, timeout=30)
     resp.raise_for_status()
     data = resp.json()
+    df = pd.DataFrame(data["conversion_rates"].items(), columns=["currency", "rate"])
+
     if data.get("result") != "success":
         raise RuntimeError(f"API call failed: {data}")
-    return data["conversion_rates"]
+    return df.to_csv(rf"C:\Users\91931\2w_dashboard\exchange_rates.csv", index=False)
     # returns dictionary with currency code as key and ex rate as value
     # Eg: {"USD": 1, "INR": 83.1, "EUR": 0.92, ...}
     
