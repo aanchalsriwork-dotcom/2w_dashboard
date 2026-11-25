@@ -9,6 +9,7 @@ def config_details(user_input):
         
         return response["message"]["content"]
 
+conversation = []
 def ai_response():
     
     while True:
@@ -19,7 +20,10 @@ def ai_response():
         
         else:
             response = config_details(user_input)
+            memory_dict = {"user_input": user_input, "response": response}
+            conversation.append(memory_dict)
             print(response)
+            print(conversation )
 
 
 print(ai_response())
