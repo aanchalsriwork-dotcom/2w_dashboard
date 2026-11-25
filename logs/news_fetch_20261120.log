@@ -1,0 +1,2237 @@
+
+===== Run started 2026-11-20 12:40:20 =====
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+Translation self-test OK (NLLB-200 (offline)): 'motocicleta nueva' -> 'new motorcycle'
+86 countries | about 1941 searches | 3 workers | ~27 min (without translation)
+[Malaysia] Modenas            | "Modenas" (motorcycle OR motorbike) Malaysia
+[Philippines] Rusi               | "Rusi" (motorcycle OR motorbike) Philippines
+[Thailand] GPX                | "GPX" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Thailand] Honda              | "Honda" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Motorstar          | "Motorstar" (motorcycle OR motorbike) Philippines
+[Malaysia] Honda              | "Honda" (motorcycle OR motorbike) Malaysia
+[Thailand] Yamaha             | "Yamaha" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Skygo              | "Skygo" (motorcycle OR motorbike) Philippines
+[Malaysia] Yamaha             | "Yamaha" (motorcycle OR motorbike) Malaysia
+[Thailand] Suzuki             | "Suzuki" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Honda              | "Honda" (motorcycle OR motorbike) Philippines
+[Malaysia] Suzuki             | "Suzuki" (motorcycle OR motorbike) Malaysia
+[Thailand] Kawasaki           | "Kawasaki" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Yamaha             | "Yamaha" (motorcycle OR motorbike) Philippines
+[Malaysia] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Malaysia
+[Thailand] Vespa              | "Vespa" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Suzuki             | "Suzuki" (motorcycle OR motorbike) Philippines
+[Malaysia] Vespa              | "Vespa" (motorcycle OR motorbike) Malaysia
+[Thailand] Piaggio            | "Piaggio" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Philippines
+[Malaysia] Piaggio            | "Piaggio" (motorcycle OR motorbike) Malaysia
+[Thailand] SYM                | "SYM" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+   ! HTTP 429 for '"Piaggio" (motorcycle OR motorbike) Malaysia' (try 1)
+[Thailand] Kymco              | "Kymco" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Vespa              | "Vespa" (motorcycle OR motorbike) Philippines
+[Thailand] Benelli            | "Benelli" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Piaggio            | "Piaggio" (motorcycle OR motorbike) Philippines
+[Malaysia] SYM                | "SYM" (motorcycle OR motorbike) Malaysia
+[Thailand] CFMoto             | "CFMoto" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] SYM                | "SYM" (motorcycle OR motorbike) Philippines
+[Malaysia] Kymco              | "Kymco" (motorcycle OR motorbike) Malaysia
+[Thailand] Royal Enfield      | "Royal Enfield" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Kymco              | "Kymco" (motorcycle OR motorbike) Philippines
+   ! HTTP 429 for '"Kymco" (motorcycle OR motorbike) Philippines' (try 1)
+[Malaysia] Benelli            | "Benelli" (motorcycle OR motorbike) Malaysia
+[Thailand] VinFast            | "VinFast" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Malaysia] CFMoto             | "CFMoto" (motorcycle OR motorbike) Malaysia
+[Thailand] Yadea              | "Yadea" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+   ! HTTP 429 for '"CFMoto" (motorcycle OR motorbike) Malaysia' (try 1)
+[Philippines] Benelli            | "Benelli" (motorcycle OR motorbike) Philippines
+[Thailand] TVS                | "TVS" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Thailand] KTM                | "KTM" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] CFMoto             | "CFMoto" (motorcycle OR motorbike) Philippines
+   ! HTTP 429 for '"KTM" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย' (try 1)
+[Malaysia] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Malaysia
+[Philippines] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Philippines
+[Malaysia] VinFast            | "VinFast" (motorcycle OR motorbike) Malaysia
+   ! HTTP 429 for '"VinFast" (motorcycle OR motorbike) Malaysia' (try 1)
+[Philippines] VinFast            | "VinFast" (motorcycle OR motorbike) Philippines
+[Thailand] Harley-Davidson    | "Harley-Davidson" (มอเตอร์ไซค์ OR รถจักรยานยนต์) ประเทศไทย
+[Philippines] Yadea              | "Yadea" (motorcycle OR motorbike) Philippines
+[Thailand] General / Market   | มอเตอร์ไซค์ ประเทศไทย
+[Malaysia] Yadea              | "Yadea" (motorcycle OR motorbike) Malaysia
+[Philippines] TVS                | "TVS" (motorcycle OR motorbike) Philippines
+[Thailand] General / Market   | ยอดขายมอเตอร์ไซค์ ประเทศไทย
+[Malaysia] TVS                | "TVS" (motorcycle OR motorbike) Malaysia
+[Philippines] KTM                | "KTM" (motorcycle OR motorbike) Philippines
+[Thailand] General / Market   | มอเตอร์ไซค์ใหม่ ประเทศไทย
+[Malaysia] KTM                | "KTM" (motorcycle OR motorbike) Malaysia
+[Philippines] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Philippines
+[Thailand] General / Market   | มอเตอร์ไซค์ไฟฟ้า ประเทศไทย
+[Malaysia] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Malaysia
+[Philippines] General / Market   | motorcycle launch Philippines
+[Thailand] General / Market   | ราคามอเตอร์ไซค์ ประเทศไทย
+[Malaysia] General / Market   | motorcycle launch Malaysia
+[Philippines] General / Market   | motorcycle sales Philippines
+[Malaysia] General / Market   | motorcycle sales Malaysia
+[Thailand] translating 98 headlines to English ...
+[Philippines] General / Market   | motorcycle prices Philippines
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Malaysia] General / Market   | motorcycle prices Malaysia
+[Philippines] General / Market   | electric motorcycle Philippines
+[Malaysia] General / Market   | electric motorcycle Malaysia
+[Philippines] General / Market   | motorcycle factory production Philippines
+[Malaysia] General / Market   | motorcycle factory production Malaysia
+[Philippines] General / Market   | motorcycle dealership new showroom Philippines
+   ! HTTP 429 for 'motorcycle dealership new showroom Philippines' (try 1)
+[Malaysia] General / Market   | motorcycle dealership new showroom Malaysia
+[Malaysia] translating 72 headlines to English ...
+[Malaysia] done: seen 792, kept 72, failed searches 0
+[Vietnam] Dat Bike           | "Dat Bike" ("xe máy" OR "mô tô") Việt Nam
+[Philippines] translating 84 headlines to English ...
+[Philippines] done: seen 750, kept 84, failed searches 0
+[Indonesia] Viar               | "Viar" (motor OR "sepeda motor") Indonesia
+[Vietnam] Honda              | "Honda" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Polytron           | "Polytron" (motor OR "sepeda motor") Indonesia
+[Vietnam] Yamaha             | "Yamaha" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Honda              | "Honda" (motor OR "sepeda motor") Indonesia
+[Vietnam] Suzuki             | "Suzuki" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Yamaha             | "Yamaha" (motor OR "sepeda motor") Indonesia
+[Vietnam] Kawasaki           | "Kawasaki" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Suzuki             | "Suzuki" (motor OR "sepeda motor") Indonesia
+[Vietnam] Vespa              | "Vespa" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Kawasaki           | "Kawasaki" (motor OR "sepeda motor") Indonesia
+[Vietnam] Piaggio            | "Piaggio" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Vespa              | "Vespa" (motor OR "sepeda motor") Indonesia
+[Vietnam] SYM                | "SYM" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Piaggio            | "Piaggio" (motor OR "sepeda motor") Indonesia
+[Vietnam] Kymco              | "Kymco" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] SYM                | "SYM" (motor OR "sepeda motor") Indonesia
+[Vietnam] Benelli            | "Benelli" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Kymco              | "Kymco" (motor OR "sepeda motor") Indonesia
+[Thailand] done: seen 899, kept 98, failed searches 0
+[Cambodia] Honda              | "Honda" (motorcycle OR motorbike) Cambodia
+[Vietnam] CFMoto             | "CFMoto" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Benelli            | "Benelli" (motor OR "sepeda motor") Indonesia
+[Cambodia] Yamaha             | "Yamaha" (motorcycle OR motorbike) Cambodia
+[Vietnam] Royal Enfield      | "Royal Enfield" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] CFMoto             | "CFMoto" (motor OR "sepeda motor") Indonesia
+[Cambodia] Suzuki             | "Suzuki" (motorcycle OR motorbike) Cambodia
+[Vietnam] VinFast            | "VinFast" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] Royal Enfield      | "Royal Enfield" (motor OR "sepeda motor") Indonesia
+[Cambodia] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Cambodia
+[Vietnam] Yadea              | "Yadea" ("xe máy" OR "mô tô") Việt Nam
+[Indonesia] VinFast            | "VinFast" (motor OR "sepeda motor") Indonesia
+[Vietnam] TVS                | "TVS" ("xe máy" OR "mô tô") Việt Nam
+[Cambodia] Vespa              | "Vespa" (motorcycle OR motorbike) Cambodia
+[Indonesia] Yadea              | "Yadea" (motor OR "sepeda motor") Indonesia
+[Vietnam] KTM                | "KTM" ("xe máy" OR "mô tô") Việt Nam
+[Cambodia] Piaggio            | "Piaggio" (motorcycle OR motorbike) Cambodia
+[Indonesia] TVS                | "TVS" (motor OR "sepeda motor") Indonesia
+[Vietnam] Harley-Davidson    | "Harley-Davidson" ("xe máy" OR "mô tô") Việt Nam
+[Cambodia] SYM                | "SYM" (motorcycle OR motorbike) Cambodia
+[Indonesia] KTM                | "KTM" (motor OR "sepeda motor") Indonesia
+   ! HTTP 429 for '"KTM" (motor OR "sepeda motor") Indonesia' (try 1)
+[Vietnam] General / Market   | xe máy Việt Nam
+[Cambodia] Kymco              | "Kymco" (motorcycle OR motorbike) Cambodia
+[Cambodia] Benelli            | "Benelli" (motorcycle OR motorbike) Cambodia
+[Vietnam] General / Market   | doanh số xe máy Việt Nam
+[Indonesia] Harley-Davidson    | "Harley-Davidson" (motor OR "sepeda motor") Indonesia
+[Cambodia] CFMoto             | "CFMoto" (motorcycle OR motorbike) Cambodia
+[Vietnam] General / Market   | xe máy mới ra mắt Việt Nam
+[Cambodia] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Cambodia
+[Indonesia] General / Market   | sepeda motor Indonesia
+[Vietnam] General / Market   | xe máy điện Việt Nam
+[Cambodia] VinFast            | "VinFast" (motorcycle OR motorbike) Cambodia
+[Indonesia] General / Market   | penjualan sepeda motor Indonesia
+[Vietnam] General / Market   | giá xe máy Việt Nam
+[Cambodia] Yadea              | "Yadea" (motorcycle OR motorbike) Cambodia
+[Indonesia] General / Market   | motor baru Indonesia
+[Vietnam] General / Market   | nhà máy xe máy Việt Nam
+[Cambodia] TVS                | "TVS" (motorcycle OR motorbike) Cambodia
+[Indonesia] General / Market   | motor listrik Indonesia
+[Cambodia] KTM                | "KTM" (motorcycle OR motorbike) Cambodia
+[Indonesia] General / Market   | harga motor Indonesia
+[Indonesia] General / Market   | pabrik motor Indonesia
+[Cambodia] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Cambodia
+[Cambodia] General / Market   | motorcycle launch Cambodia
+   ! HTTP 429 for 'motorcycle launch Cambodia' (try 1)
+[Cambodia] General / Market   | motorcycle sales Cambodia
+[Cambodia] General / Market   | motorcycle prices Cambodia
+[Cambodia] General / Market   | electric motorcycle Cambodia
+[Cambodia] General / Market   | motorcycle factory production Cambodia
+[Cambodia] General / Market   | motorcycle dealership new showroom Cambodia
+[Cambodia] translating 20 headlines to English ...
+[Cambodia] done: seen 355, kept 20, failed searches 0
+[Myanmar] Honda              | "Honda" (motorcycle OR motorbike) Myanmar
+[Indonesia] translating 267 headlines to English ...
+[Myanmar] Yamaha             | "Yamaha" (motorcycle OR motorbike) Myanmar
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Myanmar] Suzuki             | "Suzuki" (motorcycle OR motorbike) Myanmar
+[Myanmar] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Myanmar
+[Myanmar] Vespa              | "Vespa" (motorcycle OR motorbike) Myanmar[Vietnam] translating 337 headlines to English ...
+
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Myanmar] Piaggio            | "Piaggio" (motorcycle OR motorbike) Myanmar
+[Myanmar] SYM                | "SYM" (motorcycle OR motorbike) Myanmar
+[Myanmar] Kymco              | "Kymco" (motorcycle OR motorbike) Myanmar
+[Myanmar] Benelli            | "Benelli" (motorcycle OR motorbike) Myanmar
+[Myanmar] CFMoto             | "CFMoto" (motorcycle OR motorbike) Myanmar
+[Myanmar] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Myanmar
+[Myanmar] VinFast            | "VinFast" (motorcycle OR motorbike) Myanmar
+[Myanmar] Yadea              | "Yadea" (motorcycle OR motorbike) Myanmar
+[Myanmar] TVS                | "TVS" (motorcycle OR motorbike) Myanmar
+[Myanmar] KTM                | "KTM" (motorcycle OR motorbike) Myanmar
+[Myanmar] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Myanmar
+[Myanmar] General / Market   | motorcycle launch Myanmar
+[Myanmar] General / Market   | motorcycle sales Myanmar
+[Myanmar] General / Market   | motorcycle prices Myanmar
+[Myanmar] General / Market   | electric motorcycle Myanmar
+[Myanmar] General / Market   | motorcycle factory production Myanmar
+[Myanmar] General / Market   | motorcycle dealership new showroom Myanmar
+[Myanmar] translating 34 headlines to English ...
+[Myanmar] done: seen 287, kept 34, failed searches 0
+[Singapore] Honda              | "Honda" (motorcycle OR motorbike) Singapore
+[Singapore] Yamaha             | "Yamaha" (motorcycle OR motorbike) Singapore
+[Singapore] Suzuki             | "Suzuki" (motorcycle OR motorbike) Singapore
+[Singapore] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Singapore
+[Singapore] Vespa              | "Vespa" (motorcycle OR motorbike) Singapore
+[Singapore] Piaggio            | "Piaggio" (motorcycle OR motorbike) Singapore
+[Singapore] SYM                | "SYM" (motorcycle OR motorbike) Singapore
+[Singapore] Kymco              | "Kymco" (motorcycle OR motorbike) Singapore
+[Singapore] Benelli            | "Benelli" (motorcycle OR motorbike) Singapore
+[Singapore] CFMoto             | "CFMoto" (motorcycle OR motorbike) Singapore
+   ! HTTP 429 for '"CFMoto" (motorcycle OR motorbike) Singapore' (try 1)
+[Singapore] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Singapore
+[Singapore] VinFast            | "VinFast" (motorcycle OR motorbike) Singapore
+[Singapore] Yadea              | "Yadea" (motorcycle OR motorbike) Singapore
+[Singapore] TVS                | "TVS" (motorcycle OR motorbike) Singapore
+[Singapore] KTM                | "KTM" (motorcycle OR motorbike) Singapore
+[Singapore] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Singapore
+[Singapore] General / Market   | motorcycle launch Singapore
+[Singapore] General / Market   | motorcycle sales Singapore
+[Singapore] General / Market   | motorcycle prices Singapore
+[Singapore] General / Market   | electric motorcycle Singapore
+[Singapore] General / Market   | motorcycle factory production Singapore
+[Singapore] General / Market   | motorcycle dealership new showroom Singapore
+[Singapore] translating 31 headlines to English ...
+[Singapore] done: seen 520, kept 31, failed searches 0
+[Australia] Honda              | "Honda" (motorcycle OR motorbike) Australia
+[Australia] Yamaha             | "Yamaha" (motorcycle OR motorbike) Australia
+[Australia] Suzuki             | "Suzuki" (motorcycle OR motorbike) Australia
+[Australia] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Australia
+[Australia] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Australia
+[Australia] TVS                | "TVS" (motorcycle OR motorbike) Australia
+[Australia] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Australia
+   ! HTTP 429 for '"Hero MotoCorp" (motorcycle OR motorbike) Australia' (try 1)
+[Australia] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Australia
+[Australia] KTM                | "KTM" (motorcycle OR motorbike) Australia
+[Australia] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Australia
+[Australia] Triumph            | "Triumph" (motorcycle OR motorbike) Australia
+[Indonesia] done: seen 1734, kept 267, failed searches 0
+[New Zealand] Honda              | "Honda" (motorcycle OR motorbike) New Zealand
+[New Zealand] Yamaha             | "Yamaha" (motorcycle OR motorbike) New Zealand
+[Australia] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) Australia
+[New Zealand] Suzuki             | "Suzuki" (motorcycle OR motorbike) New Zealand
+[Australia] Ducati             | "Ducati" (motorcycle OR motorbike) Australia
+[New Zealand] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) New Zealand
+[Australia] Vespa              | "Vespa" (motorcycle OR motorbike) Australia
+[New Zealand] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) New Zealand
+[Australia] Yadea              | "Yadea" (motorcycle OR motorbike) Australia
+[New Zealand] TVS                | "TVS" (motorcycle OR motorbike) New Zealand
+[Australia] CFMoto             | "CFMoto" (motorcycle OR motorbike) Australia
+[New Zealand] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) New Zealand
+[Australia] General / Market   | motorcycle launch Australia
+[New Zealand] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) New Zealand
+[Australia] General / Market   | motorcycle sales Australia
+[New Zealand] KTM                | "KTM" (motorcycle OR motorbike) New Zealand
+[Australia] General / Market   | motorcycle prices Australia
+[Vietnam] done: seen 1556, kept 337, failed searches 0
+[Bangladesh] Runner             | "Runner" (motorcycle OR motorbike) Bangladesh
+[New Zealand] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) New Zealand
+[Australia] General / Market   | electric motorcycle Australia
+[Bangladesh] Walton             | "Walton" (motorcycle OR motorbike) Bangladesh
+[New Zealand] Triumph            | "Triumph" (motorcycle OR motorbike) New Zealand
+[Australia] General / Market   | motorcycle factory production Australia
+   ! HTTP 429 for '"Triumph" (motorcycle OR motorbike) New Zealand' (try 1)
+[Bangladesh] Honda              | "Honda" (motorcycle OR motorbike) Bangladesh
+[Australia] General / Market   | motorcycle dealership new showroom Australia
+[Bangladesh] Yamaha             | "Yamaha" (motorcycle OR motorbike) Bangladesh
+[New Zealand] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) New Zealand
+[Bangladesh] Suzuki             | "Suzuki" (motorcycle OR motorbike) Bangladesh
+[Australia] translating 91 headlines to English ...
+[Australia] done: seen 868, kept 91, failed searches 0
+[Nepal] Yatri              | "Yatri" (motorcycle OR motorbike) Nepal
+[New Zealand] Ducati             | "Ducati" (motorcycle OR motorbike) New Zealand
+[Nepal] Honda              | "Honda" (motorcycle OR motorbike) Nepal
+[Bangladesh] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Bangladesh
+[New Zealand] Vespa              | "Vespa" (motorcycle OR motorbike) New Zealand
+[Bangladesh] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Bangladesh
+[Nepal] Yamaha             | "Yamaha" (motorcycle OR motorbike) Nepal
+[New Zealand] Yadea              | "Yadea" (motorcycle OR motorbike) New Zealand
+[Nepal] Suzuki             | "Suzuki" (motorcycle OR motorbike) Nepal
+[Bangladesh] TVS                | "TVS" (motorcycle OR motorbike) Bangladesh
+[New Zealand] CFMoto             | "CFMoto" (motorcycle OR motorbike) New Zealand
+[Nepal] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Nepal
+[Bangladesh] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Bangladesh
+[New Zealand] General / Market   | motorcycle launch New Zealand
+[Nepal] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Nepal
+[Bangladesh] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Bangladesh
+[New Zealand] General / Market   | motorcycle sales New Zealand
+[Nepal] TVS                | "TVS" (motorcycle OR motorbike) Nepal
+[Bangladesh] KTM                | "KTM" (motorcycle OR motorbike) Bangladesh
+[Bangladesh] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Bangladesh
+[New Zealand] General / Market   | motorcycle prices New Zealand
+[Nepal] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Nepal
+[Bangladesh] Triumph            | "Triumph" (motorcycle OR motorbike) Bangladesh
+[New Zealand] General / Market   | electric motorcycle New Zealand
+[Nepal] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Nepal
+[Bangladesh] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) Bangladesh
+[New Zealand] General / Market   | motorcycle factory production New Zealand
+[Nepal] KTM                | "KTM" (motorcycle OR motorbike) Nepal
+[Bangladesh] Ducati             | "Ducati" (motorcycle OR motorbike) Bangladesh
+[Nepal] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Nepal
+[New Zealand] General / Market   | motorcycle dealership new showroom New Zealand
+[Bangladesh] Vespa              | "Vespa" (motorcycle OR motorbike) Bangladesh
+[Nepal] Triumph            | "Triumph" (motorcycle OR motorbike) Nepal
+[New Zealand] translating 48 headlines to English ...
+[New Zealand] done: seen 570, kept 48, failed searches 0
+[Sri Lanka] Honda              | "Honda" (motorcycle OR motorbike) Sri Lanka
+[Bangladesh] Yadea              | "Yadea" (motorcycle OR motorbike) Bangladesh
+[Nepal] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) Nepal
+[Sri Lanka] Yamaha             | "Yamaha" (motorcycle OR motorbike) Sri Lanka
+[Bangladesh] CFMoto             | "CFMoto" (motorcycle OR motorbike) Bangladesh
+[Nepal] Ducati             | "Ducati" (motorcycle OR motorbike) Nepal
+[Sri Lanka] Suzuki             | "Suzuki" (motorcycle OR motorbike) Sri Lanka
+[Bangladesh] General / Market   | motorcycle launch Bangladesh
+[Nepal] Vespa              | "Vespa" (motorcycle OR motorbike) Nepal
+[Sri Lanka] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Sri Lanka
+   ! HTTP 429 for '"Vespa" (motorcycle OR motorbike) Nepal' (try 1)
+[Bangladesh] General / Market   | motorcycle sales Bangladesh
+[Sri Lanka] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Sri Lanka
+   ! HTTP 429 for '"Bajaj Auto" (motorcycle OR motorbike) Sri Lanka' (try 1)
+[Bangladesh] General / Market   | motorcycle prices Bangladesh
+[Nepal] Yadea              | "Yadea" (motorcycle OR motorbike) Nepal
+[Bangladesh] General / Market   | electric motorcycle Bangladesh
+[Nepal] CFMoto             | "CFMoto" (motorcycle OR motorbike) Nepal
+[Sri Lanka] TVS                | "TVS" (motorcycle OR motorbike) Sri Lanka
+[Bangladesh] General / Market   | motorcycle factory production Bangladesh
+[Nepal] General / Market   | motorcycle launch Nepal
+[Sri Lanka] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Sri Lanka
+[Bangladesh] General / Market   | motorcycle dealership new showroom Bangladesh
+[Nepal] General / Market   | motorcycle sales Nepal
+[Sri Lanka] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Sri Lanka
+[Bangladesh] translating 25 headlines to English ...
+[Bangladesh] done: seen 547, kept 25, failed searches 0
+[Austria] Honda              | "Honda" (motorrad OR motorräder) Österreich
+[Nepal] General / Market   | motorcycle prices Nepal
+[Sri Lanka] KTM                | "KTM" (motorcycle OR motorbike) Sri Lanka
+[Austria] Yamaha             | "Yamaha" (motorrad OR motorräder) Österreich
+[Nepal] General / Market   | electric motorcycle Nepal
+[Sri Lanka] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Sri Lanka
+[Austria] Suzuki             | "Suzuki" (motorrad OR motorräder) Österreich
+[Nepal] General / Market   | motorcycle factory production Nepal
+[Sri Lanka] Triumph            | "Triumph" (motorcycle OR motorbike) Sri Lanka
+[Austria] Kawasaki           | "Kawasaki" (motorrad OR motorräder) Österreich
+[Sri Lanka] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) Sri Lanka
+[Nepal] General / Market   | motorcycle dealership new showroom Nepal
+[Austria] BMW Motorrad       | "BMW Motorrad" (motorrad OR motorräder) Österreich
+[Sri Lanka] Ducati             | "Ducati" (motorcycle OR motorbike) Sri Lanka
+[Austria] Ducati             | "Ducati" (motorrad OR motorräder) Österreich[Nepal] translating 21 headlines to English ...
+
+[Nepal] done: seen 532, kept 21, failed searches 0
+[United Kingdom] Honda              | "Honda" (motorcycle OR motorbike) UK
+[Austria] KTM                | "KTM" (motorrad OR motorräder) Österreich
+[Sri Lanka] Vespa              | "Vespa" (motorcycle OR motorbike) Sri Lanka
+[United Kingdom] Yamaha             | "Yamaha" (motorcycle OR motorbike) UK
+[Austria] Triumph            | "Triumph" (motorrad OR motorräder) Österreich
+[Sri Lanka] Yadea              | "Yadea" (motorcycle OR motorbike) Sri Lanka
+[United Kingdom] Suzuki             | "Suzuki" (motorcycle OR motorbike) UK
+[Austria] Piaggio            | "Piaggio" (motorrad OR motorräder) Österreich
+[Sri Lanka] CFMoto             | "CFMoto" (motorcycle OR motorbike) Sri Lanka
+[United Kingdom] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) UK
+[Austria] Vespa              | "Vespa" (motorrad OR motorräder) Österreich
+[Sri Lanka] General / Market   | motorcycle launch Sri Lanka
+[United Kingdom] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) UK
+[Austria] Harley-Davidson    | "Harley-Davidson" (motorrad OR motorräder) Österreich
+[Sri Lanka] General / Market   | motorcycle sales Sri Lanka
+[United Kingdom] Ducati             | "Ducati" (motorcycle OR motorbike) UK
+[Austria] Royal Enfield      | "Royal Enfield" (motorrad OR motorräder) Österreich
+[Sri Lanka] General / Market   | motorcycle prices Sri Lanka
+[United Kingdom] KTM                | "KTM" (motorcycle OR motorbike) UK
+   ! HTTP 429 for 'motorcycle prices Sri Lanka' (try 1)
+[Austria] CFMoto             | "CFMoto" (motorrad OR motorräder) Österreich
+[United Kingdom] Triumph            | "Triumph" (motorcycle OR motorbike) UK
+[Austria] Aprilia            | "Aprilia" (motorrad OR motorräder) Österreich
+[Austria] Husqvarna          | "Husqvarna" (motorrad OR motorräder) Österreich
+[Sri Lanka] General / Market   | electric motorcycle Sri Lanka
+[United Kingdom] Piaggio            | "Piaggio" (motorcycle OR motorbike) UK
+[United Kingdom] Vespa              | "Vespa" (motorcycle OR motorbike) UK
+[Sri Lanka] General / Market   | motorcycle factory production Sri Lanka
+[Austria] Zero Motorcycles   | "Zero Motorcycles" (motorrad OR motorräder) Österreich
+[United Kingdom] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) UK
+[Sri Lanka] General / Market   | motorcycle dealership new showroom Sri Lanka
+[Austria] General / Market   | Motorrad Österreich
+[Austria] General / Market   | Motorrad Neuzulassungen Österreich
+[United Kingdom] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) UK
+[Sri Lanka] translating 29 headlines to English ...
+[Sri Lanka] done: seen 393, kept 29, failed searches 0
+[Belgium] Honda              | "Honda" (motorfiets OR motorfietsen OR moto OR motos) België
+   ! HTTP 429 for '"Honda" (motorfiets OR motorfietsen OR moto OR motos) België' (try 1)
+[Austria] General / Market   | neues Motorrad Österreich
+[United Kingdom] CFMoto             | "CFMoto" (motorcycle OR motorbike) UK
+[Austria] General / Market   | Elektromotorrad Österreich
+[United Kingdom] Aprilia            | "Aprilia" (motorcycle OR motorbike) UK
+[Belgium] Yamaha             | "Yamaha" (motorfiets OR motorfietsen OR moto OR motos) België
+[Austria] General / Market   | Motorrad Preise Österreich
+[United Kingdom] Husqvarna          | "Husqvarna" (motorcycle OR motorbike) UK
+[Belgium] Suzuki             | "Suzuki" (motorfiets OR motorfietsen OR moto OR motos) België
+[Austria] General / Market   | Motorradhändler Österreich
+[Belgium] Kawasaki           | "Kawasaki" (motorfiets OR motorfietsen OR moto OR motos) België
+[United Kingdom] Zero Motorcycles   | "Zero Motorcycles" (motorcycle OR motorbike) UK
+[Austria] translating 43 headlines to English ...
+[United Kingdom] General / Market   | motorcycle launch UK[Belgium] BMW Motorrad       | "BMW Motorrad" (motorfiets OR motorfietsen OR moto OR motos) België
+
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Belgium] Ducati             | "Ducati" (motorfiets OR motorfietsen OR moto OR motos) België
+[United Kingdom] General / Market   | motorcycle sales UK
+[Belgium] KTM                | "KTM" (motorfiets OR motorfietsen OR moto OR motos) België
+[United Kingdom] General / Market   | motorcycle prices UK
+[Belgium] Triumph            | "Triumph" (motorfiets OR motorfietsen OR moto OR motos) België
+[United Kingdom] General / Market   | electric motorcycle UK
+[Belgium] Piaggio            | "Piaggio" (motorfiets OR motorfietsen OR moto OR motos) België
+[United Kingdom] General / Market   | motorcycle factory production UK
+[Austria] done: seen 502, kept 43, failed searches 0
+[Russia] Motoland           | "Motoland" (мотоцикл OR мотоциклы) Россия
+[Belgium] Vespa              | "Vespa" (motorfiets OR motorfietsen OR moto OR motos) België
+[United Kingdom] General / Market   | motorcycle dealership new showroom UK
+[Russia] Avantis            | "Avantis" (мотоцикл OR мотоциклы) Россия
+[Belgium] Harley-Davidson    | "Harley-Davidson" (motorfiets OR motorfietsen OR moto OR motos) België
+[Russia] Irbis              | "Irbis" (мотоцикл OR мотоциклы) Россия
+[Belgium] Royal Enfield      | "Royal Enfield" (motorfiets OR motorfietsen OR moto OR motos) België
+[Russia] Honda              | "Honda" (мотоцикл OR мотоциклы) Россия
+[Belgium] CFMoto             | "CFMoto" (motorfiets OR motorfietsen OR moto OR motos) België
+[United Kingdom] translating 144 headlines to English ...
+[United Kingdom] done: seen 769, kept 144, failed searches 0
+[Switzerland] Honda              | "Honda" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] Yamaha             | "Yamaha" (мотоцикл OR мотоциклы) Россия
+   ! HTTP 429 for '"CFMoto" (motorfiets OR motorfietsen OR moto OR motos) België' (try 1)
+   ! HTTP 429 for '"Honda" (motorrad OR motorräder OR moto OR motos) Schweiz' (try 1)
+[Russia] Suzuki             | "Suzuki" (мотоцикл OR мотоциклы) Россия
+[Russia] Kawasaki           | "Kawasaki" (мотоцикл OR мотоциклы) Россия
+[Belgium] Aprilia            | "Aprilia" (motorfiets OR motorfietsen OR moto OR motos) België
+[Switzerland] Yamaha             | "Yamaha" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] BMW Motorrad       | "BMW Motorrad" (мотоцикл OR мотоциклы) Россия
+[Belgium] Husqvarna          | "Husqvarna" (motorfiets OR motorfietsen OR moto OR motos) België
+[Switzerland] Suzuki             | "Suzuki" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] Ducati             | "Ducati" (мотоцикл OR мотоциклы) Россия
+[Belgium] Zero Motorcycles   | "Zero Motorcycles" (motorfiets OR motorfietsen OR moto OR motos) België
+[Switzerland] Kawasaki           | "Kawasaki" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] KTM                | "KTM" (мотоцикл OR мотоциклы) Россия
+[Belgium] General / Market   | motoren België
+[Switzerland] BMW Motorrad       | "BMW Motorrad" (motorrad OR motorräder OR moto OR motos) Schweiz
+   ! HTTP 429 for '"KTM" (мотоцикл OR мотоциклы) Россия' (try 1)
+[Belgium] General / Market   | motorfietsen België verkoop
+[Switzerland] Ducati             | "Ducati" (motorrad OR motorräder OR moto OR motos) Schweiz
+   ! HTTP 429 for 'motorfietsen België verkoop' (try 1)
+[Switzerland] KTM                | "KTM" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] Triumph            | "Triumph" (мотоцикл OR мотоциклы) Россия
+   ! HTTP 429 for '"KTM" (motorrad OR motorräder OR moto OR motos) Schweiz' (try 1)
+[Russia] Piaggio            | "Piaggio" (мотоцикл OR мотоциклы) Россия
+[Belgium] General / Market   | nieuwe motor België
+[Russia] Vespa              | "Vespa" (мотоцикл OR мотоциклы) Россия
+[Belgium] General / Market   | elektrische motorfiets België
+[Switzerland] Triumph            | "Triumph" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] Harley-Davidson    | "Harley-Davidson" (мотоцикл OR мотоциклы) Россия
+[Belgium] General / Market   | motorfiets registraties België
+[Switzerland] Piaggio            | "Piaggio" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] Royal Enfield      | "Royal Enfield" (мотоцикл OR мотоциклы) Россия
+[Belgium] General / Market   | motos Belgique lancement
+[Switzerland] Vespa              | "Vespa" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] CFMoto             | "CFMoto" (мотоцикл OR мотоциклы) Россия
+[Switzerland] Harley-Davidson    | "Harley-Davidson" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Belgium] General / Market   | marché moto Belgique ventes
+[Russia] Aprilia            | "Aprilia" (мотоцикл OR мотоциклы) Россия
+[Switzerland] Royal Enfield      | "Royal Enfield" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Belgium] General / Market   | immatriculations motos Belgique
+[Russia] Husqvarna          | "Husqvarna" (мотоцикл OR мотоциклы) Россия
+[Belgium] General / Market   | moto électrique Belgique
+[Switzerland] CFMoto             | "CFMoto" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Russia] Zero Motorcycles   | "Zero Motorcycles" (мотоцикл OR мотоциклы) Россия
+[Switzerland] Aprilia            | "Aprilia" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Belgium] General / Market   | prix motos Belgique
+[Russia] General / Market   | мотоциклы Россия
+[Switzerland] Husqvarna          | "Husqvarna" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Belgium] General / Market   | usine motos production Belgique
+[Russia] General / Market   | продажи мотоциклов Россия
+[Switzerland] Zero Motorcycles   | "Zero Motorcycles" (motorrad OR motorräder OR moto OR motos) Schweiz
+[Belgium] translating 27 headlines to English ...
+[Russia] General / Market   | новые мотоциклы Россия
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Switzerland] General / Market   | Motorrad Schweiz
+[Russia] General / Market   | электромотоциклы Россия
+[Switzerland] General / Market   | Motorrad Neuzulassungen Schweiz
+[Russia] General / Market   | производство мотоциклов Россия
+[Russia] General / Market   | цены на мотоциклы Россия[Switzerland] General / Market   | neues Motorrad Schweiz
+
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Belgium] done: seen 448, kept 27, failed searches 0[Switzerland] General / Market   | Elektromotorrad Schweiz
+
+[Poland] Junak              | "Junak" (motocykl OR motocykle) Polska
+[Russia] translating 95 headlines to English ...
+[Switzerland] General / Market   | Motorrad Preise Schweiz
+[Poland] Romet              | "Romet" (motocykl OR motocykle) Polska
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Switzerland] General / Market   | Motorradhändler Schweiz
+[Poland] Honda              | "Honda" (motocykl OR motocykle) Polska
+[Switzerland] General / Market   | motos Suisse lancement
+[Poland] Yamaha             | "Yamaha" (motocykl OR motocykle) Polska
+[Switzerland] General / Market   | marché moto Suisse ventes
+[Poland] Suzuki             | "Suzuki" (motocykl OR motocykle) Polska
+[Switzerland] General / Market   | immatriculations motos Suisse
+[Poland] Kawasaki           | "Kawasaki" (motocykl OR motocykle) Polska
+[Switzerland] General / Market   | moto électrique Suisse
+[Poland] BMW Motorrad       | "BMW Motorrad" (motocykl OR motocykle) Polska
+[Switzerland] General / Market   | prix motos Suisse
+[Poland] Ducati             | "Ducati" (motocykl OR motocykle) Polska
+[Switzerland] General / Market   | usine motos production Suisse
+[Poland] KTM                | "KTM" (motocykl OR motocykle) Polska
+[Poland] Triumph            | "Triumph" (motocykl OR motocykle) Polska
+[Switzerland] translating 99 headlines to English ...
+[Poland] Piaggio            | "Piaggio" (motocykl OR motocykle) Polska
+[Poland] Vespa              | "Vespa" (motocykl OR motocykle) Polska
+[Poland] Harley-Davidson    | "Harley-Davidson" (motocykl OR motocykle) Polska
+[Russia] done: seen 581, kept 95, failed searches 0
+[Estonia] Honda              | "Honda" (mootorratas OR mootorrattad) Eesti
+[Poland] Royal Enfield      | "Royal Enfield" (motocykl OR motocykle) Polska
+[Estonia] Yamaha             | "Yamaha" (mootorratas OR mootorrattad) Eesti
+[Poland] CFMoto             | "CFMoto" (motocykl OR motocykle) Polska
+[Estonia] Suzuki             | "Suzuki" (mootorratas OR mootorrattad) Eesti
+[Poland] Aprilia            | "Aprilia" (motocykl OR motocykle) Polska
+[Estonia] Kawasaki           | "Kawasaki" (mootorratas OR mootorrattad) Eesti
+[Poland] Husqvarna          | "Husqvarna" (motocykl OR motocykle) Polska
+[Estonia] BMW Motorrad       | "BMW Motorrad" (mootorratas OR mootorrattad) Eesti
+[Poland] Zero Motorcycles   | "Zero Motorcycles" (motocykl OR motocykle) Polska
+[Estonia] Ducati             | "Ducati" (mootorratas OR mootorrattad) Eesti
+[Poland] General / Market   | motocykle Polska
+[Estonia] KTM                | "KTM" (mootorratas OR mootorrattad) Eesti
+[Poland] General / Market   | sprzedaż motocykli Polska
+[Estonia] Triumph            | "Triumph" (mootorratas OR mootorrattad) Eesti
+[Poland] General / Market   | nowe motocykle Polska
+[Switzerland] done: seen 953, kept 99, failed searches 0
+[Sweden] Honda              | "Honda" (motorcykel OR motorcyklar) Sverige
+[Estonia] Piaggio            | "Piaggio" (mootorratas OR mootorrattad) Eesti
+[Poland] General / Market   | motocykle elektryczne Polska
+[Sweden] Yamaha             | "Yamaha" (motorcykel OR motorcyklar) Sverige
+[Estonia] Vespa              | "Vespa" (mootorratas OR mootorrattad) Eesti
+[Poland] General / Market   | rejestracje motocykli Polska
+[Sweden] Suzuki             | "Suzuki" (motorcykel OR motorcyklar) Sverige
+[Estonia] Harley-Davidson    | "Harley-Davidson" (mootorratas OR mootorrattad) Eesti
+[Sweden] Kawasaki           | "Kawasaki" (motorcykel OR motorcyklar) Sverige
+[Poland] translating 61 headlines to English ...
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Sweden] BMW Motorrad       | "BMW Motorrad" (motorcykel OR motorcyklar) Sverige
+[Estonia] Royal Enfield      | "Royal Enfield" (mootorratas OR mootorrattad) Eesti
+[Sweden] Ducati             | "Ducati" (motorcykel OR motorcyklar) Sverige
+[Estonia] CFMoto             | "CFMoto" (mootorratas OR mootorrattad) Eesti
+[Sweden] KTM                | "KTM" (motorcykel OR motorcyklar) Sverige
+[Estonia] Aprilia            | "Aprilia" (mootorratas OR mootorrattad) Eesti
+[Sweden] Triumph            | "Triumph" (motorcykel OR motorcyklar) Sverige
+[Estonia] Husqvarna          | "Husqvarna" (mootorratas OR mootorrattad) Eesti
+[Sweden] Piaggio            | "Piaggio" (motorcykel OR motorcyklar) Sverige
+[Estonia] Zero Motorcycles   | "Zero Motorcycles" (mootorratas OR mootorrattad) Eesti
+[Sweden] Vespa              | "Vespa" (motorcykel OR motorcyklar) Sverige
+[Estonia] General / Market   | mootorrattad Eesti
+[Sweden] Harley-Davidson    | "Harley-Davidson" (motorcykel OR motorcyklar) Sverige
+[Poland] done: seen 531, kept 61, failed searches 0
+[Finland] Honda              | "Honda" (moottoripyörä OR moottoripyörät) Suomi
+[Estonia] General / Market   | mootorrataste müük Eesti
+[Sweden] Royal Enfield      | "Royal Enfield" (motorcykel OR motorcyklar) Sverige
+[Finland] Yamaha             | "Yamaha" (moottoripyörä OR moottoripyörät) Suomi
+[Estonia] General / Market   | uus mootorratas Eesti
+   ! HTTP 429 for '"Yamaha" (moottoripyörä OR moottoripyörät) Suomi' (try 1)
+[Sweden] CFMoto             | "CFMoto" (motorcykel OR motorcyklar) Sverige
+[Estonia] General / Market   | elektrimootorratas Eesti
+[Sweden] Aprilia            | "Aprilia" (motorcykel OR motorcyklar) Sverige
+[Estonia] translating 1 headlines to English ...[Sweden] Husqvarna          | "Husqvarna" (motorcykel OR motorcyklar) Sverige
+
+[Finland] Suzuki             | "Suzuki" (moottoripyörä OR moottoripyörät) Suomi
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Sweden] Zero Motorcycles   | "Zero Motorcycles" (motorcykel OR motorcyklar) Sverige
+[Estonia] done: seen 94, kept 1, failed searches 0
+[Norway] Honda              | "Honda" (motorsykkel OR motorsykler) Norge
+[Finland] Kawasaki           | "Kawasaki" (moottoripyörä OR moottoripyörät) Suomi
+[Sweden] General / Market   | motorcyklar Sverige
+[Norway] Yamaha             | "Yamaha" (motorsykkel OR motorsykler) Norge
+[Finland] BMW Motorrad       | "BMW Motorrad" (moottoripyörä OR moottoripyörät) Suomi
+[Sweden] General / Market   | försäljning motorcyklar Sverige
+[Norway] Suzuki             | "Suzuki" (motorsykkel OR motorsykler) Norge
+[Finland] Ducati             | "Ducati" (moottoripyörä OR moottoripyörät) Suomi
+[Sweden] General / Market   | ny motorcykel Sverige
+[Norway] Kawasaki           | "Kawasaki" (motorsykkel OR motorsykler) Norge
+[Finland] KTM                | "KTM" (moottoripyörä OR moottoripyörät) Suomi
+[Sweden] General / Market   | elmotorcykel Sverige
+[Norway] BMW Motorrad       | "BMW Motorrad" (motorsykkel OR motorsykler) Norge
+[Sweden] General / Market   | registreringar motorcyklar Sverige
+[Finland] Triumph            | "Triumph" (moottoripyörä OR moottoripyörät) Suomi
+[Norway] Ducati             | "Ducati" (motorsykkel OR motorsykler) Norge
+[Sweden] translating 24 headlines to English ...
+[Finland] Piaggio            | "Piaggio" (moottoripyörä OR moottoripyörät) Suomi[Norway] KTM                | "KTM" (motorsykkel OR motorsykler) Norge
+
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Norway] Triumph            | "Triumph" (motorsykkel OR motorsykler) Norge
+[Finland] Vespa              | "Vespa" (moottoripyörä OR moottoripyörät) Suomi
+[Norway] Piaggio            | "Piaggio" (motorsykkel OR motorsykler) Norge
+[Finland] Harley-Davidson    | "Harley-Davidson" (moottoripyörä OR moottoripyörät) Suomi
+[Norway] Vespa              | "Vespa" (motorsykkel OR motorsykler) Norge
+[Finland] Royal Enfield      | "Royal Enfield" (moottoripyörä OR moottoripyörät) Suomi
+[Sweden] done: seen 307, kept 24, failed searches 0
+[Denmark] Honda              | "Honda" (motorcykel OR motorcykler) Danmark
+[Norway] Harley-Davidson    | "Harley-Davidson" (motorsykkel OR motorsykler) Norge
+[Finland] CFMoto             | "CFMoto" (moottoripyörä OR moottoripyörät) Suomi
+[Denmark] Yamaha             | "Yamaha" (motorcykel OR motorcykler) Danmark
+[Norway] Royal Enfield      | "Royal Enfield" (motorsykkel OR motorsykler) Norge
+[Finland] Aprilia            | "Aprilia" (moottoripyörä OR moottoripyörät) Suomi
+[Denmark] Suzuki             | "Suzuki" (motorcykel OR motorcykler) Danmark
+[Norway] CFMoto             | "CFMoto" (motorsykkel OR motorsykler) Norge
+[Finland] Husqvarna          | "Husqvarna" (moottoripyörä OR moottoripyörät) Suomi
+[Denmark] Kawasaki           | "Kawasaki" (motorcykel OR motorcykler) Danmark
+[Norway] Aprilia            | "Aprilia" (motorsykkel OR motorsykler) Norge
+[Finland] Zero Motorcycles   | "Zero Motorcycles" (moottoripyörä OR moottoripyörät) Suomi
+[Denmark] BMW Motorrad       | "BMW Motorrad" (motorcykel OR motorcykler) Danmark
+[Norway] Husqvarna          | "Husqvarna" (motorsykkel OR motorsykler) Norge
+[Finland] General / Market   | moottoripyörät Suomi
+[Denmark] Ducati             | "Ducati" (motorcykel OR motorcykler) Danmark
+[Norway] Zero Motorcycles   | "Zero Motorcycles" (motorsykkel OR motorsykler) Norge
+[Finland] General / Market   | moottoripyörien myynti Suomi
+[Denmark] KTM                | "KTM" (motorcykel OR motorcykler) Danmark
+[Norway] General / Market   | motorsykler Norge
+[Finland] General / Market   | uusi moottoripyörä Suomi
+[Denmark] Triumph            | "Triumph" (motorcykel OR motorcykler) Danmark
+[Norway] General / Market   | salg av motorsykler Norge
+[Finland] General / Market   | sähkömoottoripyörä Suomi
+[Denmark] Piaggio            | "Piaggio" (motorcykel OR motorcykler) Danmark
+[Norway] General / Market   | ny motorsykkel Norge
+[Finland] General / Market   | moottoripyörien rekisteröinnit Suomi
+[Denmark] Vespa              | "Vespa" (motorcykel OR motorcykler) Danmark
+[Norway] General / Market   | elmotorsykkel Norge
+   ! HTTP 429 for '"Vespa" (motorcykel OR motorcykler) Danmark' (try 1)
+[Finland] translating 14 headlines to English ...
+[Norway] General / Market   | registreringer motorsykler Norge
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Norway] translating 11 headlines to English ...
+[Denmark] Harley-Davidson    | "Harley-Davidson" (motorcykel OR motorcykler) Danmark
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Finland] done: seen 257, kept 14, failed searches 0
+[Romania] Honda              | "Honda" (motocicletă OR motociclete) România
+[Denmark] Royal Enfield      | "Royal Enfield" (motorcykel OR motorcykler) Danmark
+[Romania] Yamaha             | "Yamaha" (motocicletă OR motociclete) România
+[Denmark] CFMoto             | "CFMoto" (motorcykel OR motorcykler) Danmark
+[Norway] done: seen 265, kept 11, failed searches 0
+[Czech Republic] Honda              | "Honda" (motocykl OR motocykly) Česko
+[Romania] Suzuki             | "Suzuki" (motocicletă OR motociclete) România
+[Denmark] Aprilia            | "Aprilia" (motorcykel OR motorcykler) Danmark
+[Czech Republic] Yamaha             | "Yamaha" (motocykl OR motocykly) Česko
+[Romania] Kawasaki           | "Kawasaki" (motocicletă OR motociclete) România
+[Denmark] Husqvarna          | "Husqvarna" (motorcykel OR motorcykler) Danmark
+[Czech Republic] Suzuki             | "Suzuki" (motocykl OR motocykly) Česko
+[Romania] BMW Motorrad       | "BMW Motorrad" (motocicletă OR motociclete) România
+[Denmark] Zero Motorcycles   | "Zero Motorcycles" (motorcykel OR motorcykler) Danmark
+[Czech Republic] Kawasaki           | "Kawasaki" (motocykl OR motocykly) Česko
+[Romania] Ducati             | "Ducati" (motocicletă OR motociclete) România
+   ! HTTP 429 for '"Zero Motorcycles" (motorcykel OR motorcykler) Danmark' (try 1)
+[Czech Republic] BMW Motorrad       | "BMW Motorrad" (motocykl OR motocykly) Česko
+[Romania] KTM                | "KTM" (motocicletă OR motociclete) România
+[Czech Republic] Ducati             | "Ducati" (motocykl OR motocykly) Česko
+[Romania] Triumph            | "Triumph" (motocicletă OR motociclete) România
+[Denmark] General / Market   | motorcykler Danmark
+   ! HTTP 429 for 'motorcykler Danmark' (try 1)
+[Czech Republic] KTM                | "KTM" (motocykl OR motocykly) Česko
+[Romania] Piaggio            | "Piaggio" (motocicletă OR motociclete) România
+[Czech Republic] Triumph            | "Triumph" (motocykl OR motocykly) Česko
+[Romania] Vespa              | "Vespa" (motocicletă OR motociclete) România
+[Denmark] General / Market   | salg af motorcykler Danmark
+[Romania] Harley-Davidson    | "Harley-Davidson" (motocicletă OR motociclete) România
+[Czech Republic] Piaggio            | "Piaggio" (motocykl OR motocykly) Česko
+   ! HTTP 429 for 'salg af motorcykler Danmark' (try 1)
+[Romania] Royal Enfield      | "Royal Enfield" (motocicletă OR motociclete) România
+[Czech Republic] Vespa              | "Vespa" (motocykl OR motocykly) Česko
+[Romania] CFMoto             | "CFMoto" (motocicletă OR motociclete) România
+[Czech Republic] Harley-Davidson    | "Harley-Davidson" (motocykl OR motocykly) Česko
+[Denmark] General / Market   | ny motorcykel Danmark
+[Romania] Aprilia            | "Aprilia" (motocicletă OR motociclete) România
+[Czech Republic] Royal Enfield      | "Royal Enfield" (motocykl OR motocykly) Česko
+[Denmark] General / Market   | elmotorcykel Danmark
+[Romania] Husqvarna          | "Husqvarna" (motocicletă OR motociclete) România
+[Czech Republic] CFMoto             | "CFMoto" (motocykl OR motocykly) Česko
+[Denmark] General / Market   | indregistreringer motorcykler Danmark
+[Romania] Zero Motorcycles   | "Zero Motorcycles" (motocicletă OR motociclete) România
+[Czech Republic] Aprilia            | "Aprilia" (motocykl OR motocykly) Česko
+[Denmark] translating 2 headlines to English ...
+[Romania] General / Market   | motociclete România
+[Czech Republic] Husqvarna          | "Husqvarna" (motocykl OR motocykly) Česko
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Denmark] done: seen 39, kept 2, failed searches 0
+[France] Honda              | "Honda" (moto OR motos) France
+[Czech Republic] Zero Motorcycles   | "Zero Motorcycles" (motocykl OR motocykly) Česko
+[Romania] General / Market   | vânzări motociclete România
+[France] Yamaha             | "Yamaha" (moto OR motos) France
+[Czech Republic] General / Market   | motocykly Česko
+[Romania] General / Market   | motociclete noi România
+[France] Suzuki             | "Suzuki" (moto OR motos) France
+[Czech Republic] General / Market   | prodej motocyklů Česko
+[Romania] General / Market   | motociclete electrice România
+[France] Kawasaki           | "Kawasaki" (moto OR motos) France
+[Czech Republic] General / Market   | nové motocykly Česko
+[Romania] General / Market   | înmatriculări motociclete România
+[France] BMW Motorrad       | "BMW Motorrad" (moto OR motos) France
+[Czech Republic] General / Market   | elektromotocykly Česko
+[Romania] translating 46 headlines to English ...
+[France] Ducati             | "Ducati" (moto OR motos) France
+[Czech Republic] General / Market   | registrace motocyklů Česko
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[France] KTM                | "KTM" (moto OR motos) France
+[Czech Republic] translating 22 headlines to English ...
+[France] Triumph            | "Triumph" (moto OR motos) France
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[France] Piaggio            | "Piaggio" (moto OR motos) France
+[France] Vespa              | "Vespa" (moto OR motos) France
+[France] Harley-Davidson    | "Harley-Davidson" (moto OR motos) France
+[France] Royal Enfield      | "Royal Enfield" (moto OR motos) France
+[Romania] done: seen 310, kept 46, failed searches 0
+[Germany] Honda              | "Honda" (motorrad OR motorräder) Deutschland
+[France] CFMoto             | "CFMoto" (moto OR motos) France
+[Germany] Yamaha             | "Yamaha" (motorrad OR motorräder) Deutschland
+[France] Aprilia            | "Aprilia" (moto OR motos) France
+[Germany] Suzuki             | "Suzuki" (motorrad OR motorräder) Deutschland
+[France] Husqvarna          | "Husqvarna" (moto OR motos) France
+[Germany] Kawasaki           | "Kawasaki" (motorrad OR motorräder) Deutschland
+[Czech Republic] done: seen 348, kept 22, failed searches 0
+[Greece] Honda              | "Honda" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[France] Zero Motorcycles   | "Zero Motorcycles" (moto OR motos) France
+[Germany] BMW Motorrad       | "BMW Motorrad" (motorrad OR motorräder) Deutschland
+[Greece] Yamaha             | "Yamaha" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[France] General / Market   | motos France lancement
+[Germany] Ducati             | "Ducati" (motorrad OR motorräder) Deutschland
+[Greece] Suzuki             | "Suzuki" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[France] General / Market   | marché moto France ventes
+[Germany] KTM                | "KTM" (motorrad OR motorräder) Deutschland
+[Greece] Kawasaki           | "Kawasaki" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[France] General / Market   | immatriculations motos France
+[Greece] BMW Motorrad       | "BMW Motorrad" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] Triumph            | "Triumph" (motorrad OR motorräder) Deutschland
+[France] General / Market   | moto électrique France
+[Germany] Piaggio            | "Piaggio" (motorrad OR motorräder) Deutschland
+[France] General / Market   | prix motos France
+[Greece] Ducati             | "Ducati" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] Vespa              | "Vespa" (motorrad OR motorräder) Deutschland
+[France] General / Market   | usine motos production France
+[Greece] KTM                | "KTM" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] Harley-Davidson    | "Harley-Davidson" (motorrad OR motorräder) Deutschland
+[Greece] Triumph            | "Triumph" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[France] translating 74 headlines to English ...
+[Greece] Piaggio            | "Piaggio" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] Royal Enfield      | "Royal Enfield" (motorrad OR motorräder) Deutschland
+[Greece] Vespa              | "Vespa" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] CFMoto             | "CFMoto" (motorrad OR motorräder) Deutschland
+[Greece] Harley-Davidson    | "Harley-Davidson" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] Aprilia            | "Aprilia" (motorrad OR motorräder) Deutschland
+[Greece] Royal Enfield      | "Royal Enfield" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] Husqvarna          | "Husqvarna" (motorrad OR motorräder) Deutschland
+[Greece] CFMoto             | "CFMoto" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] Zero Motorcycles   | "Zero Motorcycles" (motorrad OR motorräder) Deutschland
+   ! HTTP 429 for '"Zero Motorcycles" (motorrad OR motorräder) Deutschland' (try 1)
+[Greece] Aprilia            | "Aprilia" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Greece] Husqvarna          | "Husqvarna" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[Germany] General / Market   | Motorrad Deutschland
+[Greece] Zero Motorcycles   | "Zero Motorcycles" (μοτοσυκλέτα OR μοτοσυκλέτες) Ελλάδα
+[France] done: seen 701, kept 74, failed searches 0
+[Hungary] Honda              | "Honda" (motorkerékpár OR motorkerékpárok) Magyarország
+[Germany] General / Market   | Motorrad Neuzulassungen Deutschland
+[Greece] General / Market   | μοτοσυκλέτες Ελλάδα
+[Germany] General / Market   | neues Motorrad Deutschland
+[Hungary] Yamaha             | "Yamaha" (motorkerékpár OR motorkerékpárok) Magyarország
+[Greece] General / Market   | πωλήσεις μοτοσυκλετών Ελλάδα
+[Germany] General / Market   | Elektromotorrad Deutschland
+[Hungary] Suzuki             | "Suzuki" (motorkerékpár OR motorkerékpárok) Magyarország
+[Greece] General / Market   | νέες μοτοσυκλέτες Ελλάδα
+[Hungary] Kawasaki           | "Kawasaki" (motorkerékpár OR motorkerékpárok) Magyarország
+[Germany] General / Market   | Motorrad Preise Deutschland
+[Greece] General / Market   | ηλεκτρικές μοτοσυκλέτες Ελλάδα
+[Hungary] BMW Motorrad       | "BMW Motorrad" (motorkerékpár OR motorkerékpárok) Magyarország
+[Germany] General / Market   | Motorradhändler Deutschland
+[Greece] General / Market   | ταξινομήσεις μοτοσυκλετών Ελλάδα
+[Greece] translating 41 headlines to English ...
+[Hungary] Ducati             | "Ducati" (motorkerékpár OR motorkerékpárok) Magyarország
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Germany] translating 143 headlines to English ...
+[Hungary] KTM                | "KTM" (motorkerékpár OR motorkerékpárok) Magyarország
+[Hungary] Triumph            | "Triumph" (motorkerékpár OR motorkerékpárok) Magyarország
+[Hungary] Piaggio            | "Piaggio" (motorkerékpár OR motorkerékpárok) Magyarország
+[Hungary] Vespa              | "Vespa" (motorkerékpár OR motorkerékpárok) Magyarország
+[Hungary] Harley-Davidson    | "Harley-Davidson" (motorkerékpár OR motorkerékpárok) Magyarország
+[Hungary] Royal Enfield      | "Royal Enfield" (motorkerékpár OR motorkerékpárok) Magyarország
+[Greece] done: seen 455, kept 41, failed searches 0
+[Ukraine] Honda              | "Honda" (мотоцикл OR мотоцикли) Україна
+[Hungary] CFMoto             | "CFMoto" (motorkerékpár OR motorkerékpárok) Magyarország
+[Ukraine] Yamaha             | "Yamaha" (мотоцикл OR мотоцикли) Україна
+[Hungary] Aprilia            | "Aprilia" (motorkerékpár OR motorkerékpárok) Magyarország
+[Ukraine] Suzuki             | "Suzuki" (мотоцикл OR мотоцикли) Україна
+[Hungary] Husqvarna          | "Husqvarna" (motorkerékpár OR motorkerékpárok) Magyarország
+[Ukraine] Kawasaki           | "Kawasaki" (мотоцикл OR мотоцикли) Україна
+[Hungary] Zero Motorcycles   | "Zero Motorcycles" (motorkerékpár OR motorkerékpárok) Magyarország
+[Ukraine] BMW Motorrad       | "BMW Motorrad" (мотоцикл OR мотоцикли) Україна
+[Hungary] General / Market   | motorkerékpár Magyarország
+[Ukraine] Ducati             | "Ducati" (мотоцикл OR мотоцикли) Україна
+[Hungary] General / Market   | motorkerékpár eladások Magyarország
+[Ukraine] KTM                | "KTM" (мотоцикл OR мотоцикли) Україна
+[Hungary] General / Market   | új motorkerékpár Magyarország
+[Ukraine] Triumph            | "Triumph" (мотоцикл OR мотоцикли) Україна
+[Hungary] General / Market   | elektromos motorkerékpár Magyarország
+[Ukraine] Piaggio            | "Piaggio" (мотоцикл OR мотоцикли) Україна
+[Hungary] General / Market   | robogó Magyarország
+[Ukraine] Vespa              | "Vespa" (мотоцикл OR мотоцикли) Україна
+[Hungary] translating 18 headlines to English ...
+[Ukraine] Harley-Davidson    | "Harley-Davidson" (мотоцикл OR мотоцикли) Україна
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Ukraine] Royal Enfield      | "Royal Enfield" (мотоцикл OR мотоцикли) Україна
+[Ukraine] CFMoto             | "CFMoto" (мотоцикл OR мотоцикли) Україна
+[Ukraine] Aprilia            | "Aprilia" (мотоцикл OR мотоцикли) Україна
+[Ukraine] Husqvarna          | "Husqvarna" (мотоцикл OR мотоцикли) Україна
+[Ukraine] Zero Motorcycles   | "Zero Motorcycles" (мотоцикл OR мотоцикли) Україна
+[Ukraine] General / Market   | мотоцикли Україна
+[Ukraine] General / Market   | електромотоцикли Україна
+[Hungary] done: seen 312, kept 18, failed searches 0
+[Ireland] Honda              | "Honda" (motorcycle OR motorbike) Ireland
+[Ukraine] General / Market   | ціни на мотоцикли Україна
+[Ireland] Yamaha             | "Yamaha" (motorcycle OR motorbike) Ireland
+[Germany] done: seen 720, kept 143, failed searches 0
+[Bulgaria] Honda              | "Honda" (мотоциклет OR мотоциклети) България
+[Ukraine] General / Market   | виробництво мотоциклів Україна
+[Bulgaria] Yamaha             | "Yamaha" (мотоциклет OR мотоциклети) България
+[Ireland] Suzuki             | "Suzuki" (motorcycle OR motorbike) Ireland
+   ! HTTP 429 for '"Yamaha" (мотоциклет OR мотоциклети) България' (try 1)
+   ! HTTP 429 for '"Suzuki" (motorcycle OR motorbike) Ireland' (try 1)
+[Ukraine] General / Market   | продаж мотоциклів Україна
+[Ukraine] translating 57 headlines to English ...
+[Bulgaria] Suzuki             | "Suzuki" (мотоциклет OR мотоциклети) България
+[Ireland] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Ireland
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+   ! HTTP 429 for '"Suzuki" (мотоциклет OR мотоциклети) България' (try 1)
+[Ireland] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) Ireland
+   ! HTTP 429 for '"BMW Motorrad" (motorcycle OR motorbike) Ireland' (try 1)
+[Bulgaria] Kawasaki           | "Kawasaki" (мотоциклет OR мотоциклети) България
+[Bulgaria] BMW Motorrad       | "BMW Motorrad" (мотоциклет OR мотоциклети) България
+[Ireland] Ducati             | "Ducati" (motorcycle OR motorbike) Ireland
+[Bulgaria] Ducati             | "Ducati" (мотоциклет OR мотоциклети) България
+   ! HTTP 429 for '"Ducati" (motorcycle OR motorbike) Ireland' (try 1)
+   ! HTTP 429 for '"Ducati" (мотоциклет OR мотоциклети) България' (try 1)
+[Ireland] KTM                | "KTM" (motorcycle OR motorbike) Ireland
+[Bulgaria] KTM                | "KTM" (мотоциклет OR мотоциклети) България
+[Ireland] Triumph            | "Triumph" (motorcycle OR motorbike) Ireland
+[Bulgaria] Triumph            | "Triumph" (мотоциклет OR мотоциклети) България
+[Ukraine] done: seen 336, kept 57, failed searches 0
+[Croatia] Honda              | "Honda" (motocikl OR motocikli) Hrvatska
+[Ireland] Piaggio            | "Piaggio" (motorcycle OR motorbike) Ireland
+[Bulgaria] Piaggio            | "Piaggio" (мотоциклет OR мотоциклети) България
+[Croatia] Yamaha             | "Yamaha" (motocikl OR motocikli) Hrvatska
+[Ireland] Vespa              | "Vespa" (motorcycle OR motorbike) Ireland
+[Bulgaria] Vespa              | "Vespa" (мотоциклет OR мотоциклети) България
+[Croatia] Suzuki             | "Suzuki" (motocikl OR motocikli) Hrvatska
+[Ireland] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) Ireland
+[Bulgaria] Harley-Davidson    | "Harley-Davidson" (мотоциклет OR мотоциклети) България
+[Croatia] Kawasaki           | "Kawasaki" (motocikl OR motocikli) Hrvatska
+[Ireland] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Ireland
+[Bulgaria] Royal Enfield      | "Royal Enfield" (мотоциклет OR мотоциклети) България
+[Croatia] BMW Motorrad       | "BMW Motorrad" (motocikl OR motocikli) Hrvatska
+[Bulgaria] CFMoto             | "CFMoto" (мотоциклет OR мотоциклети) България
+[Ireland] CFMoto             | "CFMoto" (motorcycle OR motorbike) Ireland
+[Croatia] Ducati             | "Ducati" (motocikl OR motocikli) Hrvatska
+   ! HTTP 429 for '"CFMoto" (motorcycle OR motorbike) Ireland' (try 1)
+[Bulgaria] Aprilia            | "Aprilia" (мотоциклет OR мотоциклети) България
+[Croatia] KTM                | "KTM" (motocikl OR motocikli) Hrvatska
+[Bulgaria] Husqvarna          | "Husqvarna" (мотоциклет OR мотоциклети) България
+   ! HTTP 429 for '"KTM" (motocikl OR motocikli) Hrvatska' (try 1)
+[Ireland] Aprilia            | "Aprilia" (motorcycle OR motorbike) Ireland
+[Bulgaria] Zero Motorcycles   | "Zero Motorcycles" (мотоциклет OR мотоциклети) България
+   ! HTTP 429 for '"Zero Motorcycles" (мотоциклет OR мотоциклети) България' (try 1)
+[Ireland] Husqvarna          | "Husqvarna" (motorcycle OR motorbike) Ireland
+[Croatia] Triumph            | "Triumph" (motocikl OR motocikli) Hrvatska
+   ! HTTP 429 for '"Husqvarna" (motorcycle OR motorbike) Ireland' (try 1)
+   ! HTTP 429 for '"Triumph" (motocikl OR motocikli) Hrvatska' (try 1)
+[Bulgaria] General / Market   | мотоциклети България
+[Bulgaria] General / Market   | продажби на мотоциклети България
+[Ireland] Zero Motorcycles   | "Zero Motorcycles" (motorcycle OR motorbike) Ireland
+[Croatia] Piaggio            | "Piaggio" (motocikl OR motocikli) Hrvatska
+[Bulgaria] General / Market   | нови мотоциклети България
+[Ireland] General / Market   | motorcycle launch Ireland
+[Croatia] Vespa              | "Vespa" (motocikl OR motocikli) Hrvatska
+[Bulgaria] General / Market   | електрически мотоциклети България
+[Ireland] General / Market   | motorcycle sales Ireland
+[Croatia] Harley-Davidson    | "Harley-Davidson" (motocikl OR motocikli) Hrvatska
+   ! HTTP 429 for '"Harley-Davidson" (motocikl OR motocikli) Hrvatska' (try 1)
+[Bulgaria] General / Market   | регистрации мотоциклети България
+[Ireland] General / Market   | motorcycle prices Ireland
+[Bulgaria] translating 16 headlines to English ...
+[Ireland] General / Market   | electric motorcycle Ireland
+   ! HTTP 429 for '"Harley-Davidson" (motocikl OR motocikli) Hrvatska' (try 2)
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Ireland] General / Market   | motorcycle factory production Ireland
+[Bulgaria] done: seen 265, kept 16, failed searches 0
+[Italy] Moto Guzzi         | "Moto Guzzi" (moto OR motocicletta) Italia
+[Ireland] General / Market   | motorcycle dealership new showroom Ireland
+   ! HTTP 429 for 'motorcycle dealership new showroom Ireland' (try 1)
+[Croatia] Royal Enfield      | "Royal Enfield" (motocikl OR motocikli) Hrvatska
+[Italy] MV Agusta          | "MV Agusta" (moto OR motocicletta) Italia
+   ! HTTP 429 for '"Royal Enfield" (motocikl OR motocikli) Hrvatska' (try 1)
+[Italy] Honda              | "Honda" (moto OR motocicletta) Italia
+[Ireland] translating 53 headlines to English ...
+[Ireland] done: seen 482, kept 53, failed searches 0
+[Belarus] Honda              | "Honda" (мотоцикл OR мотоциклы) Беларусь
+[Italy] Yamaha             | "Yamaha" (moto OR motocicletta) Italia
+[Croatia] CFMoto             | "CFMoto" (motocikl OR motocikli) Hrvatska
+   ! HTTP 429 for '"Yamaha" (moto OR motocicletta) Italia' (try 1)
+[Belarus] Yamaha             | "Yamaha" (мотоцикл OR мотоциклы) Беларусь
+[Croatia] Aprilia            | "Aprilia" (motocikl OR motocikli) Hrvatska
+[Belarus] Suzuki             | "Suzuki" (мотоцикл OR мотоциклы) Беларусь
+[Croatia] Husqvarna          | "Husqvarna" (motocikl OR motocikli) Hrvatska
+[Italy] Suzuki             | "Suzuki" (moto OR motocicletta) Italia
+[Belarus] Kawasaki           | "Kawasaki" (мотоцикл OR мотоциклы) Беларусь
+[Croatia] Zero Motorcycles   | "Zero Motorcycles" (motocikl OR motocikli) Hrvatska
+[Italy] Kawasaki           | "Kawasaki" (moto OR motocicletta) Italia
+[Belarus] BMW Motorrad       | "BMW Motorrad" (мотоцикл OR мотоциклы) Беларусь
+[Croatia] General / Market   | motocikli Hrvatska
+   ! HTTP 429 for '"BMW Motorrad" (мотоцикл OR мотоциклы) Беларусь' (try 1)
+[Italy] BMW Motorrad       | "BMW Motorrad" (moto OR motocicletta) Italia
+[Croatia] General / Market   | prodaja motocikala Hrvatska
+[Italy] Ducati             | "Ducati" (moto OR motocicletta) Italia
+   ! HTTP 429 for '"BMW Motorrad" (мотоцикл OR мотоциклы) Беларусь' (try 2)
+   ! HTTP 429 for 'prodaja motocikala Hrvatska' (try 1)
+[Italy] KTM                | "KTM" (moto OR motocicletta) Italia
+[Italy] Triumph            | "Triumph" (moto OR motocicletta) Italia
+   ! HTTP 429 for 'prodaja motocikala Hrvatska' (try 2)
+[Italy] Piaggio            | "Piaggio" (moto OR motocicletta) Italia
+[Belarus] Ducati             | "Ducati" (мотоцикл OR мотоциклы) Беларусь
+[Italy] Vespa              | "Vespa" (moto OR motocicletta) Italia
+[Belarus] KTM                | "KTM" (мотоцикл OR мотоциклы) Беларусь
+[Italy] Harley-Davidson    | "Harley-Davidson" (moto OR motocicletta) Italia
+[Croatia] General / Market   | novi motocikli Hrvatska
+   ! HTTP 429 for 'novi motocikli Hrvatska' (try 1)
+[Belarus] Triumph            | "Triumph" (мотоцикл OR мотоциклы) Беларусь
+[Italy] Royal Enfield      | "Royal Enfield" (moto OR motocicletta) Italia
+[Belarus] Piaggio            | "Piaggio" (мотоцикл OR мотоциклы) Беларусь
+[Italy] CFMoto             | "CFMoto" (moto OR motocicletta) Italia
+[Belarus] Vespa              | "Vespa" (мотоцикл OR мотоциклы) Беларусь
+[Croatia] General / Market   | električni motocikli Hrvatska
+[Italy] Aprilia            | "Aprilia" (moto OR motocicletta) Italia
+[Belarus] Harley-Davidson    | "Harley-Davidson" (мотоцикл OR мотоциклы) Беларусь
+[Croatia] General / Market   | registracije motocikala Hrvatska
+[Italy] Husqvarna          | "Husqvarna" (moto OR motocicletta) Italia
+[Belarus] Royal Enfield      | "Royal Enfield" (мотоцикл OR мотоциклы) Беларусь
+[Croatia] done: seen 3, kept 0, failed searches 0
+[Latvia] Honda              | "Honda" (motocikls OR motocikli) Latvija
+[Italy] Zero Motorcycles   | "Zero Motorcycles" (moto OR motocicletta) Italia
+[Italy] General / Market   | moto Italia novità
+[Latvia] Yamaha             | "Yamaha" (motocikls OR motocikli) Latvija
+[Belarus] CFMoto             | "CFMoto" (мотоцикл OR мотоциклы) Беларусь
+[Latvia] Suzuki             | "Suzuki" (motocikls OR motocikli) Latvija
+[Italy] General / Market   | mercato moto Italia
+[Belarus] Aprilia            | "Aprilia" (мотоцикл OR мотоциклы) Беларусь
+[Latvia] Kawasaki           | "Kawasaki" (motocikls OR motocikli) Latvija
+[Italy] General / Market   | immatricolazioni moto Italia
+[Belarus] Husqvarna          | "Husqvarna" (мотоцикл OR мотоциклы) Беларусь
+[Latvia] BMW Motorrad       | "BMW Motorrad" (motocikls OR motocikli) Latvija
+[Italy] General / Market   | moto elettriche Italia
+[Belarus] Zero Motorcycles   | "Zero Motorcycles" (мотоцикл OR мотоциклы) Беларусь
+[Latvia] Ducati             | "Ducati" (motocikls OR motocikli) Latvija
+[Italy] General / Market   | prezzi moto Italia
+[Belarus] General / Market   | мотоциклы Беларусь
+[Latvia] KTM                | "KTM" (motocikls OR motocikli) Latvija
+[Italy] General / Market   | produzione moto Italia
+[Belarus] General / Market   | продажи мотоциклов Беларусь
+[Latvia] Triumph            | "Triumph" (motocikls OR motocikli) Latvija
+[Belarus] General / Market   | новые мотоциклы Беларусь
+[Latvia] Piaggio            | "Piaggio" (motocikls OR motocikli) Latvija
+[Belarus] General / Market   | электромотоциклы Беларусь
+[Latvia] Vespa              | "Vespa" (motocikls OR motocikli) Latvija
+[Italy] translating 186 headlines to English ...
+[Latvia] Harley-Davidson    | "Harley-Davidson" (motocikls OR motocikli) Latvija[Belarus] General / Market   | производство мотоциклов Беларусь
+
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Latvia] Royal Enfield      | "Royal Enfield" (motocikls OR motocikli) Latvija
+[Belarus] General / Market   | цены на мотоциклы Беларусь
+[Latvia] CFMoto             | "CFMoto" (motocikls OR motocikli) Latvija
+[Belarus] translating 30 headlines to English ...
+[Latvia] Aprilia            | "Aprilia" (motocikls OR motocikli) Latvija
+[Latvia] Husqvarna          | "Husqvarna" (motocikls OR motocikli) Latvija
+[Latvia] Zero Motorcycles   | "Zero Motorcycles" (motocikls OR motocikli) Latvija
+[Latvia] General / Market   | motocikli Latvija
+[Latvia] General / Market   | motociklu pārdošana Latvija
+[Latvia] General / Market   | jauns motocikls Latvija
+[Latvia] General / Market   | elektriskie motocikli Latvija
+[Latvia] translating 14 headlines to English ...
+[Belarus] done: seen 318, kept 30, failed searches 0
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Luxembourg] Honda              | "Honda" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] Yamaha             | "Yamaha" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] Suzuki             | "Suzuki" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] Kawasaki           | "Kawasaki" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] BMW Motorrad       | "BMW Motorrad" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] Ducati             | "Ducati" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] KTM                | "KTM" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] Triumph            | "Triumph" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] Piaggio            | "Piaggio" (moto OR motos OR motorrad OR motorräder) Luxembourg
+   ! HTTP 429 for '"Piaggio" (moto OR motos OR motorrad OR motorräder) Luxembourg' (try 1)
+[Latvia] done: seen 226, kept 14, failed searches 0
+[Netherlands] Honda              | "Honda" (motorfiets OR motorfietsen) Nederland
+[Netherlands] Yamaha             | "Yamaha" (motorfiets OR motorfietsen) Nederland
+[Luxembourg] Vespa              | "Vespa" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Netherlands] Suzuki             | "Suzuki" (motorfiets OR motorfietsen) Nederland
+[Luxembourg] Harley-Davidson    | "Harley-Davidson" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Luxembourg] Royal Enfield      | "Royal Enfield" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Netherlands] Kawasaki           | "Kawasaki" (motorfiets OR motorfietsen) Nederland
+[Luxembourg] CFMoto             | "CFMoto" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Netherlands] BMW Motorrad       | "BMW Motorrad" (motorfiets OR motorfietsen) Nederland
+[Italy] done: seen 863, kept 186, failed searches 0
+[Portugal] Honda              | "Honda" (moto OR motos) Portugal
+[Luxembourg] Aprilia            | "Aprilia" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Netherlands] Ducati             | "Ducati" (motorfiets OR motorfietsen) Nederland
+[Portugal] Yamaha             | "Yamaha" (moto OR motos) Portugal
+[Luxembourg] Husqvarna          | "Husqvarna" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Netherlands] KTM                | "KTM" (motorfiets OR motorfietsen) Nederland
+[Portugal] Suzuki             | "Suzuki" (moto OR motos) Portugal
+[Luxembourg] Zero Motorcycles   | "Zero Motorcycles" (moto OR motos OR motorrad OR motorräder) Luxembourg
+[Netherlands] Triumph            | "Triumph" (motorfiets OR motorfietsen) Nederland
+[Portugal] Kawasaki           | "Kawasaki" (moto OR motos) Portugal
+[Luxembourg] General / Market   | motos Luxembourg lancement
+[Netherlands] Piaggio            | "Piaggio" (motorfiets OR motorfietsen) Nederland
+[Portugal] BMW Motorrad       | "BMW Motorrad" (moto OR motos) Portugal
+[Luxembourg] General / Market   | marché moto Luxembourg ventes
+[Netherlands] Vespa              | "Vespa" (motorfiets OR motorfietsen) Nederland
+[Netherlands] Harley-Davidson    | "Harley-Davidson" (motorfiets OR motorfietsen) Nederland
+[Portugal] Ducati             | "Ducati" (moto OR motos) Portugal
+[Luxembourg] General / Market   | immatriculations motos Luxembourg
+[Netherlands] Royal Enfield      | "Royal Enfield" (motorfiets OR motorfietsen) Nederland
+[Portugal] KTM                | "KTM" (moto OR motos) Portugal
+[Luxembourg] General / Market   | moto électrique Luxembourg
+[Netherlands] CFMoto             | "CFMoto" (motorfiets OR motorfietsen) Nederland
+[Portugal] Triumph            | "Triumph" (moto OR motos) Portugal
+[Luxembourg] General / Market   | prix motos Luxembourg
+[Netherlands] Aprilia            | "Aprilia" (motorfiets OR motorfietsen) Nederland
+[Portugal] Piaggio            | "Piaggio" (moto OR motos) Portugal
+[Luxembourg] General / Market   | usine motos production Luxembourg
+[Netherlands] Husqvarna          | "Husqvarna" (motorfiets OR motorfietsen) Nederland
+[Portugal] Vespa              | "Vespa" (moto OR motos) Portugal
+[Luxembourg] General / Market   | Motorrad Luxemburg
+[Netherlands] Zero Motorcycles   | "Zero Motorcycles" (motorfiets OR motorfietsen) Nederland
+[Portugal] Harley-Davidson    | "Harley-Davidson" (moto OR motos) Portugal
+[Luxembourg] General / Market   | Motorrad Neuzulassungen Luxemburg
+[Netherlands] General / Market   | motoren Nederland
+[Portugal] Royal Enfield      | "Royal Enfield" (moto OR motos) Portugal
+[Luxembourg] General / Market   | neues Motorrad Luxemburg
+[Netherlands] General / Market   | motorfietsen Nederland verkoop
+[Portugal] CFMoto             | "CFMoto" (moto OR motos) Portugal
+[Luxembourg] General / Market   | Elektromotorrad Luxemburg
+[Netherlands] General / Market   | nieuwe motor Nederland
+[Portugal] Aprilia            | "Aprilia" (moto OR motos) Portugal
+[Luxembourg] General / Market   | Motorrad Preise Luxemburg
+[Netherlands] General / Market   | elektrische motorfiets Nederland
+[Portugal] Husqvarna          | "Husqvarna" (moto OR motos) Portugal
+[Luxembourg] General / Market   | Motorradhändler Luxemburg
+[Netherlands] General / Market   | motorfiets registraties Nederland
+[Portugal] Zero Motorcycles   | "Zero Motorcycles" (moto OR motos) Portugal
+[Luxembourg] translating 33 headlines to English ...
+[Netherlands] translating 13 headlines to English ...
+[Portugal] General / Market   | motos Portugal lançamento
+[Portugal] General / Market   | mercado de motos Portugal vendas
+[Portugal] General / Market   | emplacamentos motos Portugal
+[Portugal] General / Market   | motos elétricas Portugal
+[Netherlands] done: seen 395, kept 13, failed searches 0
+[Slovakia] Honda              | "Honda" (motocykel OR motocykle) Slovensko
+[Portugal] General / Market   | preços motos Portugal
+[Slovakia] Yamaha             | "Yamaha" (motocykel OR motocykle) Slovensko
+[Luxembourg] done: seen 393, kept 33, failed searches 0
+[Slovenia] Honda              | "Honda" (motocikel OR motocikli) Slovenija
+[Slovakia] Suzuki             | "Suzuki" (motocykel OR motocykle) Slovensko
+[Portugal] General / Market   | fábrica de motos Portugal
+[Slovenia] Yamaha             | "Yamaha" (motocikel OR motocikli) Slovenija
+[Slovakia] Kawasaki           | "Kawasaki" (motocykel OR motocykle) Slovensko
+[Slovenia] Suzuki             | "Suzuki" (motocikel OR motocikli) Slovenija
+[Slovakia] BMW Motorrad       | "BMW Motorrad" (motocykel OR motocykle) Slovensko
+[Slovenia] Kawasaki           | "Kawasaki" (motocikel OR motocikli) Slovenija
+[Portugal] translating 126 headlines to English ...
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Slovenia] BMW Motorrad       | "BMW Motorrad" (motocikel OR motocikli) Slovenija
+[Slovakia] Ducati             | "Ducati" (motocykel OR motocykle) Slovensko
+[Slovenia] Ducati             | "Ducati" (motocikel OR motocikli) Slovenija
+[Slovakia] KTM                | "KTM" (motocykel OR motocykle) Slovensko
+[Slovakia] Triumph            | "Triumph" (motocykel OR motocykle) Slovensko
+[Slovenia] KTM                | "KTM" (motocikel OR motocikli) Slovenija
+[Slovakia] Piaggio            | "Piaggio" (motocykel OR motocykle) Slovensko
+[Slovenia] Triumph            | "Triumph" (motocikel OR motocikli) Slovenija
+[Slovenia] Piaggio            | "Piaggio" (motocikel OR motocikli) Slovenija
+[Slovakia] Vespa              | "Vespa" (motocykel OR motocykle) Slovensko
+[Slovenia] Vespa              | "Vespa" (motocikel OR motocikli) Slovenija
+[Slovakia] Harley-Davidson    | "Harley-Davidson" (motocykel OR motocykle) Slovensko
+[Slovenia] Harley-Davidson    | "Harley-Davidson" (motocikel OR motocikli) Slovenija
+[Slovakia] Royal Enfield      | "Royal Enfield" (motocykel OR motocykle) Slovensko
+[Slovenia] Royal Enfield      | "Royal Enfield" (motocikel OR motocikli) Slovenija
+[Slovakia] CFMoto             | "CFMoto" (motocykel OR motocykle) Slovensko
+[Slovenia] CFMoto             | "CFMoto" (motocikel OR motocikli) Slovenija
+[Slovakia] Aprilia            | "Aprilia" (motocykel OR motocykle) Slovensko
+[Slovenia] Aprilia            | "Aprilia" (motocikel OR motocikli) Slovenija
+[Slovakia] Husqvarna          | "Husqvarna" (motocykel OR motocykle) Slovensko
+[Slovenia] Husqvarna          | "Husqvarna" (motocikel OR motocikli) Slovenija
+[Slovakia] Zero Motorcycles   | "Zero Motorcycles" (motocykel OR motocykle) Slovensko
+[Slovenia] Zero Motorcycles   | "Zero Motorcycles" (motocikel OR motocikli) Slovenija
+[Slovakia] General / Market   | motocykle Slovensko
+[Slovenia] General / Market   | motorna kolesa Slovenija
+[Slovakia] General / Market   | predaj motocyklov Slovensko
+[Slovenia] General / Market   | prodaja motorjev Slovenija
+[Slovakia] General / Market   | nové motocykle Slovensko
+[Slovenia] General / Market   | električni motorji Slovenija
+[Slovakia] General / Market   | elektrické motocykle Slovensko
+[Portugal] done: seen 1125, kept 126, failed searches 0
+[Spain] Silence            | "Silence" (moto OR motos) España
+[Slovenia] General / Market   | registracije motorjev Slovenija
+[Slovakia] translating 25 headlines to English ...
+[Spain] Honda              | "Honda" (moto OR motos) España[Slovenia] translating 10 headlines to English ...
+
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Spain] Yamaha             | "Yamaha" (moto OR motos) España
+[Spain] Suzuki             | "Suzuki" (moto OR motos) España
+[Slovakia] done: seen 299, kept 25, failed searches 0
+[Cameroon] Honda              | "Honda" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[Spain] Kawasaki           | "Kawasaki" (moto OR motos) España
+[Cameroon] Yamaha             | "Yamaha" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[Slovenia] done: seen 157, kept 10, failed searches 0
+[DR Congo] Honda              | "Honda" (moto OR motos) RD Congo
+[Spain] BMW Motorrad       | "BMW Motorrad" (moto OR motos) España
+[Cameroon] Suzuki             | "Suzuki" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[DR Congo] Yamaha             | "Yamaha" (moto OR motos) RD Congo
+[Spain] Ducati             | "Ducati" (moto OR motos) España
+[Cameroon] Bajaj              | "Bajaj Auto" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[DR Congo] Suzuki             | "Suzuki" (moto OR motos) RD Congo
+[Spain] KTM                | "KTM" (moto OR motos) España
+[Cameroon] TVS                | "TVS" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[DR Congo] Bajaj              | "Bajaj Auto" (moto OR motos) RD Congo
+[Cameroon] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[Spain] Triumph            | "Triumph" (moto OR motos) España
+[DR Congo] TVS                | "TVS" (moto OR motos) RD Congo
+[Spain] Piaggio            | "Piaggio" (moto OR motos) España
+[Cameroon] Haojue             | "Haojue" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[DR Congo] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) RD Congo
+[Spain] Vespa              | "Vespa" (moto OR motos) España
+[Cameroon] Kawasaki           | "Kawasaki" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[DR Congo] Haojue             | "Haojue" (moto OR motos) RD Congo
+[Cameroon] KTM                | "KTM" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[Spain] Harley-Davidson    | "Harley-Davidson" (moto OR motos) España
+[DR Congo] Kawasaki           | "Kawasaki" (moto OR motos) RD Congo
+[Spain] Royal Enfield      | "Royal Enfield" (moto OR motos) España
+[Cameroon] Royal Enfield      | "Royal Enfield" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[DR Congo] KTM                | "KTM" (moto OR motos) RD Congo
+[Spain] CFMoto             | "CFMoto" (moto OR motos) España
+[Cameroon] Spiro              | "Spiro" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[DR Congo] Royal Enfield      | "Royal Enfield" (moto OR motos) RD Congo
+[Cameroon] Ampersand          | "Ampersand" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[Spain] Aprilia            | "Aprilia" (moto OR motos) España
+[DR Congo] Spiro              | "Spiro" (moto OR motos) RD Congo
+[Cameroon] Roam               | "Roam" (moto OR motos OR motorcycle OR motorbike) Cameroun
+[Spain] Husqvarna          | "Husqvarna" (moto OR motos) España
+[DR Congo] Ampersand          | "Ampersand" (moto OR motos) RD Congo
+[Cameroon] General / Market   | motos Cameroun lancement
+[Spain] Zero Motorcycles   | "Zero Motorcycles" (moto OR motos) España
+[DR Congo] Roam               | "Roam" (moto OR motos) RD Congo
+[Spain] General / Market   | motos España lanzamiento
+[Cameroon] General / Market   | marché moto Cameroun ventes
+[DR Congo] General / Market   | motos RD Congo lancement
+[Cameroon] General / Market   | immatriculations motos Cameroun
+[Spain] General / Market   | motos España precios
+[DR Congo] General / Market   | marché moto RD Congo ventes
+[Cameroon] General / Market   | moto électrique Cameroun
+[Spain] General / Market   | motos España patentamientos
+[DR Congo] General / Market   | immatriculations motos RD Congo
+[Spain] General / Market   | motos eléctricas España
+[Cameroon] General / Market   | prix motos Cameroun
+[DR Congo] General / Market   | moto électrique RD Congo
+[Cameroon] General / Market   | usine motos production Cameroun
+[Spain] General / Market   | fábrica de motos España producción
+[DR Congo] General / Market   | prix motos RD Congo
+[Cameroon] General / Market   | motorcycle launch Cameroon
+[Spain] General / Market   | concesionarias motos España nueva sucursal
+[DR Congo] General / Market   | usine motos production RD Congo
+[Cameroon] General / Market   | motorcycle sales Cameroon
+[DR Congo] translating 6 headlines to English ...
+[Cameroon] General / Market   | motorcycle prices Cameroon
+[DR Congo] done: seen 62, kept 6, failed searches 0
+[Ivory Coast] Honda              | "Honda" (moto OR motos) Côte d'Ivoire
+   ! HTTP 429 for '"Honda" (moto OR motos) Côte d'Ivoire' (try 1)
+[Cameroon] General / Market   | electric motorcycle Cameroon
+[Spain] translating 161 headlines to English ...
+[Cameroon] General / Market   | motorcycle factory production Cameroon
+[Ivory Coast] Yamaha             | "Yamaha" (moto OR motos) Côte d'Ivoire
+[Cameroon] General / Market   | motorcycle dealership new showroom Cameroon
+[Ivory Coast] Suzuki             | "Suzuki" (moto OR motos) Côte d'Ivoire
+[Cameroon] translating 19 headlines to English ...
+[Ivory Coast] Bajaj              | "Bajaj Auto" (moto OR motos) Côte d'Ivoire
+[Ivory Coast] TVS                | "TVS" (moto OR motos) Côte d'Ivoire
+[Ivory Coast] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Côte d'Ivoire
+[Ivory Coast] Haojue             | "Haojue" (moto OR motos) Côte d'Ivoire
+[Ivory Coast] Kawasaki           | "Kawasaki" (moto OR motos) Côte d'Ivoire
+[Ivory Coast] KTM                | "KTM" (moto OR motos) Côte d'Ivoire
+[Ivory Coast] Royal Enfield      | "Royal Enfield" (moto OR motos) Côte d'Ivoire
+[Ivory Coast] Spiro              | "Spiro" (moto OR motos) Côte d'Ivoire
+[Cameroon] done: seen 249, kept 19, failed searches 0
+[Nigeria] Honda              | "Honda" (motorcycle OR motorbike) Nigeria
+[Ivory Coast] Ampersand          | "Ampersand" (moto OR motos) Côte d'Ivoire
+[Nigeria] Yamaha             | "Yamaha" (motorcycle OR motorbike) Nigeria
+[Ivory Coast] Roam               | "Roam" (moto OR motos) Côte d'Ivoire
+[Nigeria] Suzuki             | "Suzuki" (motorcycle OR motorbike) Nigeria
+[Ivory Coast] General / Market   | motos Côte d'Ivoire lancement
+[Nigeria] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Nigeria
+[Ivory Coast] General / Market   | marché moto Côte d'Ivoire ventes
+[Nigeria] TVS                | "TVS" (motorcycle OR motorbike) Nigeria
+   ! HTTP 429 for '"TVS" (motorcycle OR motorbike) Nigeria' (try 1)
+[Ivory Coast] General / Market   | immatriculations motos Côte d'Ivoire
+[Ivory Coast] General / Market   | moto électrique Côte d'Ivoire
+[Nigeria] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Nigeria
+[Ivory Coast] General / Market   | prix motos Côte d'Ivoire
+[Nigeria] Haojue             | "Haojue" (motorcycle OR motorbike) Nigeria
+[Ivory Coast] General / Market   | usine motos production Côte d'Ivoire
+   ! HTTP 429 for 'usine motos production Côte d'Ivoire' (try 1)
+[Nigeria] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Nigeria
+   ! HTTP 429 for '"Kawasaki" (motorcycle OR motorbike) Nigeria' (try 1)
+[Ivory Coast] translating 28 headlines to English ...
+[Nigeria] KTM                | "KTM" (motorcycle OR motorbike) Nigeria
+[Nigeria] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Nigeria
+[Nigeria] Spiro              | "Spiro" (motorcycle OR motorbike) Nigeria
+[Spain] done: seen 775, kept 161, failed searches 0
+[Kenya] Honda              | "Honda" (motorcycle OR motorbike) Kenya
+[Nigeria] Ampersand          | "Ampersand" (motorcycle OR motorbike) Nigeria
+[Kenya] Yamaha             | "Yamaha" (motorcycle OR motorbike) Kenya
+[Nigeria] Roam               | "Roam" (motorcycle OR motorbike) Nigeria
+[Kenya] Suzuki             | "Suzuki" (motorcycle OR motorbike) Kenya
+[Nigeria] General / Market   | motorcycle launch Nigeria
+[Kenya] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Kenya
+[Ivory Coast] done: seen 267, kept 28, failed searches 0
+[Tanzania] Honda              | "Honda" (motorcycle OR motorbike) Tanzania
+[Nigeria] General / Market   | motorcycle sales Nigeria
+[Kenya] TVS                | "TVS" (motorcycle OR motorbike) Kenya
+[Tanzania] Yamaha             | "Yamaha" (motorcycle OR motorbike) Tanzania
+[Nigeria] General / Market   | motorcycle prices Nigeria
+[Kenya] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Kenya
+[Tanzania] Suzuki             | "Suzuki" (motorcycle OR motorbike) Tanzania
+[Nigeria] General / Market   | electric motorcycle Nigeria
+[Kenya] Haojue             | "Haojue" (motorcycle OR motorbike) Kenya
+[Nigeria] General / Market   | motorcycle factory production Nigeria
+[Tanzania] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Tanzania
+[Kenya] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Kenya
+[Nigeria] General / Market   | motorcycle dealership new showroom Nigeria
+[Tanzania] TVS                | "TVS" (motorcycle OR motorbike) Tanzania
+[Kenya] KTM                | "KTM" (motorcycle OR motorbike) Kenya
+[Nigeria] General / Market   | okada Nigeria
+[Tanzania] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Tanzania
+[Kenya] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Kenya
+[Nigeria] translating 24 headlines to English ...
+[Nigeria] done: seen 369, kept 24, failed searches 0
+[Ghana] Honda              | "Honda" (motorcycle OR motorbike) Ghana
+[Tanzania] Haojue             | "Haojue" (motorcycle OR motorbike) Tanzania
+[Kenya] Spiro              | "Spiro" (motorcycle OR motorbike) Kenya
+[Ghana] Yamaha             | "Yamaha" (motorcycle OR motorbike) Ghana
+[Tanzania] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Tanzania
+[Kenya] Ampersand          | "Ampersand" (motorcycle OR motorbike) Kenya
+[Tanzania] KTM                | "KTM" (motorcycle OR motorbike) Tanzania
+[Kenya] Roam               | "Roam" (motorcycle OR motorbike) Kenya
+[Ghana] Suzuki             | "Suzuki" (motorcycle OR motorbike) Ghana
+[Tanzania] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Tanzania
+[Kenya] General / Market   | motorcycle launch Kenya
+[Ghana] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Ghana
+[Tanzania] Spiro              | "Spiro" (motorcycle OR motorbike) Tanzania
+[Ghana] TVS                | "TVS" (motorcycle OR motorbike) Ghana
+[Kenya] General / Market   | motorcycle sales Kenya
+[Tanzania] Ampersand          | "Ampersand" (motorcycle OR motorbike) Tanzania
+[Ghana] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Ghana
+[Kenya] General / Market   | motorcycle prices Kenya
+[Tanzania] Roam               | "Roam" (motorcycle OR motorbike) Tanzania
+[Ghana] Haojue             | "Haojue" (motorcycle OR motorbike) Ghana
+[Kenya] General / Market   | electric motorcycle Kenya
+[Tanzania] General / Market   | motorcycle launch Tanzania
+[Ghana] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Ghana
+[Kenya] General / Market   | motorcycle factory production Kenya
+[Tanzania] General / Market   | motorcycle sales Tanzania
+[Ghana] KTM                | "KTM" (motorcycle OR motorbike) Ghana
+[Kenya] General / Market   | motorcycle dealership new showroom Kenya
+[Tanzania] General / Market   | motorcycle prices Tanzania
+[Ghana] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Ghana
+[Kenya] General / Market   | boda boda Kenya
+[Tanzania] General / Market   | electric motorcycle Tanzania
+[Ghana] Spiro              | "Spiro" (motorcycle OR motorbike) Ghana
+[Tanzania] General / Market   | motorcycle factory production Tanzania
+[Kenya] translating 46 headlines to English ...
+[Kenya] done: seen 525, kept 46, failed searches 0
+[Uganda] Honda              | "Honda" (motorcycle OR motorbike) Uganda
+[Ghana] Ampersand          | "Ampersand" (motorcycle OR motorbike) Ghana
+[Tanzania] General / Market   | motorcycle dealership new showroom Tanzania
+[Ghana] Roam               | "Roam" (motorcycle OR motorbike) Ghana
+[Uganda] Yamaha             | "Yamaha" (motorcycle OR motorbike) Uganda
+[Tanzania] General / Market   | boda boda Tanzania
+[Ghana] General / Market   | motorcycle launch Ghana
+[Uganda] Suzuki             | "Suzuki" (motorcycle OR motorbike) Uganda
+[Tanzania] translating 17 headlines to English ...
+[Tanzania] done: seen 258, kept 17, failed searches 0
+[Angola] Honda              | "Honda" (moto OR motos) Angola
+[Ghana] General / Market   | motorcycle sales Ghana
+[Uganda] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Uganda
+[Angola] Yamaha             | "Yamaha" (moto OR motos) Angola
+[Uganda] TVS                | "TVS" (motorcycle OR motorbike) Uganda
+[Ghana] General / Market   | motorcycle prices Ghana
+[Angola] Suzuki             | "Suzuki" (moto OR motos) Angola
+[Uganda] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Uganda
+[Ghana] General / Market   | electric motorcycle Ghana
+[Angola] Bajaj              | "Bajaj Auto" (moto OR motos) Angola
+[Uganda] Haojue             | "Haojue" (motorcycle OR motorbike) Uganda
+[Ghana] General / Market   | motorcycle factory production Ghana
+[Angola] TVS                | "TVS" (moto OR motos) Angola
+[Uganda] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Uganda
+[Ghana] General / Market   | motorcycle dealership new showroom Ghana
+   ! HTTP 429 for '"Kawasaki" (motorcycle OR motorbike) Uganda' (try 1)
+[Angola] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Angola
+[Ghana] General / Market   | okada Ghana
+[Angola] Haojue             | "Haojue" (moto OR motos) Angola
+[Ghana] translating 36 headlines to English ...
+[Ghana] done: seen 379, kept 36, failed searches 0
+[Egypt] Honda              | "Honda" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Uganda] KTM                | "KTM" (motorcycle OR motorbike) Uganda
+[Angola] Kawasaki           | "Kawasaki" (moto OR motos) Angola
+[Egypt] Yamaha             | "Yamaha" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Uganda] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Uganda
+[Angola] KTM                | "KTM" (moto OR motos) Angola
+[Egypt] Suzuki             | "Suzuki" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Uganda] Spiro              | "Spiro" (motorcycle OR motorbike) Uganda
+[Angola] Royal Enfield      | "Royal Enfield" (moto OR motos) Angola
+[Egypt] Bajaj              | "Bajaj Auto" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Uganda] Ampersand          | "Ampersand" (motorcycle OR motorbike) Uganda
+[Angola] Spiro              | "Spiro" (moto OR motos) Angola
+[Egypt] TVS                | "TVS" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Uganda] Roam               | "Roam" (motorcycle OR motorbike) Uganda
+[Angola] Ampersand          | "Ampersand" (moto OR motos) Angola
+   ! HTTP 429 for '"Roam" (motorcycle OR motorbike) Uganda' (try 1)
+[Egypt] Hero MotoCorp      | "Hero MotoCorp" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Angola] Roam               | "Roam" (moto OR motos) Angola
+[Egypt] Haojue             | "Haojue" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Angola] General / Market   | motos Angola lançamento
+[Egypt] Kawasaki           | "Kawasaki" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Uganda] General / Market   | motorcycle launch Uganda
+   ! HTTP 429 for 'motorcycle launch Uganda' (try 1)
+[Egypt] KTM                | "KTM" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Angola] General / Market   | mercado de motos Angola vendas
+[Egypt] Royal Enfield      | "Royal Enfield" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Angola] General / Market   | emplacamentos motos Angola
+[Uganda] General / Market   | motorcycle sales Uganda
+[Egypt] Spiro              | "Spiro" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Angola] General / Market   | motos elétricas Angola
+[Uganda] General / Market   | motorcycle prices Uganda
+[Egypt] Ampersand          | "Ampersand" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Angola] General / Market   | preços motos Angola
+[Egypt] Roam               | "Roam" ("دراجة نارية" OR "دراجات نارية" OR motorcycle OR motorbike) مصر
+[Uganda] General / Market   | electric motorcycle Uganda
+   ! HTTP 429 for 'electric motorcycle Uganda' (try 1)
+[Angola] General / Market   | fábrica de motos Angola
+[Egypt] General / Market   | دراجات نارية مصر
+[Angola] translating 2 headlines to English ...
+[Egypt] General / Market   | مبيعات الدراجات النارية مصر
+[Angola] done: seen 132, kept 2, failed searches 0
+[Ethiopia] Honda              | "Honda" (motorcycle OR motorbike) Ethiopia
+[Uganda] General / Market   | motorcycle factory production Uganda
+[Egypt] General / Market   | دراجات نارية جديدة مصر
+[Ethiopia] Yamaha             | "Yamaha" (motorcycle OR motorbike) Ethiopia
+[Uganda] General / Market   | motorcycle dealership new showroom Uganda
+[Egypt] General / Market   | دراجات نارية كهربائية مصر
+   ! HTTP 429 for 'motorcycle dealership new showroom Uganda' (try 1)
+[Ethiopia] Suzuki             | "Suzuki" (motorcycle OR motorbike) Ethiopia
+[Egypt] General / Market   | أسعار الدراجات النارية مصر
+[Ethiopia] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Ethiopia
+[Egypt] General / Market   | motorcycle launch Egypt
+[Uganda] General / Market   | boda boda Uganda
+[Ethiopia] TVS                | "TVS" (motorcycle OR motorbike) Ethiopia
+[Egypt] General / Market   | motorcycle sales Egypt
+[Uganda] translating 28 headlines to English ...
+[Uganda] done: seen 403, kept 28, failed searches 0
+[Niger] Honda              | "Honda" (moto OR motos) Niger
+[Ethiopia] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Ethiopia
+   ! HTTP 429 for '"Honda" (moto OR motos) Niger' (try 1)
+[Egypt] General / Market   | motorcycle prices Egypt
+[Ethiopia] Haojue             | "Haojue" (motorcycle OR motorbike) Ethiopia
+[Egypt] General / Market   | electric motorcycle Egypt
+   ! HTTP 429 for '"Haojue" (motorcycle OR motorbike) Ethiopia' (try 1)
+   ! HTTP 429 for '"Honda" (moto OR motos) Niger' (try 2)
+[Egypt] General / Market   | motorcycle factory production Egypt
+[Egypt] General / Market   | motorcycle dealership new showroom Egypt
+[Ethiopia] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Ethiopia
+[Ethiopia] KTM                | "KTM" (motorcycle OR motorbike) Ethiopia
+[Niger] Yamaha             | "Yamaha" (moto OR motos) Niger
+[Egypt] translating 44 headlines to English ...
+[transformers] The tokenizer you are loading from 'C:\Users\91931\2w_dashboard\models\nllb-200-distilled-600M-ct2' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+[Niger] Suzuki             | "Suzuki" (moto OR motos) Niger
+[Ethiopia] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Ethiopia
+[Niger] Bajaj              | "Bajaj Auto" (moto OR motos) Niger
+[Ethiopia] Spiro              | "Spiro" (motorcycle OR motorbike) Ethiopia
+[Niger] TVS                | "TVS" (moto OR motos) Niger
+[Ethiopia] Ampersand          | "Ampersand" (motorcycle OR motorbike) Ethiopia
+[Ethiopia] Roam               | "Roam" (motorcycle OR motorbike) Ethiopia
+[Niger] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Niger
+[Egypt] done: seen 342, kept 44, failed searches 0
+[Liberia] Honda              | "Honda" (motorcycle OR motorbike) Liberia
+[Niger] Haojue             | "Haojue" (moto OR motos) Niger
+[Ethiopia] General / Market   | motorcycle launch Ethiopia
+[Liberia] Yamaha             | "Yamaha" (motorcycle OR motorbike) Liberia
+[Niger] Kawasaki           | "Kawasaki" (moto OR motos) Niger
+[Ethiopia] General / Market   | motorcycle sales Ethiopia
+[Liberia] Suzuki             | "Suzuki" (motorcycle OR motorbike) Liberia
+[Niger] KTM                | "KTM" (moto OR motos) Niger
+[Liberia] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Liberia
+[Ethiopia] General / Market   | motorcycle prices Ethiopia
+[Niger] Royal Enfield      | "Royal Enfield" (moto OR motos) Niger
+[Liberia] TVS                | "TVS" (motorcycle OR motorbike) Liberia
+[Ethiopia] General / Market   | electric motorcycle Ethiopia
+[Niger] Spiro              | "Spiro" (moto OR motos) Niger
+[Liberia] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Liberia
+[Ethiopia] General / Market   | motorcycle factory production Ethiopia
+[Niger] Ampersand          | "Ampersand" (moto OR motos) Niger
+[Liberia] Haojue             | "Haojue" (motorcycle OR motorbike) Liberia
+[Ethiopia] General / Market   | motorcycle dealership new showroom Ethiopia
+[Niger] Roam               | "Roam" (moto OR motos) Niger
+[Liberia] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Liberia
+[Ethiopia] translating 21 headlines to English ...
+[Ethiopia] done: seen 344, kept 21, failed searches 0
+[Morocco] Honda              | "Honda" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Niger] General / Market   | motos Niger lancement
+[Liberia] KTM                | "KTM" (motorcycle OR motorbike) Liberia
+[Morocco] Yamaha             | "Yamaha" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Niger] General / Market   | marché moto Niger ventes
+[Liberia] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Liberia
+[Morocco] Suzuki             | "Suzuki" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Niger] General / Market   | immatriculations motos Niger
+[Liberia] Spiro              | "Spiro" (motorcycle OR motorbike) Liberia
+[Morocco] Bajaj              | "Bajaj Auto" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Niger] General / Market   | moto électrique Niger
+[Liberia] Ampersand          | "Ampersand" (motorcycle OR motorbike) Liberia
+[Morocco] TVS                | "TVS" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Liberia] Roam               | "Roam" (motorcycle OR motorbike) Liberia
+[Niger] General / Market   | prix motos Niger
+[Morocco] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Liberia] General / Market   | motorcycle launch Liberia
+[Niger] General / Market   | usine motos production Niger
+[Morocco] Haojue             | "Haojue" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Niger] translating 13 headlines to English ...
+[Liberia] General / Market   | motorcycle sales Liberia
+[Morocco] Kawasaki           | "Kawasaki" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Liberia] General / Market   | motorcycle prices Liberia
+[Morocco] KTM                | "KTM" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Niger] done: seen 129, kept 13, failed searches 0
+[Mozambique] Honda              | "Honda" (moto OR motos) Moçambique
+[Liberia] General / Market   | electric motorcycle Liberia
+[Morocco] Royal Enfield      | "Royal Enfield" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Mozambique] Yamaha             | "Yamaha" (moto OR motos) Moçambique
+[Liberia] General / Market   | motorcycle factory production Liberia
+[Mozambique] Suzuki             | "Suzuki" (moto OR motos) Moçambique
+[Morocco] Spiro              | "Spiro" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Liberia] General / Market   | motorcycle dealership new showroom Liberia
+[Mozambique] Bajaj              | "Bajaj Auto" (moto OR motos) Moçambique
+[Morocco] Ampersand          | "Ampersand" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+   ! HTTP 429 for '"Bajaj Auto" (moto OR motos) Moçambique' (try 1)
+[Liberia] translating 15 headlines to English ...
+[Liberia] done: seen 135, kept 15, failed searches 0
+[Namibia] Honda              | "Honda" (motorcycle OR motorbike) Namibia
+[Morocco] Roam               | "Roam" (moto OR motos OR "دراجة نارية" OR "دراجات نارية") Maroc
+[Morocco] General / Market   | motos Maroc lancement
+[Namibia] Yamaha             | "Yamaha" (motorcycle OR motorbike) Namibia
+[Mozambique] TVS                | "TVS" (moto OR motos) Moçambique
+[Morocco] General / Market   | marché moto Maroc ventes
+[Namibia] Suzuki             | "Suzuki" (motorcycle OR motorbike) Namibia
+[Mozambique] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Moçambique
+[Morocco] General / Market   | immatriculations motos Maroc
+[Namibia] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Namibia
+[Mozambique] Haojue             | "Haojue" (moto OR motos) Moçambique
+[Morocco] General / Market   | moto électrique Maroc
+[Namibia] TVS                | "TVS" (motorcycle OR motorbike) Namibia
+[Mozambique] Kawasaki           | "Kawasaki" (moto OR motos) Moçambique
+[Morocco] General / Market   | prix motos Maroc
+[Namibia] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Namibia
+[Morocco] General / Market   | usine motos production Maroc
+[Mozambique] KTM                | "KTM" (moto OR motos) Moçambique
+[Namibia] Haojue             | "Haojue" (motorcycle OR motorbike) Namibia
+[Morocco] General / Market   | دراجات نارية المغرب
+[Mozambique] Royal Enfield      | "Royal Enfield" (moto OR motos) Moçambique
+[Namibia] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Namibia
+[Morocco] General / Market   | مبيعات الدراجات النارية المغرب
+[Mozambique] Spiro              | "Spiro" (moto OR motos) Moçambique
+[Namibia] KTM                | "KTM" (motorcycle OR motorbike) Namibia
+[Morocco] General / Market   | دراجات نارية جديدة المغرب
+[Mozambique] Ampersand          | "Ampersand" (moto OR motos) Moçambique
+[Namibia] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Namibia
+[Mozambique] Roam               | "Roam" (moto OR motos) Moçambique
+[Morocco] General / Market   | دراجات نارية كهربائية المغرب
+[Namibia] Spiro              | "Spiro" (motorcycle OR motorbike) Namibia
+[Namibia] Ampersand          | "Ampersand" (motorcycle OR motorbike) Namibia
+[Mozambique] General / Market   | motos Moçambique lançamento
+[Morocco] General / Market   | أسعار الدراجات النارية المغرب
+[Namibia] Roam               | "Roam" (motorcycle OR motorbike) Namibia
+[Mozambique] General / Market   | mercado de motos Moçambique vendas
+[Morocco] translating 29 headlines to English ...
+[Namibia] General / Market   | motorcycle launch Namibia
+[Mozambique] General / Market   | emplacamentos motos Moçambique
+[Namibia] General / Market   | motorcycle sales Namibia
+[Mozambique] General / Market   | motos elétricas Moçambique
+[Namibia] General / Market   | motorcycle prices Namibia
+[Mozambique] General / Market   | preços motos Moçambique
+[Morocco] done: seen 400, kept 29, failed searches 0
+[Rwanda] Honda              | "Honda" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[Namibia] General / Market   | electric motorcycle Namibia
+[Mozambique] General / Market   | fábrica de motos Moçambique
+[Rwanda] Yamaha             | "Yamaha" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[Namibia] General / Market   | motorcycle factory production Namibia
+[Mozambique] translating 5 headlines to English ...
+[Rwanda] Suzuki             | "Suzuki" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[Namibia] General / Market   | motorcycle dealership new showroom Namibia
+[Mozambique] done: seen 80, kept 5, failed searches 0
+[South Sudan] Honda              | "Honda" (motorcycle OR motorbike) South Sudan
+[Rwanda] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[Namibia] translating 5 headlines to English ...
+[Namibia] done: seen 147, kept 5, failed searches 0
+[Zimbabwe] Honda              | "Honda" (motorcycle OR motorbike) Zimbabwe
+[South Sudan] Yamaha             | "Yamaha" (motorcycle OR motorbike) South Sudan
+[Rwanda] TVS                | "TVS" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[Zimbabwe] Yamaha             | "Yamaha" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] Suzuki             | "Suzuki" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] Suzuki             | "Suzuki" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] Haojue             | "Haojue" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] TVS                | "TVS" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] TVS                | "TVS" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] KTM                | "KTM" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] Hero MotoCorp      | "Hero MotoCorp" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] Haojue             | "Haojue" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] Haojue             | "Haojue" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] Spiro              | "Spiro" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] Ampersand          | "Ampersand" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] KTM                | "KTM" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] KTM                | "KTM" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] Roam               | "Roam" (motorcycle OR motorbike OR moto OR motos) Rwanda
+[South Sudan] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] General / Market   | motorcycle launch Rwanda
+[South Sudan] Spiro              | "Spiro" (motorcycle OR motorbike) South Sudan
+[Zimbabwe] Spiro              | "Spiro" (motorcycle OR motorbike) Zimbabwe
+   ! HTTP 429 for '"Spiro" (motorcycle OR motorbike) Zimbabwe' (try 1)
+[South Sudan] Ampersand          | "Ampersand" (motorcycle OR motorbike) South Sudan
+[Rwanda] General / Market   | motorcycle sales Rwanda
+[South Sudan] Roam               | "Roam" (motorcycle OR motorbike) South Sudan
+[Rwanda] General / Market   | motorcycle prices Rwanda
+[South Sudan] General / Market   | motorcycle launch South Sudan
+[Zimbabwe] Ampersand          | "Ampersand" (motorcycle OR motorbike) Zimbabwe
+[Rwanda] General / Market   | electric motorcycle Rwanda
+[Rwanda] General / Market   | motorcycle factory production Rwanda
+[Rwanda] General / Market   | motorcycle dealership new showroom Rwanda
+[Zimbabwe] Roam               | "Roam" (motorcycle OR motorbike) Zimbabwe
+[South Sudan] General / Market   | motorcycle sales South Sudan
+[Rwanda] General / Market   | motos Rwanda lancement
+[Zimbabwe] General / Market   | motorcycle launch Zimbabwe
+[South Sudan] General / Market   | motorcycle prices South Sudan
+[Rwanda] General / Market   | marché moto Rwanda ventes
+[Zimbabwe] General / Market   | motorcycle sales Zimbabwe
+[South Sudan] General / Market   | electric motorcycle South Sudan
+[Rwanda] General / Market   | immatriculations motos Rwanda
+[South Sudan] General / Market   | motorcycle factory production South Sudan
+[Zimbabwe] General / Market   | motorcycle prices Zimbabwe
+[Rwanda] General / Market   | moto électrique Rwanda
+[South Sudan] General / Market   | motorcycle dealership new showroom South Sudan
+[Zimbabwe] General / Market   | electric motorcycle Zimbabwe
+[Rwanda] General / Market   | prix motos Rwanda
+[South Sudan] translating 5 headlines to English ...
+[South Sudan] done: seen 170, kept 5, failed searches 0
+[KSA] Honda              | "Honda" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Zimbabwe] General / Market   | motorcycle factory production Zimbabwe
+[Rwanda] General / Market   | usine motos production Rwanda
+[KSA] Yamaha             | "Yamaha" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Zimbabwe] General / Market   | motorcycle dealership new showroom Zimbabwe
+[Rwanda] General / Market   | moto taxi Rwanda
+[KSA] Suzuki             | "Suzuki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Zimbabwe] translating 14 headlines to English ...
+[Zimbabwe] done: seen 176, kept 14, failed searches 0
+[UAE] Honda              | "Honda" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Rwanda] translating 35 headlines to English ...
+[KSA] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[UAE] Yamaha             | "Yamaha" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Rwanda] done: seen 446, kept 35, failed searches 0
+[Kuwait] Honda              | "Honda" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[UAE] Suzuki             | "Suzuki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Kuwait] Yamaha             | "Yamaha" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[UAE] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Kuwait] Suzuki             | "Suzuki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[UAE] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[KSA] Ducati             | "Ducati" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Kuwait] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] KTM                | "KTM" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[UAE] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Kuwait] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[UAE] Ducati             | "Ducati" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[KSA] Triumph            | "Triumph" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Kuwait] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+   ! HTTP 429 for '"Triumph" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia' (try 1)
+   ! HTTP 429 for '"BMW Motorrad" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait' (try 1)
+[UAE] KTM                | "KTM" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[UAE] Triumph            | "Triumph" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[KSA] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Kuwait] Ducati             | "Ducati" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+   ! HTTP 429 for '"Royal Enfield" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia' (try 1)
+[UAE] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Kuwait] KTM                | "KTM" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[UAE] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+   ! HTTP 429 for '"Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE' (try 1)
+[Kuwait] Triumph            | "Triumph" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Kuwait] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] TVS                | "TVS" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+   ! HTTP 429 for '"Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE' (try 2)
+[Kuwait] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] CFMoto             | "CFMoto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Kuwait] TVS                | "TVS" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] Benelli            | "Benelli" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[Kuwait] CFMoto             | "CFMoto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] Vespa              | "Vespa" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Saudi Arabia
+[UAE] TVS                | "TVS" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Kuwait] Benelli            | "Benelli" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[KSA] General / Market   | motorcycle launch Saudi Arabia
+[UAE] CFMoto             | "CFMoto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+   ! HTTP 429 for 'motorcycle launch Saudi Arabia' (try 1)
+[Kuwait] Vespa              | "Vespa" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Kuwait
+[UAE] Benelli            | "Benelli" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[Kuwait] General / Market   | motorcycle launch Kuwait
+[UAE] Vespa              | "Vespa" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") UAE
+[KSA] General / Market   | motorcycle sales Saudi Arabia
+[Kuwait] General / Market   | motorcycle sales Kuwait
+[UAE] General / Market   | motorcycle launch UAE
+[KSA] General / Market   | motorcycle prices Saudi Arabia
+[Kuwait] General / Market   | motorcycle prices Kuwait
+[UAE] General / Market   | motorcycle sales UAE
+[KSA] General / Market   | electric motorcycle Saudi Arabia
+[Kuwait] General / Market   | electric motorcycle Kuwait
+[UAE] General / Market   | motorcycle prices UAE
+[KSA] General / Market   | motorcycle factory production Saudi Arabia
+[Kuwait] General / Market   | motorcycle factory production Kuwait
+[UAE] General / Market   | electric motorcycle UAE
+[KSA] General / Market   | motorcycle dealership new showroom Saudi Arabia
+[Kuwait] General / Market   | motorcycle dealership new showroom Kuwait
+[UAE] General / Market   | motorcycle factory production UAE
+[KSA] General / Market   | دراجات نارية السعودية
+[Kuwait] General / Market   | دراجات نارية الكويت
+[UAE] General / Market   | motorcycle dealership new showroom UAE
+[KSA] General / Market   | مبيعات الدراجات النارية السعودية
+[UAE] General / Market   | دراجات نارية الإمارات
+[Kuwait] General / Market   | مبيعات الدراجات النارية الكويت
+[KSA] General / Market   | دراجات نارية جديدة السعودية
+[UAE] General / Market   | مبيعات الدراجات النارية الإمارات
+[Kuwait] General / Market   | دراجات نارية جديدة الكويت
+[KSA] General / Market   | دراجات نارية كهربائية السعودية
+[UAE] General / Market   | دراجات نارية جديدة الإمارات
+[KSA] General / Market   | أسعار الدراجات النارية السعودية
+[Kuwait] General / Market   | دراجات نارية كهربائية الكويت
+[UAE] General / Market   | دراجات نارية كهربائية الإمارات
+[KSA] translating 34 headlines to English ...
+[Kuwait] General / Market   | أسعار الدراجات النارية الكويت
+[KSA] done: seen 468, kept 34, failed searches 0
+[Bahrain] Honda              | "Honda" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[UAE] General / Market   | أسعار الدراجات النارية الإمارات
+[Kuwait] translating 10 headlines to English ...
+[UAE] translating 32 headlines to English ...
+[Bahrain] Yamaha             | "Yamaha" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Kuwait] done: seen 360, kept 10, failed searches 0
+[Qatar] Honda              | "Honda" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[UAE] done: seen 527, kept 32, failed searches 0
+[Oman] Honda              | "Honda" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] Suzuki             | "Suzuki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] Yamaha             | "Yamaha" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] Yamaha             | "Yamaha" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] Suzuki             | "Suzuki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] Suzuki             | "Suzuki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] Ducati             | "Ducati" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] KTM                | "KTM" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] Ducati             | "Ducati" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Bahrain] Triumph            | "Triumph" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] KTM                | "KTM" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] Ducati             | "Ducati" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Oman] KTM                | "KTM" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Qatar] Triumph            | "Triumph" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Bahrain] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Oman] Triumph            | "Triumph" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Qatar] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Bahrain] TVS                | "TVS" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Oman] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Qatar] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Bahrain] CFMoto             | "CFMoto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Oman] Bajaj              | "Bajaj Auto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Qatar] TVS                | "TVS" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Bahrain] Benelli            | "Benelli" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] CFMoto             | "CFMoto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] TVS                | "TVS" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] Vespa              | "Vespa" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Bahrain
+[Qatar] Benelli            | "Benelli" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Bahrain] General / Market   | motorcycle launch Bahrain
+[Oman] CFMoto             | "CFMoto" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Qatar] Vespa              | "Vespa" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Qatar
+[Oman] Benelli            | "Benelli" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] General / Market   | motorcycle sales Bahrain
+[Qatar] General / Market   | motorcycle launch Qatar
+[Oman] Vespa              | "Vespa" (motorcycle OR motorbike OR "دراجة نارية" OR "دراجات نارية") Oman
+[Bahrain] General / Market   | motorcycle prices Bahrain
+[Qatar] General / Market   | motorcycle sales Qatar
+[Oman] General / Market   | motorcycle launch Oman
+[Bahrain] General / Market   | electric motorcycle Bahrain
+[Bahrain] General / Market   | motorcycle factory production Bahrain
+[Qatar] General / Market   | motorcycle prices Qatar
+[Bahrain] General / Market   | motorcycle dealership new showroom Bahrain
+[Oman] General / Market   | motorcycle sales Oman
+[Qatar] General / Market   | electric motorcycle Qatar
+[Bahrain] General / Market   | دراجات نارية البحرين
+[Oman] General / Market   | motorcycle prices Oman
+[Qatar] General / Market   | motorcycle factory production Qatar
+[Bahrain] General / Market   | مبيعات الدراجات النارية البحرين
+[Oman] General / Market   | electric motorcycle Oman
+[Bahrain] General / Market   | دراجات نارية جديدة البحرين
+[Qatar] General / Market   | motorcycle dealership new showroom Qatar
+[Oman] General / Market   | motorcycle factory production Oman
+[Qatar] General / Market   | دراجات نارية قطر
+[Bahrain] General / Market   | دراجات نارية كهربائية البحرين
+[Oman] General / Market   | motorcycle dealership new showroom Oman
+[Bahrain] General / Market   | أسعار الدراجات النارية البحرين
+[Qatar] General / Market   | مبيعات الدراجات النارية قطر
+[Oman] General / Market   | دراجات نارية عمان
+[Bahrain] translating 16 headlines to English ...
+[Qatar] General / Market   | دراجات نارية جديدة قطر
+[Oman] General / Market   | مبيعات الدراجات النارية عمان
+[Bahrain] done: seen 375, kept 16, failed searches 0
+[Ecuador] Honda              | "Honda" (moto OR motos) Ecuador
+[Oman] General / Market   | دراجات نارية جديدة عمان
+[Qatar] General / Market   | دراجات نارية كهربائية قطر
+[Ecuador] Yamaha             | "Yamaha" (moto OR motos) Ecuador
+[Qatar] General / Market   | أسعار الدراجات النارية قطر
+[Oman] General / Market   | دراجات نارية كهربائية عمان
+[Ecuador] Suzuki             | "Suzuki" (moto OR motos) Ecuador
+[Oman] General / Market   | أسعار الدراجات النارية عمان
+[Qatar] translating 67 headlines to English ...
+[Ecuador] Bajaj              | "Bajaj Auto" (moto OR motos) Ecuador
+[Oman] translating 16 headlines to English ...
+[Qatar] done: seen 553, kept 67, failed searches 0
+[Argentina] Honda              | "Honda" (moto OR motos) Argentina
+[Ecuador] TVS                | "TVS" (moto OR motos) Ecuador
+[Argentina] Yamaha             | "Yamaha" (moto OR motos) Argentina
+[Oman] done: seen 428, kept 16, failed searches 0
+[Bolivia] Honda              | "Honda" (moto OR motos) Bolivia
+[Ecuador] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Ecuador
+[Argentina] Suzuki             | "Suzuki" (moto OR motos) Argentina
+[Bolivia] Yamaha             | "Yamaha" (moto OR motos) Bolivia
+[Ecuador] KTM                | "KTM" (moto OR motos) Ecuador
+   ! HTTP 429 for '"Yamaha" (moto OR motos) Bolivia' (try 1)
+[Argentina] Bajaj              | "Bajaj Auto" (moto OR motos) Argentina
+[Ecuador] Royal Enfield      | "Royal Enfield" (moto OR motos) Ecuador
+[Argentina] TVS                | "TVS" (moto OR motos) Argentina
+[Ecuador] Kawasaki           | "Kawasaki" (moto OR motos) Ecuador
+[Bolivia] Suzuki             | "Suzuki" (moto OR motos) Bolivia
+[Argentina] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Argentina
+[Ecuador] Benelli            | "Benelli" (moto OR motos) Ecuador
+[Bolivia] Bajaj              | "Bajaj Auto" (moto OR motos) Bolivia
+[Argentina] KTM                | "KTM" (moto OR motos) Argentina
+   ! HTTP 429 for '"KTM" (moto OR motos) Argentina' (try 1)
+[Ecuador] CFMoto             | "CFMoto" (moto OR motos) Ecuador
+[Bolivia] TVS                | "TVS" (moto OR motos) Bolivia
+[Ecuador] Harley-Davidson    | "Harley-Davidson" (moto OR motos) Ecuador
+[Bolivia] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Bolivia
+[Argentina] Royal Enfield      | "Royal Enfield" (moto OR motos) Argentina
+[Ecuador] Triumph            | "Triumph" (moto OR motos) Ecuador
+[Bolivia] KTM                | "KTM" (moto OR motos) Bolivia
+[Argentina] Kawasaki           | "Kawasaki" (moto OR motos) Argentina
+[Ecuador] BMW Motorrad       | "BMW Motorrad" (moto OR motos) Ecuador
+[Bolivia] Royal Enfield      | "Royal Enfield" (moto OR motos) Bolivia
+[Argentina] Benelli            | "Benelli" (moto OR motos) Argentina
+[Ecuador] General / Market   | motos Ecuador lanzamiento
+[Bolivia] Kawasaki           | "Kawasaki" (moto OR motos) Bolivia
+[Argentina] CFMoto             | "CFMoto" (moto OR motos) Argentina
+[Ecuador] General / Market   | motos Ecuador precios
+[Bolivia] Benelli            | "Benelli" (moto OR motos) Bolivia
+[Argentina] Harley-Davidson    | "Harley-Davidson" (moto OR motos) Argentina
+[Ecuador] General / Market   | motos Ecuador patentamientos
+[Bolivia] CFMoto             | "CFMoto" (moto OR motos) Bolivia
+[Argentina] Triumph            | "Triumph" (moto OR motos) Argentina
+[Ecuador] General / Market   | motos eléctricas Ecuador
+[Bolivia] Harley-Davidson    | "Harley-Davidson" (moto OR motos) Bolivia
+[Argentina] BMW Motorrad       | "BMW Motorrad" (moto OR motos) Argentina
+[Ecuador] General / Market   | fábrica de motos Ecuador producción
+[Bolivia] Triumph            | "Triumph" (moto OR motos) Bolivia
+[Argentina] General / Market   | motos Argentina lanzamiento
+[Ecuador] General / Market   | concesionarias motos Ecuador nueva sucursal
+[Bolivia] BMW Motorrad       | "BMW Motorrad" (moto OR motos) Bolivia
+[Argentina] General / Market   | motos Argentina precios
+[Ecuador] translating 41 headlines to English ...
+[Argentina] General / Market   | motos Argentina patentamientos
+[Bolivia] General / Market   | motos Bolivia lanzamiento
+[Argentina] General / Market   | motos eléctricas Argentina
+[Bolivia] General / Market   | motos Bolivia precios
+[Argentina] General / Market   | fábrica de motos Argentina producción
+[Bolivia] General / Market   | motos Bolivia patentamientos
+[Argentina] General / Market   | concesionarias motos Argentina nueva sucursal
+[Bolivia] General / Market   | motos eléctricas Bolivia
+[Bolivia] General / Market   | fábrica de motos Bolivia producción
+[Ecuador] done: seen 325, kept 41, failed searches 0
+[Brazil] Haojue             | "Haojue" (moto OR motos) Brasil
+[Bolivia] General / Market   | concesionarias motos Bolivia nueva sucursal
+[Argentina] translating 164 headlines to English ...
+[Brazil] Shineray           | "Shineray" (moto OR motos) Brasil
+[Bolivia] translating 20 headlines to English ...
+[Brazil] Dafra              | "Dafra" (moto OR motos) Brasil
+[Brazil] Voltz              | "Voltz" (moto OR motos) Brasil
+[Brazil] Honda              | "Honda" (moto OR motos) Brasil
+[Brazil] Yamaha             | "Yamaha" (moto OR motos) Brasil
+[Brazil] Suzuki             | "Suzuki" (moto OR motos) Brasil
+[Brazil] Bajaj              | "Bajaj Auto" (moto OR motos) Brasil
+[Brazil] TVS                | "TVS" (moto OR motos) Brasil
+[Bolivia] done: seen 282, kept 20, failed searches 0
+[Chile] Voge               | "Voge" (moto OR motos) Chile
+[Brazil] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Brasil
+[Chile] Loncin             | "Loncin" (moto OR motos) Chile
+[Brazil] KTM                | "KTM" (moto OR motos) Brasil
+[Chile] Honda              | "Honda" (moto OR motos) Chile
+[Brazil] Royal Enfield      | "Royal Enfield" (moto OR motos) Brasil
+[Chile] Yamaha             | "Yamaha" (moto OR motos) Chile
+[Brazil] Kawasaki           | "Kawasaki" (moto OR motos) Brasil
+[Chile] Suzuki             | "Suzuki" (moto OR motos) Chile
+[Brazil] Benelli            | "Benelli" (moto OR motos) Brasil
+[Chile] Bajaj              | "Bajaj Auto" (moto OR motos) Chile
+[Chile] TVS                | "TVS" (moto OR motos) Chile
+[Brazil] CFMoto             | "CFMoto" (moto OR motos) Brasil
+[Chile] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Chile
+[Brazil] Harley-Davidson    | "Harley-Davidson" (moto OR motos) Brasil
+[Chile] KTM                | "KTM" (moto OR motos) Chile
+[Brazil] Triumph            | "Triumph" (moto OR motos) Brasil
+[Chile] Royal Enfield      | "Royal Enfield" (moto OR motos) Chile
+[Brazil] BMW Motorrad       | "BMW Motorrad" (moto OR motos) Brasil
+[Chile] Kawasaki           | "Kawasaki" (moto OR motos) Chile
+[Argentina] done: seen 972, kept 164, failed searches 0
+[Colombia] AKT                | "AKT" (moto OR motos) Colombia
+[Brazil] General / Market   | motos Brasil lançamento
+[Chile] Benelli            | "Benelli" (moto OR motos) Chile
+[Colombia] Auteco             | "Auteco" (moto OR motos) Colombia
+[Brazil] General / Market   | mercado de motos Brasil vendas
+[Chile] CFMoto             | "CFMoto" (moto OR motos) Chile
+[Colombia] Honda              | "Honda" (moto OR motos) Colombia
+[Brazil] General / Market   | emplacamentos motos Brasil
+[Chile] Harley-Davidson    | "Harley-Davidson" (moto OR motos) Chile
+[Colombia] Yamaha             | "Yamaha" (moto OR motos) Colombia
+[Brazil] General / Market   | motos elétricas Brasil
+[Chile] Triumph            | "Triumph" (moto OR motos) Chile
+[Colombia] Suzuki             | "Suzuki" (moto OR motos) Colombia
+[Chile] BMW Motorrad       | "BMW Motorrad" (moto OR motos) Chile
+[Brazil] General / Market   | preços motos Brasil
+[Colombia] Bajaj              | "Bajaj Auto" (moto OR motos) Colombia
+[Chile] General / Market   | motos Chile lanzamiento
+[Brazil] General / Market   | fábrica de motos Brasil
+[Colombia] TVS                | "TVS" (moto OR motos) Colombia
+[Chile] General / Market   | motos Chile precios
+[Colombia] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) Colombia
+[Chile] General / Market   | motos Chile patentamientos
+[Colombia] KTM                | "KTM" (moto OR motos) Colombia
+[Chile] General / Market   | motos eléctricas Chile
+[Colombia] Royal Enfield      | "Royal Enfield" (moto OR motos) Colombia
+[Chile] General / Market   | fábrica de motos Chile producción
+[Colombia] Kawasaki           | "Kawasaki" (moto OR motos) Colombia
+[Chile] General / Market   | concesionarias motos Chile nueva sucursal
+[Colombia] Benelli            | "Benelli" (moto OR motos) Colombia
+[Chile] translating 23 headlines to English ...
+[Brazil] translating 295 headlines to English ...
+[Colombia] CFMoto             | "CFMoto" (moto OR motos) Colombia
+[Colombia] Harley-Davidson    | "Harley-Davidson" (moto OR motos) Colombia
+[Chile] done: seen 477, kept 23, failed searches 0
+[Costa Rica] Honda              | "Honda" (moto OR motos) Costa Rica
+[Colombia] Triumph            | "Triumph" (moto OR motos) Colombia
+[Costa Rica] Formula            | "Formula" (moto OR motos) Costa Rica
+[Colombia] BMW Motorrad       | "BMW Motorrad" (moto OR motos) Colombia
+[Costa Rica] Freedom            | "Freedom" (moto OR motos) Costa Rica
+[Colombia] General / Market   | motos Colombia lanzamiento
+[Costa Rica] Serpento           | "Serpento" (moto OR motos) Costa Rica
+[Colombia] General / Market   | motos Colombia precios
+[Costa Rica] Loncin             | "Loncin" (moto OR motos) Costa Rica
+[Colombia] General / Market   | motos Colombia patentamientos
+[Costa Rica] Yamaha             | "Yamaha" (moto OR motos) Costa Rica
+[Colombia] General / Market   | motos eléctricas Colombia
+   ! HTTP 429 for 'motos eléctricas Colombia' (try 1)
+[Costa Rica] Katana             | "Katana" (moto OR motos) Costa Rica
+[Costa Rica] Bajaj Auto         | "Bajaj Auto" (moto OR motos) Costa Rica
+[Costa Rica] Suzuki             | "Suzuki" (moto OR motos) Costa Rica
+[Colombia] General / Market   | fábrica de motos Colombia producción
+[Colombia] General / Market   | concesionarias motos Colombia nueva sucursal
+[Costa Rica] AKT                | "AKT" (moto OR motos) Costa Rica
+[Costa Rica] Italika            | "Italika" (moto OR motos) Costa Rica
+[Costa Rica] Vento              | "Vento" (moto OR motos) Costa Rica
+[Costa Rica] Kawasaki           | "Kawasaki" (moto OR motos) Costa Rica
+[Colombia] translating 155 headlines to English ...
+[Costa Rica] TVS                | "TVS" (moto OR motos) Costa Rica
+[Costa Rica] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) Costa Rica
+[Costa Rica] Harley Davidson    | "Harley Davidson" (moto OR motos) Costa Rica
+[Costa Rica] Piaggio            | "Piaggio" (moto OR motos) Costa Rica
+[Costa Rica] Yadea              | "Yadea" (moto OR motos) Costa Rica
+[Costa Rica] KTM                | "KTM" (moto OR motos) Costa Rica
+[Costa Rica] Victory            | "Victory" (moto OR motos) Costa Rica
+[Costa Rica] General / Market   | motos Costa Rica lanzamiento
+[Costa Rica] General / Market   | motos Costa Rica precios
+[Costa Rica] General / Market   | motos Costa Rica patentamientos
+[Costa Rica] General / Market   | motos eléctricas Costa Rica
+[Costa Rica] General / Market   | fábrica de motos Costa Rica producción
+[Costa Rica] General / Market   | concesionarias motos Costa Rica nueva sucursal
+[Costa Rica] translating 9 headlines to English ...
+[Costa Rica] done: seen 293, kept 9, failed searches 0
+[Dominican Republic] TVS                | "TVS" (moto OR motos) República Dominicana
+[Dominican Republic] Black Panther      | "Black Panther" (moto OR motos) República Dominicana
+[Dominican Republic] Honda              | "Honda" (moto OR motos) República Dominicana
+   ! HTTP 429 for '"Honda" (moto OR motos) República Dominicana' (try 1)
+[Colombia] done: seen 1038, kept 155, failed searches 0
+[El Salvador] Freedom            | "Freedom" (moto OR motos) El Salvador
+   ! HTTP 429 for '"Honda" (moto OR motos) República Dominicana' (try 2)
+[El Salvador] Honda              | "Honda" (moto OR motos) El Salvador
+[El Salvador] Serpento           | "Serpento" (moto OR motos) El Salvador
+   ! HTTP 429 for '"Honda" (moto OR motos) República Dominicana' (try 3)
+[El Salvador] Yamaha             | "Yamaha" (moto OR motos) El Salvador
+[El Salvador] AKT                | "AKT" (moto OR motos) El Salvador
+[Brazil] done: seen 1401, kept 295, failed searches 0
+[Guatemala] Honda              | "Honda" (moto OR motos) Guatemala
+[El Salvador] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) El Salvador
+[Guatemala] Suzuki             | "Suzuki" (moto OR motos) Guatemala
+[El Salvador] Bajaj Auto         | "Bajaj Auto" (moto OR motos) El Salvador
+[Guatemala] Bajaj Auto         | "Bajaj Auto" (moto OR motos) Guatemala
+[El Salvador] Katana             | "Katana" (moto OR motos) El Salvador
+[Guatemala] Italika            | "Italika" (moto OR motos) Guatemala
+[Dominican Republic] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) República Dominicana
+[El Salvador] TVS                | "TVS" (moto OR motos) El Salvador
+[Guatemala] Yamaha             | "Yamaha" (moto OR motos) Guatemala
+[Dominican Republic] Super Tucan        | "Super Tucan" (moto OR motos) República Dominicana
+[El Salvador] Dayun              | "Dayun" (moto OR motos) El Salvador
+[Guatemala] Freedom            | "Freedom" (moto OR motos) Guatemala
+[Dominican Republic] Gacela             | "Gacela" (moto OR motos) República Dominicana
+[El Salvador] Italika            | "Italika" (moto OR motos) El Salvador
+[Guatemala] TVS                | "TVS" (moto OR motos) Guatemala
+[Dominican Republic] Haojue             | "Haojue" (moto OR motos) República Dominicana
+[El Salvador] Vento              | "Vento" (moto OR motos) El Salvador
+[Guatemala] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) Guatemala
+[Dominican Republic] Motobison          | "Motobison" (moto OR motos) República Dominicana
+[El Salvador] Kawasaki           | "Kawasaki" (moto OR motos) El Salvador
+[Dominican Republic] Kymco              | "Kymco" (moto OR motos) República Dominicana
+[Guatemala] Serpento           | "Serpento" (moto OR motos) Guatemala
+[El Salvador] Suzuki             | "Suzuki" (moto OR motos) El Salvador
+[Dominican Republic] Suzuki             | "Suzuki" (moto OR motos) República Dominicana
+[Guatemala] Haojue             | "Haojue" (moto OR motos) Guatemala
+[El Salvador] Harley Davidson    | "Harley Davidson" (moto OR motos) El Salvador
+[Dominican Republic] Yamaha             | "Yamaha" (moto OR motos) República Dominicana
+[Guatemala] Vento              | "Vento" (moto OR motos) Guatemala
+[El Salvador] Piaggio            | "Piaggio" (moto OR motos) El Salvador
+[Guatemala] Kawasaki           | "Kawasaki" (moto OR motos) Guatemala
+[Dominican Republic] Italika            | "Italika" (moto OR motos) República Dominicana
+[El Salvador] Yadea              | "Yadea" (moto OR motos) El Salvador
+[Guatemala] AKT                | "AKT" (moto OR motos) Guatemala
+[Dominican Republic] Bajaj Auto         | "Bajaj Auto" (moto OR motos) República Dominicana
+[El Salvador] KTM                | "KTM" (moto OR motos) El Salvador
+[Guatemala] Harley Davidson    | "Harley Davidson" (moto OR motos) Guatemala
+[Dominican Republic] Vento              | "Vento" (moto OR motos) República Dominicana
+[El Salvador] Victory            | "Victory" (moto OR motos) El Salvador
+[Guatemala] Piaggio            | "Piaggio" (moto OR motos) Guatemala
+[Dominican Republic] Kawasaki           | "Kawasaki" (moto OR motos) República Dominicana
+[El Salvador] General / Market   | motos El Salvador lanzamiento
+[Guatemala] Yadea              | "Yadea" (moto OR motos) Guatemala
+[Dominican Republic] AKT                | "AKT" (moto OR motos) República Dominicana
+[El Salvador] General / Market   | motos El Salvador precios
+   ! HTTP 429 for '"AKT" (moto OR motos) República Dominicana' (try 1)
+[Guatemala] KTM                | "KTM" (moto OR motos) Guatemala
+[El Salvador] General / Market   | motos El Salvador patentamientos
+[Guatemala] Victory            | "Victory" (moto OR motos) Guatemala
+[El Salvador] General / Market   | motos eléctricas El Salvador
+[Dominican Republic] Harley Davidson    | "Harley Davidson" (moto OR motos) República Dominicana
+[Guatemala] General / Market   | motos Guatemala lanzamiento
+[El Salvador] General / Market   | fábrica de motos El Salvador producción
+[Dominican Republic] Piaggio            | "Piaggio" (moto OR motos) República Dominicana
+[Guatemala] General / Market   | motos Guatemala precios
+[El Salvador] General / Market   | concesionarias motos El Salvador nueva sucursal
+[Dominican Republic] Yadea              | "Yadea" (moto OR motos) República Dominicana
+[Guatemala] General / Market   | motos Guatemala patentamientos
+[El Salvador] translating 22 headlines to English ...
+[Dominican Republic] KTM                | "KTM" (moto OR motos) República Dominicana
+[Guatemala] General / Market   | motos eléctricas Guatemala
+[Dominican Republic] Victory            | "Victory" (moto OR motos) República Dominicana
+[Guatemala] General / Market   | fábrica de motos Guatemala producción
+[Dominican Republic] General / Market   | motos República Dominicana lanzamiento
+[El Salvador] done: seen 282, kept 22, failed searches 0
+[Honduras] Yamaha             | "Yamaha" (moto OR motos) Honduras
+[Guatemala] General / Market   | concesionarias motos Guatemala nueva sucursal
+[Dominican Republic] General / Market   | motos República Dominicana precios
+[Honduras] Genesis            | "Genesis" (moto OR motos) Honduras
+[Guatemala] translating 19 headlines to English ...
+[Dominican Republic] General / Market   | motos República Dominicana patentamientos
+[Honduras] Italika            | "Italika" (moto OR motos) Honduras
+[Dominican Republic] General / Market   | motos eléctricas República Dominicana
+[Honduras] KMF                | "KMF" (moto OR motos) Honduras
+[Guatemala] done: seen 300, kept 19, failed searches 0
+[Nicaragua] Genesis            | "Genesis" (moto OR motos) Nicaragua
+[Dominican Republic] General / Market   | fábrica de motos República Dominicana producción
+[Honduras] Bajaj Auto         | "Bajaj Auto" (moto OR motos) Honduras
+[Nicaragua] Bajaj Auto         | "Bajaj Auto" (moto OR motos) Nicaragua
+[Dominican Republic] General / Market   | concesionarias motos República Dominicana nueva sucursal
+[Honduras] Honda              | "Honda" (moto OR motos) Honduras
+[Nicaragua] Yamaha             | "Yamaha" (moto OR motos) Nicaragua
+   ! HTTP 429 for '"Honda" (moto OR motos) Honduras' (try 1)
+   ! HTTP 429 for '"Yamaha" (moto OR motos) Nicaragua' (try 1)
+[Dominican Republic] translating 22 headlines to English ...
+[Honduras] Ryder              | "Ryder" (moto OR motos) Honduras
+[Nicaragua] Serpento           | "Serpento" (moto OR motos) Nicaragua
+   ! HTTP 429 for '"Ryder" (moto OR motos) Honduras' (try 1)
+[Dominican Republic] done: seen 258, kept 22, failed searches 0
+[Paraguay] Kenton             | "Kenton" (moto OR motos) Paraguay
+[Nicaragua] AKT                | "AKT" (moto OR motos) Nicaragua
+[Paraguay] Leopard            | "Leopard" (moto OR motos) Paraguay
+[Nicaragua] Raybar             | "Raybar" (moto OR motos) Nicaragua
+[Honduras] TVS                | "TVS" (moto OR motos) Honduras
+[Paraguay] Taiga              | "Taiga" (moto OR motos) Paraguay
+   ! HTTP 429 for '"TVS" (moto OR motos) Honduras' (try 1)
+[Nicaragua] Honda              | "Honda" (moto OR motos) Nicaragua
+[Paraguay] Star               | "Star" (moto OR motos) Paraguay
+[Nicaragua] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) Nicaragua
+[Paraguay] Inverfin           | "Inverfin" (moto OR motos) Paraguay
+[Honduras] ZMOTO              | "ZMOTO" (moto OR motos) Honduras
+[Nicaragua] TVS                | "TVS" (moto OR motos) Nicaragua
+[Paraguay] Honda              | "Honda" (moto OR motos) Paraguay
+   ! HTTP 429 for '"TVS" (moto OR motos) Nicaragua' (try 1)
+[Honduras] Serpento           | "Serpento" (moto OR motos) Honduras
+   ! HTTP 429 for '"Serpento" (moto OR motos) Honduras' (try 1)
+[Paraguay] Maruti             | "Maruti" (moto OR motos) Paraguay
+   ! HTTP 429 for '"TVS" (moto OR motos) Nicaragua' (try 2)
+[Paraguay] Motostar           | "Motostar" (moto OR motos) Paraguay
+[Honduras] Suzuki             | "Suzuki" (moto OR motos) Honduras
+[Paraguay] LML                | "LML" (moto OR motos) Paraguay
+[Honduras] Vento              | "Vento" (moto OR motos) Honduras
+[Paraguay] Alex               | "Alex" (moto OR motos) Paraguay
+[Nicaragua] Italika            | "Italika" (moto OR motos) Nicaragua
+[Honduras] Kawasaki           | "Kawasaki" (moto OR motos) Honduras
+[Paraguay] Yamaha             | "Yamaha" (moto OR motos) Paraguay
+[Nicaragua] Suzuki             | "Suzuki" (moto OR motos) Nicaragua
+[Honduras] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) Honduras
+[Paraguay] Italika            | "Italika" (moto OR motos) Paraguay
+[Nicaragua] Vento              | "Vento" (moto OR motos) Nicaragua
+[Honduras] AKT                | "AKT" (moto OR motos) Honduras
+[Paraguay] Bajaj Auto         | "Bajaj Auto" (moto OR motos) Paraguay
+[Nicaragua] Kawasaki           | "Kawasaki" (moto OR motos) Nicaragua
+[Honduras] Harley Davidson    | "Harley Davidson" (moto OR motos) Honduras
+[Paraguay] Suzuki             | "Suzuki" (moto OR motos) Paraguay
+[Nicaragua] Harley Davidson    | "Harley Davidson" (moto OR motos) Nicaragua
+[Honduras] Piaggio            | "Piaggio" (moto OR motos) Honduras
+[Paraguay] Vento              | "Vento" (moto OR motos) Paraguay
+[Nicaragua] Piaggio            | "Piaggio" (moto OR motos) Nicaragua
+[Honduras] Yadea              | "Yadea" (moto OR motos) Honduras
+[Paraguay] Kawasaki           | "Kawasaki" (moto OR motos) Paraguay
+[Nicaragua] Yadea              | "Yadea" (moto OR motos) Nicaragua
+[Honduras] KTM                | "KTM" (moto OR motos) Honduras
+[Paraguay] TVS                | "TVS" (moto OR motos) Paraguay
+[Nicaragua] KTM                | "KTM" (moto OR motos) Nicaragua
+[Honduras] Victory            | "Victory" (moto OR motos) Honduras
+[Paraguay] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) Paraguay
+[Nicaragua] Victory            | "Victory" (moto OR motos) Nicaragua
+[Honduras] General / Market   | motos Honduras lanzamiento
+[Paraguay] AKT                | "AKT" (moto OR motos) Paraguay
+[Nicaragua] General / Market   | motos Nicaragua lanzamiento
+[Honduras] General / Market   | motos Honduras precios
+[Paraguay] Harley Davidson    | "Harley Davidson" (moto OR motos) Paraguay
+[Honduras] General / Market   | motos Honduras patentamientos
+[Nicaragua] General / Market   | motos Nicaragua precios
+[Paraguay] Piaggio            | "Piaggio" (moto OR motos) Paraguay
+[Honduras] General / Market   | motos eléctricas Honduras
+[Nicaragua] General / Market   | motos Nicaragua patentamientos
+[Paraguay] Yadea              | "Yadea" (moto OR motos) Paraguay
+[Nicaragua] General / Market   | motos eléctricas Nicaragua
+[Honduras] General / Market   | fábrica de motos Honduras producción
+[Paraguay] KTM                | "KTM" (moto OR motos) Paraguay
+[Nicaragua] General / Market   | fábrica de motos Nicaragua producción
+[Honduras] General / Market   | concesionarias motos Honduras nueva sucursal
+[Paraguay] Victory            | "Victory" (moto OR motos) Paraguay
+[Nicaragua] General / Market   | concesionarias motos Nicaragua nueva sucursal
+[Honduras] translating 16 headlines to English ...
+[Paraguay] General / Market   | motos Paraguay lanzamiento
+[Nicaragua] translating 28 headlines to English ...
+[Paraguay] General / Market   | motos Paraguay precios
+[Honduras] done: seen 229, kept 16, failed searches 0
+[Peru] Honda              | "Honda" (moto OR motos) Perú
+[Paraguay] General / Market   | motos Paraguay patentamientos
+[Peru] Wanxin             | "Wanxin" (moto OR motos) Perú
+[Paraguay] General / Market   | motos eléctricas Paraguay
+[Peru] Bajaj Auto         | "Bajaj Auto" (moto OR motos) Perú
+[Nicaragua] done: seen 279, kept 28, failed searches 0
+[Uruguay] Baccio             | "Baccio" (moto OR motos) Uruguay
+[Paraguay] General / Market   | fábrica de motos Paraguay producción
+[Peru] Ronco              | "Ronco" (moto OR motos) Perú
+[Uruguay] Zanella            | "Zanella" (moto OR motos) Uruguay
+[Peru] Zongshen           | "Zongshen" (moto OR motos) Perú
+[Paraguay] General / Market   | concesionarias motos Paraguay nueva sucursal
+[Uruguay] Yumbo              | "Yumbo" (moto OR motos) Uruguay
+[Peru] Suzuki             | "Suzuki" (moto OR motos) Perú
+[Paraguay] translating 19 headlines to English ...
+[Uruguay] Vital              | "Vital" (moto OR motos) Uruguay
+[Peru] Yamaha             | "Yamaha" (moto OR motos) Perú
+[Paraguay] done: seen 354, kept 19, failed searches 0
+[Mexico] Italika            | "Italika" (moto OR motos) México
+[Uruguay] Yamaha             | "Yamaha" (moto OR motos) Uruguay
+[Peru] Ssenda             | "Ssenda" (moto OR motos) Perú
+[Mexico] Vento              | "Vento" (moto OR motos) México
+[Uruguay] Bajaj Auto         | "Bajaj Auto" (moto OR motos) Uruguay
+[Peru] Nexus              | "Nexus" (moto OR motos) Perú
+[Mexico] Honda              | "Honda" (moto OR motos) México
+[Uruguay] Honda              | "Honda" (moto OR motos) Uruguay
+[Peru] Italika            | "Italika" (moto OR motos) Perú
+[Mexico] Yamaha             | "Yamaha" (moto OR motos) México
+[Peru] Vento              | "Vento" (moto OR motos) Perú
+[Uruguay] Vince              | "Vince" (moto OR motos) Uruguay
+[Mexico] Suzuki             | "Suzuki" (moto OR motos) México
+[Uruguay] Moto Baccio        | "Moto Baccio" (moto OR motos) Uruguay
+[Peru] Kawasaki           | "Kawasaki" (moto OR motos) Perú
+[Mexico] Bajaj              | "Bajaj Auto" (moto OR motos) México
+[Peru] TVS                | "TVS" (moto OR motos) Perú
+[Uruguay] Motomel            | "Motomel" (moto OR motos) Uruguay
+[Peru] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) Perú
+[Mexico] TVS                | "TVS" (moto OR motos) México
+[Uruguay] Italika            | "Italika" (moto OR motos) Uruguay
+   ! HTTP 429 for '"TVS" (moto OR motos) México' (try 1)
+[Peru] AKT                | "AKT" (moto OR motos) Perú
+[Uruguay] Suzuki             | "Suzuki" (moto OR motos) Uruguay
+[Peru] Harley Davidson    | "Harley Davidson" (moto OR motos) Perú
+[Uruguay] Vento              | "Vento" (moto OR motos) Uruguay
+[Mexico] Hero MotoCorp      | "Hero MotoCorp" (moto OR motos) México
+[Peru] Piaggio            | "Piaggio" (moto OR motos) Perú
+[Uruguay] Kawasaki           | "Kawasaki" (moto OR motos) Uruguay
+[Mexico] KTM                | "KTM" (moto OR motos) México
+[Peru] Yadea              | "Yadea" (moto OR motos) Perú
+[Uruguay] TVS                | "TVS" (moto OR motos) Uruguay
+[Mexico] Royal Enfield      | "Royal Enfield" (moto OR motos) México
+[Peru] KTM                | "KTM" (moto OR motos) Perú
+[Uruguay] Hero Motocorp      | "Hero MotoCorp" (moto OR motos) Uruguay
+[Mexico] Kawasaki           | "Kawasaki" (moto OR motos) México
+[Peru] Victory            | "Victory" (moto OR motos) Perú
+[Uruguay] AKT                | "AKT" (moto OR motos) Uruguay
+[Mexico] Benelli            | "Benelli" (moto OR motos) México
+[Peru] General / Market   | motos Perú lanzamiento
+[Mexico] CFMoto             | "CFMoto" (moto OR motos) México
+[Uruguay] Harley Davidson    | "Harley Davidson" (moto OR motos) Uruguay
+[Peru] General / Market   | motos Perú precios
+[Mexico] Harley-Davidson    | "Harley-Davidson" (moto OR motos) México
+[Uruguay] Piaggio            | "Piaggio" (moto OR motos) Uruguay
+[Peru] General / Market   | motos Perú patentamientos
+[Mexico] Triumph            | "Triumph" (moto OR motos) México
+[Uruguay] Yadea              | "Yadea" (moto OR motos) Uruguay
+[Peru] General / Market   | motos eléctricas Perú
+[Mexico] BMW Motorrad       | "BMW Motorrad" (moto OR motos) México
+[Uruguay] KTM                | "KTM" (moto OR motos) Uruguay
+[Peru] General / Market   | fábrica de motos Perú producción
+[Mexico] General / Market   | motos México lanzamiento
+[Peru] General / Market   | concesionarias motos Perú nueva sucursal
+[Uruguay] Victory            | "Victory" (moto OR motos) Uruguay
+[Mexico] General / Market   | motos México precios
+[Uruguay] General / Market   | motos Uruguay lanzamiento
+[Peru] translating 60 headlines to English ...
+[Mexico] General / Market   | motos México patentamientos
+[Uruguay] General / Market   | motos Uruguay precios
+[Mexico] General / Market   | motos eléctricas México
+[Uruguay] General / Market   | motos Uruguay patentamientos
+[Mexico] General / Market   | fábrica de motos México producción
+[Uruguay] General / Market   | motos eléctricas Uruguay
+[Mexico] General / Market   | concesionarias motos México nueva sucursal
+[Uruguay] General / Market   | fábrica de motos Uruguay producción
+[Uruguay] General / Market   | concesionarias motos Uruguay nueva sucursal
+[Mexico] translating 103 headlines to English ...
+[Uruguay] translating 28 headlines to English ...
+[Peru] done: seen 397, kept 60, failed searches 0
+[USA] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike) USA
+[USA] Indian Motorcycle  | "Indian Motorcycle" (motorcycle OR motorbike) USA
+[USA] Honda              | "Honda" (motorcycle OR motorbike) USA
+[USA] Yamaha             | "Yamaha" (motorcycle OR motorbike) USA
+[USA] Suzuki             | "Suzuki" (motorcycle OR motorbike) USA
+[USA] Kawasaki           | "Kawasaki" (motorcycle OR motorbike) USA
+[USA] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike) USA
+[USA] Ducati             | "Ducati" (motorcycle OR motorbike) USA
+[USA] KTM                | "KTM" (motorcycle OR motorbike) USA
+[USA] Triumph            | "Triumph" (motorcycle OR motorbike) USA
+[USA] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike) USA
+[Uruguay] done: seen 344, kept 28, failed searches 0
+[Canada] Harley-Davidson    | "Harley-Davidson" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] Zero Motorcycles   | "Zero Motorcycles" (motorcycle OR motorbike) USA
+[Canada] Indian Motorcycle  | "Indian Motorcycle" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] LiveWire           | "LiveWire" (motorcycle OR motorbike) USA
+[Canada] Honda              | "Honda" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] Can-Am             | "Can-Am" (motorcycle OR motorbike) USA
+[Canada] Yamaha             | "Yamaha" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] Vespa              | "Vespa" (motorcycle OR motorbike) USA
+[Mexico] done: seen 775, kept 103, failed searches 0
+[Canada] Suzuki             | "Suzuki" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] Segway             | "Segway" (motorcycle OR motorbike) USA
+[Canada] Kawasaki           | "Kawasaki" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] General / Market   | motorcycle launch USA
+[USA] General / Market   | motorcycle sales USA
+[Canada] BMW Motorrad       | "BMW Motorrad" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] General / Market   | motorcycle prices USA
+[Canada] Ducati             | "Ducati" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] General / Market   | electric motorcycle USA
+[Canada] KTM                | "KTM" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] General / Market   | motorcycle factory production USA
+[Canada] Triumph            | "Triumph" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] General / Market   | motorcycle dealership new showroom USA
+[Canada] Royal Enfield      | "Royal Enfield" (motorcycle OR motorbike OR moto OR motos) Canada
+[Canada] Zero Motorcycles   | "Zero Motorcycles" (motorcycle OR motorbike OR moto OR motos) Canada
+[USA] translating 104 headlines to English ...
+[USA] done: seen 772, kept 104, failed searches 0
+[Canada] LiveWire           | "LiveWire" (motorcycle OR motorbike OR moto OR motos) Canada
+   ! HTTP 429 for '"LiveWire" (motorcycle OR motorbike OR moto OR motos) Canada' (try 1)
+[Canada] Can-Am             | "Can-Am" (motorcycle OR motorbike OR moto OR motos) Canada
+[Canada] Vespa              | "Vespa" (motorcycle OR motorbike OR moto OR motos) Canada
+[Canada] Segway             | "Segway" (motorcycle OR motorbike OR moto OR motos) Canada
+[Canada] General / Market   | motorcycle launch Canada
+[Canada] General / Market   | motorcycle sales Canada
+[Canada] General / Market   | motorcycle prices Canada
+[Canada] General / Market   | electric motorcycle Canada
+[Canada] General / Market   | motorcycle factory production Canada
+[Canada] General / Market   | motorcycle dealership new showroom Canada
+[Canada] General / Market   | motos Canada lancement
+   ! HTTP 429 for 'motos Canada lancement' (try 1)
+[Canada] General / Market   | marché moto Canada ventes
+[Canada] General / Market   | immatriculations motos Canada
+   ! HTTP 429 for 'immatriculations motos Canada' (try 1)
+   ! HTTP 429 for 'immatriculations motos Canada' (try 2)
+   ! HTTP 429 for 'immatriculations motos Canada' (try 3)
+   ! HTTP 429 for 'immatriculations motos Canada' (try 4)
+   ! HTTP 429 for 'immatriculations motos Canada' (try 1)
+   ! HTTP 429 for 'immatriculations motos Canada' (try 2)
+[Canada] General / Market   | moto électrique Canada
+[Canada] General / Market   | prix motos Canada
+[Canada] General / Market   | usine motos production Canada
+[Canada] translating 65 headlines to English ...
+[Canada] done: seen 582, kept 65, failed searches 0
+
+Done. 86 countries OK, 0 not included
+Saved 4506 articles to C:\Users\91931\2w_dashboard\output\global_2w_news_20261120_124020.xlsx
+===== Run finished 2026-11-20 13:32:43 (exit code 0) =====
