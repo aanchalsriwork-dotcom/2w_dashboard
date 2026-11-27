@@ -25,7 +25,8 @@ def fetch_rates():
     resp = requests.get(url, timeout=30)
     resp.raise_for_status()
     data = resp.json()
-    df = pd.DataFrame(data["conversion_rates"].items(), columns=["currency", "rate"])
+    df = pd.DataFrame(data["conversion_rates"].items())
+                      #, columns=["currency", "rate"])
 
     if data.get("result") != "success":
         raise RuntimeError(f"API call failed: {data}")

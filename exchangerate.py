@@ -6,6 +6,7 @@ from psycopg2.extras import execute_values
 from db_connect import get_connection
 from fetchers import get_countries
 
+
 ind_code = "EXCHANGE_RATE"
 # Indicator code for exchange rates
 # API key for the ExchangeRate API is stored in an environment variable.
@@ -29,7 +30,6 @@ def fetch_rates():
     # returns dictionary with currency code as key and ex rate as value
     # Eg: {"USD": 1, "INR": 83.1, "EUR": 0.92, ...}
 
-
 def build_rows(countries: list[dict], rates: dict) -> list[tuple]:
     rows = []
     today = date.today().isoformat()
@@ -50,18 +50,23 @@ def build_rows(countries: list[dict], rates: dict) -> list[tuple]:
         row = (country["wb_code"], ind_code, today, rate)
         rows.append(row)
     return rows
-
+fetch_rates()
 
 def upsert_rates(conn, rows):
-    sql = """
+    try:
+        sql = """
         INSERT INTO fact_macro (wb_code, ind_code, period_date, value)
         VALUES %s
         ON CONFLICT (wb_code, ind_code, period_date)
         DO UPDATE SET value = EXCLUDED.value, updated_at = now()
     """
-    with conn.cursor() as cur:
-        execute_values(cur, sql, rows)
-    conn.commit()
+        with conn.cursor() as cur:
+            execute_values(cur, sql, rows)
+            conn.commit()
+        
+    except Exception as e:
+        print(f"Error upserting rates: {e}")
+        conn.rollback()
 
 
 def main():
